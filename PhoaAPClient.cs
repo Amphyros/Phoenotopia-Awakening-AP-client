@@ -36,7 +36,7 @@ public class PhoaAPClient : BaseUnityPlugin
     private void Start()
     {
         APConnection = new APConnection();
-        APConnection.Connect("localhost", 38281, "Lenamphy");
+        APConnection.Connect();
     }
 
     private void OnDestroy()

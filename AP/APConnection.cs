@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using Archipelago.MultiClient.Net;
 using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Helpers;
@@ -13,49 +14,75 @@ namespace PhoA_AP_client.AP;
 public class APConnection
 {
     public ArchipelagoSession Session { get; private set; }
+    private Thread _connectionThread;
+    private bool _keepTrying;
 
-    public void Connect(string host, int port, string slot, string password = null)
+    private string _host = "localhost";
+    private int _port = 38281;
+    private string _slot = "Lenamphy";
+    private string _password = null;
+
+    public void Connect()
     {
         PhoaAPClient.Logger.LogDebug("Connect() called");
+        Disconnect();
 
-        try
+        _keepTrying = true;
+        _connectionThread = new Thread(() =>
         {
-            Session = ArchipelagoSessionFactory.CreateSession(host, port);
-
-            LoginResult result =
-                Session.TryConnectAndLogin(
-                    "Phoenotopia: Awakening",
-                    slot,
-                    ItemsHandlingFlags.AllItems,
-                    password: password
-                );
-
-            if (!result.Successful)
+            while (_keepTrying)
             {
-                var failure = (LoginFailure)result;
-                foreach (var error in failure.Errors)
-                    PhoaAPClient.Logger.LogError(error);
-                return;
+                try
+                {
+                    Session = ArchipelagoSessionFactory.CreateSession(_host, _port);
+                    
+                    LoginResult result =
+                        Session.TryConnectAndLogin(
+                            "Phoenotopia: Awakening",
+                            _slot,
+                            ItemsHandlingFlags.AllItems,
+                            password: _password
+                        );
+                    if (!result.Successful)
+                    {
+                        var failure = (LoginFailure)result;
+                        foreach (var error in failure.Errors)
+                            PhoaAPClient.Logger.LogError($"Failed to connect: {error}. Retrying in 5s...");
+                        Thread.Sleep(5000);
+                        continue;
+                    }
+                    
+                    Session.Socket.SocketClosed += OnSocketClosed;
+                    
+                    var loginSuccess = (LoginSuccessful)result;
+                    PhoaAPClient.Logger.LogInfo($"Succesfully connected to AP server as slot: {loginSuccess.Slot}");
+                    
+                    ScoutItems();
+                    Session.Items.ItemReceived += AddMissingItems;
+                    
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    PhoaAPClient.Logger.LogError($"Could not connect: {ex.Message}. Retrying in 5s...");
+                }
+                
+                Thread.Sleep(5000);
             }
-
-            LoginSuccessful loginSuccess = (LoginSuccessful)result;
-
-            PhoaAPClient.Logger.LogInfo($"Succesfully connected to AP server: {loginSuccess}");
-            ScoutItems();
-            Session.Items.ItemReceived += AddMissingItems;
-        }
-        catch (Exception ex)
-        {
-            PhoaAPClient.Logger.LogError(ex.Message);
-        }
+        });
+        
+        _connectionThread.IsBackground = true;
+        _connectionThread.Start();
     }
 
     public void Disconnect()
     {
+        _keepTrying = false;
         if (Session == null) return;
 
         Session.Items.ItemReceived -= AddMissingItems;
-        Session?.Socket.Disconnect();
+        Session.Socket.SocketClosed -= OnSocketClosed;
+        Session.Socket.Disconnect();
     }
 
     public void AddMissingItems(ReceivedItemsHelper helper = null)
@@ -100,7 +127,6 @@ public class APConnection
         Session.Locations.ScoutLocationsAsync(
             result =>
             {
-                PhoaAPClient.Logger.LogDebug("Scouting locations...");
 
                 foreach (var level in LocationMapping.LocationMap)
                 {
@@ -111,11 +137,11 @@ public class APConnection
                     {
                         if (!result.TryGetValue(check.ArchipelagoId, out ScoutedItemInfo itemInfo)) continue;
 
-                        PhoaAPClient.Logger.LogDebug(
-                            $"{check.ArchipelagoId} has item {itemInfo.ItemName} ({itemInfo.ItemId})");
+                        // PhoaAPClient.Logger.LogDebug(
+                        //     $"{check.ArchipelagoId} has item {itemInfo.ItemName} ({itemInfo.ItemId})");
 
                         string replacementId = itemInfo.ItemId.ToString();
-                        PhoaAPClient.Logger.LogDebug($"{itemInfo.ItemGame}");
+                        // PhoaAPClient.Logger.LogDebug($"{itemInfo.ItemGame}");
 
                         if (!string.Equals(itemInfo.ItemGame, "Phoenotopia: Awakening"))
                         {
@@ -133,5 +159,11 @@ public class APConnection
             false,
             Session.Locations.AllLocations.ToArray()
         );
+    }
+
+    private void OnSocketClosed(string reason)
+    {
+        PhoaAPClient.Logger.LogWarning($"Lost connection with the AP server: {reason}. Trying to Reconnect...");
+        Connect();
     }
 }
