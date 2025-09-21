@@ -106,15 +106,14 @@ public class APConnection
                 PhoaAPClient.Logger.LogDebug($"Item {id} added.");
                 string itemName = apItems[i].ItemDisplayName;
                 string player = apItems[i].Player.Name;
+                string message = $"Recevied {itemName} from {player}";
+                if (apItems[i].Player.Name == _slot) message = $"Found {itemName}";
 
                 MainThreadDispatcher.RunOnMainThread(() =>
                 {
                     PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1);
                     PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
-                    PT2.display_messages.DisplayMessage(
-                        $"Recevied {itemName} from {player}",
-                        DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET
-                    );
+                    PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
                 });
 
                 PhoaAPClient.Logger.LogInfo($"Item {id} was added to the itempool");
