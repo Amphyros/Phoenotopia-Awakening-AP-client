@@ -112,9 +112,11 @@ public class APConnection
                 string message = $"Received {itemName} from {player}";
                 if (apItems[i].Player.Name == _slot) message = $"Found {itemName}";
 
+                bool ignoreCutscene = apItems[i].Player.Name != _slot;
+                
                 MainThreadDispatcher.RunOnMainThread(() =>
                 {
-                    PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1);
+                    PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
                     PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
                     PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
                 });
