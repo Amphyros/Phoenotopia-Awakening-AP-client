@@ -104,9 +104,12 @@ public class APConnection
             {
                 APSaveState.CollectedItems.Add(id);
                 PhoaAPClient.Logger.LogDebug($"Item {id} added.");
+                
                 string itemName = apItems[i].ItemDisplayName;
+                if ((apItems[i].Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
+                
                 string player = apItems[i].Player.Name;
-                string message = $"Recevied {itemName} from {player}";
+                string message = $"Received {itemName} from {player}";
                 if (apItems[i].Player.Name == _slot) message = $"Found {itemName}";
 
                 MainThreadDispatcher.RunOnMainThread(() =>
