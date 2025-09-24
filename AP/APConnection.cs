@@ -35,7 +35,7 @@ public class APConnection
                 try
                 {
                     Session = ArchipelagoSessionFactory.CreateSession(_host, _port);
-                    
+
                     LoginResult result =
                         Session.TryConnectAndLogin(
                             "Phoenotopia: Awakening",
@@ -51,26 +51,26 @@ public class APConnection
                         Thread.Sleep(5000);
                         continue;
                     }
-                    
+
                     Session.Socket.SocketClosed += OnSocketClosed;
-                    
+
                     var loginSuccess = (LoginSuccessful)result;
                     PhoaAPClient.Logger.LogInfo($"Succesfully connected to AP server as slot: {loginSuccess.Slot}");
-                    
+
                     ScoutItems();
                     Session.Items.ItemReceived += AddMissingItems;
-                    
+
                     return;
                 }
                 catch (Exception ex)
                 {
                     PhoaAPClient.Logger.LogError($"Could not connect: {ex.Message}. Retrying in 5s...");
                 }
-                
+
                 Thread.Sleep(5000);
             }
         });
-        
+
         _connectionThread.IsBackground = true;
         _connectionThread.Start();
     }
@@ -88,6 +88,7 @@ public class APConnection
     public void AddMissingItems(ReceivedItemsHelper helper = null)
     {
         if (Session == null) return;
+        PhoaAPClient.Logger.LogDebug($"Still triggers: {helper?.AllItemsReceived}");
 
         if (PT2.level_load_in_progress) return; // Depends on game behaviour when receiving an item when loading a level
         if (LevelBuildLogic.level_name.Equals("game_start")) return;
@@ -100,30 +101,47 @@ public class APConnection
         for (int i = 0; i < apItems.Count; i++)
         {
             long id = apItems[i].ItemId;
-            if (!saveItems.Remove(id))
+            if (saveItems.Remove(id)) continue;
+
+            APSaveState.CollectedItems.Add(id);
+            PhoaAPClient.Logger.LogDebug($"Item {id} added.");
+
+            string itemName = apItems[i].ItemDisplayName;
+            if ((apItems[i].Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
+
+            string player = apItems[i].Player.Name;
+            string message = $"Received {itemName} from {player}";
+            if (apItems[i].Player.Name == _slot) message = $"Found {itemName}";
+
+            bool ignoreCutscene = apItems[i].Player.Name != _slot;
+
+            MainThreadDispatcher.RunOnMainThread(() =>
             {
-                APSaveState.CollectedItems.Add(id);
-                PhoaAPClient.Logger.LogDebug($"Item {id} added.");
-                
-                string itemName = apItems[i].ItemDisplayName;
-                if ((apItems[i].Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
-                
-                string player = apItems[i].Player.Name;
-                string message = $"Received {itemName} from {player}";
-                if (apItems[i].Player.Name == _slot) message = $"Found {itemName}";
+                PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
+                PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
+                PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
+            });
 
-                bool ignoreCutscene = apItems[i].Player.Name != _slot;
-                
-                MainThreadDispatcher.RunOnMainThread(() =>
-                {
-                    PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
-                    PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
-                    PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
-                });
-
-                PhoaAPClient.Logger.LogInfo($"Item {id} was added to the itempool");
-            }
+            PhoaAPClient.Logger.LogInfo($"Item {id} was added to the itempool");
         }
+    }
+
+    public void OnLocationChecked(ScoutedItemInfo itemInfo)
+    {
+        string itemName = itemInfo.ItemDisplayName;
+        string playerName = itemInfo.Player.Name;
+
+        if (playerName == _slot) return;
+
+        if ((itemInfo.Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
+
+        string message = $"Found {playerName}'s {itemName}";
+
+        MainThreadDispatcher.RunOnMainThread(() =>
+        {
+            PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
+            PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
+        });
     }
 
     private void ScoutItems()
@@ -131,21 +149,18 @@ public class APConnection
         Session.Locations.ScoutLocationsAsync(
             result =>
             {
-
                 foreach (var level in LocationMapping.LocationMap)
                 {
                     string levelName = level.Key;
                     List<Check> checks = level.Value;
 
-                    foreach (Check check in checks)
+                    for (int i = 0; i < checks.Count; i++)
                     {
-                        if (!result.TryGetValue(check.ArchipelagoId, out ScoutedItemInfo itemInfo)) continue;
+                        if (!result.TryGetValue(checks[i].ArchipelagoId, out ScoutedItemInfo itemInfo)) continue;
 
-                        // PhoaAPClient.Logger.LogDebug(
-                        //     $"{check.ArchipelagoId} has item {itemInfo.ItemName} ({itemInfo.ItemId})");
+                        LocationMapping.LocationMap[levelName][i].ItemInfo = itemInfo;
 
                         string replacementId = itemInfo.ItemId.ToString();
-                        // PhoaAPClient.Logger.LogDebug($"{itemInfo.ItemGame}");
 
                         if (!string.Equals(itemInfo.ItemGame, "Phoenotopia: Awakening"))
                         {
@@ -154,9 +169,8 @@ public class APConnection
                             if ((itemInfo.Flags & ItemFlags.Advancement) != 0) replacementId = 213.ToString();
                         }
 
-
-                        if (check.OverrideType.Contains("%ItemId%"))
-                            check.OverrideType = check.OverrideType.Replace("%ItemId%", replacementId);
+                        if (checks[i].OverrideType.Contains("%ItemId%"))
+                            checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
                     }
                 }
             },

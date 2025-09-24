@@ -1,3 +1,5 @@
+using Archipelago.MultiClient.Net.Models;
+
 namespace PhoA_AP_client.util;
 
 public class Check
@@ -7,4 +9,5 @@ public class Check
     public bool IsKeyItem { get; set; }
     public string GISIdentifier { get; set; }
     public string OverrideType { get; set; }
+    public ScoutedItemInfo ItemInfo { get; set; }
 }

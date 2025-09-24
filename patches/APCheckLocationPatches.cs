@@ -13,7 +13,6 @@ namespace PhoA_AP_client.patches;
 internal sealed class APCheckLocationPatches
 {
     private static bool lootCheck;
-    private static bool apItemFound;
     private static int? _cachedItemToolId;
     private static int? _cachedQuantity;
     private static bool? _cachedIgnore;
@@ -32,11 +31,7 @@ internal sealed class APCheckLocationPatches
         if (!lootCheck) return true;
 
         int[] ids = FindAPItemIdsInItemDef();
-        if (ids.Contains(item_tool_id))
-        {
-            apItemFound = true;
-            return false;
-        }
+        if (ids.Contains(item_tool_id)) return false;
 
         _cachedItemToolId = item_tool_id;
         _cachedQuantity = quantity;
@@ -86,11 +81,13 @@ internal sealed class APCheckLocationPatches
             _cachedIgnore = null;
 
             PhoaAPClient.APConnection.Session.Locations
-                .CompleteLocationChecks(checkedLocation.ArchipelagoId);
+                .CompleteLocationChecksAsync(
+                    _ => PhoaAPClient.APConnection.OnLocationChecked(checkedLocation.ItemInfo),
+                    checkedLocation.ArchipelagoId);
         }
-        
+
         instructionsList.RemoveAll(instruction => instruction.Contains("FILE_MARK_AP"));
-        
+
         instructions = String.Join("|", instructionsList.ToArray());
     }
 
@@ -98,7 +95,7 @@ internal sealed class APCheckLocationPatches
     [HarmonyPrefix] // Patch to prevent loot pickup sound from being played
     private static bool PlayGlobalCommonSfxPrefix(int audio_clip_index)
     {
-        if (lootCheck && audio_clip_index == 133 && !apItemFound && !_cachedItemToolId.HasValue) return false;
+        if (lootCheck && audio_clip_index == 133 && !_cachedItemToolId.HasValue) return false;
         return true;
     }
 
@@ -106,7 +103,7 @@ internal sealed class APCheckLocationPatches
     [HarmonyPrefix] // Patch to prevent the default loot message from happening
     private static bool DisplayMessagePrefix()
     {
-        if (lootCheck && !apItemFound && !_cachedItemToolId.HasValue) return false;
+        if (lootCheck && !_cachedItemToolId.HasValue) return false;
         return true;
     }
 
@@ -115,7 +112,6 @@ internal sealed class APCheckLocationPatches
     private static void AttemptGrabbingLootPostfix()
     {
         lootCheck = false;
-        apItemFound = false;
 
         if (_cachedItemToolId.HasValue && _cachedQuantity.HasValue && _cachedIgnore.HasValue)
             PT2.save_file
