@@ -1,13 +1,9 @@
-﻿using System;
-using Archipelago.MultiClient.Net;
-using Archipelago.MultiClient.Net.Enums;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using PhoA_AP_client.AP;
 using PhoA_AP_client.util;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace PhoA_AP_client;
 

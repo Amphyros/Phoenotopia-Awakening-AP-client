@@ -93,7 +93,14 @@ public class LocationMapping
                 GISIdentifier = "D_FOREST_MONEY_3",
                 OverrideType = "name=scale_fish;instruction=FISH_M;type=fish;defeated_GIS=common_sfx,150|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$D_FOREST_MONEY_3|particle_emitter,highlighter2,stop;ql=ALWAYS_TRUE"
             },
-            // new Check { ArchipelagoId = 7676008, ObjectId = "", GISIdentifier = "ITEM_add,30,1", OverrideType = "" },
+            new Check
+            {
+                ArchipelagoId = 7676008,
+                ObjectId = "4-Alex gives slingshot",
+                IsKeyItem = true,
+                GISIdentifier = "AP_DOKI_ALEX_GIFT",
+                OverrideType = "FILE_MARK_AP,AP_DOKI_ALEX_GIFT"
+            },
         },
         ["p1_anuri_temple_01"] = new List<Check>
         {

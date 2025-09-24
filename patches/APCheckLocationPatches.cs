@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Archipelago.MultiClient.Net.Enums;
@@ -16,7 +17,7 @@ internal sealed class APCheckLocationPatches
     private static int? _cachedItemToolId;
     private static int? _cachedQuantity;
     private static bool? _cachedIgnore;
-    
+
     [HarmonyPatch(typeof(GaleInteracter), "_AttemptGrabbingLoot")]
     [HarmonyPrefix] // Patch to initiate possible custom behaviour for AP
     private static void AttemptGrabbingLootPrefix(Collider2D loot_collider)
@@ -29,63 +30,68 @@ internal sealed class APCheckLocationPatches
     private static bool AddItemToolOrStatusIdToInventoryPrefix(int item_tool_id, int quantity, bool ignore_ADDED_GIS)
     {
         if (!lootCheck) return true;
-        
+
         int[] ids = FindAPItemIdsInItemDef();
         if (ids.Contains(item_tool_id))
         {
             apItemFound = true;
             return false;
         }
-        
+
         _cachedItemToolId = item_tool_id;
         _cachedQuantity = quantity;
         _cachedIgnore = ignore_ADDED_GIS;
-        
+
         return false;
     }
 
     [HarmonyPatch(typeof(PT2), "GIS_ProcessInstructions")]
     [HarmonyPrefix] // Patch to check locations in AP once grabbed
-    private static bool GISProcessInstructionsPrefix(string instructions)
+    private static void GISProcessInstructionsPrefix(ref string instructions)
     {
         PhoaAPClient.Logger.LogDebug($"GIS_ProcessInstructions was called with instructions: {instructions}");
-        bool continueInstruction = true;
 
-        string[] instructionsArray = instructions.Split(',');
-        string instruction = instructionsArray[0];
+        List<string> instructionsList = instructions.Split('|').ToList();
 
-        if (instruction != "FILE_MARK_SI" && instruction != "FILE_MARK_OC" && instruction != "FILE_MARK_AP")
-            return continueInstruction;
-
-        if (instruction.Equals("FILE_MARK_AP")) continueInstruction = false;
-
-        if (!APHelpers.IsConnectedToAP()) return continueInstruction;
-
-        string identifier = instructionsArray[1];
-
-        Check checkedLocation = LocationMapping.LocationMap
-            .SelectMany(kvp => kvp.Value)
-            .FirstOrDefault(check => check.GISIdentifier == identifier);
-
-        if (checkedLocation == null) return continueInstruction;
-
-        if (checkedLocation.ArchipelagoId == 1)
+        foreach (string instruction in instructionsList)
         {
-            PhoaAPClient.APConnection.Session.Socket.SendPacket(new StatusUpdatePacket
+            string[] instructionParts = instruction.Split(',');
+            string instructionType = instructionParts[0];
+
+            if (instructionType != "FILE_MARK_SI" && instructionType != "FILE_MARK_OC" &&
+                instructionType != "FILE_MARK_AP")
+                continue;
+
+            if (!APHelpers.IsConnectedToAP()) continue;
+
+            string identifier = instructionParts[1];
+
+            Check checkedLocation = LocationMapping.LocationMap
+                .SelectMany(kvp => kvp.Value)
+                .FirstOrDefault(check => check.GISIdentifier == identifier);
+
+            if (checkedLocation == null) continue;
+
+            if (checkedLocation.ArchipelagoId == 1)
             {
-                Status = ArchipelagoClientState.ClientGoal
-            });
-            return continueInstruction;
+                PhoaAPClient.APConnection.Session.Socket.SendPacket(new StatusUpdatePacket
+                {
+                    Status = ArchipelagoClientState.ClientGoal
+                });
+                continue;
+            }
+
+            _cachedItemToolId = null;
+            _cachedQuantity = null;
+            _cachedIgnore = null;
+
+            PhoaAPClient.APConnection.Session.Locations
+                .CompleteLocationChecks(checkedLocation.ArchipelagoId);
         }
-
-        _cachedItemToolId = null;
-        _cachedQuantity = null;
-        _cachedIgnore = null;
         
-        PhoaAPClient.APConnection.Session.Locations
-            .CompleteLocationChecks(checkedLocation.ArchipelagoId);
-
-        return continueInstruction;
+        instructionsList.RemoveAll(instruction => instruction.Contains("FILE_MARK_AP"));
+        
+        instructions = String.Join("|", instructionsList.ToArray());
     }
 
     [HarmonyPatch(typeof(SoundGenerator), "PlayGlobalCommonSfx")]
@@ -110,7 +116,7 @@ internal sealed class APCheckLocationPatches
     {
         lootCheck = false;
         apItemFound = false;
-        
+
         if (_cachedItemToolId.HasValue && _cachedQuantity.HasValue && _cachedIgnore.HasValue)
             PT2.save_file
                 .AddItemToolOrStatusIdToInventory(_cachedItemToolId.Value, _cachedQuantity.Value, _cachedIgnore.Value);

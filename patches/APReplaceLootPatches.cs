@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using HarmonyLib;
 using PhoA_AP_client.util;
@@ -95,6 +96,21 @@ internal sealed class APReplaceLootPatches
     private static bool Create2DPolygonColliderPrefix(ref XmlReader reader)
     {
         return HandlePossibleAPReplacementForObject(ref reader);
+    }
+
+    [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
+    [HarmonyPostfix] // Patch to modify check values in level GIS PACK
+    private static void LoadLevelGISPackReplacementPostfix(string new_level_name)
+    {
+        if (!LocationMapping.LocationMap.TryGetValue(new_level_name.ToLower(), out List<Check> checks)) return;
+
+        foreach (Check check in checks)
+        {
+            if (int.TryParse(check.ObjectId, out int number)) continue;
+
+            string[] identifierArray = check.ObjectId.Split('-');
+            PT2.level_builder._GIS_PAK_instruction_map[int.Parse(identifierArray[0])] = check.OverrideType;
+        }
     }
 
     [HarmonyPatch(typeof(ItemGenerator), "SpawnLoot")]
@@ -241,8 +257,7 @@ internal sealed class APReplaceLootPatches
                 return true;
             }
 
-            if (check.IsKeyItem) return false;
-            return true;
+            return !check.IsKeyItem;
         }
 
         return true;
