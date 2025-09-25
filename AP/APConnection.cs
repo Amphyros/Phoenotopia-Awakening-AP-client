@@ -88,12 +88,8 @@ public class APConnection
     public void AddMissingItems(ReceivedItemsHelper helper = null)
     {
         if (Session == null) return;
-        PhoaAPClient.Logger.LogDebug($"Still triggers: {helper?.AllItemsReceived}");
-
-        if (PT2.level_load_in_progress) return; // Depends on game behaviour when receiving an item when loading a level
         if (LevelBuildLogic.level_name.Equals("game_start")) return;
         if (LevelBuildLogic.level_name.StartsWith("cutscene")) return;
-        // if (PT2.game_paused) return; Depends on game behaviour when receiving an item in the pause menu
 
         List<long> saveItems = new List<long>(APSaveState.CollectedItems);
         var apItems = helper?.AllItemsReceived ?? Session.Items.AllItemsReceived;
@@ -104,7 +100,6 @@ public class APConnection
             if (saveItems.Remove(id)) continue;
 
             APSaveState.CollectedItems.Add(id);
-            PhoaAPClient.Logger.LogDebug($"Item {id} added.");
 
             string itemName = apItems[i].ItemDisplayName;
             if ((apItems[i].Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
@@ -122,7 +117,10 @@ public class APConnection
                 PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
             });
 
-            PhoaAPClient.Logger.LogInfo($"Item {id} was added to the itempool");
+            PhoaAPClient.Logger.LogDebug($"Item {id} was added to the itempool");
+
+            if (!apItems[i].ItemName.ToLower().Equals("moonstone")) return;
+            MainThreadDispatcher.RunOnMainThread(() => { PT2.sound_g.PlayGlobalCommonSfx(145, 1f, 1f, 2); });
         }
     }
 
@@ -142,6 +140,9 @@ public class APConnection
             PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
             PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
         });
+
+        if (!itemInfo.ItemName.ToLower().Equals("moonstone")) return;
+        MainThreadDispatcher.RunOnMainThread(() => { PT2.sound_g.PlayGlobalCommonSfx(145, 1f, 1f, 2); });
     }
 
     private void ScoutItems()

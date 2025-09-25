@@ -14,6 +14,8 @@ public class PhoaAPClient : BaseUnityPlugin
     internal static new ManualLogSource Logger;
     private static Harmony _harmony;
     public static APConnection APConnection { get; private set; }
+    
+    private int counter = 0;
 
     private void Awake()
     {
@@ -33,6 +35,16 @@ public class PhoaAPClient : BaseUnityPlugin
     {
         APConnection = new APConnection();
         APConnection.Connect();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            PT2.sound_g.PlayGlobalCommonSfx(counter, 1f, 1f, 2);
+            Logger.LogDebug($"Sound played: {counter}");
+            counter++;
+        }
     }
 
     private void OnDestroy()
