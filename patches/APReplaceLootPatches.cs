@@ -15,7 +15,7 @@ namespace PhoA_AP_client.patches;
 [HarmonyPatch]
 internal sealed class APReplaceLootPatches
 {
-    private static string SpawnLootAPCollectedGIS;
+    private static string _spawnLootAPCollectedGis;
 
     [HarmonyPatch(typeof(PT2), "Initialize")]
     [HarmonyPostfix] // Patch to add AP item sprite
@@ -98,6 +98,33 @@ internal sealed class APReplaceLootPatches
         return HandlePossibleAPReplacementForObject(ref reader);
     }
 
+    private static bool HandlePossibleAPReplacementForObject(ref XmlReader reader)
+    {
+        if (PhoaAPClient.APConnection.LocalAllLocations == null) return true;
+
+        string activeLevelName = LevelBuildLogic.level_name;
+
+        if (!LocationMapping.LocationMap.TryGetValue(activeLevelName, out List<Check> checks)) return true;
+
+        string objectId = reader.GetAttribute("id");
+
+        foreach (Check check in checks)
+        {
+            if (check.ObjectId != objectId) continue;
+            if (check.ArchipelagoId == 7676025)
+                PhoaAPClient.Logger.LogDebug("Stupid ass fish found. Data: " + check.OverrideType);
+
+            if (!PhoaAPClient.APConnection.LocalAllLocations.Contains(check.ArchipelagoId)) return true;
+            if (PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(check.ArchipelagoId))
+                return !check.IsKeyItem;
+
+            reader = ReplaceReader(reader, check.OverrideType);
+            return true;
+        }
+
+        return true;
+    }
+
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
     [HarmonyPostfix] // Patch to modify check values in level GIS PACK
     private static void LoadLevelGISPackReplacementPostfix(string new_level_name)
@@ -148,34 +175,30 @@ internal sealed class APReplaceLootPatches
         PhoaAPClient.Logger.LogDebug("A moon switch occured");
     }
 
-    [HarmonyPatch(typeof(ItemGenerator), "SpawnLoot")]
-    [HarmonyPrefix] // Follow-up patch of GISHandleSpawnLootPrefix() to handle FILE_MARK_AP instruction
-    private static bool SpawnLootAPGISPrefix(ref string collected_GIS)
-    {
-        if (SpawnLootAPCollectedGIS.IsNullOrEmpty()) return true;
-
-        collected_GIS = SpawnLootAPCollectedGIS;
-        SpawnLootAPCollectedGIS = null;
-
-        return true;
-    }
-
     [HarmonyPatch(typeof(PT2), "_GIS_HandleSpawnLoot")]
     [HarmonyPrefix] // Patch to handle the FILE_MARK_AP instruction
-    private static bool GISHandleSpawnLootPrefix(ref string[] args, Vector3 spawn_position)
+    private static void GISHandleSpawnLootPrefix(ref string[] args, Vector3 spawn_position)
     {
         for (int i = 2; i < args.Length; i++)
         {
             string[] instructionArray = args[i].Split('$');
             if (instructionArray[0] != "loot_GIS_MARK_AP") continue;
 
-            SpawnLootAPCollectedGIS = "FILE_MARK_AP," + instructionArray[1] + ",true";
+            _spawnLootAPCollectedGis = "FILE_MARK_AP," + instructionArray[1] + ",true";
 
             string nonRefArg = args[i];
             args = args.Where(item => item != nonRefArg).ToArray();
         }
+    }
 
-        return true;
+    [HarmonyPatch(typeof(ItemGenerator), "SpawnLoot")]
+    [HarmonyPrefix] // Follow-up patch of GISHandleSpawnLootPrefix() to handle FILE_MARK_AP instruction
+    private static void SpawnLootAPGISPrefix(ref string collected_GIS)
+    {
+        if (_spawnLootAPCollectedGis.IsNullOrEmpty()) return;
+
+        collected_GIS = _spawnLootAPCollectedGis;
+        _spawnLootAPCollectedGis = null;
     }
 
     private static Sprite LoadSpriteFromResource(string resourceName, float pixelsPerUnit = 16f)
@@ -232,35 +255,6 @@ internal sealed class APReplaceLootPatches
         itemDef.hold_limit = 999;
         itemDef.price = 0;
         return itemDef;
-    }
-
-    private static bool HandlePossibleAPReplacementForObject(ref XmlReader reader)
-    {
-        if (!APHelpers.IsConnectedToAP()) return true;
-
-        string activeLevelName = LevelBuildLogic.level_name;
-
-        if (!LocationMapping.LocationMap.TryGetValue(activeLevelName, out List<Check> checks)) return true;
-
-        string objectId = reader.GetAttribute("id");
-
-        foreach (Check check in checks)
-        {
-            if (check.ObjectId != objectId) continue;
-            if (check.ArchipelagoId == 7676025)
-                PhoaAPClient.Logger.LogDebug("Stupid ass fish found. Data: " + check.OverrideType);
-
-            if (!PhoaAPClient.APConnection.Session.Locations.AllLocations.Contains(check.ArchipelagoId)) return true;
-            if (!PhoaAPClient.APConnection.Session.Locations.AllLocationsChecked.Contains(check.ArchipelagoId))
-            {
-                reader = ReplaceReader(reader, check.OverrideType);
-                return true;
-            }
-
-            return !check.IsKeyItem;
-        }
-
-        return true;
     }
 
     private static XmlReader ReplaceReader(XmlReader originalXmlReader, string newType)

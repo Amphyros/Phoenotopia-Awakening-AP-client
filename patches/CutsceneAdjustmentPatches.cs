@@ -48,7 +48,12 @@ public class CutsceneAdjustmentPatches
     private static void QLEvaluateExpressionPrefix(ref string expression)
     {
         if (LevelBuildLogic.level_name != "p1_duri_forest_06") return;
-        if (!APHelpers.IsConnectedToAP()) return;
+        if (!APHelpers.IsConnectedToAP())
+        {
+            PhoaAPClient.Logger.LogWarning(
+                "This room was loaded while disconnected from the AP server. Wrong level state might be loaded");
+            return;
+        }
 
         const long targetId = 7676008;
 

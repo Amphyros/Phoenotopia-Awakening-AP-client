@@ -8,6 +8,8 @@ using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Helpers;
 using Archipelago.MultiClient.Net.Models;
 using PhoA_AP_client.util;
+using UnityEngine;
+using WebSocketSharp;
 
 namespace PhoA_AP_client.AP;
 
@@ -17,10 +19,13 @@ public class APConnection
     private Thread _connectionThread;
     private bool _keepTrying;
 
-    private string _host = "localhost";
-    private int _port = 38281;
-    private string _slot = "Lenamphy";
-    private string _password = null;
+    public ReadOnlyCollection<long> LocalAllLocations { get; private set; }
+    public ReadOnlyCollection<long> LocalAllLocationsChecked { get; private set; }
+
+    private const string Host = "localhost";
+    private const int Port = 38281;
+    private const string Slot = "Lenamphy";
+    private const string Password = null;
 
     public void Connect()
     {
@@ -34,14 +39,14 @@ public class APConnection
             {
                 try
                 {
-                    Session = ArchipelagoSessionFactory.CreateSession(_host, _port);
+                    Session = ArchipelagoSessionFactory.CreateSession(Host, Port);
 
                     LoginResult result =
                         Session.TryConnectAndLogin(
                             "Phoenotopia: Awakening",
-                            _slot,
+                            Slot,
                             ItemsHandlingFlags.AllItems,
-                            password: _password
+                            password: Password
                         );
                     if (!result.Successful)
                     {
@@ -57,8 +62,11 @@ public class APConnection
                     var loginSuccess = (LoginSuccessful)result;
                     PhoaAPClient.Logger.LogInfo($"Succesfully connected to AP server as slot: {loginSuccess.Slot}");
 
+                    // ExecuteStoredAPInstructions();
                     ScoutItems();
                     Session.Items.ItemReceived += AddMissingItems;
+                    LocalAllLocations = Session.Locations.AllLocations;
+                    LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
 
                     return;
                 }
@@ -87,7 +95,10 @@ public class APConnection
 
     public void AddMissingItems(ReceivedItemsHelper helper = null)
     {
-        if (Session == null) return;
+        if (!APHelpers.IsConnectedToAP()) return;
+        
+        LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
+        
         if (LevelBuildLogic.level_name.Equals("game_start")) return;
         if (LevelBuildLogic.level_name.StartsWith("cutscene")) return;
 
@@ -106,9 +117,9 @@ public class APConnection
 
             string player = apItems[i].Player.Name;
             string message = $"Received {itemName} from {player}";
-            if (apItems[i].Player.Name == _slot) message = $"Found {itemName}";
+            if (apItems[i].Player.Name == Slot) message = $"Found {itemName}";
 
-            bool ignoreCutscene = apItems[i].Player.Name != _slot;
+            bool ignoreCutscene = apItems[i].Player.Name != Slot;
 
             MainThreadDispatcher.RunOnMainThread(() =>
             {
@@ -126,10 +137,12 @@ public class APConnection
 
     public void OnLocationChecked(ScoutedItemInfo itemInfo)
     {
+        LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
+        
         string itemName = itemInfo.ItemDisplayName;
         string playerName = itemInfo.Player.Name;
 
-        if (playerName == _slot) return;
+        if (playerName == Slot) return;
 
         if ((itemInfo.Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
 

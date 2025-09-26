@@ -31,7 +31,7 @@ internal sealed class APAddItemPatches
     }
 
     [HarmonyPatch(typeof(SaveFile), "_NS_ProcessSaveDataString")]
-    [HarmonyPostfix] // Patch to extract the collect items from the savefile and compare them to 
+    [HarmonyPostfix] // Patch to extract the collect items from the savefile and compare them to AP
     private static void NSProcessSaveDataStringPostfix(string save_data_string)
     {
         string[] saveDataArray = save_data_string.Split(',');
@@ -46,14 +46,12 @@ internal sealed class APAddItemPatches
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
     [HarmonyPrefix] // Patch to trigger APConnection.AddMissingItems() on level load
-    private static bool LoadLevelPrefix(ref bool __state)
+    private static void LoadLevelPrefix(ref bool __state)
     {
         __state = false;
 
         if (!LevelBuildLogic.level_name.IsNullOrEmpty() && LevelBuildLogic.level_name.Equals("game_start"))
             __state = true;
-
-        return true;
     }
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]

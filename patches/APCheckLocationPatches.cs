@@ -19,9 +19,16 @@ internal sealed class APCheckLocationPatches
 
     [HarmonyPatch(typeof(GaleInteracter), "_AttemptGrabbingLoot")]
     [HarmonyPrefix] // Patch to initiate possible custom behaviour for AP
-    private static void AttemptGrabbingLootPrefix(Collider2D loot_collider)
+    private static bool AttemptGrabbingLootPrefix(Collider2D loot_collider)
     {
+        if (!APHelpers.IsConnectedToAP())
+        {
+            PhoaAPClient.Logger.LogWarning("Item grab cancelled: Disconnected from AP.");
+            return false;
+        }
+
         lootCheck = true;
+        return true;
     }
 
     [HarmonyPatch(typeof(SaveFile), "AddItemToolOrStatusIdToInventory")]
@@ -95,16 +102,14 @@ internal sealed class APCheckLocationPatches
     [HarmonyPrefix] // Patch to prevent loot pickup sound from being played
     private static bool PlayGlobalCommonSfxPrefix(int audio_clip_index)
     {
-        if (lootCheck && audio_clip_index == 133 && !_cachedItemToolId.HasValue) return false;
-        return true;
+        return !lootCheck || audio_clip_index is not (133 or 145) || _cachedItemToolId.HasValue;
     }
 
     [HarmonyPatch(typeof(DisplayMessagesLogic), "DisplayMessage")]
     [HarmonyPrefix] // Patch to prevent the default loot message from happening
     private static bool DisplayMessagePrefix()
     {
-        if (lootCheck && !_cachedItemToolId.HasValue) return false;
-        return true;
+        return !lootCheck || _cachedItemToolId.HasValue;
     }
 
     [HarmonyPatch(typeof(GaleInteracter), "_AttemptGrabbingLoot")]
