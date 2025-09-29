@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -36,7 +35,7 @@ public class PhoaAPClient : BaseUnityPlugin
         var dispatcherObj = new GameObject("MainThreadDispatcher");
         DontDestroyOnLoad(dispatcherObj);
         dispatcherObj.AddComponent<MainThreadDispatcher>();
-        
+
         APConnection = new APConnection(_host.Value, _port.Value, _slot.Value, _password.Value);
 
         _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);

@@ -79,7 +79,7 @@ public class APConnection(string host, int port, string slot, string password)
             Session.Items.ItemReceived += AddMissingItems;
             LocalAllLocations = Session.Locations.AllLocations;
             LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
-            
+
             MainThreadDispatcher.RunOnMainThread(() =>
             {
                 PT2.sound_g.PlayGlobalCommonSfx(126, 1f, 1f, 2);

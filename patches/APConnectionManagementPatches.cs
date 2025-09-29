@@ -61,7 +61,7 @@ internal sealed class APConnectionManagementPatches
         if (filename == "file_1") SaveFile.file_1_string_data = dataToSave;
         if (filename == "file_2") SaveFile.file_2_string_data = dataToSave;
         if (filename == "file_3") SaveFile.file_3_string_data = dataToSave;
-        
+
         filename = _sessionId + filename;
     }
 }

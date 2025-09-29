@@ -9,17 +9,17 @@ internal sealed class DebugPatches
     [HarmonyPostfix]
     private static void SpawnLootPostFixDebug(int item_id)
     {
-        PhoaAPClient.Logger.LogDebug("Loot was spawned: "+ item_id);
+        PhoaAPClient.Logger.LogDebug("Loot was spawned: " + item_id);
     }
-    
+
     [HarmonyPatch(typeof(LootLogic), "SetAttributes")]
     [HarmonyPrefix]
     private static bool SetAttributesPrefix(int set_item_tool_id)
     {
-        PhoaAPClient.Logger.LogDebug(DB.ITEM_DEFS[set_item_tool_id].item_name); 
+        PhoaAPClient.Logger.LogDebug(DB.ITEM_DEFS[set_item_tool_id].item_name);
         return true;
     }
-    
+
     [HarmonyPatch(typeof(SaveDataHandler), "save")]
     [HarmonyPostfix]
     public static void Postfix(string dataToSave, string filename)
