@@ -1,4 +1,6 @@
-﻿using BepInEx;
+﻿using System.Threading;
+using BepInEx;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using PhoA_AP_client.AP;
@@ -11,28 +13,34 @@ namespace PhoA_AP_client;
 [BepInProcess("PhoenotopiaAwakening.exe")]
 public class PhoaAPClient : BaseUnityPlugin
 {
-    internal static new ManualLogSource Logger;
+    internal new static ManualLogSource Logger;
     private static Harmony _harmony;
     public static APConnection APConnection { get; private set; }
 
+    private ConfigEntry<string> _host;
+    private ConfigEntry<int> _port;
+    private ConfigEntry<string> _slot;
+    private ConfigEntry<string> _password;
+
     private void Awake()
     {
-        // Plugin startup logic
         Logger = base.Logger;
         Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
+
+        _host = Config.Bind("Archipelago", "host", "localhost",
+            "AP server host. Usually either archipelago.gg or multiworld.gg unless hosted locally.");
+        _port = Config.Bind("Archipelago", "port", 38281, "Port number.");
+        _slot = Config.Bind("Archipelago", "slot", "Player", "Slot/Player name.");
+        _password = Config.Bind("Archipelago", "password", "", "Optional password.");
 
         var dispatcherObj = new GameObject("MainThreadDispatcher");
         DontDestroyOnLoad(dispatcherObj);
         dispatcherObj.AddComponent<MainThreadDispatcher>();
+        
+        APConnection = new APConnection(_host.Value, _port.Value, _slot.Value, _password.Value);
 
         _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
         _harmony.PatchAll();
-    }
-
-    private void Start()
-    {
-        APConnection = new APConnection();
-        APConnection.Connect();
     }
 
     private void OnDestroy()
