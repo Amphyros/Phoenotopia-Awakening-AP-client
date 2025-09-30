@@ -38,7 +38,6 @@ internal sealed class APAddItemPatches
         string apItemsString = saveDataArray.FirstOrDefault(entry => entry.StartsWith("APITEMS"));
 
         APSaveState.LoadFromSaveString(apItemsString);
-        PhoaAPClient.Logger.LogDebug(apItemsString);
 
         if (!APHelpers.IsConnectedToAP()) return;
         PhoaAPClient.APConnection.AddMissingItems();

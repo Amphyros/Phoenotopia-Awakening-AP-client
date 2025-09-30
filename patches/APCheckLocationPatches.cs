@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading;
 using Archipelago.MultiClient.Net.Enums;
+using Archipelago.MultiClient.Net.Models;
 using Archipelago.MultiClient.Net.Packets;
 using HarmonyLib;
 using PhoA_AP_client.util;
@@ -87,10 +90,17 @@ internal sealed class APCheckLocationPatches
             _cachedQuantity = null;
             _cachedIgnore = null;
 
-            PhoaAPClient.APConnection.Session.Locations
-                .CompleteLocationChecksAsync(
-                    _ => PhoaAPClient.APConnection.OnLocationChecked(checkedLocation.ItemInfo),
-                    checkedLocation.ArchipelagoId);
+            OnLocationGet(checkedLocation.ItemInfo);
+
+            new Thread(() =>
+            {
+                PhoaAPClient.APConnection.Session.Locations
+                    .CompleteLocationChecksAsync(
+                        _ =>
+                        {
+                            MainThreadDispatcher.RunOnMainThread(() => PhoaAPClient.APConnection.OnLocationChecked());
+                        }, checkedLocation.ArchipelagoId);
+            }).Start();
         }
 
         instructionsList.RemoveAll(instruction => instruction.Contains("FILE_MARK_AP"));
@@ -98,11 +108,34 @@ internal sealed class APCheckLocationPatches
         instructions = String.Join("|", instructionsList.ToArray());
     }
 
+    private static void OnLocationGet(ScoutedItemInfo itemInfo)
+    {
+        PhoaAPClient.APConnection.SuppressedItemMessages.Add(itemInfo.ItemId);
+
+        string itemName = itemInfo.ItemDisplayName;
+        string playerName = itemInfo.Player.Name;
+
+        StringBuilder message = new StringBuilder("Found ");
+
+        if (playerName != PhoaAPClient.APConnection.Session?.Players.ActivePlayer.Name)
+            message.Append($"{playerName}'s ");
+
+        if ((itemInfo.Flags & ItemFlags.Advancement) != 0) message.Append("<sprite=30>");
+
+        message.Append($"{itemName}");
+
+        MainThreadDispatcher.RunOnMainThread(() =>
+        {
+            PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
+            PT2.display_messages.DisplayMessage(message.ToString(), DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
+        });
+    }
+
     [HarmonyPatch(typeof(SoundGenerator), "PlayGlobalCommonSfx")]
     [HarmonyPrefix] // Patch to prevent loot pickup sound from being played
     private static bool PlayGlobalCommonSfxPrefix(int audio_clip_index)
     {
-        return !lootCheck || audio_clip_index is not (133 or 145) || _cachedItemToolId.HasValue;
+        return !lootCheck || audio_clip_index is not 133 || _cachedItemToolId.HasValue;
     }
 
     [HarmonyPatch(typeof(DisplayMessagesLogic), "DisplayMessage")]

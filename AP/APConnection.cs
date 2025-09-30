@@ -19,6 +19,7 @@ public class APConnection(string host, int port, string slot, string password)
 
     public ReadOnlyCollection<long> LocalAllLocations { get; private set; }
     public ReadOnlyCollection<long> LocalAllLocationsChecked { get; private set; }
+    public readonly HashSet<long> SuppressedItemMessages = [];
 
     public void ConnectAsync()
     {
@@ -74,7 +75,6 @@ public class APConnection(string host, int port, string slot, string password)
             var loginSuccess = (LoginSuccessful)result;
             PhoaAPClient.Logger.LogInfo($"Succesfully connected to AP server as slot: {loginSuccess.Slot}");
 
-            // ExecuteStoredAPInstructions();
             ScoutItems();
             Session.Items.ItemReceived += AddMissingItems;
             LocalAllLocations = Session.Locations.AllLocations;
@@ -133,57 +133,40 @@ public class APConnection(string host, int port, string slot, string password)
         List<long> saveItems = new List<long>(APSaveState.CollectedItems);
         var apItems = helper?.AllItemsReceived ?? Session.Items.AllItemsReceived;
 
-        for (int i = 0; i < apItems.Count; i++)
+        foreach (ItemInfo apItem in apItems)
         {
-            long id = apItems[i].ItemId;
+            long id = apItem.ItemId;
             if (saveItems.Remove(id)) continue;
 
             APSaveState.CollectedItems.Add(id);
 
-            string itemName = apItems[i].ItemDisplayName;
-            if ((apItems[i].Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
-
-            string player = apItems[i].Player.Name;
-            string message = $"Received {itemName} from {player}";
-            if (apItems[i].Player.Name == slot) message = $"Found {itemName}";
-
-            bool ignoreCutscene = apItems[i].Player.Name != slot;
+            bool ignoreCutscene = apItem.Player.Name != slot;
 
             MainThreadDispatcher.RunOnMainThread(() =>
             {
                 PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
-                PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
-                PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
             });
 
             PhoaAPClient.Logger.LogDebug($"Item {id} was added to the itempool");
 
-            if (!apItems[i].ItemName.ToLower().Equals("moonstone")) return;
-            MainThreadDispatcher.RunOnMainThread(() => { PT2.sound_g.PlayGlobalCommonSfx(145, 1f, 1f, 2); });
+            if (apItem.Player.Name == slot && SuppressedItemMessages.Remove(id)) continue;
+
+            string itemName = apItem.ItemDisplayName;
+            if ((apItem.Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
+
+            string message = $"Found {itemName}";
+
+            MainThreadDispatcher.RunOnMainThread(() =>
+            {
+                PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
+                PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
+            });
         }
     }
 
-    public void OnLocationChecked(ScoutedItemInfo itemInfo)
+    public void OnLocationChecked()
     {
         LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
-
-        string itemName = itemInfo.ItemDisplayName;
-        string playerName = itemInfo.Player.Name;
-
-        if (playerName == slot) return;
-
-        if ((itemInfo.Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
-
-        string message = $"Found {playerName}'s {itemName}";
-
-        MainThreadDispatcher.RunOnMainThread(() =>
-        {
-            PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
-            PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
-        });
-
-        if (!itemInfo.ItemName.ToLower().Equals("moonstone")) return;
-        MainThreadDispatcher.RunOnMainThread(() => { PT2.sound_g.PlayGlobalCommonSfx(145, 1f, 1f, 2); });
     }
 
     private void ScoutItems()

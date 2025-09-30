@@ -20,13 +20,6 @@ internal sealed class DebugPatches
         return true;
     }
 
-    [HarmonyPatch(typeof(SaveDataHandler), "save")]
-    [HarmonyPostfix]
-    public static void Postfix(string dataToSave, string filename)
-    {
-        PhoaAPClient.Logger.LogDebug(dataToSave);
-    }
-
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
     [HarmonyPostfix]
     private static void LoadLevelPostfix(string new_level_name)

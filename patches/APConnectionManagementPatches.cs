@@ -13,7 +13,6 @@ internal sealed class APConnectionManagementPatches
     [HarmonyPrefix]
     private static void OpeningLevelLogicInitializePrefix()
     {
-        PhoaAPClient.Logger.LogDebug("Opening menu");
         SaveFile.file_0_string_data = null;
         SaveFile.file_1_string_data = null;
         SaveFile.file_2_string_data = null;
@@ -41,13 +40,10 @@ internal sealed class APConnectionManagementPatches
     [HarmonyPrefix]
     private static void NSLoadDataPrefix(ref string file_name)
     {
-        PhoaAPClient.Logger.LogDebug("Loading save data");
         if (_sessionId.IsNullOrEmpty()) return;
 
         if (file_name.Contains("file_"))
             file_name = _sessionId + file_name;
-
-        PhoaAPClient.Logger.LogDebug($"New file_name: {file_name}");
     }
 
     [HarmonyPatch(typeof(SaveDataHandler), "save")]
