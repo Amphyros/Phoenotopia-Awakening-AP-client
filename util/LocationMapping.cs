@@ -308,6 +308,28 @@ public class LocationMapping
                 OverrideType = "name=FOCUS_PT;id=%ItemId%;collected_GIS=FILE_MARK_AP,AP_ANURI_2,true",
             },
         },
+        ["p1_panselo_village_01"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676028,
+                ObjectId = "21",
+                IsKeyItem = false,
+                GISIdentifier = "P1_PV_dandy1",
+                OverrideType = "id=%ItemId%;ql=OC_ABSENT,P1_PV_dandy1;collected_GIS=FILE_MARK_OC,P1_PV_dandy1;gravity=0"
+            }
+        },
+        ["p1_panselo_village_02"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676029,
+                ObjectId = "9",
+                IsKeyItem = false,
+                GISIdentifier = "P1_PV_dandy2",
+                OverrideType = "id=%ItemId%;ql=OC_ABSENT,P1_PV_dandy2;collected_GIS=FILE_MARK_OC,P1_PV_dandy2;gravity=0"
+            }
+        },
         ["p1_anuri_temple_pod"] = new List<Check>
         {
             new Check

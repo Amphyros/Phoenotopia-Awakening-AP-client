@@ -76,6 +76,8 @@ internal sealed class APCheckLocationPatches
                 .FirstOrDefault(check => check.GISIdentifier == identifier);
 
             if (checkedLocation == null) continue;
+            if (PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(checkedLocation.ArchipelagoId)) continue;
+            if (!PhoaAPClient.APConnection.LocalAllLocations.Contains(checkedLocation.ArchipelagoId)) continue;
 
             if (checkedLocation.ArchipelagoId == 1)
             {
