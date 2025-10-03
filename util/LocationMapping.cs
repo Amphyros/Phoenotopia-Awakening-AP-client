@@ -316,7 +316,7 @@ public class LocationMapping
                 ObjectId = "21",
                 IsKeyItem = false,
                 GISIdentifier = "P1_PV_dandy1",
-                OverrideType = "id=%ItemId%;ql=OC_ABSENT,P1_PV_dandy1;collected_GIS=FILE_MARK_OC,P1_PV_dandy1;gravity=0"
+                OverrideType = "id=%ItemId%;ql=OC_ABSENT,P1_PV_dandy1;collected_GIS=FILE_MARK_OC,P1_PV_dandy1;gravity=0",
             }
         },
         ["p1_panselo_village_02"] = new List<Check>
@@ -327,7 +327,7 @@ public class LocationMapping
                 ObjectId = "9",
                 IsKeyItem = false,
                 GISIdentifier = "P1_PV_dandy2",
-                OverrideType = "id=%ItemId%;ql=OC_ABSENT,P1_PV_dandy2;collected_GIS=FILE_MARK_OC,P1_PV_dandy2;gravity=0"
+                OverrideType = "id=%ItemId%;ql=OC_ABSENT,P1_PV_dandy2;collected_GIS=FILE_MARK_OC,P1_PV_dandy2;gravity=0",
             }
         },
         ["p1_anuri_temple_pod"] = new List<Check>
