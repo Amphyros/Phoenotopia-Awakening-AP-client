@@ -178,6 +178,14 @@ public class LocationMapping
                 GISIdentifier = "HEART_ANURI_1",
                 OverrideType = "name=FOCUS_PT;id=%ItemId%;collected_GIS=FILE_MARK_SI,HEART_ANURI_1,true;ql=SI_FALSE,HEART_ANURI_1",
             },
+            new Check
+            {
+                ArchipelagoId = 7676040,
+                ObjectId = "79",
+                IsKeyItem = false,
+                GISIdentifier = "herb_at01b1",
+                OverrideType = "id=%ItemId%;collected_GIS=FILE_MARK_OC,herb_at01b1;ql=OC_ABSENT,herb_at01b1",
+            },
         },
         ["p1_anuri_temple_01a"] = new List<Check>
         {
@@ -284,7 +292,15 @@ public class LocationMapping
                 IsKeyItem = true,
                 GISIdentifier = "MOON_FISH_3",
                 OverrideType = "name=moon_fish;face_right;initial_behavior=STATIC;type=fish;instruction=FISH_M;defeated_GIS=common_sfx,150|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_FISH_3|particle_emitter,fish_highlighter,stop;ql=ALWAYS_TRUE",
-            }, // Check somehow doesn't appear. Even in vanilla
+            }, // Can't get this with the possible amount of stamina
+            new Check
+            {
+                ArchipelagoId = 7676041,
+                ObjectId = "191",
+                IsKeyItem = true,
+                GISIdentifier = "MOON_FISH_3",
+                OverrideType = "name=moon_fish;face_right;initial_behavior=STATIC;type=fish;instruction=FISH_M;defeated_GIS=common_sfx,150|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_FISH_3|particle_emitter,fish_highlighter,stop;ql=ALWAYS_TRUE",
+            },
         },
         ["p1_anuri_temple_06a"] = new List<Check>
         {
@@ -317,7 +333,7 @@ public class LocationMapping
                 IsKeyItem = false,
                 GISIdentifier = "P1_PV_dandy1",
                 OverrideType = "id=%ItemId%;ql=OC_ABSENT,P1_PV_dandy1;collected_GIS=FILE_MARK_OC,P1_PV_dandy1;gravity=0",
-            }
+            },
         },
         ["p1_panselo_village_02"] = new List<Check>
         {
@@ -328,7 +344,108 @@ public class LocationMapping
                 IsKeyItem = false,
                 GISIdentifier = "P1_PV_dandy2",
                 OverrideType = "id=%ItemId%;ql=OC_ABSENT,P1_PV_dandy2;collected_GIS=FILE_MARK_OC,P1_PV_dandy2;gravity=0",
-            }
+            },
+        },
+        ["p1_panselo_perro_coop"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676030,
+                ObjectId = "21",
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_EGG_4",
+                OverrideType = "id=%ItemId%;gravity=0;ql=SI_FALSE,REGEN_EGG_4;collected_GIS=FILE_MARK_SI,REGEN_EGG_4,true",
+            },
+        },
+        ["p1_panselo_tower_left"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676031,
+                ObjectId = "87",
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_PANSELO_LOOT_1",
+                OverrideType = "type=P1_WOOD_S;ql=SI_FALSE,REGEN_PANSELO_LOOT_1;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_PANSELO_LOOT_1",
+            },
+        },
+        ["p1_panselo_house_01_girls"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676032,
+                ObjectId = "75",
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_GOLD_EGG2",
+                OverrideType = "id=%ItemId%;ql=SI_FALSE,ABDUCTION_HAPPENED&SI_FALSE,REGEN_GOLD_EGG2;collected_GIS=FILE_MARK_SI,REGEN_GOLD_EGG2,true",
+            },
+        },
+        ["p1_ex_geo_01a"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676033,
+                ObjectId = "195",
+                IsKeyItem = false,
+                GISIdentifier = "geo_01_loot1",
+                OverrideType = "id=%ItemId%;gravity=0;collected_GIS=FILE_MARK_POC,geo_01_loot1;ql=POC_ABSENT,geo_01_loot1",
+            },
+        },
+        ["p1_teleport_panselo_01"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676034,
+                ObjectId = "209",
+                IsKeyItem = false,
+                GISIdentifier = "tele_pan_01_loot1",
+                OverrideType = "id=%ItemId%;gravity=0;collected_GIS=FILE_MARK_POC,tele_pan_01_loot1;ql=POC_ABSENT,tele_pan_01_loot1",
+            },
+        },
+        ["p1_duri_forest_02a"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676035,
+                ObjectId = "102",
+                IsKeyItem = false,
+                GISIdentifier = "df2a_herb1",
+                OverrideType = "id=%ItemId%;collected_GIS=FILE_MARK_OC,df2a_herb1;ql=OC_ABSENT,df2a_herb1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676036,
+                ObjectId = "107",
+                IsKeyItem = false,
+                GISIdentifier = "df2a_herb2",
+                OverrideType = "id=%ItemId%;collected_GIS=FILE_MARK_OC,df2a_herb2;ql=OC_ABSENT,df2a_herb2",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676037,
+                ObjectId = "101",
+                IsKeyItem = false,
+                GISIdentifier = "df2a_herb3",
+                OverrideType = "id=%ItemId%;collected_GIS=FILE_MARK_OC,df2a_herb3;ql=OC_ABSENT,df2a_herb3",
+            },
+        },
+        ["p1_anuri_temple_04a"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676038,
+                ObjectId = "62",
+                IsKeyItem = false,
+                GISIdentifier = "herb_at04a1",
+                OverrideType = "id=%ItemId%;collected_GIS=FILE_MARK_OC,herb_at04a1;ql=OC_ABSENT,herb_at04a1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676039,
+                ObjectId = "63",
+                IsKeyItem = false,
+                GISIdentifier = "herb_at04a2",
+                OverrideType = "id=%ItemId%;collected_GIS=FILE_MARK_OC,herb_at04a2;ql=OC_ABSENT,herb_at04a2",
+            },
         },
         ["p1_anuri_temple_pod"] = new List<Check>
         {

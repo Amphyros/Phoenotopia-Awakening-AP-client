@@ -64,7 +64,7 @@ internal sealed class APCheckLocationPatches
             string instructionType = instructionParts[0];
 
             if (instructionType != "FILE_MARK_SI" && instructionType != "FILE_MARK_OC" &&
-                instructionType != "FILE_MARK_AP")
+                instructionType != "FILE_MARK_POC" && instructionType != "FILE_MARK_AP")
                 continue;
 
             if (!APHelpers.IsConnectedToAP()) continue;
@@ -76,8 +76,6 @@ internal sealed class APCheckLocationPatches
                 .FirstOrDefault(check => check.GISIdentifier == identifier);
 
             if (checkedLocation == null) continue;
-            if (PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(checkedLocation.ArchipelagoId)) continue;
-            if (!PhoaAPClient.APConnection.LocalAllLocations.Contains(checkedLocation.ArchipelagoId)) continue;
 
             if (checkedLocation.ArchipelagoId == 1)
             {
@@ -87,6 +85,9 @@ internal sealed class APCheckLocationPatches
                 });
                 continue;
             }
+            
+            if (PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(checkedLocation.ArchipelagoId)) continue;
+            if (!PhoaAPClient.APConnection.LocalAllLocations.Contains(checkedLocation.ArchipelagoId)) continue;
 
             _cachedItemToolId = null;
             _cachedQuantity = null;

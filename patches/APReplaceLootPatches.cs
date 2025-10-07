@@ -107,12 +107,13 @@ internal sealed class APReplaceLootPatches
         if (!LocationMapping.LocationMap.TryGetValue(activeLevelName, out List<Check> checks)) return true;
 
         string objectId = reader.GetAttribute("id");
+        
+        // Remove Bart's head to prevent story progression
+        if (activeLevelName.ToLower() == "p1_anuri_temple_01d" && objectId == "132") return false;
 
         foreach (Check check in checks)
         {
             if (check.ObjectId != objectId) continue;
-            if (check.ArchipelagoId == 7676025)
-                PhoaAPClient.Logger.LogDebug("Stupid ass fish found. Data: " + check.OverrideType);
 
             if (!PhoaAPClient.APConnection.LocalAllLocations.Contains(check.ArchipelagoId)) return true;
             if (PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(check.ArchipelagoId))
