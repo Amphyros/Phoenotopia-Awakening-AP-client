@@ -21,32 +21,6 @@ public class APConnection(string host, int port, string slot, string password)
     public ReadOnlyCollection<long> LocalAllLocationsChecked { get; private set; }
     public readonly HashSet<long> SuppressedItemMessages = [];
 
-    public void ConnectAsync()
-    {
-        EndConnectionProcess();
-        _keepTrying = true;
-        _connectionThread = new Thread(() =>
-        {
-            while (_keepTrying)
-            {
-                if (Connect())
-                    return;
-
-                try
-                {
-                    Thread.Sleep(5000);
-                }
-                catch (ThreadInterruptedException)
-                {
-                    return;
-                }
-            }
-        });
-
-        _connectionThread.IsBackground = true;
-        _connectionThread.Start();
-    }
-
     public bool Connect()
     {
         PhoaAPClient.Logger.LogDebug("Connect() called");
@@ -100,7 +74,7 @@ public class APConnection(string host, int port, string slot, string password)
     public void EndConnectionProcess()
     {
         _keepTrying = false;
-        if (_connectionThread != null && _connectionThread.IsAlive)
+        if (_connectionThread is { IsAlive: true })
         {
             _connectionThread.Interrupt();
             _connectionThread.Join();
@@ -147,7 +121,7 @@ public class APConnection(string host, int port, string slot, string password)
                 PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
             });
 
-            PhoaAPClient.Logger.LogDebug($"Item {id} was added to the itempool");
+            if (ignoreCutscene) ApplyHealthOrStaminaUpgrade(id);
 
             if (apItem.Player.Name == slot && SuppressedItemMessages.Remove(id)) continue;
 
@@ -167,6 +141,46 @@ public class APConnection(string host, int port, string slot, string password)
     public void OnLocationChecked()
     {
         LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
+    }
+
+    private void ConnectAsync()
+    {
+        EndConnectionProcess();
+        _keepTrying = true;
+        _connectionThread = new Thread(() =>
+        {
+            while (_keepTrying)
+            {
+                if (Connect())
+                    return;
+
+                try
+                {
+                    Thread.Sleep(5000);
+                }
+                catch (ThreadInterruptedException)
+                {
+                    return;
+                }
+            }
+        });
+
+        _connectionThread.IsBackground = true;
+        _connectionThread.Start();
+    }
+
+    private void ApplyHealthOrStaminaUpgrade(long id)
+    {
+        string gisCommand = id switch
+        {
+            3 => "apply_upgrade,HEALTH_UPGRADE|FILE_INTEGER_ADD,2,1",
+            4 => "apply_upgrade,STAMINA_UPGRADE|FILE_INTEGER_ADD,3,1",
+            _ => ""
+        };
+        MainThreadDispatcher.RunOnMainThread(() =>
+        {
+            PT2.GIS_ProcessInstructions(gisCommand, PT2.gale_script.GetTransform().position);
+        });
     }
 
     private void ScoutItems()
