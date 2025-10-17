@@ -27,6 +27,11 @@ internal sealed class APCheckLocationPatches
         if (!APHelpers.IsConnectedToAP())
         {
             PhoaAPClient.Logger.LogWarning("Item grab cancelled: Disconnected from AP.");
+
+            PT2.sound_g.PlayGlobalCommonSfx(134, 1f, 1f, 2);
+            PT2.display_messages.DisplayMessage("You are disconnected from the Archipelago server",
+                DisplayMessagesLogic.MSG_TYPE.INVENTORY_FULL);
+
             return false;
         }
 
@@ -79,13 +84,10 @@ internal sealed class APCheckLocationPatches
 
             if (checkedLocation.ArchipelagoId == 1)
             {
-                PhoaAPClient.APConnection.Session.Socket.SendPacket(new StatusUpdatePacket
-                {
-                    Status = ArchipelagoClientState.ClientGoal
-                });
+                APHelpers.SendGoalCompletedPacket();
                 continue;
             }
-            
+
             if (PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(checkedLocation.ArchipelagoId)) continue;
             if (!PhoaAPClient.APConnection.LocalAllLocations.Contains(checkedLocation.ArchipelagoId)) continue;
 
@@ -108,7 +110,7 @@ internal sealed class APCheckLocationPatches
 
         instructionsList.RemoveAll(instruction => instruction.Contains("FILE_MARK_AP"));
 
-        instructions = String.Join("|", instructionsList.ToArray());
+        instructions = string.Join("|", instructionsList.ToArray());
     }
 
     private static void OnLocationGet(ScoutedItemInfo itemInfo)
