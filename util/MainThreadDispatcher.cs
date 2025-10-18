@@ -6,20 +6,46 @@ namespace PhoA_AP_client.util;
 
 public class MainThreadDispatcher : MonoBehaviour
 {
-    private static readonly Queue<Action> actions = new();
+    private static readonly Queue<Action> Actions = new();
+    private static readonly Queue<Action> NonMapLevelActions = new();
+    private static readonly Queue<Action> PerFrameActions = new();
 
     public static void RunOnMainThread(Action action)
     {
-        lock (actions)
-            actions.Enqueue(action);
+        lock (Actions)
+            Actions.Enqueue(action);
+    }
+
+    public static void EnqueueNonMapLevelAction(Action action)
+    {
+        lock (NonMapLevelActions)
+            NonMapLevelActions.Enqueue(action);
+    }
+
+    public static void RunPerFrameActionOnMainThread(Action action)
+    {
+        lock (PerFrameActions)
+            PerFrameActions.Enqueue(action);
     }
 
     private void Update()
     {
-        lock (actions)
+        lock (Actions)
         {
-            while (actions.Count > 0)
-                actions.Dequeue().Invoke();
+            while (Actions.Count > 0)
+                Actions.Dequeue().Invoke();
+        }
+
+        lock (NonMapLevelActions)
+        {
+            while (!LevelBuildLogic.level_name.ToLower().Contains("world_map") && NonMapLevelActions.Count > 0)
+                NonMapLevelActions.Dequeue().Invoke();
+        }
+
+        lock (PerFrameActions)
+        {
+            if (PerFrameActions.Count > 0)
+                PerFrameActions.Dequeue().Invoke();
         }
     }
 }

@@ -8,6 +8,7 @@ using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Helpers;
 using Archipelago.MultiClient.Net.Models;
 using PhoA_AP_client.util;
+using UnityEngine;
 
 namespace PhoA_AP_client.AP;
 
@@ -114,26 +115,10 @@ public class APConnection(string host, int port, string slot, string password)
 
             APSaveState.CollectedItems.Add(id);
 
-            bool ignoreCutscene = apItem.Player.Name != slot;
-
-            MainThreadDispatcher.RunOnMainThread(() =>
+            MainThreadDispatcher.RunPerFrameActionOnMainThread(() =>
             {
-                PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
-            });
-
-            if (ignoreCutscene) ApplyHealthOrStaminaUpgrade(id);
-
-            if (apItem.Player.Name == slot && SuppressedItemMessages.Remove(id)) continue;
-
-            string itemName = apItem.ItemDisplayName;
-            if ((apItem.Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
-
-            string message = $"Found {itemName}";
-
-            MainThreadDispatcher.RunOnMainThread(() =>
-            {
-                PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
-                PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
+                AddItemToGame(id, apItem);
+                ShowItemMessage(id, apItem);
             });
         }
     }
@@ -167,6 +152,37 @@ public class APConnection(string host, int port, string slot, string password)
 
         _connectionThread.IsBackground = true;
         _connectionThread.Start();
+    }
+
+    private void AddItemToGame(long id, ItemInfo apItem)
+    {
+        if (PT2.save_file.HowMuchCanBeAdded((int)id, 1) > 0)
+        {
+            bool ignoreCutscene = apItem.Player.Name != slot;
+            PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
+
+            if (ignoreCutscene) ApplyHealthOrStaminaUpgrade(id);
+            return;
+        }
+
+        MainThreadDispatcher.EnqueueNonMapLevelAction(() =>
+        {
+            PT2.item_gen.SpawnLoot((int)id, 1, PT2.gale_script.GetTransform().position, "", Vector2.zero);
+        });
+    }
+
+    private void ShowItemMessage(long id, ItemInfo apItem)
+    {
+        if (SuppressedItemMessages.Remove(id)) return;
+
+        string itemName = apItem.ItemDisplayName;
+        if ((apItem.Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
+
+        string message = $"Found {itemName}";
+        if (apItem.Player.Name != slot) message = $"Received {itemName} from {apItem.Player.Name}";
+
+        PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
+        PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
     }
 
     private void ApplyHealthOrStaminaUpgrade(long id)

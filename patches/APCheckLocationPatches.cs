@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Models;
-using Archipelago.MultiClient.Net.Packets;
 using HarmonyLib;
 using PhoA_AP_client.util;
 using UnityEngine;
@@ -15,13 +14,8 @@ namespace PhoA_AP_client.patches;
 [HarmonyPatch]
 internal sealed class APCheckLocationPatches
 {
-    private static bool lootCheck;
-    private static int? _cachedItemToolId;
-    private static int? _cachedQuantity;
-    private static bool? _cachedIgnore;
-
     [HarmonyPatch(typeof(GaleInteracter), "_AttemptGrabbingLoot")]
-    [HarmonyPrefix] // Patch to initiate possible custom behaviour for AP
+    [HarmonyPrefix] // Patch to handle possible custom behaviour for AP
     private static bool AttemptGrabbingLootPrefix(Collider2D loot_collider)
     {
         if (!APHelpers.IsConnectedToAP())
@@ -35,24 +29,39 @@ internal sealed class APCheckLocationPatches
             return false;
         }
 
-        lootCheck = true;
-        return true;
+        LootLogic component = loot_collider.GetComponent<LootLogic>();
+        var field = typeof(LootLogic).GetField("_collected_GIS_cmd", BindingFlags.NonPublic | BindingFlags.Instance);
+        string collectedGIS = (string)field?.GetValue(component);
+        if (collectedGIS == null) return true;
+
+        string[] collectedGISParts = collectedGIS.Split(',');
+        if (collectedGISParts.Length < 2) return true;
+        string identifier = collectedGISParts[1];
+
+        Check location = LocationMapping.LocationMap
+            .SelectMany(kvp => kvp.Value)
+            .FirstOrDefault(check => check.GISIdentifier == identifier);
+
+        if (location == null || !PhoaAPClient.APConnection.LocalAllLocations.Contains(location.ArchipelagoId) ||
+            (!location.IsKeyItem &&
+             PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(location.ArchipelagoId))) return true;
+
+        component.Taken();
+        // The original method calls these two methods. I don't have a clue why, but they're here, to be sure
+        // PT2.thing_wheel.UpdateToolHudGraphics(false, false, false);
+        // PT2.thing_wheel.UpdateWheelGraphics();
+
+        return false;
     }
 
     [HarmonyPatch(typeof(SaveFile), "AddItemToolOrStatusIdToInventory")]
     [HarmonyPrefix] // Patch to prevent AP items from being added to the inventory
     private static bool AddItemToolOrStatusIdToInventoryPrefix(int item_tool_id, int quantity, bool ignore_ADDED_GIS)
     {
-        if (!lootCheck) return true;
-
         int[] ids = FindAPItemIdsInItemDef();
         if (ids.Contains(item_tool_id)) return false;
 
-        _cachedItemToolId = item_tool_id;
-        _cachedQuantity = quantity;
-        _cachedIgnore = ignore_ADDED_GIS;
-
-        return false;
+        return true;
     }
 
     [HarmonyPatch(typeof(PT2), "GIS_ProcessInstructions")]
@@ -90,10 +99,6 @@ internal sealed class APCheckLocationPatches
 
             if (PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(checkedLocation.ArchipelagoId)) continue;
             if (!PhoaAPClient.APConnection.LocalAllLocations.Contains(checkedLocation.ArchipelagoId)) continue;
-
-            _cachedItemToolId = null;
-            _cachedQuantity = null;
-            _cachedIgnore = null;
 
             OnLocationGet(checkedLocation.ItemInfo);
 
@@ -134,35 +139,6 @@ internal sealed class APCheckLocationPatches
             PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
             PT2.display_messages.DisplayMessage(message.ToString(), DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
         });
-    }
-
-    [HarmonyPatch(typeof(SoundGenerator), "PlayGlobalCommonSfx")]
-    [HarmonyPrefix] // Patch to prevent loot pickup sound from being played
-    private static bool PlayGlobalCommonSfxPrefix(int audio_clip_index)
-    {
-        return !lootCheck || audio_clip_index is not 133 || _cachedItemToolId.HasValue;
-    }
-
-    [HarmonyPatch(typeof(DisplayMessagesLogic), "DisplayMessage")]
-    [HarmonyPrefix] // Patch to prevent the default loot message from happening
-    private static bool DisplayMessagePrefix()
-    {
-        return !lootCheck || _cachedItemToolId.HasValue;
-    }
-
-    [HarmonyPatch(typeof(GaleInteracter), "_AttemptGrabbingLoot")]
-    [HarmonyPostfix] // Patch to end lootCheck behaviour and add items to inventory if needed
-    private static void AttemptGrabbingLootPostfix()
-    {
-        lootCheck = false;
-
-        if (_cachedItemToolId.HasValue && _cachedQuantity.HasValue && _cachedIgnore.HasValue)
-            PT2.save_file
-                .AddItemToolOrStatusIdToInventory(_cachedItemToolId.Value, _cachedQuantity.Value, _cachedIgnore.Value);
-
-        _cachedItemToolId = null;
-        _cachedQuantity = null;
-        _cachedIgnore = null;
     }
 
     private static int[] FindAPItemIdsInItemDef()

@@ -45,11 +45,11 @@ internal sealed class APReplaceLootPatches
         ItemGridLogic.ItemOrToolDef[] apItems =
         [
             CreateItemDef("Progressive Archipelago Item", FindSpriteIdByName("apSprite"), "An item from another world",
-                ""),
+                "FREE"),
             CreateItemDef("Useful Archipelago Item", FindSpriteIdByName("apSpriteUseful"), "An item from another world",
-                ""),
+                "FREE"),
             CreateItemDef("Filler Archipelago Item", FindSpriteIdByName("apSpriteFiller"), "An item from another world",
-                ""),
+                "FREE"),
         ];
 
         ItemGridLogic.ItemOrToolDef[] originalItemOrToolDef = DB.ITEM_DEFS;
@@ -107,7 +107,7 @@ internal sealed class APReplaceLootPatches
         if (!LocationMapping.LocationMap.TryGetValue(activeLevelName, out List<Check> checks)) return true;
 
         string objectId = reader.GetAttribute("id");
-        
+
         // Remove Bart's head to prevent story progression
         if (activeLevelName.ToLower() == "p1_anuri_temple_01d" && objectId == "132") return false;
 
