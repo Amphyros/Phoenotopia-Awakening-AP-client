@@ -15,6 +15,7 @@ namespace PhoA_AP_client.AP;
 public class APConnection(string host, int port, string slot, string password)
 {
     public ArchipelagoSession Session { get; private set; }
+    public DeathLinkHandler DeathLinkHandler { get; private set; } = new();
     private Thread _connectionThread;
     private bool _keepTrying;
 
@@ -50,6 +51,9 @@ public class APConnection(string host, int port, string slot, string password)
             var loginSuccess = (LoginSuccessful)result;
             PhoaAPClient.Logger.LogInfo($"Succesfully connected to AP server as slot: {loginSuccess.Slot}");
 
+            DeathLinkHandler = new DeathLinkHandler();
+            DeathLinkHandler.CreateDeathLinkService(Session, loginSuccess.SlotData);
+            
             ScoutItems();
             Session.Items.ItemReceived += AddMissingItems;
             LocalAllLocations = Session.Locations.AllLocations;
@@ -93,6 +97,7 @@ public class APConnection(string host, int port, string slot, string password)
 
         Session.Items.ItemReceived -= AddMissingItems;
         Session.Socket.SocketClosed -= OnSocketClosed;
+        DeathLinkHandler.DisableDeathLinkService();
         Session.Socket.Disconnect();
     }
 
@@ -103,6 +108,7 @@ public class APConnection(string host, int port, string slot, string password)
         LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
 
         if (LevelBuildLogic.level_name.Equals("game_start")) return;
+        if (LevelBuildLogic.level_name.Equals("limbo")) return;
         if (LevelBuildLogic.level_name.StartsWith("cutscene")) return;
 
         List<long> saveItems = new List<long>(APSaveState.CollectedItems);
