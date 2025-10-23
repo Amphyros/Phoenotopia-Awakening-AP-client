@@ -33,7 +33,7 @@ internal sealed class APConnectionManagementPatches
         }
 
         _sessionId =
-            $"P{PhoaAPClient.APConnection.Session.ConnectionInfo.Slot}-{PhoaAPClient.APConnection.Session.RoomState.Seed}";
+            $"P{PhoaAPClient.APConnection.SessionContext.Session.ConnectionInfo.Slot}-{PhoaAPClient.APConnection.SessionContext.Session.RoomState.Seed}";
     }
 
     [HarmonyPatch(typeof(SaveFile), "_NS_LoadData")]

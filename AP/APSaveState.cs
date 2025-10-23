@@ -6,7 +6,7 @@ namespace PhoA_AP_client.AP;
 
 public static class APSaveState
 {
-    public static List<long> CollectedItems { get; private set; } = new();
+    public static List<long> CollectedItems { get; private set; } = [];
 
     public static void LoadFromSaveString([CanBeNull] string apitemsString)
     {

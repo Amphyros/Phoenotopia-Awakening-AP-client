@@ -40,7 +40,7 @@ internal sealed class APAddItemPatches
         APSaveState.LoadFromSaveString(apItemsString);
 
         if (!APHelpers.IsConnectedToAP()) return;
-        PhoaAPClient.APConnection.AddMissingItems();
+        PhoaAPClient.APConnection.ItemHandler.AddMissingItems();
     }
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
@@ -59,6 +59,6 @@ internal sealed class APAddItemPatches
     {
         if (!APHelpers.IsConnectedToAP() || __state) return;
 
-        PhoaAPClient.APConnection.AddMissingItems();
+        PhoaAPClient.APConnection.ItemHandler.AddMissingItems();
     }
 }

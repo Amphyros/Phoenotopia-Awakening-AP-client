@@ -1,27 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading;
 using Archipelago.MultiClient.Net;
 using Archipelago.MultiClient.Net.Enums;
-using Archipelago.MultiClient.Net.Helpers;
-using Archipelago.MultiClient.Net.Models;
 using PhoA_AP_client.util;
-using UnityEngine;
 
 namespace PhoA_AP_client.AP;
 
 public class APConnection(string host, int port, string slot, string password)
 {
-    public ArchipelagoSession Session { get; private set; }
-    public DeathLinkHandler DeathLinkHandler { get; private set; } = new();
+    public APSessionContext SessionContext { get; private set; }
+    public DeathLinkHandler DeathLinkHandler { get; private set; }
+    public ItemHandler ItemHandler { get; private set; }
     private Thread _connectionThread;
     private bool _keepTrying;
-
-    public ReadOnlyCollection<long> LocalAllLocations { get; private set; }
-    public ReadOnlyCollection<long> LocalAllLocationsChecked { get; private set; }
-    public readonly HashSet<long> SuppressedItemMessages = [];
 
     public bool Connect()
     {
@@ -29,10 +20,10 @@ public class APConnection(string host, int port, string slot, string password)
         if (APHelpers.IsConnectedToAP()) return false;
         try
         {
-            Session = ArchipelagoSessionFactory.CreateSession(host, port);
+            ArchipelagoSession session = ArchipelagoSessionFactory.CreateSession(host, port);
 
             LoginResult result =
-                Session.TryConnectAndLogin(
+                session.TryConnectAndLogin(
                     "Phoenotopia: Awakening",
                     slot,
                     ItemsHandlingFlags.AllItems,
@@ -46,18 +37,13 @@ public class APConnection(string host, int port, string slot, string password)
                 return false;
             }
 
-            Session.Socket.SocketClosed += OnSocketClosed;
-
             var loginSuccess = (LoginSuccessful)result;
             PhoaAPClient.Logger.LogInfo($"Succesfully connected to AP server as slot: {loginSuccess.Slot}");
 
-            DeathLinkHandler = new DeathLinkHandler();
-            DeathLinkHandler.CreateDeathLinkService(Session, loginSuccess.SlotData);
-            
-            ScoutItems();
-            Session.Items.ItemReceived += AddMissingItems;
-            LocalAllLocations = Session.Locations.AllLocations;
-            LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
+            SessionContext = new APSessionContext(session, loginSuccess);
+            SessionContext.Session.Socket.SocketClosed += OnSocketClosed;
+            DeathLinkHandler = new DeathLinkHandler(SessionContext);
+            ItemHandler = new ItemHandler(SessionContext);
 
             MainThreadDispatcher.RunOnMainThread(() =>
             {
@@ -75,65 +61,7 @@ public class APConnection(string host, int port, string slot, string password)
 
         return false;
     }
-
-    public void EndConnectionProcess()
-    {
-        _keepTrying = false;
-        if (_connectionThread is { IsAlive: true })
-        {
-            _connectionThread.Interrupt();
-            _connectionThread.Join();
-        }
-
-        _connectionThread = null;
-        Disconnect();
-        Session = null;
-    }
-
-    public void Disconnect()
-    {
-        _keepTrying = false;
-        if (Session == null) return;
-
-        Session.Items.ItemReceived -= AddMissingItems;
-        Session.Socket.SocketClosed -= OnSocketClosed;
-        DeathLinkHandler.DisableDeathLinkService();
-        Session.Socket.Disconnect();
-    }
-
-    public void AddMissingItems(ReceivedItemsHelper helper = null)
-    {
-        if (!APHelpers.IsConnectedToAP()) return;
-
-        LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
-
-        if (LevelBuildLogic.level_name.Equals("game_start")) return;
-        if (LevelBuildLogic.level_name.Equals("limbo")) return;
-        if (LevelBuildLogic.level_name.StartsWith("cutscene")) return;
-
-        List<long> saveItems = new List<long>(APSaveState.CollectedItems);
-        var apItems = helper?.AllItemsReceived ?? Session.Items.AllItemsReceived;
-
-        foreach (ItemInfo apItem in apItems)
-        {
-            long id = apItem.ItemId;
-            if (saveItems.Remove(id)) continue;
-
-            APSaveState.CollectedItems.Add(id);
-
-            MainThreadDispatcher.RunPerFrameActionOnMainThread(() =>
-            {
-                AddItemToGame(id, apItem);
-                ShowItemMessage(id, apItem);
-            });
-        }
-    }
-
-    public void OnLocationChecked()
-    {
-        LocalAllLocationsChecked = Session.Locations.AllLocationsChecked;
-    }
-
+    
     private void ConnectAsync()
     {
         EndConnectionProcess();
@@ -160,86 +88,6 @@ public class APConnection(string host, int port, string slot, string password)
         _connectionThread.Start();
     }
 
-    private void AddItemToGame(long id, ItemInfo apItem)
-    {
-        if (PT2.save_file.HowMuchCanBeAdded((int)id, 1) > 0)
-        {
-            bool ignoreCutscene = apItem.Player.Name != slot;
-            PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
-
-            if (ignoreCutscene) ApplyHealthOrStaminaUpgrade(id);
-            return;
-        }
-
-        MainThreadDispatcher.EnqueueNonMapLevelAction(() =>
-        {
-            PT2.item_gen.SpawnLoot((int)id, 1, PT2.gale_script.GetTransform().position, "", Vector2.zero);
-        });
-    }
-
-    private void ShowItemMessage(long id, ItemInfo apItem)
-    {
-        if (SuppressedItemMessages.Remove(id)) return;
-
-        string itemName = apItem.ItemDisplayName;
-        if ((apItem.Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;
-
-        string message = $"Found {itemName}";
-        if (apItem.Player.Name != slot) message = $"Received {itemName} from {apItem.Player.Name}";
-
-        PT2.sound_g.PlayGlobalCommonSfx(133, 1f, 1f, 2);
-        PT2.display_messages.DisplayMessage(message, DisplayMessagesLogic.MSG_TYPE.SMALL_ITEM_GET);
-    }
-
-    private void ApplyHealthOrStaminaUpgrade(long id)
-    {
-        string gisCommand = id switch
-        {
-            3 => "apply_upgrade,HEALTH_UPGRADE|FILE_INTEGER_ADD,2,1",
-            4 => "apply_upgrade,STAMINA_UPGRADE|FILE_INTEGER_ADD,3,1",
-            _ => ""
-        };
-        MainThreadDispatcher.RunOnMainThread(() =>
-        {
-            PT2.GIS_ProcessInstructions(gisCommand, PT2.gale_script.GetTransform().position);
-        });
-    }
-
-    private void ScoutItems()
-    {
-        Session.Locations.ScoutLocationsAsync(
-            result =>
-            {
-                foreach (var level in LocationMapping.LocationMap)
-                {
-                    string levelName = level.Key;
-                    List<Check> checks = level.Value;
-
-                    for (int i = 0; i < checks.Count; i++)
-                    {
-                        if (!result.TryGetValue(checks[i].ArchipelagoId, out ScoutedItemInfo itemInfo)) continue;
-
-                        LocationMapping.LocationMap[levelName][i].ItemInfo = itemInfo;
-
-                        string replacementId = itemInfo.ItemId.ToString();
-
-                        if (!string.Equals(itemInfo.ItemGame, "Phoenotopia: Awakening"))
-                        {
-                            replacementId = 215.ToString();
-                            if ((itemInfo.Flags & ItemFlags.NeverExclude) != 0) replacementId = 214.ToString();
-                            if ((itemInfo.Flags & ItemFlags.Advancement) != 0) replacementId = 213.ToString();
-                        }
-
-                        if (checks[i].OverrideType.Contains("%ItemId%"))
-                            checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
-                    }
-                }
-            },
-            false,
-            Session.Locations.AllLocations.ToArray()
-        );
-    }
-
     private void OnSocketClosed(string reason)
     {
         MainThreadDispatcher.RunOnMainThread(() =>
@@ -249,6 +97,33 @@ public class APConnection(string host, int port, string slot, string password)
                 DisplayMessagesLogic.MSG_TYPE.GALE_MINUS_STATUS);
         });
         PhoaAPClient.Logger.LogWarning($"Lost connection with the AP server: {reason}. Trying to Reconnect...");
+        Disconnect();
         ConnectAsync();
+    }
+
+    public void Disconnect()
+    {
+        _keepTrying = false;
+        if (SessionContext?.Session == null) return;
+
+        ItemHandler.RemoveEventHandlers();
+        ItemHandler = null;
+        DeathLinkHandler.RemoveEventHandlers();
+        DeathLinkHandler = null;
+        SessionContext.Session.Socket.Disconnect();
+        SessionContext.Session.Socket.SocketClosed -= OnSocketClosed;
+        SessionContext = null;
+    }
+
+    public void EndConnectionProcess()
+    {
+        _keepTrying = false;
+        if (_connectionThread is { IsAlive: true })
+        {
+            _connectionThread.Interrupt();
+            _connectionThread.Join();
+        }
+
+        _connectionThread = null;
     }
 }

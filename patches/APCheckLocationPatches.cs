@@ -42,9 +42,11 @@ internal sealed class APCheckLocationPatches
             .SelectMany(kvp => kvp.Value)
             .FirstOrDefault(check => check.GISIdentifier == identifier);
 
-        if (location == null || !PhoaAPClient.APConnection.LocalAllLocations.Contains(location.ArchipelagoId) ||
+        if (location == null ||
+            !PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(location.ArchipelagoId) ||
             (!location.IsKeyItem &&
-             PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(location.ArchipelagoId))) return true;
+             PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(location.ArchipelagoId)))
+            return true;
 
         component.Taken();
         // The original method calls these two methods. I don't have a clue why, but they're here, to be sure
@@ -97,18 +99,21 @@ internal sealed class APCheckLocationPatches
                 continue;
             }
 
-            if (PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(checkedLocation.ArchipelagoId)) continue;
-            if (!PhoaAPClient.APConnection.LocalAllLocations.Contains(checkedLocation.ArchipelagoId)) continue;
+            if (PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(checkedLocation.ArchipelagoId))
+                continue;
+            if (!PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(checkedLocation.ArchipelagoId))
+                continue;
 
             OnLocationGet(checkedLocation.ItemInfo);
 
             new Thread(() =>
             {
-                PhoaAPClient.APConnection.Session.Locations
+                PhoaAPClient.APConnection.SessionContext.Session.Locations
                     .CompleteLocationChecksAsync(
                         _ =>
                         {
-                            MainThreadDispatcher.RunOnMainThread(() => PhoaAPClient.APConnection.OnLocationChecked());
+                            MainThreadDispatcher.RunOnMainThread(() =>
+                                PhoaAPClient.APConnection.ItemHandler.OnLocationChecked());
                         }, checkedLocation.ArchipelagoId);
             }).Start();
         }
@@ -120,14 +125,14 @@ internal sealed class APCheckLocationPatches
 
     private static void OnLocationGet(ScoutedItemInfo itemInfo)
     {
-        PhoaAPClient.APConnection.SuppressedItemMessages.Add(itemInfo.ItemId);
+        PhoaAPClient.APConnection.ItemHandler.SuppressedItemMessages.Add(itemInfo.ItemId);
 
         string itemName = itemInfo.ItemDisplayName;
         string playerName = itemInfo.Player.Name;
 
         StringBuilder message = new StringBuilder("Found ");
 
-        if (playerName != PhoaAPClient.APConnection.Session?.Players.ActivePlayer.Name)
+        if (playerName != PhoaAPClient.APConnection.SessionContext?.Session?.Players.ActivePlayer.Name)
             message.Append($"{playerName}'s ");
 
         if ((itemInfo.Flags & ItemFlags.Advancement) != 0) message.Append("<sprite=30>");

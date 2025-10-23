@@ -100,7 +100,7 @@ internal sealed class APReplaceLootPatches
 
     private static bool HandlePossibleAPReplacementForObject(ref XmlReader reader)
     {
-        if (PhoaAPClient.APConnection.LocalAllLocations == null) return true;
+        if (PhoaAPClient.APConnection.ItemHandler.LocalAllLocations == null) return true;
 
         string activeLevelName = LevelBuildLogic.level_name;
 
@@ -115,8 +115,8 @@ internal sealed class APReplaceLootPatches
         {
             if (check.ObjectId != objectId) continue;
 
-            if (!PhoaAPClient.APConnection.LocalAllLocations.Contains(check.ArchipelagoId)) return true;
-            if (PhoaAPClient.APConnection.LocalAllLocationsChecked.Contains(check.ArchipelagoId))
+            if (!PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(check.ArchipelagoId)) return true;
+            if (PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId))
                 return !check.IsKeyItem;
 
             reader = ReplaceReader(reader, check.OverrideType);

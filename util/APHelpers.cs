@@ -7,12 +7,12 @@ internal static class APHelpers
 {
     public static bool IsConnectedToAP()
     {
-        return PhoaAPClient.APConnection.Session?.RoomState?.Seed != null;
+        return PhoaAPClient.APConnection.SessionContext?.Session?.RoomState?.Seed != null;
     }
 
     public static void SendGoalCompletedPacket()
     {
-        PhoaAPClient.APConnection.Session.Socket.SendPacket(new StatusUpdatePacket
+        PhoaAPClient.APConnection.SessionContext.Session.Socket.SendPacket(new StatusUpdatePacket
         {
             Status = ArchipelagoClientState.ClientGoal
         });

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Archipelago.MultiClient.Net;
 using Archipelago.MultiClient.Net.BounceFeatures.DeathLink;
 using PhoA_AP_client.util;
 
@@ -7,25 +5,32 @@ namespace PhoA_AP_client.AP;
 
 public class DeathLinkHandler
 {
+    private readonly APSessionContext _sessionContext;
     private DeathLinkService _deathLinkService;
     private bool _receivedDeathLink;
     private bool _deathLinkEnabled;
 
-    public void CreateDeathLinkService(ArchipelagoSession session, Dictionary<string, object> slotData)
+    public DeathLinkHandler(APSessionContext sessionContext)
     {
-        _deathLinkService = session.CreateDeathLinkService();
-        _deathLinkEnabled = slotData.TryGetValue("DeathLink", out var deathLink) && (long)deathLink == 1;
+        _sessionContext = sessionContext;
+        CreateDeathLinkService();
+    }
+
+    public void RemoveEventHandlers()
+    {
+        _deathLinkService.DisableDeathLink();
+        _deathLinkService.OnDeathLinkReceived -= ReceiveDeathLink;
+    }
+
+    private void CreateDeathLinkService()
+    {
+        _deathLinkService = _sessionContext.Session.CreateDeathLinkService();
+        _deathLinkEnabled = _sessionContext.Login.SlotData.TryGetValue("DeathLink", out var deathLink) && (long)deathLink == 1;
         
         if (!_deathLinkEnabled) return;
         
         _deathLinkService.EnableDeathLink();
         _deathLinkService.OnDeathLinkReceived += ReceiveDeathLink;
-    }
-
-    public void DisableDeathLinkService()
-    {
-        _deathLinkService.OnDeathLinkReceived -= ReceiveDeathLink;
-        _deathLinkService.DisableDeathLink();
     }
 
     public void SendDeathLink()
@@ -37,7 +42,7 @@ public class DeathLinkHandler
             _receivedDeathLink = false;
             return;
         }
-        _deathLinkService.SendDeathLink(new DeathLink(PhoaAPClient.APConnection.Session.Players.ActivePlayer.Name));
+        _deathLinkService.SendDeathLink(new DeathLink(_sessionContext.Session.Players.ActivePlayer.Name));
     }
 
     private void ReceiveDeathLink(DeathLink deathLink)
