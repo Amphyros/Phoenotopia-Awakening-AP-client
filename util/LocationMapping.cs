@@ -72,6 +72,17 @@ public class LocationMapping
                 OverrideType = "name=beez;type=p1_bee;instruction=tmx(-1/14),tmx(128/14);defeated_GIS=particle_emitter,bee_highlighter,stop|common_sfx,150|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_MAP_2",
             },
         },
+        ["p1_duri_forest_03"] = new List<Check> 
+        { 
+            new Check
+            {
+                ArchipelagoId = 7676043,
+                ObjectId = "239",
+                IsKeyItem = false,
+                GISIdentifier = "AP_DOKI_LIZARD_2",
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_DOKI_LIZARD_2;instruction=tmx(16/20),tmx(18/26),tmx(17.875/21);sort=bg_tiles,11",
+            },
+        },
         ["p1_duri_forest_03a"] = new List<Check>
         {
             new Check
@@ -83,6 +94,36 @@ public class LocationMapping
                 OverrideType = "type=P1_WOOD_S;ql=SI_FALSE,MOON_DOKI_1;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_DOKI_1",
             },
         },
+        ["p1_duri_forest_04"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676044,
+                ObjectId = "174",
+                IsKeyItem = false,
+                GISIdentifier = "AP_DOKI_LIZARD_3",
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_DOKI_LIZARD_3;instruction=tmx(61/29),tmx(64/34),tmx(63.875/30);sort=bg_tiles,11",
+            },
+        },
+        ["p1_duri_forest_05"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676045,
+                ObjectId = "330",
+                IsKeyItem = false,
+                GISIdentifier = "AP_DOKI_LIZARD_4", 
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_DOKI_LIZARD_4;instruction=tmx(42/36),tmx(53/40),tmx(41.875/38);sort=bg_tiles,7",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676046,
+                ObjectId = "331",
+                IsKeyItem = false,
+                GISIdentifier = "AP_DOKI_LIZARD_5", 
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_DOKI_LIZARD_5;instruction=tmx(22/42),tmx(27/45),tmx(23.875/42);sort=bg_tiles,7",
+            },
+        },
         ["p1_duri_forest_06"] = new List<Check>
         {
             new Check
@@ -91,7 +132,7 @@ public class LocationMapping
                 ObjectId = "257",
                 IsKeyItem = true,
                 GISIdentifier = "D_FOREST_MONEY_3",
-                OverrideType = "name=scale_fish;instruction=FISH_M;type=fish;defeated_GIS=common_sfx,150|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$D_FOREST_MONEY_3|particle_emitter,highlighter2,stop;ql=ALWAYS_TRUE"
+                OverrideType = "name=scale_fish;instruction=FISH_M;type=fish;defeated_GIS=common_sfx,150|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$D_FOREST_MONEY_3|particle_emitter,highlighter2,stop;ql=ALWAYS_TRUE",
             },
             new Check
             {
@@ -99,7 +140,7 @@ public class LocationMapping
                 ObjectId = "4-Alex gives slingshot",
                 IsKeyItem = true,
                 GISIdentifier = "AP_DOKI_ALEX_GIFT",
-                OverrideType = "FILE_MARK_AP,AP_DOKI_ALEX_GIFT"
+                OverrideType = "FILE_MARK_AP,AP_DOKI_ALEX_GIFT",
             },
         },
         ["p1_anuri_temple_01"] = new List<Check>
@@ -110,7 +151,39 @@ public class LocationMapping
                 ObjectId = "36",
                 IsKeyItem = true,
                 GISIdentifier = "ANURI_KEY_1_COLLECTED",
-                OverrideType = "name=SHINY_BONE1;type=P1_ANURI_CORPSE;GIS=particle_emitter,highlighter,stop|SPAWN_loot,%ItemId%,loot_GIS_PACK$5;ql=SI_FALSE,ANURI_KEY_1_COLLECTED;hp=4",
+                OverrideType = "name=SHINY_BONE1;type=P1_ANURI_CORPSE;GIS=particle_emitter,highlighter,stop|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$ANURI_KEY_1_COLLECTED;ql=SI_FALSE,ANURI_KEY_1_COLLECTED;hp=4",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676047,
+                ObjectId = "74",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_1", 
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_1;instruction=tmx(13/15),tmx(19/19),tmx(13/15);sort=bg_tiles,12",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676048,
+                ObjectId = "75",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_2", 
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_2;instruction=tmx(65/15),tmx(75/18),tmx(70/15);sort=bg_tiles,12",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676049,
+                ObjectId = "76",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_3", 
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_3;instruction=tmx(94/28),tmx(97/34),tmx(97/31);sort=bg_tiles,12",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676050,
+                ObjectId = "77",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_4", 
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_4;instruction=tmx(71/29),tmx(75/35),tmx(75/29);sort=bg_tiles,12",
             },
         },
         ["p1_anuri_temple_02a"] = new List<Check>
@@ -145,6 +218,14 @@ public class LocationMapping
                 GISIdentifier = "OXY_ANURI_1",
                 OverrideType = "id=%ItemId%;ql=SI_FALSE,OXY_ANURI_1;collected_GIS=FILE_MARK_SI,OXY_ANURI_1,true",
             },
+            new Check
+            {
+                ArchipelagoId = 7676054,
+                ObjectId = "136",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_8", 
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_8;instruction=tmx(24/11),tmx(28/14),tmx(23.875/12);sort=bg_tiles,12",
+            },
         },
         ["p1_anuri_temple_04c"] = new List<Check>
         {
@@ -155,6 +236,14 @@ public class LocationMapping
                 IsKeyItem = true,
                 GISIdentifier = "MOON_ANURI_6",
                 OverrideType = "type=P1_ANURI_CERAMIC_POT_S;ql=SI_FALSE,MOON_ANURI_6;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_ANURI_6",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676053,
+                ObjectId = "43",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_7", 
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_7;instruction=tmx(22/13),tmx(32/14),tmx(24/14);sort=bg_tiles,12",
             },
         },
         ["p1_anuri_temple_04b"] = new List<Check>
@@ -197,6 +286,14 @@ public class LocationMapping
                 GISIdentifier = "AP_ANURI_1",
                 OverrideType = "type=P1_ANURI_CERAMIC_POT_L;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_1",
             },
+            new Check
+            {
+                ArchipelagoId = 7676051,
+                ObjectId = "140",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_5",
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_5;instruction=tmx(45/17),tmx(58/19),tmx(54.875/17);sort=bg_tiles,11",
+            }
         },
         ["p1_anuri_temple_03b"] = new List<Check>
         {
@@ -208,6 +305,14 @@ public class LocationMapping
                 GISIdentifier = "MOON_ANURI_2",
                 OverrideType = "type=P1_ANURI_CERAMIC_POT_L;ql=SI_FALSE,MOON_ANURI_2;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_ANURI_2",
             },
+            new Check
+            {
+                ArchipelagoId = 7676052,
+                ObjectId = "125",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_6",
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_6;instruction=tmx(46/6),tmx(52/10),tmx(49.875/6);sort=bg_tiles,7",
+            }
         },
         ["p1_anuri_temple_03c"] = new List<Check>
         {
@@ -239,7 +344,7 @@ public class LocationMapping
                 ObjectId = "98",
                 IsKeyItem = true,
                 GISIdentifier = "MOON_ANURI_1",
-                OverrideType = "ql=SI_FALSE,MOON_ANURI_1;profile=WEAK_ROCK;layers_to_erase=3,5;destroyed_by_bombs;particle_color=c3bb77;tiles_to_erase=tmx(48/30),tmx(50/31);destroyed_GIS=common_sfx,150|SPAWN_loot,%ItemId%,pos$tmx(49/31),loot_GIS_PACK$3"
+                OverrideType = "ql=SI_FALSE,MOON_ANURI_1;profile=WEAK_ROCK;layers_to_erase=3,5;destroyed_by_bombs;particle_color=c3bb77;tiles_to_erase=tmx(48/30),tmx(50/31);destroyed_GIS=common_sfx,150|SPAWN_loot,%ItemId%,pos$tmx(49/31),loot_GIS_MARK_SI$MOON_ANURI_1"
             },
             new Check
             {
@@ -293,14 +398,6 @@ public class LocationMapping
                 GISIdentifier = "MOON_FISH_3",
                 OverrideType = "name=moon_fish;face_right;initial_behavior=STATIC;type=fish;instruction=FISH_M;defeated_GIS=common_sfx,150|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_FISH_3|particle_emitter,fish_highlighter,stop;ql=ALWAYS_TRUE",
             }, // Can't get this with the possible amount of stamina
-            new Check
-            {
-                ArchipelagoId = 7676041,
-                ObjectId = "191",
-                IsKeyItem = true,
-                GISIdentifier = "MOON_FISH_3",
-                OverrideType = "name=moon_fish;face_right;initial_behavior=STATIC;type=fish;instruction=FISH_M;defeated_GIS=common_sfx,150|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_FISH_3|particle_emitter,fish_highlighter,stop;ql=ALWAYS_TRUE",
-            },
         },
         ["p1_anuri_temple_06a"] = new List<Check>
         {
@@ -312,6 +409,14 @@ public class LocationMapping
                 GISIdentifier = "ANURI_KEY_8_COLLECTED",
                 OverrideType = "id=%ItemId%;ql=SI_FALSE,ANURI_KEY_8_COLLECTED;collected_GIS=FILE_MARK_SI,ANURI_KEY_8_COLLECTED,true;name=FOCUS_PT",
             },
+            new Check
+            {
+                ArchipelagoId = 7676057,
+                ObjectId = "74",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_11",
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_11;instruction=tmx(48/27),tmx(52/31),tmx(50.875/28);sort=bg_tiles,11",
+            }
         },
         ["p1_anuri_temple_06b"] = new List<Check>
         {
@@ -367,6 +472,14 @@ public class LocationMapping
                 GISIdentifier = "REGEN_PANSELO_LOOT_1",
                 OverrideType = "type=P1_WOOD_S;ql=SI_FALSE,REGEN_PANSELO_LOOT_1;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_PANSELO_LOOT_1",
             },
+            new Check
+            {
+                ArchipelagoId = 7676041,
+                ObjectId = "89",
+                IsKeyItem = false,
+                GISIdentifier = "AP_PANSELO_LIZARD_1",
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_LIZARD_1;instruction=tmx(23/25),tmx(30/27),tmx(29.875/25);sort=bg_tiles,6",
+            }
         },
         ["p1_panselo_house_01_girls"] = new List<Check>
         {
@@ -427,6 +540,14 @@ public class LocationMapping
                 GISIdentifier = "df2a_herb3",
                 OverrideType = "id=%ItemId%;collected_GIS=FILE_MARK_OC,df2a_herb3;ql=OC_ABSENT,df2a_herb3",
             },
+            new Check
+            {
+                ArchipelagoId = 7676042,
+                ObjectId = "154",
+                IsKeyItem = false,
+                GISIdentifier = "AP_DOKI_LIZARD_1",
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_DOKI_LIZARD_1;instruction=tmx(33/13),tmx(36/16),tmx(35.875/13);sort=bg_tiles,11",
+            },
         },
         ["p1_anuri_temple_04a"] = new List<Check>
         {
@@ -445,6 +566,22 @@ public class LocationMapping
                 IsKeyItem = false,
                 GISIdentifier = "herb_at04a2",
                 OverrideType = "id=%ItemId%;collected_GIS=FILE_MARK_OC,herb_at04a2;ql=OC_ABSENT,herb_at04a2",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676055,
+                ObjectId = "34",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_9",
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_9;instruction=tmx(84/16),tmx(90/19),tmx(89/18);sort=bg_tiles,30",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676056,
+                ObjectId = "71",
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_LIZARD_10",
+                OverrideType = "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_LIZARD_10;instruction=tmx(45/11),tmx(49/18),tmx(47/12);sort=bg_tiles,30",
             },
         },
         ["p1_anuri_temple_pod"] = new List<Check>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Text;
 using System.Xml;
 using HarmonyLib;
 using PhoA_AP_client.util;
@@ -16,6 +16,7 @@ namespace PhoA_AP_client.patches;
 internal sealed class APReplaceLootPatches
 {
     private static string _spawnLootAPCollectedGis;
+    private static List<string> _ExtractedPuzzleGisCmds = [];
 
     [HarmonyPatch(typeof(PT2), "Initialize")]
     [HarmonyPostfix] // Patch to add AP item sprite
@@ -98,9 +99,16 @@ internal sealed class APReplaceLootPatches
         return HandlePossibleAPReplacementForObject(ref reader);
     }
 
+    [HarmonyPatch(typeof(LevelBuildLogic), "_HandlePuzzleObject")]
+    [HarmonyPrefix]
+    private static bool HandlePuzzleObjectPrefix(ref XmlReader reader)
+    {
+        return HandlePossibleAPReplacementForObject(ref reader);
+    }
+
     private static bool HandlePossibleAPReplacementForObject(ref XmlReader reader)
     {
-        if (PhoaAPClient.APConnection.ItemHandler.LocalAllLocations == null) return true;
+        if (PhoaAPClient.APConnection.ItemHandler?.LocalAllLocations == null) return true;
 
         string activeLevelName = LevelBuildLogic.level_name;
 
@@ -200,6 +208,44 @@ internal sealed class APReplaceLootPatches
 
         collected_GIS = _spawnLootAPCollectedGis;
         _spawnLootAPCollectedGis = null;
+    }
+
+    [HarmonyPatch(typeof(AnimalLifeSmallLogic), "_Lizard_AttackResult")]
+    [HarmonyPrefix]
+    private static void LizardAttackResultPrefix(AnimalLifeSmallLogic __instance)
+    {
+        var traverse = Traverse.Create(__instance);
+        string GisCmd = traverse.Field<string>("_GIS_cmd").Value;
+
+        if (GisCmd.IsNullOrEmpty() || !GisCmd.Contains("loot_GIS_MARK_AP")) return;
+
+        string[] instructionArray = GisCmd.Split('|');
+        StringBuilder strippedInstructions = new StringBuilder();
+        foreach (string instruction in instructionArray)
+        {
+            if (instruction.Contains("loot_GIS_MARK_AP"))
+            {
+                _ExtractedPuzzleGisCmds.Add(instruction);
+                continue;
+            }
+
+            strippedInstructions.Append(instruction);
+        }
+
+        traverse.Field<string>("_GIS_cmd").Value = strippedInstructions.ToString();
+    }
+
+    [HarmonyPatch(typeof(CarcassLogic), "_Exit")]
+    [HarmonyPrefix]
+    private static void CarcassLogicExitPrefix(CarcassLogic __instance)
+    {
+        if (_ExtractedPuzzleGisCmds.Count <= 0) return;
+
+        var traverse = Traverse.Create(__instance);
+        var transform = traverse.Field<Transform>("_transform").Value;
+        traverse.Field<string>("_loot_drop_string").Value = null;
+        PT2.GIS_ProcessInstructions(_ExtractedPuzzleGisCmds[0], transform.position);
+        _ExtractedPuzzleGisCmds.RemoveAt(0);
     }
 
     private static Sprite LoadSpriteFromResource(string resourceName, float pixelsPerUnit = 16f)
