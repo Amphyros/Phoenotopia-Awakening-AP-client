@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -6,6 +7,7 @@ using Archipelago.MultiClient.Net.Helpers;
 using Archipelago.MultiClient.Net.Models;
 using PhoA_AP_client.util;
 using UnityEngine;
+using WebSocketSharp;
 
 namespace PhoA_AP_client.AP;
 
@@ -15,11 +17,13 @@ public class ItemHandler
     public ReadOnlyCollection<long> LocalAllLocations { get; private set; }
     public ReadOnlyCollection<long> LocalAllLocationsChecked { get; private set; }
     public readonly HashSet<long> SuppressedItemMessages = [];
+    public readonly HashSet<long> SuppressedItemAddition = [];
 
     public ItemHandler(APSessionContext sessionContext)
     {
         _sessionContext = sessionContext;
-        ScoutItems();
+        if (PhoaAPClient.APConnection.Seed.IsNullOrEmpty())
+            ScoutItems();
         _sessionContext.Session.Items.ItemReceived += AddMissingItems;
         LocalAllLocations = _sessionContext.Session.Locations.AllLocations;
         LocalAllLocationsChecked = _sessionContext.Session.Locations.AllLocationsChecked;
@@ -60,6 +64,16 @@ public class ItemHandler
 
     private void AddItemToGame(long id, ItemInfo apItem)
     {
+        if (SuppressedItemAddition.Remove(id)) return;
+
+        if (id > 300)
+        {
+            PickupLogic.PICKUP_CLASS pickupClass =
+                (PickupLogic.PICKUP_CLASS)Enum.Parse(typeof(PickupLogic.PICKUP_CLASS), "P1_RAI");
+            PT2.save_file.ApplyPickupEffect(pickupClass, (int)id - 300);
+            return;
+        }
+
         if (PT2.save_file.HowMuchCanBeAdded((int)id, 1) > 0)
         {
             bool ignoreCutscene = apItem.Player.Name != _sessionContext.Session.Players.ActivePlayer.Name;
@@ -125,7 +139,7 @@ public class ItemHandler
 
                         LocationMapping.LocationMap[levelName][i].ItemInfo = itemInfo;
 
-                        string replacementId = itemInfo.ItemId.ToString();
+                        string replacementId = itemInfo.ItemId > 300 ? "22" : itemInfo.ItemId.ToString();
 
                         if (!string.Equals(itemInfo.ItemGame, "Phoenotopia: Awakening"))
                         {
@@ -136,11 +150,77 @@ public class ItemHandler
 
                         if (checks[i].OverrideType.Contains("%ItemId%"))
                             checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
+
+                        if (itemInfo.Player.Name != _sessionContext.Session.Players.ActivePlayer.Name ||
+                            replacementId != "22" || checks[i].OverrideType.StartsWith("id=22")) continue;
+
+                        var gisCmds = GetGisCmdsFromOverwriteType(checks[i]);
+
+                        if (gisCmds.IsNullOrEmpty())
+                        {
+                            GiveRinReplacementInstructionFailureWarning(checks[i].ArchipelagoId);
+                            continue;
+                        }
+
+                        string newGisCmd = GetRinPickupReplacementString(gisCmds, checks[i]);
+
+                        if (newGisCmd.IsNullOrEmpty())
+                        {
+                            GiveRinReplacementInstructionFailureWarning(checks[i].ArchipelagoId);
+                            continue;
+                        }
+
+                        checks[i].OverrideType = newGisCmd;
                     }
                 }
             },
             false,
             _sessionContext.Session.Locations.AllLocations.ToArray()
         );
+    }
+
+    private static string GetGisCmdsFromOverwriteType(Check check)
+    {
+        string[] overwriteData = check.OverrideType.Split(';');
+        string gisCmds = "";
+
+        foreach (string data in overwriteData)
+        {
+            if (!data.Contains("GIS=")) continue;
+            gisCmds = data.Split('=')[1];
+            break;
+        }
+
+        return gisCmds;
+    }
+
+    private static string GetRinPickupReplacementString(string gisCmds, Check check)
+    {
+        string[] instructions = gisCmds.Split('|');
+        string targetInstruction = "";
+        string identifier = "";
+
+        foreach (string instruction in instructions)
+        {
+            if (!instruction.Contains("SPAWN_loot")) continue;
+            targetInstruction = instruction;
+            string[] splitInstruction = targetInstruction.Split(',');
+            identifier = splitInstruction.Length >= 3 ? splitInstruction[2] : "";
+            break;
+        }
+
+        if (targetInstruction.IsNullOrEmpty() || identifier.IsNullOrEmpty()) return "";
+
+        identifier = identifier.Replace("loot_GIS_", "FILE_");
+        identifier = identifier.Replace("$", ",");
+
+        return check.OverrideType.Replace(targetInstruction,
+            $"SPAWN_pickup,P1_RAI,{check.ItemInfo.ItemId - 300}|{identifier},true");
+    }
+
+    private static void GiveRinReplacementInstructionFailureWarning(long apId)
+    {
+        PhoaAPClient.Logger.LogWarning(
+            $"An instruction replacement for rin was improperly handled at check {apId}. Please contact the developer");
     }
 }

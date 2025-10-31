@@ -104,6 +104,9 @@ internal sealed class APCheckLocationPatches
             if (!PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(checkedLocation.ArchipelagoId))
                 continue;
 
+            if (checkedLocation.OverrideType.Contains("SPAWN_pickup,P1_RAI"))
+                PhoaAPClient.APConnection.ItemHandler.SuppressedItemAddition.Add(checkedLocation.ItemInfo.ItemId);
+
             OnLocationGet(checkedLocation.ItemInfo);
 
             new Thread(() =>

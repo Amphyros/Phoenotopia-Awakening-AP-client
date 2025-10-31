@@ -217,20 +217,30 @@ internal sealed class APReplaceLootPatches
         var traverse = Traverse.Create(__instance);
         string GisCmd = traverse.Field<string>("_GIS_cmd").Value;
 
-        if (GisCmd.IsNullOrEmpty() || !GisCmd.Contains("loot_GIS_MARK_AP")) return;
+        if (GisCmd.IsNullOrEmpty() || (!GisCmd.Contains("loot_GIS_MARK_AP") && !GisCmd.Contains("FILE_MARK_AP")))
+            return;
 
         string[] instructionArray = GisCmd.Split('|');
         StringBuilder strippedInstructions = new StringBuilder();
+        List<string> extractedGisCmds = [];
         foreach (string instruction in instructionArray)
         {
             if (instruction.Contains("loot_GIS_MARK_AP"))
             {
-                _ExtractedPuzzleGisCmds.Add(instruction);
+                extractedGisCmds.Add(instruction);
+                continue;
+            }
+
+            if (instruction.Contains("SPAWN_pickup") || instruction.Contains("FILE_MARK_AP"))
+            {
+                extractedGisCmds.Add(instruction);
                 continue;
             }
 
             strippedInstructions.Append(instruction);
         }
+
+        _ExtractedPuzzleGisCmds.Add(string.Join("|", extractedGisCmds.ToArray()));
 
         traverse.Field<string>("_GIS_cmd").Value = strippedInstructions.ToString();
     }

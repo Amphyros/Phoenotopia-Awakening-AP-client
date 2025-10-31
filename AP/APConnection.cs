@@ -3,6 +3,7 @@ using System.Threading;
 using Archipelago.MultiClient.Net;
 using Archipelago.MultiClient.Net.Enums;
 using PhoA_AP_client.util;
+using WebSocketSharp;
 
 namespace PhoA_AP_client.AP;
 
@@ -13,6 +14,7 @@ public class APConnection(string host, int port, string slot, string password)
     public ItemHandler ItemHandler { get; private set; }
     private Thread _connectionThread;
     private bool _keepTrying;
+    public string Seed { get; private set; }
 
     public bool Connect()
     {
@@ -45,6 +47,8 @@ public class APConnection(string host, int port, string slot, string password)
             DeathLinkHandler = new DeathLinkHandler(SessionContext);
             ItemHandler = new ItemHandler(SessionContext);
 
+            SeedHandling();
+
             MainThreadDispatcher.RunOnMainThread(() =>
             {
                 PT2.sound_g.PlayGlobalCommonSfx(126, 1f, 1f, 2);
@@ -61,7 +65,7 @@ public class APConnection(string host, int port, string slot, string password)
 
         return false;
     }
-    
+
     private void ConnectAsync()
     {
         EndConnectionProcess();
@@ -86,6 +90,22 @@ public class APConnection(string host, int port, string slot, string password)
 
         _connectionThread.IsBackground = true;
         _connectionThread.Start();
+    }
+
+    private void SeedHandling()
+    {
+        if (Seed.IsNullOrEmpty())
+            Seed = SessionContext.Session.RoomState.Seed;
+
+        if (Seed == SessionContext.Session.RoomState.Seed) return;
+
+        PhoaAPClient.Logger.LogWarning("Connected to a different AP server. Please restart the game!");
+        MainThreadDispatcher.RunOnMainThread(() =>
+        {
+            PT2.sound_g.PlayGlobalCommonSfx(157, 1f, 1f, 2);
+            PT2.display_messages.DisplayMessage("You are connected to a different server. Please restart the game",
+                DisplayMessagesLogic.MSG_TYPE.GALE_MINUS_STATUS);
+        });
     }
 
     private void OnSocketClosed(string reason)
