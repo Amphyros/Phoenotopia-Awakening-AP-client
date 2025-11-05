@@ -106,6 +106,13 @@ internal sealed class APReplaceLootPatches
         return HandlePossibleAPReplacementForObject(ref reader);
     }
 
+    [HarmonyPatch(typeof(LevelBuildLogic), "_HandleNPC")]
+    [HarmonyPrefix]
+    private static bool HandleNPCPrefix(ref XmlReader reader)
+    {
+        return HandlePossibleAPReplacementForObject(ref reader);
+    }
+
     private static bool HandlePossibleAPReplacementForObject(ref XmlReader reader)
     {
         if (PhoaAPClient.APConnection.ItemHandler?.LocalAllLocations == null) return true;
@@ -124,11 +131,22 @@ internal sealed class APReplaceLootPatches
             if (check.ObjectId != objectId) continue;
 
             if (!PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(check.ArchipelagoId)) return true;
-            if (PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId))
-                return !check.IsKeyItem;
 
-            reader = ReplaceReader(reader, check.OverrideType);
-            return true;
+            bool isChecked =
+                PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId);
+            bool isNpc = check.OverrideType.Contains("speech=");
+
+            switch (isChecked)
+            {
+                case true when isNpc && check.IsKeyItem:
+                    PT2.GIS_ProcessInstructions($"FILE_MARK_SI,{check.GISIdentifier},true", Vector3.zero);
+                    return true;
+                case true:
+                    return !check.IsKeyItem;
+                default:
+                    reader = ReplaceReader(reader, check.OverrideType);
+                    return true;
+            }
         }
 
         return true;
@@ -142,7 +160,7 @@ internal sealed class APReplaceLootPatches
 
         foreach (Check check in checks)
         {
-            if (int.TryParse(check.ObjectId, out int number)) continue;
+            if (int.TryParse(check.ObjectId, out _)) continue;
 
             string[] identifierArray = check.ObjectId.Split('-');
             PT2.level_builder._GIS_PAK_instruction_map[int.Parse(identifierArray[0])] = check.OverrideType;

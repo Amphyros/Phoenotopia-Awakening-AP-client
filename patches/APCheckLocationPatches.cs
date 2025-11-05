@@ -79,8 +79,16 @@ internal sealed class APCheckLocationPatches
             string[] instructionParts = instruction.Split(',');
             string instructionType = instructionParts[0];
 
-            if (instructionType != "FILE_MARK_SI" && instructionType != "FILE_MARK_OC" &&
-                instructionType != "FILE_MARK_POC" && instructionType != "FILE_MARK_AP")
+            var validInstructionTypes = new HashSet<string>
+            {
+                "FILE_MARK_SI",
+                "FILE_MARK_OC",
+                "FILE_MARK_POC",
+                "POC_WRITE",
+                "FILE_MARK_AP",
+            };
+
+            if (!validInstructionTypes.Contains(instructionType))
                 continue;
 
             if (!APHelpers.IsConnectedToAP()) continue;

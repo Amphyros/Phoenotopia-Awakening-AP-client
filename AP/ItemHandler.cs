@@ -76,7 +76,8 @@ public class ItemHandler
 
         if (PT2.save_file.HowMuchCanBeAdded((int)id, 1) > 0)
         {
-            bool ignoreCutscene = apItem.Player.Name != _sessionContext.Session.Players.ActivePlayer.Name;
+            bool ignoreCutscene = apItem.Player.Name != _sessionContext.Session.Players.ActivePlayer.Name ||
+                                  PT2.director.is_directing;
             PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
 
             if (ignoreCutscene) ApplyHealthOrStaminaUpgrade(id);

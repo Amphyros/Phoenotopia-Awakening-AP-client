@@ -49,6 +49,14 @@ public class LocationMapping
                 GISIdentifier = "P1_PV_dandy2",
                 OverrideType = "id=%ItemId%;ql=OC_ABSENT,P1_PV_dandy2;collected_GIS=FILE_MARK_OC,P1_PV_dandy2;gravity=0",
             },
+            new Check
+            {
+                ArchipelagoId = 7676069,
+                ObjectId = "73",
+                IsKeyItem = false,
+                GISIdentifier = "clem_gave_potato",
+                OverrideType = "name=clem;profile=digger;voice=man,1;speech=CLEM_CUSTOM;behavior=action_only",
+            }
         },
         ["p1_panselo_perro_coop"] = new List<Check>
         {
@@ -81,7 +89,6 @@ public class LocationMapping
             },
             new Check
             {
-                // ***
                 ArchipelagoId = 7676061,
                 ObjectId = "22",
                 IsKeyItem = true,
@@ -102,7 +109,6 @@ public class LocationMapping
         },
         ["p1_panselo_house_01_boys"] = new List<Check>
         {
-            // ***
             new Check
             {
                 ArchipelagoId = 7676058,
@@ -114,7 +120,6 @@ public class LocationMapping
         },
         ["p1_panselo_house_01_attic"] = new List<Check>
         {
-            // ***
             new Check
             {
                 ArchipelagoId = 7676060,
@@ -126,7 +131,6 @@ public class LocationMapping
         },
         ["p1_panselo_house_01_hall"] = new List<Check>
         {
-            // ***
             new Check
             {
                 ArchipelagoId = 7676059,
@@ -136,9 +140,30 @@ public class LocationMapping
                 OverrideType = "type=P1_WOOD_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$PANSELO_MONEY_7;ql=SI_FALSE,PANSELO_MONEY_7",
             },
         },
+        ["p1_panselo_house_01"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676068,
+                ObjectId = "31",
+                IsKeyItem = true,
+                GISIdentifier = "NANA_MUFFIN",
+                OverrideType = "all_bright;name=nana;voice=woman,0.94;profile=nana;behavior=action_talk;spacing=left,0.5;sort=fg_tiles,4;speech=NANA_CUSTOM,NANA",
+            },
+        },
+        ["p1_panselo_shop"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676070,
+                ObjectId = "51",
+                IsKeyItem = true,
+                GISIdentifier = "TAO_PRESENT",
+                OverrideType = "profile=tao;name=merchant;voice=man,1.02;speech=TAO,TAO_CUSTOM;behavior=stand",
+            },
+        },
         ["p1_panselo_warehouse"] = new List<Check>
         {
-            // ***
             new Check
             {
                 ArchipelagoId = 7676062,
@@ -265,10 +290,18 @@ public class LocationMapping
             new Check
             {
                 ArchipelagoId = 7676008,
-                ObjectId = "4-Alex gives slingshot",
+                ObjectId = "130",
                 IsKeyItem = true,
                 GISIdentifier = "AP_DOKI_ALEX_GIFT",
-                OverrideType = "FILE_MARK_AP,AP_DOKI_ALEX_GIFT",
+                OverrideType = "name=alex2;face_right;spacing=left,0.5;voice=man,1.1;profile=alex;behavior=action_only;speech=ALEX_GIVES_SLINGSHOT_CUSTOM",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676071,
+                ObjectId = "123",
+                IsKeyItem = false,
+                GISIdentifier = "seth_liz",
+                OverrideType = "name=seth;face_right;voice=man,1.15;profile=seth;behavior=stand;speech=SETH_FOREST_CUSTOM,SETH_FOREST",
             },
         },
         ["p1_anuri_temple_01"] = new List<Check>
