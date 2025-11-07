@@ -42,18 +42,6 @@ public class PhoaAPClient : BaseUnityPlugin
         _harmony.PatchAll();
     }
 
-    private void Start()
-    {
-        APScriptAdditions.AddCustomScriptLines();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-        }
-    }
-
     private void OnDestroy()
     {
         APConnection.Disconnect();

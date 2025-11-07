@@ -152,8 +152,15 @@ public class ItemHandler
                         if (checks[i].OverrideType.Contains("%ItemId%"))
                             checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
 
-                        if (itemInfo.Player.Name != _sessionContext.Session.Players.ActivePlayer.Name ||
-                            replacementId != "22" || checks[i].OverrideType.StartsWith("id=22")) continue;
+                        bool isFromThisWorld =
+                            itemInfo.Player.Name == _sessionContext.Session.Players.ActivePlayer.Name;
+                        bool isNpc = checks[i].OverrideType.Contains("speech=");
+                        bool isStandaloneItem = checks[i].OverrideType.StartsWith("id=22");
+
+                        APScriptAdditions.ReplacePossibleScriptLines(checks[i], isFromThisWorld);
+
+                        if (!isFromThisWorld || replacementId != "22" || isNpc || isStandaloneItem)
+                            continue;
 
                         var gisCmds = GetGisCmdsFromOverwriteType(checks[i]);
 
@@ -174,6 +181,8 @@ public class ItemHandler
                         checks[i].OverrideType = newGisCmd;
                     }
                 }
+
+                APScriptAdditions.AddCustomScriptLines();
             },
             false,
             _sessionContext.Session.Locations.AllLocations.ToArray()

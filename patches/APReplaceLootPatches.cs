@@ -134,7 +134,7 @@ internal sealed class APReplaceLootPatches
 
             bool isChecked =
                 PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId);
-            bool isNpc = check.OverrideType.Contains("speech=");
+            bool isNpc = check.OverrideType.Contains("voice=") && check.OverrideType.Contains("speech=");
 
             switch (isChecked)
             {

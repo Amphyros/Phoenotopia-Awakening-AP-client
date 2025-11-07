@@ -36,6 +36,24 @@ internal static class APScriptAdditions
             "GO,%NextIndex%;OWNER,alex||||<i><size=-10><color=#898989><*name_op>- Alex - <*name_ed></color></size></i><*stop=0.15>\nHere, you try it!",
             "GIS,FILE_MARK_AP,AP_DOKI_ALEX_GIFT||||",
         ],
+        ["MERCHANT_TAO_EGG_CUSTOM"] =
+        [
+            "OWNER,merchant;GO,%NextIndex%;FLIP_NPC,merchant,left||||<i><size=-10><color=#898989><*name_op>- Tao - <*name_ed></color></size></i><*stop=0.15>\nA newly laid <#00ffff>%APPlayer%%APItem%</color> from our village coop!",
+            "CHOICE,MERCHANT_TAO_REJECTED,%NextIndex%;GIS,money_show,P1_RAI||||Buy %APPlayer%%APItem% for 5 R?||No||Yes",
+            "OWNER,merchant;JUMP_TO,MERCHANT_TAO_NOCOIN,IF_FALSE|MONEY_HAVE,P1_RAI,5;GIS,money_adjust,P1_RAI,-5|FILE_MARK_AP,PANSELO_SHOP_EGG|recycle,shop_1;GO,312||||<i><size=-10><color=#898989><*name_op>- Tao - <*name_ed></color></size></i><*stop=0.15>\nEnjoy! <*_>By the way, you're also free to pick eggs from the village coop!",
+        ],
+        ["MERCHANT_TAO_MILK_CUSTOM"] =
+        [
+            "OWNER,merchant;GO,%NextIndex%;FLIP_NPC,merchant,left||||<i><size=-10><color=#898989><*name_op>- Tao - <*name_ed></color></size></i><*stop=0.15>\nFresh pooki <#00ffff>%APPlayer%%APItem%</color>. <*_>Direct from udder to bottle!",
+            "CHOICE,MERCHANT_TAO_REJECTED,%NextIndex%;GIS,money_show,P1_RAI||||Buy %APPlayer%%APItem% for 10 R?||No||Yes",
+            "OWNER,merchant;JUMP_TO,MERCHANT_TAO_NOCOIN,IF_FALSE|MONEY_HAVE,P1_RAI,10;GIS,money_adjust,P1_RAI,-10|FILE_MARK_AP,PANSELO_SHOP_MILK|recycle,shop_2||||<i><size=-10><color=#898989><*name_op>- Tao - <*name_ed></color></size></i><*stop=0.15>\nEnjoy!",
+        ],
+        ["MERCHANT_TAO_POTATO_CUSTOM"] =
+        [
+            "OWNER,merchant;GO,%NextIndex%;FLIP_NPC,merchant,left||||<i><size=-10><color=#898989><*name_op>- Tao - <*name_ed></color></size></i><*stop=0.15>\nOur village's big <#00ffff>%APPlayer%%APItem%</color>. <*_>These babies put us on the map!<*_> Or so I hear...",
+            "CHOICE,MERCHANT_TAO_REJECTED,%NextIndex%;GIS,money_show,P1_RAI||||Buy a %APPlayer%%APItem% for 13 R?||No||Yes",
+            "OWNER,merchant;JUMP_TO,MERCHANT_TAO_NOCOIN,IF_FALSE|MONEY_HAVE,P1_RAI,13;GIS,money_adjust,P1_RAI,-13|FILE_MARK_AP,PANSELO_SHOP_POTATO|recycle,shop_3||||<i><size=-10><color=#898989><*name_op>- Tao - <*name_ed></color></size></i><*stop=0.15>\nEnjoy! <*_>I recommend cooking it to really improve the flavor!",
+        ]
     };
 
     public static void AddCustomScriptLines()
@@ -56,5 +74,23 @@ internal static class APScriptAdditions
         }
 
         DB.lines = lines.ToArray();
+    }
+
+    public static void ReplacePossibleScriptLines(Check check, bool isFromThisWorld = false)
+    {
+        string matchKey = CustomLines
+            .Where(customLine => check.OverrideType.Contains(customLine.Key))
+            .Select(customLine => customLine.Key)
+            .FirstOrDefault();
+
+        if (matchKey == null) return;
+
+        string apPlayer = isFromThisWorld ? "" : $"{check.ItemInfo.Player.Name}'s ";
+
+        for (int i = 0; i < CustomLines[matchKey].Count; i++)
+        {
+            CustomLines[matchKey][i] = CustomLines[matchKey][i].Replace("%APPlayer%", apPlayer);
+            CustomLines[matchKey][i] = CustomLines[matchKey][i].Replace("%APItem%", $"{check.ItemInfo.ItemName}");
+        }
     }
 }

@@ -161,6 +161,30 @@ public class LocationMapping
                 GISIdentifier = "TAO_PRESENT",
                 OverrideType = "profile=tao;name=merchant;voice=man,1.02;speech=TAO,TAO_CUSTOM;behavior=stand",
             },
+            new Check
+            {
+                ArchipelagoId = 7676072,
+                ObjectId = "50",
+                IsKeyItem = false,
+                GISIdentifier = "PANSELO_SHOP_EGG",
+                OverrideType = "profile=item,%ItemId%;name=shop_1;speech=MERCHANT_TAO_EGG_CUSTOM",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676073,
+                ObjectId = "48",
+                IsKeyItem = false,
+                GISIdentifier = "PANSELO_SHOP_MILK",
+                OverrideType = "profile=item,%ItemId%;name=shop_2;speech=MERCHANT_TAO_MILK_CUSTOM",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676074,
+                ObjectId = "52",
+                IsKeyItem = false,
+                GISIdentifier = "PANSELO_SHOP_POTATO",
+                OverrideType = "profile=item,%ItemId%;name=shop_3;speech=MERCHANT_TAO_POTATO_CUSTOM",
+            },
         },
         ["p1_panselo_warehouse"] = new List<Check>
         {
