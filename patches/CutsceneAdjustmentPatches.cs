@@ -16,6 +16,18 @@ public class CutsceneAdjustmentPatches
     [HarmonyPrefix]
     private static bool HandleTriggerPrefix(XmlReader reader)
     {
+        return RemoveLevelObjects(reader);
+    }
+
+    [HarmonyPatch(typeof(LevelBuildLogic), "_HandlePuzzleObject")]
+    [HarmonyPrefix] // This is a temporary addition to remove the twigs above century toad
+    private static bool HandlePuzzleObjectPrefix(XmlReader reader)
+    {
+        return RemoveLevelObjects(reader);
+    }
+
+    private static bool RemoveLevelObjects(XmlReader reader)
+    {
         string activeLevelName = LevelBuildLogic.level_name;
 
         if (!TriggerMapping.TriggerMap.TryGetValue(activeLevelName, out List<int> triggers)) return true;

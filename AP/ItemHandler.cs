@@ -74,28 +74,32 @@ public class ItemHandler
             return;
         }
 
+        // TODO: Implement functionality to handle quantity. For now, only one item (fruit jam) adds more than 1
+        int quantity = apItem.ItemId == 57 ? 3 : 1;
+
         if (PT2.save_file.HowMuchCanBeAdded((int)id, 1) > 0)
         {
             bool ignoreCutscene = apItem.Player.Name != _sessionContext.Session.Players.ActivePlayer.Name ||
                                   PT2.director.is_directing;
-            PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, 1, ignoreCutscene);
+            PT2.save_file.AddItemToolOrStatusIdToInventory((int)id, quantity, ignoreCutscene);
 
-            if (ignoreCutscene) ApplyHealthOrStaminaUpgrade(id);
+            if (ignoreCutscene) ApplyStatusUpgrade(id);
             return;
         }
 
         MainThreadDispatcher.EnqueueNonMapLevelAction(() =>
         {
-            PT2.item_gen.SpawnLoot((int)id, 1, PT2.gale_script.GetTransform().position, "", Vector2.zero);
+            PT2.item_gen.SpawnLoot((int)id, quantity, PT2.gale_script.GetTransform().position, "", Vector2.zero);
         });
     }
 
-    private void ApplyHealthOrStaminaUpgrade(long id)
+    private void ApplyStatusUpgrade(long id)
     {
         string gisCommand = id switch
         {
             3 => "apply_upgrade,HEALTH_UPGRADE|FILE_INTEGER_ADD,2,1",
             4 => "apply_upgrade,STAMINA_UPGRADE|FILE_INTEGER_ADD,3,1",
+            14 => "enable_gale_abilities",
             _ => ""
         };
         MainThreadDispatcher.RunOnMainThread(() =>

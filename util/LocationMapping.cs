@@ -407,7 +407,7 @@ public class LocationMapping
             {
                 ArchipelagoId = 7676064,
                 ObjectId = "14",
-                IsKeyItem = false,
+                IsKeyItem = true,
                 GISIdentifier = "REGEN_BONE_RIN_1",
                 OverrideType = "type=P1_ANURI_CORPSE;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_BONE_RIN_1;ql=SI_FALSE,REGEN_BONE_RIN_1",
             } 
@@ -453,7 +453,7 @@ public class LocationMapping
             {
                 ArchipelagoId = 7676065,
                 ObjectId = "74",
-                IsKeyItem = false,
+                IsKeyItem = true,
                 GISIdentifier = "REGEN_BONE_RIN_2", 
                 OverrideType = "type=P1_ANURI_CORPSE;face_right;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_BONE_RIN_2;ql=SI_FALSE,REGEN_BONE_RIN_2",
             },
@@ -610,6 +610,14 @@ public class LocationMapping
         },
         ["p1_anuri_temple_01d"] = new List<Check>
         {
+            new Check
+            {
+                ArchipelagoId = 7676075,
+                ObjectId = "132",
+                IsKeyItem = true,
+                GISIdentifier = "ANURI_TEMPLE_GOLEM_HEAD",
+                OverrideType = "id=%ItemId%;collected_GIS=FILE_MARK_AP,ANURI_TEMPLE_GOLEM_HEAD",
+            },
             new Check
             {
                 ArchipelagoId = 7676025,

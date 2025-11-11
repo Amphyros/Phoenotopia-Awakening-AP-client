@@ -123,9 +123,6 @@ internal sealed class APReplaceLootPatches
 
         string objectId = reader.GetAttribute("id");
 
-        // Remove Bart's head to prevent story progression
-        if (activeLevelName.ToLower() == "p1_anuri_temple_01d" && objectId == "132") return false;
-
         foreach (Check check in checks)
         {
             if (check.ObjectId != objectId) continue;
@@ -134,11 +131,13 @@ internal sealed class APReplaceLootPatches
 
             bool isChecked =
                 PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId);
-            bool isNpc = check.OverrideType.Contains("voice=") && check.OverrideType.Contains("speech=");
+            bool isNpcOrStateDependentCheck =
+                (check.OverrideType.Contains("voice=") && check.OverrideType.Contains("speech=")) ||
+                check.OverrideType.Contains("profile=WEAK_ROCK");
 
             switch (isChecked)
             {
-                case true when isNpc && check.IsKeyItem:
+                case true when isNpcOrStateDependentCheck && check.IsKeyItem:
                     PT2.GIS_ProcessInstructions($"FILE_MARK_SI,{check.GISIdentifier},true", Vector3.zero);
                     return true;
                 case true:
