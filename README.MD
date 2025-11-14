@@ -6,8 +6,6 @@ Archipelago is a Multiworld Randomizer framework that enables different games to
 
 Note: currently, only the first few checks of the game are randomized. Sunflower Road and anything beyond that is considered out of bounds. As this project expands, more checks will be added.
 
-## Installation guide
-
 ## Installing the Archipelago Mod
 
 1. Download [BepInEx](https://docs.bepinex.dev/articles/user_guide/installation/index.html) and follow the installation guide. Be sure to download the **32bit (86x)** version, **even if you're running a 64bit operating system**.
