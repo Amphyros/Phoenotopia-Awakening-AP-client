@@ -217,9 +217,15 @@ public class ItemHandler
         foreach (string instruction in instructions)
         {
             if (!instruction.Contains("SPAWN_loot")) continue;
+
             targetInstruction = instruction;
-            string[] splitInstruction = targetInstruction.Split(',');
-            identifier = splitInstruction.Length >= 3 ? splitInstruction[2] : "";
+            List<string> splitInstruction = instruction.Split(',').ToList();
+
+            // Edge case handler for destructable rigid objects
+            if (splitInstruction.Count < 3) return "";
+            if (splitInstruction[2].Contains("pos")) splitInstruction.RemoveAt(2);
+
+            identifier = splitInstruction.Count >= 3 ? splitInstruction[2] : "";
             break;
         }
 
