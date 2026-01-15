@@ -53,7 +53,26 @@ internal static class APScriptAdditions
             "OWNER,merchant;GO,%NextIndex%;FLIP_NPC,merchant,left||||<i><size=-10><color=#898989><*name_op>- Tao - <*name_ed></color></size></i><*stop=0.15>\nOur village's big <#00ffff>%APPlayer%%APItem%</color>. <*_>These babies put us on the map!<*_> Or so I hear...",
             "CHOICE,MERCHANT_TAO_REJECTED,%NextIndex%;GIS,money_show,P1_RAI||||Buy a %APPlayer%%APItem% for 13 R?||No||Yes",
             "OWNER,merchant;JUMP_TO,MERCHANT_TAO_NOCOIN,IF_FALSE|MONEY_HAVE,P1_RAI,13;GIS,money_adjust,P1_RAI,-13|FILE_MARK_AP,PANSELO_SHOP_POTATO|recycle,shop_3||||<i><size=-10><color=#898989><*name_op>- Tao - <*name_ed></color></size></i><*stop=0.15>\nEnjoy! <*_>I recommend cooking it to really improve the flavor!",
-        ]
+        ],
+        ["SHELBY_FOREST_CUSTOM"] =
+        [
+            "JUMP_TO,SHELBY_FOREST+8,IF_TRUE|OC_PRESENT,cooked_in_p1_duri_forest_05&OC_PRESENT,shelby_gave_herb;JUMP_TO,%NextIndex%,IF_TRUE|OC_PRESENT,p1_duri_forest_05_fire_lit;GO,477;GIS,zoom_camera,lvl$1||||<i><size=-10><color=#898989><*name_op>- Shelby - <*name_ed></color></size></i><*stop=0.15>\nElla got tired,<*_> so we're taking a break.",
+            "GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Shelby - <*name_ed></color></size></i><*stop=0.15>\nThanks for lighting the fire! <*_>Now we can cook something!",
+            "GO,%NextIndex%;ALT_BINDING||||<i><size=-10><color=#898989><*name_op>- Shelby - <*name_ed></color></size></i><*stop=0.15>\nEquip a <#00ffff>raw item</color> and <#00ffff>examine</color> the fire with <sprite=0> to begin the cooking process!",
+            "JUMP_AT_END,%NextIndex%,IF_TRUE|OC_ABSENT,shelby_gave_herb||||<i><size=-10><color=#898989><*name_op>- Shelby - <*name_ed></color></size></i><*stop=0.15>\nAll you have to do is press the appropriate button when it hovers over the center panel. <*_>That's it!",
+            "GIS,FILE_MARK_OC,shelby_gave_herb|FILE_ERASE_OC,cooked_in_p1_duri_forest_05||||<i><size=-10><color=#898989><*name_op>- Shelby - <*name_ed></color></size></i><*stop=0.15>\nHere are some cookable herbs for you to try.<*_> I'd do it myself, but I'm afraid I'll mess up!",
+        ],
+        ["KITER_CUSTOM"] =
+        [
+            "JUMP_TO,KITER_1,IF_FALSE|OC_PRESENT,talked_kiter;CHOICE,KITER_2,KITER_CUSTOM+1,KITER_CUSTOM+4;OWNER,gale||||...||About the kids...||I'm hungry!||How's the stew coming?",
+            "OWNER,kiter;GOIF_FAST,255|SI_TRUE,GOT_KITER_LEFTOVERS;GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Kitt - <*name_ed></color></size></i><*stop=0.15>\nThe stew's not ready... <*_>But there are some leftovers from lunch!",
+            "OWNER,kiter;GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Kitt - <*name_ed></color></size></i><*stop=0.15>\nTake it. <*_>You owe me for this!",
+            "GIS,FILE_MARK_SI,GOT_KITER_LEFTOVERS,true||||",
+            "OWNER,kiter;JUMP_TO,KITER_4+4,IF_TRUE|SI_TRUE,HELPED_KITER;JUMP_TO,%NextIndex%,IF_TRUE|ITEM_HAVE,int_list(67)||||<i><size=-10><color=#898989><*name_op>- Kitt - <*name_ed></color></size></i><*stop=0.15>\nI've gone overboard with the spices.<*_> Can you get <#00ffff>something</color> from the store to tone it down?",
+            "OWNER,kiter;GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Kitt - <*name_ed></color></size></i><*stop=0.15>\nI've gone overboard with the spices.<*_> But that milk you brought should do the trick!",
+            "OWNER,kiter;GO,%NextIndex%;GIS,ITEM_remove,67,1||||<i><size=-10><color=#898989><*name_op>- Kitt - <*name_ed></color></size></i><*stop=0.15>\nI'll take that!",
+            "OWNER,kiter;GIS,FILE_MARK_SI,HELPED_KITER,true||||<i><size=-10><color=#898989><*name_op>- Kitt - <*name_ed></color></size></i><*stop=0.15>\nHere, this should about cover it right?",
+        ],
     };
 
     public static void AddCustomScriptLines()
