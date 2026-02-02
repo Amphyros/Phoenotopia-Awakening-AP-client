@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace PhoA_AP_client.util;
 
@@ -7,6 +8,27 @@ internal static class APScriptAdditions
 {
     private static readonly Dictionary<string, List<string>> CustomLines = new()
     {
+        ["TIMEWARP_PANSELO"] =
+        [
+            "GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nIf you wish to go to a certain point in time, you need only ask.",
+            "CHOICE,TIMEWARP_PANSELO+2,TIMEWARP_PANSELO+3,TIMEWARP_PANSELO+4,TIMEWARP_PANSELO+5,CLOSE_ALL;OWNER,gale||||...||Before the abduction||After the abduction||After returning home with Lisa||After hearing Leo's story||Never mind",
+            "OWNER,zophiel;GO,RELOAD_GAME||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 1 was chosen. <*_>Your wish shall be granted.",
+            "OWNER,zophiel;GO,RELOAD_GAME+1||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 2 was chosen. <*_>Your wish shall be granted.",
+            "OWNER,zophiel;GO,RELOAD_GAME+2||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 3 was chosen. <*_>Your wish shall be granted.",
+            "OWNER,zophiel;GO,RELOAD_GAME+3||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 4 was chosen. <*_>Your wish shall be granted.",
+        ],
+        ["RELOAD_GAME"] = 
+        [
+            "GIS,TIME_WARP_RELOAD,1,p1_panselo_village_01||||",
+            "GIS,TIME_WARP_RELOAD,2,p1_panselo_village_01||||",
+            "GIS,TIME_WARP_RELOAD,3,p1_panselo_village_01||||",
+            "GIS,TIME_WARP_RELOAD,4,p1_panselo_village_01||||",
+        ],
+        ["TIMEWARP_NOT_AVAILABLE"] = 
+        [
+            "OWNER,zophiel;GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nThough<*_>, time has yet to pass.",
+            "OWNER,zophiel||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nPlease come back once time has passed and the world has changed."
+        ],
         ["NANA_CUSTOM"] =
         [
             "JUMP_TO,NANA+6,IF_TRUE|SI_TRUE,NANA_MUFFIN;GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Nana - <*name_ed></color></size></i><*stop=0.15>\nI've baked muffins for tonight's dessert.",

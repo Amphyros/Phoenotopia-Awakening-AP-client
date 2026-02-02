@@ -41,4 +41,8 @@
     <EmbeddedResource Include="assets/apSpriteUseful.png"/>
     <EmbeddedResource Include="assets/apSpriteFiller.png"/>
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="assets\customlevels\*.xml"/>
+  </ItemGroup>
 </Project>

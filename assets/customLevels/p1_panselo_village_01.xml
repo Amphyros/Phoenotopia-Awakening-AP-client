@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="128" height="32" tilewidth="16" tileheight="16" infinite="0" nextobjectid="333">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="16384" columns="128">
+  <image source="../../Textures/tiles.PNG" width="2048" height="2048"/>
+ </tileset>
+ <layer name="back" width="128" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztl0tuGzEMhgVkk3WBnqHwA0WTeCYFuvElmgP0JDxEcobED6Cbdj+XSLa9Sskx5dCqBMsDQZPU/wf8GHkeGlocUqRzAAAAAAAAAAAAAAAAAEAemxvntjsRj2lse0BdZgvn5jsRj2lse0A9Juz39c2hJvgGzoYV+38aaAX/nxWfF4cC5wX8f97MGq79GkcsGdPY9rx3cvqpt9RzbRq33HLcP16xLZX8v///jargOlzwvJdNfywyXy5aS9NAjVZ3s8/F98tP167jcVfjnb7n3KqG9J6x3kX1z/rWWFutpSm0J6yvp5HvZMy6W+OfRLX8X4JY76KiUDXWVuxZJ/op3V97rSI2rivZGEPiX+OwWv5/S6TySG7OCJ839RRJPRWbW+9xvuaqmav+fNnJYvzfnTLXx2+9qJx1xwn7lVMVksojufEYPm/iScYUm1vv8Tm3eK76fuvc3W38Wsz/vP93rNR+Go2He/b9w050r9/AE/8Xr2M2Pg7sNVN+lZjKuS+Gicd93J5ik41573+up3r/+97KzL/3v6z7xlwv1X89t869tOnr4v8f/G6RjH38J/bTXupXewzP0aR91TEbS/t/6H2CjVnvtwXn4t+ZPYR/XmIojH8936mWGvPyHj8m/RaWpfbfZ479l0T8Cz4HeM3bXrZOcXY8e/WtM0cXnDvQsfUv7f+h+V+YtWYNWPybfrHvf37N84d5PhzT3Pw28x+8y45T7/hwVak3N/Wg3aNqvPt/Z56RFwEAAAAAAPD8BaBoXN4=
+  </data>
+ </layer>
+ <layer name="back" width="128" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztmE9y0zAYxXWIUliya1wHt7S2CxQYNiy4RU/B+jsEQ7tkhx3ShuESDIeAozA82VEsC1txHTvu4v1m3vhP9O/T+6R4pBQhhBBCCCGEEEIIIYQQQkg3bs8LydTjIITsj2epUlGqJCqvhfBOph4X2Q8Z/M6hBTS7mHo0ZAoC+H48kfd3yLtVOk3fZHoi5N0J953ReR+rL5DYsn/n9/9whLFS81ISxs1z2qXMkGz1Py40+jhcogTfnsm+ex2PIG58J0usryXixFXayow5rp/nde9d/4ckQ6w5tOipsediTPIGb81aX3rWez5yzH9Olfy2hOcN35Lh9389D8c95ZsLvXb65tW+8muVVO2vWva2LmWGZIv/74be/7X/i77yeLVLXnXJrz64Zyi3Z9X/Gu5l/VtNvjJDnL98vKi3sc1/637nvm2yF5hvR3hX9BEi9nkpMVe8EzsXmrxaYfx3UIQYTqw4vqfqat2Oblvc8nbZ2hhbYv7xqlm+OhrtrVlP2tv7lkHbG+3CX6t+1/2/IVc354KuFwevlXpUSnAvGO9Tdwyzl1jDjvBOTL/LuNLRWZl/c0u++OCp9rYWh2nLzWO3rEH7OGtZb23+mzrGn20+/Xqj5BDz9xh6khbPXoK00hB5oPH5H+oz37iQhPfYez7B+4NLeH9Z3DfWy+B37ihb+6/7nTvS/X99XvnYlSCptVfEEXSYN+1j0HL+1Oa/qTMr/blqq2/48FbJZ5S5hm7S4tkfS/q/dsXnPyGEEEIIIeRh8g+UJjrp
+  </data>
+ </layer>
+ <layer name="back" width="128" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt2G1Og0AQgOE5g6fQaGkKltgf3sVfnmPu06BewLt4FHf4aCcLLMQEatr3SSZL6TCuu2xpVwQAAAAAAAAAAAAAgGGfe1F3jBuyKUW2pWgW2qw5tnN66X4BWMZ7LvKds8aXlIVnajbxLJ2TswSb/9eC+V/Lsei91ot0pGXzf02qog61Y7+m/Pm1bJrvUerDvk9Zvz6Kun+jOWv18drm/7/ZHUTyJjQc619zlrLG/A/d44kQH6m1MKOuTEVcfzPjmrn9M8x/I9pX0Kgdu2ZyrAdqndqvUt5C/Fj4vxO3qb6mrruG/ZHU/B/3ybU3+t5AbryvoF1rdSr3+8M/p6uB3yXHl3C+7NVV37Y1T7WsTpt72tdI7W9Uee+1ptoUX2ssf07OUpZc/3e7JsY87M9h6jX+XIf6efLr/zF8Tj4dzjXuQ24cdt7GtKvVjWl4rxex+F6N75c594///7fueWT58XhM5XRjGAcAAACA2/ILc7ip8w==
+  </data>
+ </layer>
+ <layer name="back" width="128" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt1s1OwkAQwPFJjKJXzx57MGox9Ltvtxcl+igCGooHH89pu8bSNnQ5QNH8f8mEpQzbyc42WxEAAAAAAAAAAAAAAAAAAA7vKh67AvxHZ6HIJBbD/sIpm2Vixq5hX/pMmbFraPLT06pniPZcwqwer3f0P/iDe2MMi0RkmQznBamut+YVGh+tc2F9oD107uk55LXupb3fZMP/Lej/TmUP33QdFxrLxnq+2/Eq2+5rkXbn2CRiPh32TjVfWIUZTJS67xcaTxpzr/u7y1z73O/Yfs6Aif3se8+6jOvrmlOOzfVM5D6tohyb20ikL3ztx6PGtNWX15vt76tAzF2u82k85L/Xp3bs5+Ik6tkXffyoCuOSW/b92fa+2X8/6c6l18xXPJzjVuVxzG29L7xfAwAAAKP5Bk7CO/I=
+  </data>
+ </layer>
+ <layer name="back" width="128" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt101OhDAUwPFnZqFuXc0ZnI0MgbLwIB7nZQ6jiRMTjRfwGONiPIstCIOVT5kPhvx/yUtTeJSWpgVEAAAAAAAAAAAAupuFojYAAACAg+F7E1N1EYlcRlnZZGXXwHVLzrlx69qNy/1TrsLdsXKJaXqN09BT92Ms8n3gKpreOq9yZ9LQIW3MfvaO/fTo+MKkue9BUuSNTnnPzvl1NHtvmf+3pMhLBcGBO3QCm3uRzyzUD3tO+7wn1gP3k7Gb0vw/m255Xd4TC5NGY86+Pc5FnubHvOP/5v8m+BVaCr+u9htE3TXuW8TPqWlXvbalpv3i/EucXX9r97RFUp2Tl23WpuhL7f38Yy3jKI/Hf2Z9n7v60a+Fv9z8f8RDW9nZmjT0YSniwtW/Ko65+rbjesX52SzrAwAAAOP3DQ8CYtU=
+  </data>
+ </layer>
+ <layer name="front" width="128" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlltywyAMRbUDcLOROJtJ89eZJvtgCV5d0/51KZUpMgJjHE/iSdrcM3MHDEIPRB9EAAAAAAAAAAAAAAAAAAAAAAAAAADg2Ti25N7H6tcBAP+c/ZbolXXIxOvu3rmB9Tlzrz9ZX5nO6P/TsOe/9QfWR/vbcxkBAAAAAMDfYbMjetmR49HpkeX3gtyR/88/tfTWn+Hxm7/9+iazrfmSec1+E/drfoZRbCd8X5pXyW7kt+Z7SawZ25vUUzg3+NM0/N2xDO/3yuauCfNep61/B8Rjb+Ml5xtla8M87PnRBhuj9sI8WRdfNj2XxDIxHtnoy88lZ6tsSnFsaufzlBhqz8m61CX3IucKOeu9IbaJd+HtxJe6D2dTW1L1D747dSfiX9Z0nfouJLac0xiVh85Jv4F8LTsz3JmqJ+l35nfombofJ/mbWEsifTcFlXKbizNVN+U5VM7V9kb5ZH61TbHmvLau7j9Z0+/Bxm//Dqb6n9dW6/sVmvM7dQ813TL3JW+sKvl9VerVgviLYk78vCY+L+n/GrLr9f+qPq3RhweL+xD9V7mg/3fs/w/5D9jb
+  </data>
+ </layer>
+ <layer name="_marks" width="128" height="32" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt0rEKwCAQRMEzZRr//29TpLUycktgDgbr5TmqagAAAAAAALDUfem96I/+6E//pfeiP/qjP/2X3ov+6I/+9F96L/v97+t954ePk97Lfv8Tl96L/gDA/zy9hQ5d
+  </data>
+ </layer>
+ <objectgroup name="meta" visible="0">
+  <object id="1" name="level_art" type="ql=SI_FALSE,NIGHT" x="256" y="16" width="48" height="48">
+   <properties>
+    <property name="bg_x" value="graphic=p1_panselo_bg_02;add_x=0;add_y=0.48;scroll_x=.008"/>
+    <property name="bg_y" value="graphic=p1_panselo_bg_clouds;add_x=0;add_y=-0.03;scroll_x=.008;auto_scroll_x=0.012"/>
+    <property name="bg_z" value="graphic=p1_panselo_bg_01;add_x=0;add_y=0.5;scroll_x=0.012"/>
+   </properties>
+  </object>
+  <object id="2" name="music" x="688" y="16" width="48" height="48">
+   <properties>
+    <property name="1" value="ql=SI_TRUE,PLAY_FELLOWSHIP&amp;SI_TRUE,FELLOWSHIP_SILENT;night_ambience,vol=1;fellowship_relaxed,vol=0"/>
+    <property name="2" value="ql=SI_TRUE,PLAY_FELLOWSHIP;night_ambience,vol=1;fellowship_relaxed,vol=1"/>
+    <property name="3" value="ql=SI_TRUE,NIGHT;night_ambience,vol=1"/>
+    <property name="4" value="ql=SI_TRUE,CH_1_OVER&amp;SI_FALSE,BIRDY_CAUGHT;p1_panselo_sad"/>
+    <property name="6" value="p1_panselo,vol=1"/>
+   </properties>
+  </object>
+  <object id="3" name="config" type="id=0" x="128" y="80" width="1888" height="368"/>
+  <object id="4" name="level_art" type="ql=SI_TRUE,NIGHT" x="320" y="16" width="48" height="48">
+   <properties>
+    <property name="bg_x" value="graphic=p1_panselo_bg_night_02;add_x=0;add_y=0.48;scroll_x=.008"/>
+    <property name="bg_z" value="graphic=p1_panselo_bg_night_01;add_x=0;add_y=0.5;scroll_x=0.012"/>
+   </properties>
+  </object>
+  <object id="5" name="lighting" type="ql=SI_TRUE,NIGHT;shader=diffuse;intensity=1;color=a0a0ff;gales_light_power=5.5" x="496" y="16" width="48" height="48"/>
+  <object id="6" name="lighting" type="ql=SI_FALSE,NIGHT;shader=diffuse;intensity=1.5;no_additional_lights" x="432" y="16" width="48" height="48"/>
+  <object id="201" name="config" type="id=1;no_zoom=0;follow=point" x="368" y="208" width="448" height="304"/>
+  <object id="206" name="memory" x="624" y="16" width="48" height="48">
+   <properties>
+    <property name="_snd_packs" value="p_hitswitch,p_liftdoor,p_bird,p_puki,p1_spider,p_perro"/>
+    <property name="_snd_solos" value="gale_yawn,p1_door_open"/>
+    <property name="prefabs" value="p_hitswitch,p_liftdoor,p_bird,p_puki,p1_spider,p_perro"/>
+   </properties>
+  </object>
+  <object id="252" name="config" type="id=2;no_zoom=1;follow=point" x="1472" y="208" width="448" height="256"/>
+  <object id="255" name="config" type="id=3;no_zoom=1;follow=point" x="1320" y="208" width="448" height="256"/>
+  <object id="260" name="GIS_PACK" x="768" y="16" width="128" height="48">
+   <properties>
+    <property name="1-grass footsteps" value="common_sfx,31|DELAY,0.25|common_sfx,31|DELAY,0.25|common_sfx,31,pitch$1.1|DELAY,0.25|common_sfx,31|DELAY,0.25|common_sfx,31,pitch$1.05"/>
+    <property name="2-ellis kicked ball" value="AT_move,ball,name(ball_spot_left),duration$0.75,tween$easeOutQuad|AT_rotate,ball,270,duration$0.7,tween$easeOutQuad"/>
+    <property name="3-felix kicked ball" value="AT_move,ball,name(ball_spot_right),duration$0.75,tween$easeOutQuad|AT_rotate,ball,90,duration$0.7,tween$easeOutQuad"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="solid_collisions" visible="0">
+  <object id="36" type="profile=GRASS" x="-64" y="416" width="272" height="96"/>
+  <object id="37" type="profile=HARD_WOOD" x="656" y="320">
+   <polyline points="0,0 272,0"/>
+  </object>
+  <object id="38" type="profile=HARD_WOOD" x="320" y="208">
+   <polyline points="0,0 96,0"/>
+  </object>
+  <object id="42" type="profile=HARD_WOOD" x="912" y="352">
+   <polyline points="0,0 64,0"/>
+  </object>
+  <object id="44" type="profile=HARD_WOOD" x="1072" y="304">
+   <polyline points="0,0 192,0"/>
+  </object>
+  <object id="45" type="profile=HARD_WOOD" x="1024" y="336">
+   <polyline points="0,0 288,0"/>
+  </object>
+  <object id="49" type="profile=HARD_WOOD" x="1360" y="336">
+   <polyline points="0,0 112,0"/>
+  </object>
+  <object id="51" type="profile=HARD_WOOD" x="1616" y="336">
+   <polyline points="0,0 64,0"/>
+  </object>
+  <object id="52" type="profile=HARD_WOOD" x="1664" y="304">
+   <polyline points="0,0 96,0"/>
+  </object>
+  <object id="54" type="profile=HARD_WOOD" x="1744" y="336">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="55" type="profile=HARD_WOOD" x="1888" y="336">
+   <polyline points="0,0 64,0"/>
+  </object>
+  <object id="57" type="profile=HARD_WOOD" x="1744" y="288">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="62" type="profile=HARD_WOOD" x="1744" y="360">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="64" x="224" y="320" width="48" height="32"/>
+  <object id="65" x="288" y="320" width="16" height="32"/>
+  <object id="66" x="592" y="720" width="848" height="160"/>
+  <object id="67" type="profile=HARD_WOOD" x="400" y="368">
+   <polyline points="0,0 112,0"/>
+  </object>
+  <object id="70" type="profile=HARD_WOOD" x="208" y="272">
+   <polygon points="104,0 112,8 112,16 0,16 0,8 8,0"/>
+  </object>
+  <object id="71" x="216" y="306">
+   <polygon points="0,0 0,16 8,24 24,24 24,0"/>
+  </object>
+  <object id="72" x="296" y="306">
+   <polygon points="8,0 16,0 16,16 8,24"/>
+  </object>
+  <object id="74" x="296" y="288" width="8" height="32"/>
+  <object id="75" type="profile=GRASS" x="288" y="416" width="1920" height="96"/>
+  <object id="76" x="208" y="416" width="80" height="96"/>
+  <object id="110" type="profile=HARD_WOOD" x="1888" y="360">
+   <polyline points="0,0 56,0"/>
+  </object>
+  <object id="111" type="profile=HARD_WOOD" x="1672" y="328">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="112" type="profile=HARD_WOOD" x="1680" y="360">
+   <polyline points="0,0 -56,0"/>
+  </object>
+  <object id="113" type="profile=HARD_WOOD" x="1648" y="288">
+   <polyline points="0,0 32,0"/>
+  </object>
+  <object id="114" type="profile=HARD_WOOD" x="1888" y="288">
+   <polyline points="0,0 32,0"/>
+  </object>
+  <object id="115" type="profile=HARD_WOOD" x="1808" y="304">
+   <polyline points="0,0 96,0"/>
+  </object>
+  <object id="116" type="profile=HARD_WOOD" x="1816" y="328">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="117" type="profile=HARD_WOOD" x="1368" y="360">
+   <polyline points="0,0 192,0"/>
+  </object>
+  <object id="118" type="profile=HARD_WOOD" x="1032" y="360">
+   <polyline points="0,0 272,0"/>
+  </object>
+  <object id="119" type="profile=HARD_WOOD" x="1032" y="392">
+   <polyline points="0,0 96,0"/>
+  </object>
+  <object id="120" type="profile=HARD_WOOD" x="1208" y="392">
+   <polyline points="0,0 96,0"/>
+  </object>
+  <object id="121" type="profile=HARD_WOOD" x="680" y="392">
+   <polyline points="0,0 112,0"/>
+  </object>
+  <object id="122" type="profile=HARD_WOOD" x="912" y="376">
+   <polyline points="0,0 56,0"/>
+  </object>
+  <object id="123" type="profile=HARD_WOOD" x="680" y="360">
+   <polyline points="0,0 240,0"/>
+  </object>
+  <object id="124" type="profile=HARD_WOOD" x="400" y="392">
+   <polyline points="0,0 104,0"/>
+  </object>
+  <object id="125" type="profile=HARD_WOOD" x="328" y="232">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="126" type="profile=HARD_WOOD" x="328" y="264">
+   <polyline points="0,0 80,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_all" visible="0">
+  <object id="8" name="door" type="profile=TOUCH_TRIGGER;open=P1_panselo_village_02;id=200" x="2032" y="0" width="48" height="512"/>
+  <object id="9" name="door" type="profile=TOUCH_TRIGGER;open=P1_world_map_SE;id=0" x="64" y="0" width="48" height="512"/>
+  <object id="10" name="end_door" type="id=0;facing=right;start_zoom_lvl=1" x="144" y="384" width="32" height="32"/>
+  <object id="11" name="door" type="profile=PANSELO_BACK;id=6;open=p1_panselo_tower_left" x="360" y="384" width="16" height="32"/>
+  <object id="12" name="end_door" type="id=6;facing=keep" x="352" y="384" width="32" height="32"/>
+  <object id="13" name="door" type="profile=NONE_BACK;id=3;open=p1_panselo_perro_coop" x="1400" y="384" width="16" height="32"/>
+  <object id="14" name="end_door" type="id=3;facing=keep" x="1392" y="384" width="32" height="32"/>
+  <object id="15" name="door" type="profile=NONE_BACK;id=4;open=P1_panselo_dojo" x="1160" y="384" width="16" height="32"/>
+  <object id="16" name="end_door" type="id=4;facing=keep;start_zoom_lvl=1" x="1152" y="384" width="32" height="32"/>
+  <object id="17" name="door" type="profile=NONE_BACK;id=2;open=P1_panselo_house_01" x="1704" y="384" width="16" height="32"/>
+  <object id="18" name="end_door" type="id=2;facing=keep;start_zoom_lvl=1" x="1696" y="384" width="32" height="32"/>
+  <object id="19" name="door" type="profile=NONE_BACK;id=10;open=P1_panselo_house_01" x="1848" y="384" width="16" height="32"/>
+  <object id="20" name="end_door" type="id=10;facing=keep;start_zoom_lvl=1" x="1840" y="384" width="32" height="32"/>
+  <object id="21" name="loot" type="id=101;ql=OC_ABSENT,P1_PV_dandy1;collected_GIS=FILE_MARK_OC,P1_PV_dandy1;gravity=0" x="1696" y="290" width="16" height="16"/>
+  <object id="22" name="end_door" type="id=200;facing=left;start_zoom_lvl=1" x="1968" y="384" width="32" height="32"/>
+  <object id="23" name="door" type="profile=NONE_BACK;id=5;open=p1_panselo_shop" x="856" y="384" width="16" height="32"/>
+  <object id="24" name="end_door" type="id=5;facing=keep;start_zoom_lvl=1" x="848" y="384" width="32" height="32"/>
+  <object id="25" name="ladder" x="272" y="288">
+   <polygon points="0,0 0,144 16,144 16,0"/>
+  </object>
+  <object id="26" name="puzzle" type="type=p_hitswitch;angle=90;profile=-4;puzzle_id=1;initial_state=1;GIS=ACTIVATE:puzzle,id$1,msg$ACTIVATE|FILE_MARK_SI,PANSELO_GATE_W_OPENED,true;instruction=defended" x="240" y="288" width="16" height="32"/>
+  <object id="27" name="puzzle" type="type=p_liftdoor;profile=-5;puzzle_id=1;instruction=15,24,15,28;sort=bg_tiles,16;ql=SI_TRUE,PANSELO_GATE_W_OPENED" x="240" y="352" width="16" height="80"/>
+  <object id="109" name="ladder" x="1888" y="352">
+   <polygon points="0,0 16,0 16,80 0,80"/>
+  </object>
+  <object id="197" name="save_point" x="512" y="384" width="48" height="32"/>
+  <object id="199" name="end_door" type="id=9000;facing=right;mode=SLEEPING_LIGHT_STATUE" x="576" y="384" width="32" height="32"/>
+  <object id="215" name="npc" type="profile=!;speech=PERRO_BULLETIN;behavior=stand;spacing=stand;floating" x="1428" y="384" width="16" height="16"/>
+  <object id="253" name="end_door" type="id=345;facing=right;config=2" x="1424" y="384" width="32" height="32"/>
+  <object id="262" name="end_door" type="id=346;facing=keep;start_zoom_lvl=1" x="1536" y="387" width="16" height="32"/>
+  <object id="420" name="npc" type="name=zophiel;profile=invisible;speech=TIMEWARP_PANSELO;voice=gale,1.5;behavior=stand;shiny;floating" x="567" y="384" width="48" height="32"/>
+  <object id="421" name="bulb" type="intensity=5.72;color=00ffff;range=2.9;z=-1.5" x="567" y="384" width="48" height="48">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_nighttime" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,NIGHT"/>
+  </properties>
+  <object id="108" name="bulb" type="intensity=1.5;color=ffa359;range=8;z=-1.5" x="224" y="272" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="138" name="bulb" type="intensity=1;color=ffa359;range=6;z=-3" x="464" y="368" width="80" height="64">
+   <ellipse/>
+  </object>
+  <object id="154" name="bulb" type="intensity=2.5;color=ffa359;range=7;z=-2" x="1824" y="368" width="64" height="80">
+   <ellipse/>
+  </object>
+  <object id="178" name="bulb" type="intensity=2.5;color=ffa359;range=7;z=-2" x="1680" y="368" width="64" height="80">
+   <ellipse/>
+  </object>
+  <object id="156" name="bulb2" type="intensity=5;z=-8;range=10;color=ffedc1;diameter=80" x="1744" y="384" width="80" height="64">
+   <ellipse/>
+  </object>
+  <object id="163" name="bulb2" type="intensity=5;z=-8;range=10;color=ffedc1;diameter=80" x="1376" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="181" name="bulb2" type="intensity=5;z=-8;range=10;color=ffedc1;diameter=80" x="1136" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="182" name="bulb2" type="intensity=5;z=-8;range=10;color=ffedc1;diameter=80" x="832" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="183" name="bulb2" type="intensity=5;z=-8;range=10;color=ffedc1;diameter=80" x="336" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="184" name="particle_emitter" type="type=FOREST_POLLEN;name=pollen;ppts=0.0175;starts_with=2" x="64" y="240" width="2144" height="96"/>
+  <object id="223" name="AT" type="anim=0;scale=vec3(7.5/3/1);color=55332d;sort=bg_tiles,-10;alpha=.8" x="692" y="364" width="120" height="48"/>
+  <object id="224" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1.5/1/1);color=ffedc1;alpha=0.1" x="528" y="304" width="208" height="144">
+   <ellipse/>
+  </object>
+  <object id="225" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1/1/1);color=ffedc1;alpha=0.1" x="1680" y="304" width="208" height="144">
+   <ellipse/>
+  </object>
+  <object id="226" name="AT" type="sprite=43;sort=bg_tiles,40" x="1840" y="384" width="32" height="32"/>
+  <object id="227" name="AT" type="sprite=43;sort=bg_tiles,40" x="1696" y="384" width="32" height="32"/>
+  <object id="228" name="AT" type="sprite=10;sort=bg_tiles,7;angle=90;scale=vec3(5/0.5/1);color=ffa359;alpha=0.1" x="1024" y="368" width="112" height="64"/>
+  <object id="229" name="AT" type="sprite=10;sort=bg_tiles,7;angle=270;scale=vec3(5/0.5/1);color=ffa359;alpha=0.1" x="1200" y="368" width="112" height="64"/>
+  <object id="230" name="AT" type="sprite=10;sort=bg_tiles,7;angle=90;scale=vec3(5/0.5/1);color=ffa359;alpha=0.1" x="688" y="368" width="112" height="64"/>
+ </objectgroup>
+ <objectgroup name="objects_daytime" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,NIGHT"/>
+  </properties>
+  <object id="28" name="puzzle" type="type=p_bird" x="1152" y="288" width="16" height="16"/>
+  <object id="29" name="puzzle" type="type=p_bird" x="1120" y="288" width="16" height="16"/>
+  <object id="30" name="puzzle" type="type=p_bird" x="1184" y="288" width="16" height="16"/>
+  <object id="31" name="puzzle" type="type=p_bird" x="608" y="400" width="16" height="16"/>
+  <object id="32" name="puzzle" type="type=p_bird" x="544" y="400" width="16" height="16"/>
+  <object id="33" name="puzzle" type="type=p_bird" x="576" y="400" width="16" height="16"/>
+  <object id="34" name="puzzle" type="type=p_bird" x="976" y="704" width="16" height="16"/>
+  <object id="35" name="puzzle" type="type=p_bird" x="1008" y="704" width="16" height="16"/>
+  <object id="107" name="bulb" type="intensity=1.5;color=ffa359;range=3;z=-1.5" x="224" y="272" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="127" name="bulb" type="intensity=1;color=ffa359;range=4;z=-3" x="1744" y="320" width="80" height="64">
+   <ellipse/>
+  </object>
+  <object id="128" name="bulb2" type="intensity=2;z=-8;range=9;color=ffedc1;diameter=80" x="1376" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="129" name="bulb2" type="intensity=2;z=-8;range=9;color=ffedc1;diameter=80" x="336" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="130" name="bulb" type="intensity=1;color=ffa359;range=6;z=-3" x="464" y="368" width="80" height="64">
+   <ellipse/>
+  </object>
+  <object id="131" name="bulb2" type="intensity=2;z=-8;range=9.5;color=ffedc1;diameter=80" x="832" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="132" name="bulb2" type="intensity=2;z=-8;range=9;color=ffedc1;diameter=80" x="1680" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="133" name="bulb2" type="intensity=2;z=-8;range=9.5;color=ffedc1;diameter=80" x="1136" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="134" name="bulb2" type="intensity=2;z=-8;range=9;color=ffedc1;diameter=80" x="1824" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="218" name="AT" type="anim=0;scale=vec3(7.5/3/1);color=55332d;sort=bg_tiles,-10;alpha=.8" x="692" y="364" width="120" height="48"/>
+  <object id="219" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1.5/1/1);color=ffedc1;alpha=0.1" x="528" y="304" width="208" height="144">
+   <ellipse/>
+  </object>
+  <object id="220" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1/1/1);color=ffedc1;alpha=0.1" x="1680" y="336" width="208" height="144">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_ch1_before_abduction" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,ABDUCTION_HAPPENED"/>
+  </properties>
+  <object id="78" name="npc" type="name=sharon;profile=panselo_teen_girl;speech=SHARON;voice=woman,1.05;behavior=path,40,45,50,45;sort=game_objects,53" x="736" y="384" width="16" height="32"/>
+  <object id="79" name="npc" type="profile=dojo_boy;speech=loop,PANSELO_DOJO_BOY,PANSELO_DOJO_BOY+1;behavior=action_only;face_right;sort=game_objects,53" x="1088" y="384" width="16" height="32"/>
+  <object id="80" name="npc" type="profile=dojo_girl;voice=woman,1.05;speech=loop,PANSELO_DOJO_GIRL,PANSELO_DOJO_GIRL+3;behavior=action_only;face_right;sort=game_objects,53" x="1232" y="384" width="16" height="32"/>
+  <object id="81" name="npc" type="name=bert;profile=soldierm;speech=line,PANSELO_BERT_1,PANSELO_BERT_2;behavior=stand;spacing=right,1" x="304" y="384" width="32" height="32"/>
+  <object id="84" name="npc" type="name=nairi;voice=woman,1.05;profile=nairi;speech=NAIRI,NAIRI+2;behavior=action_idle" x="1464" y="384" width="16" height="32"/>
+  <object id="91" name="puzzle" type="type=p_perro;instruction=tmx(72/25),tmx(89/25)" x="1376" y="400" width="16" height="16"/>
+  <object id="92" name="puzzle" type="type=p_perro;instruction=tmx(72/25),tmx(89/25)*REGEN_EGG_1" x="1504" y="400" width="16" height="17"/>
+  <object id="93" name="puzzle" type="type=p_perro;instruction=tmx(72/25),tmx(89/25)" x="1584" y="400" width="16" height="16"/>
+  <object id="207" name="npc" type="name=clem;voice=man,1.05;profile=panselo_teen_boy;speech=CLEM,CLEM+2;behavior=path,97,104,113,104" x="1664" y="384" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects_ch1_during_abduction" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,ABDUCTION_HAPPENED&amp;SI_FALSE,CH_1_EVENT_A"/>
+  </properties>
+  <object id="185" name="trigger" type="GIS=cutscene,line$GALE_VILLAGE_LOCK_L" x="64" y="-16" width="64" height="480"/>
+  <object id="186" name="npc" type="name=ella;voice=WOMAN,1.25;profile=ella;behavior=action_only;spacing=left,0.25;face_right;speech=SHELBY_ABDUCT_1" x="1491" y="384" width="16" height="32"/>
+  <object id="187" name="npc" type="name=shelby;voice=WOMAN,1.15;profile=shelby;behavior=action_only;spacing=right,0.25;speech=SHELBY_ABDUCT_1;override_action=shelby_idle" x="1523" y="384" width="16" height="32"/>
+  <object id="188" name="bulb" type="intensity=2.3;range=5;color=ffffff" x="1471" y="368" width="60" height="64">
+   <ellipse/>
+  </object>
+  <object id="189" name="bulb" type="intensity=2.8;range=5;color=ffffff" x="1503" y="368" width="60" height="64">
+   <ellipse/>
+  </object>
+  <object id="190" name="npc" type="name=amanda;voice=woman,1.1;profile=amanda;behavior=pace,5,1,&lt;;speech=AMANDA_ABDUCT_1,AMANDA_ABDUCT_1+2" x="976" y="384" width="32" height="32"/>
+  <object id="191" name="bulb" type="intensity=2.3;range=5;color=ffffff;follow_target=amanda" x="960" y="368" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="193" name="npc" type="name=alex;voice=man,1.1;profile=alex;behavior=stand;speech=line,ALEX_ABDUCT_1,ALEX_ABDUCT_1+3;spacing=right,0.5;face_right" x="432" y="336" width="16" height="32"/>
+  <object id="194" name="bulb" type="intensity=2.3;range=5;color=ffffff;follow_target=alex" x="400" y="320" width="80" height="64">
+   <ellipse/>
+  </object>
+  <object id="331" name="npc" type="face_right;all_bright;voice=man,1.2;profile=ernest;behavior=stand;speech=ERNEST_ABDUCT_1,ERNEST_ABDUCT_1+2;use_all_bright" x="1120" y="272" width="16" height="32"/>
+  <object id="332" name="bulb" type="intensity=2.3;range=5;color=ffffff" x="1104" y="256" width="48" height="64">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_ch1_end" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,CH_1_EVENT_A&amp;SI_FALSE,CH_1_OVER"/>
+  </properties>
+  <object id="195" name="bulb2" type="intensity=10;z=-8;range=10;color=ffffff;diameter=80;ql=SI_TRUE,CH_1_EVENT_A&amp;SI_FALSE,CH_1_EVENT_B" x="1600" y="368" width="96" height="64">
+   <ellipse/>
+  </object>
+  <object id="196" name="npc" type="name=alex;voice=man,1.1;profile=alex;speech=TRAILER_ALEX;spacing=auto,1.2;ql=SI_TRUE,CH_1_EVENT_A&amp;SI_FALSE,CH_1_EVENT_B" x="1632" y="384" width="32" height="32"/>
+  <object id="233" name="trigger" type="GIS=cutscene,line$GALE_VILLAGE_LOCK_L;ql=SI_TRUE,CH_1_EVENT_B&amp;SI_FALSE,CH_1_OVER" x="64" y="-16" width="64" height="480"/>
+ </objectgroup>
+ <objectgroup name="objects_ch2" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,CH_1_OVER&amp;SI_FALSE,BIRDY_CAUGHT"/>
+  </properties>
+  <object id="209" name="npc" type="name=ernest;face_right;voice=man,1.2;profile=ernest;behavior=stand;speech=ERNEST_2A" x="1088" y="270" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects_ch2_end" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,RETURN_W_LISA&amp;SI_FALSE,CH_2_OVER"/>
+  </properties>
+  <object id="216" name="trigger" type="GIS=cutscene,line$GALE_VILLAGE_LOCK_L" x="64" y="-16" width="64" height="480"/>
+ </objectgroup>
+ <objectgroup name="objects_ch3" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,CH_2_OVER&amp;SI_FALSE,TOWER_ARC_OVER"/>
+  </properties>
+  <object id="236" name="npc" type="name=lisa;voice=woman,1.05;profile=lisa;behavior=path,39.5,49.5;speech=LISA_3_START,LISA_3_START+2" x="784" y="384" width="32" height="32"/>
+  <object id="237" name="npc" type="name=amanda;voice=woman,1.1;profile=amanda;behavior=path,54,46;speech=AMANDA_3_START,AMANDA_3_START+3" x="736" y="288" width="16" height="32"/>
+  <object id="238" name="npc" type="name=ren;voice=woman,1.15;profile=ren;behavior=stand;face_right;speech=REN_3_START,REN_3_START+2" x="967" y="384" width="16" height="32"/>
+  <object id="240" name="AT" type="sort=bg_tiles,37;anim=53;scale=vec3(-1/1/1)" x="981" y="401" width="32" height="16"/>
+  <object id="241" name="AT" type="sprite=38;sort=bg_tiles,21;scale=vec3(0.5/0.3/1);color=5C3D3D;alpha=0.3;use_all_bright" x="957" y="394" width="83" height="32">
+   <ellipse/>
+  </object>
+  <object id="242" name="npc" type="name=lita;voice=woman,1.15;profile=lita;behavior=stand;speech=LITA_3_START,LITA_3_START+2" x="1015" y="384" width="16" height="32"/>
+  <object id="243" name="AT" type="sprite=38;sort=bg_tiles,-21;scale=vec3(0.75/0.3/1);color=5C3D3D;alpha=0.3;use_all_bright" x="720" y="304" width="83" height="32">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_ch3_end_cutscene" visible="0">
+  <properties>
+   <property name="ql" value="OC_EXISTS,CH3_CLIMAX"/>
+  </properties>
+  <object id="244" name="npc" type="name=lisa;voice=woman,1.05;profile=lisa;behavior=stand;speech=SILENT_GREET;use_all_bright" x="1680" y="384" width="16" height="32"/>
+  <object id="251" name="npc" type="name=alex;voice=man,1.1;profile=alex;behavior=stand;speech=SILENT_GREET;behavior=stand;use_all_bright" x="1704" y="384" width="16" height="32"/>
+  <object id="254" name="npc" type="name=thomas;profile=thomas;voice=man,1.025;speech=SILENT_GREET;behavior=stand;face_right;use_all_bright" x="1392" y="384" width="16" height="32"/>
+  <object id="256" name="npc" type="name=max;profile=max;voice=man,0.95;speech=SILENT_GREET;behavior=stand;face_right;use_all_bright" x="1440" y="384" width="16" height="32"/>
+  <object id="257" name="npc" type="name=pada;profile=atai_soldierf;voice=woman,1.05;speech=SILENT_GREET;behavior=stand;face_right;use_all_bright" x="1344" y="384" width="16" height="32"/>
+  <object id="258" name="npc" type="name=jake;profile=daea_soldierm;voice=man,1.025;speech=SILENT_GREET;behavior=stand;face_right;use_all_bright" x="1296" y="384" width="16" height="32"/>
+  <object id="259" name="AT" type="name=leo;anim=85;sort=game_objects,40;use_all_bright" x="1419" y="384" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects_ch3_end" visible="0">
+  <properties>
+   <property name="ql" value="OC_ABSENT,CH3_CLIMAX&amp;SI_TRUE,TOWER_ARC_OVER&amp;SI_FALSE,CH_3_OVER"/>
+  </properties>
+  <object id="263" name="trigger" type="GIS=cutscene,line$GALE_VILLAGE_LOCK_L3" x="64" y="-16" width="64" height="480"/>
+  <object id="264" name="npc" type="name=max;profile=max;voice=man,0.95;speech=MAX_1,MAX_1+2;behavior=path,103,111;sort=fg_tiles,-1;ql=SI_FALSE,FETCH_THOMAS_2" x="1648" y="384" width="16" height="32"/>
+  <object id="265" name="npc" type="profile=daea_soldierm;voice=man,1.05;speech=JAKE_3_END,JAKE_3_END+1;behavior=path,76,83;sort=fg_tiles,-1;ql=SI_FALSE,FETCH_THOMAS_2" x="1216" y="384" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects_ch4" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,CH_3_OVER"/>
+  </properties>
+  <object id="266" name="npc" type="name=lisa;voice=woman,1.05;profile=lisa;behavior=path,39.5,49.5;speech=LISA_4_START,LISA_4_START+3" x="784" y="384" width="32" height="32"/>
+  <object id="268" name="npc" type="name=ren;voice=woman,1.15;profile=ren;behavior=stand;speech=REN_4_START,REN_4_START+3" x="816" y="288" width="16" height="32"/>
+  <object id="270" name="AT" type="sprite=38;sort=bg_tiles,21;scale=vec3(0.5/0.3/1);color=5C3D3D;alpha=0.3;use_all_bright" x="1072" y="288" width="83" height="32">
+   <ellipse/>
+  </object>
+  <object id="271" name="npc" type="name=lita;voice=woman,1.15;profile=lita;behavior=path,49,43;speech=LITA_4_START,LITA_4_START+2" x="736" y="288" width="16" height="32"/>
+  <object id="272" name="AT" type="sprite=38;sort=bg_tiles,30;scale=vec3(0.75/0.3/1);color=5C3D3D;alpha=0.2;use_all_bright" x="736" y="304" width="83" height="32">
+   <ellipse/>
+  </object>
+  <object id="273" name="npc" type="name=ella;profile=ella_riding;voice=woman,1.2;speech=ELLA_4_START,ELLA_4_START+1;use_all_bright;behavior=path,59,66;spd=3" x="944" y="384" width="16" height="32"/>
+  <object id="274" name="npc" type="name=shelby;voice=woman,1.1;profile=shelby;behavior=stand;speech=SHELBY_4_START,SHELBY_4_START+3;face_right" x="912" y="384" width="16" height="32"/>
+  <object id="275" name="AT" type="name=ball;sprite=139;use_all_bright;sort=bg_tiles,31" x="1244" y="403" width="16" height="16"/>
+  <object id="276" name="AT" type="name=ball_spot_left;sprite=0;use_all_bright;alpha=0" x="1316" y="403" width="16" height="16"/>
+  <object id="277" name="AT" type="name=ball_spot_right;sprite=0;use_all_bright;alpha=0" x="1244" y="403" width="16" height="16"/>
+  <object id="278" name="AT" type="name=ellis_n_felix;anim=127;use_all_bright;sort=bg_tiles,30;scale=vec3(-1/1/1)" x="1232" y="408" width="112" height="16"/>
+  <object id="279" name="npc" type="name=ernest;voice=man,1.15;profile=ernest;behavior=action_only;speech=ERNEST_4_START,ERNEST_4_START+2" x="1104" y="272" width="16" height="32"/>
+  <object id="280" name="AT" type="sprite=38;sort=bg_tiles,21;scale=vec3(0.85/0.3/1);color=5C3D3D;alpha=0.3;use_all_bright" x="1232" y="384" width="112" height="64">
+   <ellipse/>
+  </object>
+  <object id="282" name="AT" type="sprite=38;sort=bg_tiles,41;scale=vec3(1.5/0.3/1);color=5C3D3D;alpha=0.3;use_all_bright" x="912" y="384" width="160" height="48">
+   <ellipse/>
+  </object>
+  <object id="283" name="npc" type="name=seth;profile=invisible;voice=man,1.1;speech=SETH_4_START,SETH_4_START+2,SETH_4_START+4;sort=bg_tiles,-1;floating" x="1328" y="384" width="16" height="32"/>
+  <object id="284" name="npc" type="name=ellis;profile=invisible;voice=man,1.1;speech=ELLIS_4_START,ELLIS_4_START+2;sort=bg_tiles,-1;floating" x="1232" y="384" width="16" height="32"/>
+  <object id="285" name="AT" type="sprite=38;sort=bg_tiles,41;scale=vec3(1.5/0.3/1);color=5C3D3D;alpha=0.3;use_all_bright" x="656" y="384" width="160" height="48">
+   <ellipse/>
+  </object>
+  <object id="286" name="npc" type="name=max;voice=man,.95;profile=max;behavior=stand;speech=MAX_4_START,MAX_4_START+2;face_right;ql=SI_FALSE,BART_PILL_1" x="448" y="336" width="16" height="32"/>
+  <object id="287" name="AT" type="sprite=38;sort=bg_tiles,-1;scale=vec3(0.85/0.3/1);color=5C3D3D;alpha=0.2;use_all_bright" x="1088" y="272" width="160" height="64">
+   <ellipse/>
+  </object>
+  <object id="288" name="npc" type="name=felix;voice=man,1.2;profile=felix;behavior=path,72,76;speech=FELIX_4_START,FELIX_4_START+2" x="1152" y="272" width="16" height="32"/>
+  <object id="289" name="npc" type="name=pada;voice=woman,1.05;profile=atai_soldierf;behavior=path,103,111,119;speech=PADA_4_START,PADA_4_START+2" x="1648" y="384" width="16" height="32"/>
+  <object id="290" name="npc" type="name=amanda;voice=woman,1.1;profile=amanda;behavior=path,87,95;speech=AMANDA_4_START,AMANDA_4_START+2,AMANDA_4_START+4" x="1456" y="325" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects_perro_coop_DAY" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,NIGHT"/>
+  </properties>
+  <object id="298" name="puzzle" type="type=p_perro;instruction=tmx(83/24),tmx(99/24)*REGEN_EGG_1;ql=SI_COUNT,1,PERRO_1,PERRO_2,PERRO_3,PERRO_4,PERRO_5,PERRO_6" x="1472" y="400" width="16" height="17"/>
+  <object id="305" name="puzzle" type="type=p_perro;instruction=tmx(83/24),tmx(99/24)*REGEN_EGG_2;ql=SI_COUNT,2,PERRO_1,PERRO_2,PERRO_3,PERRO_4,PERRO_5,PERRO_6" x="1368" y="400" width="16" height="17"/>
+  <object id="306" name="puzzle" type="type=p_perro;instruction=tmx(83/24),tmx(99/24)*REGEN_EGG_3;ql=SI_COUNT,3,PERRO_1,PERRO_2,PERRO_3,PERRO_4,PERRO_5,PERRO_6" x="1520" y="400" width="16" height="17"/>
+ </objectgroup>
+</map>
