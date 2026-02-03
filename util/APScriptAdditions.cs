@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PhoA_AP_client.util;
 
@@ -17,14 +16,14 @@ internal static class APScriptAdditions
             "OWNER,zophiel;GO,RELOAD_GAME+2||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 3 was chosen. <*_>Your wish shall be granted.",
             "OWNER,zophiel;GO,RELOAD_GAME+3||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 4 was chosen. <*_>Your wish shall be granted.",
         ],
-        ["RELOAD_GAME"] = 
+        ["RELOAD_GAME"] =
         [
-            "GIS,TIME_WARP_RELOAD,1,p1_panselo_village_01||||",
-            "GIS,TIME_WARP_RELOAD,2,p1_panselo_village_01||||",
-            "GIS,TIME_WARP_RELOAD,3,p1_panselo_village_01||||",
-            "GIS,TIME_WARP_RELOAD,4,p1_panselo_village_01||||",
+            "GIS,TIME_WARP_RELOAD,1,p1_panselo_village_01;WAIT,1.25||||",
+            "GIS,TIME_WARP_RELOAD,2,p1_panselo_village_01;WAIT,1.25||||",
+            "GIS,TIME_WARP_RELOAD,3,p1_panselo_village_01;WAIT,1.25||||",
+            "GIS,TIME_WARP_RELOAD,4,p1_panselo_village_01;WAIT,1.25||||",
         ],
-        ["TIMEWARP_NOT_AVAILABLE"] = 
+        ["TIMEWARP_NOT_AVAILABLE"] =
         [
             "OWNER,zophiel;GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nThough<*_>, time has yet to pass.",
             "OWNER,zophiel||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nPlease come back once time has passed and the world has changed."

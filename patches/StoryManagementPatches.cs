@@ -12,6 +12,18 @@ namespace PhoA_AP_client.patches;
 internal sealed class StoryManagementPatches
 {
     private static readonly HashSet<string> LevelsWithManagementNpcs = ["p1_panselo_village_01"];
+    private static int ActiveTimewarp = 0;
+
+    private static readonly HashSet<string> PanseloLevelNames =
+    [
+        "p1_panselo_tower_left", "p1_panselo_village_01",
+        "p1_panselo_shop", "p1_panselo_shop_a", "p1_panselo_shop_b", "P1_panselo_dojo", "p1_panselo_dojo_a",
+        "p1_panselo_perro_coop", "p1_panselo_house_01", "p1_panselo_house_01_hall", "p1_panselo_house_01_nana",
+        "p1_panselo_house_01_attic", "p1_panselo_house_01_boys", "p1_panselo_house_01_klaus",
+        "p1_panselo_house_01_gale", "p1_panselo_house_01_girls", "p1_panselo_village_02", "p1_panselo_warehouse",
+        "p1_panselo_house_02", "p1_panselo_house_02a", "p1_panselo_house_ruth", "p1_panselo_tower_right",
+    ];
+
     private static readonly HashSet<string> StoryFlags = ["BOSS_SLIME_DEFEATED"];
 
     private static readonly FieldInfo LevelPathPrefixField =
@@ -80,7 +92,12 @@ internal sealed class StoryManagementPatches
             if (!int.TryParse(instructionParts[1], out int newChapter))
                 continue;
 
-            PhoaAPClient.Logger.LogDebug($"Timewarp initiated. Force chapter: {newChapter}");
+            switch (instructionParts[2])
+            {
+                case "p1_panselo_village_01":
+                    ActiveTimewarp = 1;
+                    break;
+            }
 
             _chapter = newChapter;
             PT2.LoadLevel(instructionParts[2], 9000, Vector3.zero, false, 1.5f, false, false);
@@ -121,7 +138,7 @@ internal sealed class StoryManagementPatches
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
     [HarmonyPrefix] // Patch to set the custom path for modified levels
-    private static void LoadLevelPrefix(LevelBuildLogic __instance, string new_level_name)
+    private static void LoadLevelCustomLevelLoadingPrefix(LevelBuildLogic __instance, string new_level_name)
     {
         string modRoot = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         if (modRoot == null) return;
@@ -142,7 +159,7 @@ internal sealed class StoryManagementPatches
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
     [HarmonyPostfix] // Patch to reset the directory prefix for level files
-    private static void LoadLevelPostfix(LevelBuildLogic __instance)
+    private static void LoadLevelCustomLevelLoadingPostfix(LevelBuildLogic __instance)
     {
         string path = Application.dataPath + "/StreamingAssets/Levels/";
         if (!Directory.Exists(path))
@@ -151,8 +168,40 @@ internal sealed class StoryManagementPatches
     }
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
+    [HarmonyPrefix] // Patch to change custom lines for timewarp NPC
+    private static void LoadLevelTimewarpPrefix(string new_level_name)
+    {
+        if (_chapter <= 0) return;
+
+        string[] timewarpInstanceLevelNames = [];
+
+        switch (ActiveTimewarp)
+        {
+            case 1:
+                timewarpInstanceLevelNames = PanseloLevelNames.ToArray();
+                break;
+            default:
+                PhoaAPClient.Logger.LogWarning("Timewarp state is corrupted. Please report this bug the the developer");
+                return;
+        }
+
+        if (timewarpInstanceLevelNames.Length == 0) return;
+
+        if (timewarpInstanceLevelNames.Contains(new_level_name.ToLower()))
+        {
+            return;
+        }
+
+        _chapter = 0;
+        ActiveTimewarp = 0;
+        PT2.sound_g.PlayGlobalCommonSfx(188, 1f, 2f, 2);
+        PT2.display_messages.DisplayMessage("Timewarp canceled. Returning to default.",
+            DisplayMessagesLogic.MSG_TYPE.INVENTORY_FULL);
+    }
+
+    [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
     [HarmonyPostfix] // Patch to change custom lines for timewarp NPC
-    private static void LoadLevelPostfixForTimewarp(string new_level_name)
+    private static void LoadLevelTimewarpPostfix(string new_level_name)
     {
         if (!LevelsWithManagementNpcs.Contains(new_level_name.ToLower()))
             return;
