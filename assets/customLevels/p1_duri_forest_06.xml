@@ -45,6 +45,7 @@
   </object>
   <object id="4" name="config" type="id=1;zoom_allowance=1;follow=horizontal" x="208" y="496" width="1104" height="336"/>
   <object id="5" name="trigger" type="GIS=cam_config_change,id$0,transition$smooth" x="528" y="640" width="32" height="176"/>
+<!--  <object id="6" name="trigger" type="remove;GIS=cutscene,line$ANURI_TEMPLE_CAM|uncommon_sfx,atmos1;ql=SI_FALSE,ANURI_ENTRANCE_OPENED" x="624" y="528" width="32" height="272"/>-->
   <object id="7" name="config" type="id=2;zoom_allowance=1" x="192" y="160" width="1840" height="560"/>
   <object id="8" name="trigger" type="GIS=cam_config_change,id$2,transition$smooth" x="272" y="480" width="944" height="48"/>
   <object id="9" name="trigger" type="GIS=cam_config_change,id$1,transition$smooth" x="208" y="592" width="928" height="32"/>
@@ -175,6 +176,7 @@
    <polygon points="0,0 64,0 144,80 0,80"/>
   </object>
   <object id="79" x="1744" y="592" width="192" height="320"/>
+<!--  <object id="136" type="profile=HARD_WOOD;ql=ITEM_HAVE,int_list(30)&amp;ITEM_DONT_HAVE,int_list(21)&amp;SI_FALSE,ABDUCTION_HAPPENED&amp;SI_TRUE,ALEX_RING_GEAR" x="780" y="708" width="152" height="16"/>-->
   <object id="246" type="ql=SI_TRUE,ABDUCTION_HAPPENED;profile=WOOD" x="928" y="720">
    <polygon points="0,0 16,-16 128,-16 144,0"/>
   </object>
@@ -230,12 +232,14 @@
  </objectgroup>
  <objectgroup id="11" name="objects_b4_slingshot_get_scene" visible="0">
   <properties>
-   <property name="ql" value="ITEM_DONT_HAVE,int_list(30)"/>
+   <property name="ql" value="ITEM_DONT_HAVE,int_list(30)"/> <!--&amp;SI_FALSE,ABDUCTION_HAPPENED-->
   </properties>
   <object id="120" name="npc" type="name=alex;voice=man,1.1;profile=alex;behavior=stand;speech=ALEX_FOREST;spacing=auto,0.25" x="864" y="688" width="32" height="32"/>
   <object id="122" name="npc" type="name=amanda;face_right;voice=woman,1.15;profile=amanda;behavior=stand;speech=AMANDA_FOREST,AMANDA_FOREST+2" x="832" y="688" width="32" height="32"/>
   <object id="123" name="npc" type="name=seth;face_right;voice=man,1.15;profile=seth;behavior=stand;speech=SETH_FOREST+3,SETH_FOREST" x="800" y="688" width="32" height="32"/>
+<!--  <object id="124" name="trigger" type="remove;GIS=cutscene,line$ALEX_STAR_HUNT" x="784" y="240" width="16" height="528"/>-->
   <object id="130" name="npc" type="name=alex2;face_right;spacing=left,0.5;voice=man,1.1;profile=alex;behavior=action_only;speech=ALEX_GIVES_SLINGSHOT" x="16" y="368" width="48" height="32"/>
+<!--  <object id="134" name="trigger" type="name=sling_lock;GIS=cutscene,line$ALEX_STAR_HUNT+-3" x="64" y="336" width="32" height="64"/>-->
   <object id="180" name="puzzle" type="type=p_bird" x="672" y="736" width="16" height="16"/>
   <object id="181" name="puzzle" type="type=p_bird" x="640" y="744" width="16" height="16"/>
   <object id="182" name="puzzle" type="type=p_bird" x="704" y="728" width="16" height="16"/>
@@ -243,7 +247,7 @@
  </objectgroup>
  <objectgroup id="12" name="objects_after_slingshot_b4_temple_entrance" visible="0">
   <properties>
-   <property name="ql" value="ITEM_HAVE,int_list(30)"/>
+   <property name="ql" value="ITEM_HAVE,int_list(30)"/> <!-- &amp;SI_FALSE,ABDUCTION_HAPPENED&amp;SI_FALSE,ALEX_RING_GEAR -->
   </properties>
   <object id="262" name="npc" type="name=alex;voice=man,1.1;profile=alex;behavior=stand;speech=ALEX_FOREST;spacing=auto,0.25" x="864" y="688" width="32" height="32"/>
   <object id="263" name="npc" type="name=amanda;face_right;voice=woman,1.15;profile=amanda;behavior=stand;speech=AMANDA_FOREST,AMANDA_FOREST+2" x="832" y="688" width="32" height="32"/>
@@ -253,6 +257,35 @@
   <object id="270" name="puzzle" type="type=p_bird" x="704" y="728" width="16" height="16"/>
   <object id="271" name="trigger" type="remove;GIS=cutscene,line$ALEX_GEAR_RING;ql=SI_FALSE,ALEX_RING_GEAR" x="1122" y="640" width="16" height="112"/>
  </objectgroup>
+<!-- <objectgroup id="13" name="objects_after_entrance_opened_but_before_billy_get" visible="0">-->
+<!--  <properties>-->
+<!--   <property name="ql" value="ITEM_HAVE,int_list(30)&amp;ITEM_DONT_HAVE,int_list(21)&amp;SI_FALSE,ABDUCTION_HAPPENED&amp;SI_TRUE,ALEX_RING_GEAR"/>-->
+<!--  </properties>-->
+<!--  <object id="131" name="npc" type="name=seth;face_right;voice=man,1.15;profile=invisible;behavior=stand;speech=SETH_FOREST+3,SETH_FOREST" x="833" y="672" width="32" height="32"/>-->
+<!--  <object id="132" name="npc" type="name=amanda;face_right;voice=woman,1.15;profile=invisible;behavior=stand;speech=AMANDA_FOREST,AMANDA_FOREST+2;spacing=auto,0.25" x="791" y="672" width="32" height="32"/>-->
+<!--  <object id="133" name="npc" type="name=alex;voice=man,1.1;profile=invisible;behavior=stand;speech=ALEX_FOREST;spacing=auto,0.25" x="884" y="672" width="32" height="32"/>-->
+<!--  <object id="149" name="puzzle" type="type=p_bird" x="112" y="384" width="16" height="16"/>-->
+<!--  <object id="150" name="puzzle" type="type=p_bird" x="128" y="384" width="16" height="16"/>-->
+<!--  <object id="151" name="puzzle" type="type=p_bird" x="144" y="384" width="16" height="16"/>-->
+<!-- </objectgroup>-->
+<!-- <objectgroup id="14" name="objects_gale_has_billy_but_now_must_view_abduction" visible="0">-->
+<!--  <properties>-->
+<!--   <property name="ql" value="ITEM_HAVE,int_list(21)&amp;SI_FALSE,ABDUCTION_HAPPENED"/>-->
+<!--  </properties>-->
+<!--  <object id="145" name="npc" type="name=alex;voice=man,1.1;profile=alex;behavior=stand;speech=ALEX_FOREST;spacing=auto,0.25" x="864" y="688" width="32" height="32"/>-->
+<!--  <object id="146" name="npc" type="name=seth;face_right;voice=man,1.15;profile=seth;behavior=stand;speech=SETH_FOREST,SETH_FOREST+3" x="800" y="688" width="32" height="32"/>-->
+<!--  <object id="147" name="npc" type="name=amanda;face_right;voice=woman,1.15;profile=amanda;behavior=stand;speech=AMANDA_FOREST" x="832" y="688" width="32" height="32"/>-->
+<!--  <object id="178" name="trigger" type="name=scene_lock;GIS=cutscene,line$ABDUCTION_LOCK" x="1008" y="48" width="17" height="79.5"/>-->
+<!--  <object id="179" name="trigger" type="remove;GIS=cutscene,line$PANSELO_ABDUCTION" x="880" y="-16" width="32" height="752"/>-->
+<!-- </objectgroup>-->
+<!-- <objectgroup id="15" name="objects_after_abduction" visible="0">-->
+<!--  <properties>-->
+<!--   <property name="ql" value="SI_TRUE,ABDUCTION_HAPPENED"/>-->
+<!--  </properties>-->
+<!--  <object id="183" name="puzzle" type="type=p_bird" x="640" y="744" width="16" height="16"/>-->
+<!--  <object id="184" name="puzzle" type="type=p_bird" x="672" y="736" width="16" height="16"/>-->
+<!--  <object id="185" name="puzzle" type="type=p_bird" x="704" y="728" width="16" height="16"/>-->
+<!-- </objectgroup>-->
  <objectgroup id="16" name="animated_abduction" visible="0">
   <object id="164" name="AT" type="anim=48;sort=fg_tiles,100;scale=vec3(0/0/1);name=spaceship" x="992" y="416" width="64" height="48"/>
   <object id="168" name="AT" type="sprite=1;angle=270;scale=vec3(.01/.1/1);sort=bg_tiles,100;color=A7FFD3;use_all_bright;effect=rotate_sine,260,280,2,1;alpha=1;name=ab_light2" x="849" y="64" width="32" height="32"/>
@@ -272,6 +305,7 @@
   <object id="84" name="AT" type="sprite=7;name=anuri_jaw_graphic;ql=SI_FALSE,ANURI_ENTRANCE_OPENED;sort=fg_tiles,-1" x="1072" y="704" width="48" height="16"/>
   <object id="85" name="AT" type="sprite=7;ql=SI_TRUE,ANURI_ENTRANCE_OPENED;sort=fg_tiles,-1" x="1072" y="736" width="48" height="16"/>
   <object id="86" name="AT" type="sprite=6;ql=SI_TRUE,ANURI_ENTRANCE_OPENED;sort=fg_tiles,-1" x="1056" y="608" width="64" height="64"/>
+<!--  <object id="137" name="AT" type="anim=49;ql=ITEM_HAVE,int_list(30)&amp;ITEM_DONT_HAVE,int_list(21)&amp;SI_FALSE,ABDUCTION_HAPPENED&amp;SI_TRUE,ALEX_RING_GEAR" x="778" y="700" width="144" height="16"/>-->
   <object id="141" name="AT" type="sprite=41;ql=ITEM_HAVE,int_list(21)" x="944" y="704" width="112" height="16"/>
   <object id="187" name="AT" type="sprite=41;ql=SI_TRUE,ABDUCTION_HAPPENED" x="944" y="704" width="112" height="16"/>
   <object id="188" name="AT" type="sort=fg_tiles,30;anim=23;use_all_bright;color=31a4d4;scale=vec3(1/1/1)" x="1168" y="914" width="32" height="65"/>
