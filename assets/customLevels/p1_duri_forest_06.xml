@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="128" height="96" tilewidth="16" tileheight="16" infinite="0" nextlayerid="23" nextobjectid="274">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="16384" columns="128">
+  <image source="../../Textures/tiles.PNG" width="2048" height="2048"/>
+ </tileset>
+ <layer id="1" name="back" width="128" height="96">
+  <data encoding="base64" compression="zlib">
+   eJztnF+OokAQh3Gyq9fgCJM4b/viUeYoQGb1DPvGUTyKR9luqMICacDJIEp/X1Jp/onIr6q66RTmCQAAAAAAAAAAAAAAAAAATGWzT5K3fZK5Nlv6WuCxeO1zbx/J2flAgg/Ei/OBQ04eAAAAAAAAeHl0nie0Pzf75FjmA1aCnecJHVO45/9N/fyvxzIfEBGF6C3ap2499T7g8kC59LXB/FT6f1TaX4ra/PpFckC59PXBvDi9M6+/117aQy7mcsBl6euDeclFd2kvZj2lD4gXl/8vG+I/WtD+demr7fDje1g/9plfn+P9tmJgDsDDPNA6cLr55/ez07vMvcmz/Zj+zAO9Phuvfa3dZ1H7wGdeWzZFf+aBXhun1WeV92vtz6K76j8I80Cvj8R6pXt+jf1PXR/6LPNAz8+/P0k617kH5oGqPDDX98J05tQfnh/0jxv0jxv0jxv0jxv0jxv0jxv0jxv0jxv0jxv0BwCIF2qz4sXUZvm2xA/WS6iGt5B3M3xtX1HXeJb4wLoYquHt1PRVPvCGD6yKoRreTk1f2fgEPtDLlP+5fJb/wvT1m2M1vN0aP/GRTPPAktf/jOR1LGV9teyqe+gY3X/POKtPo3tsrIa3aG8vRf/GV37y3q0BM1bKbB2r9LGp1Lk2x+Si95uphe++C+Hveej7QjE6Zh0/CNbwBs6vfUU29/18FMf3JNs6c21ycq2zZFe3lfntx7ptlrfXdb/st7XQdxo3ta4+fg7ynkO37l3X0+67EGO11IH4L8esxxdavmNyverdygG6b0ZJHspW9FS9RftK0+11W6Ktan66Hld9vu/cVmvV39a9B3yieRfiG/F/FkvU8n01ZrPjuMT4Q2+c521f6P2emeR4OEZTq7Wa1bqJ9534xlG2h/Q3WqfdOveQT+QT34UI6NLWPKB9p084d2K975ytPLCm+D9KvlcTP0i+nP19b/lHpblqvzU5YiD+VevUaH0Qy8Qn/D2tzvv7vVr24/Lz2HvxvXE7HOs36/lHazzQHQsE19cU/ycTwyafN33+ycS66QeafZoj+lCtA7Hv72XqzuPv52Unvib/h3Eeu+5B/YesJxfY8Z/p42/6Ff3szyqwLFuT87UP+FXHYtMv6JjAxL72A1X7FdBf6Y39Wguvv88z2Zeca4r2cs5J+t+MBXpyQ2dsp9tWqXcX7euPptV+XXzC5oimvzBjhGr/vd/rdPbP4AfvS79rn6v8cCoh/Xv7/31nX6B/yOs5wJv99/62V0L0THbmGfBolm2c767+0OQB9YdHX/d3+v8pY8LY4t9o34z1zfN+M95TPzle/aDp/59Ff9lO/EdASP/vxv+yvwbuJaQ/xEHfvMzS1wSPgxweN8R/3BD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAEBP/AYRklyQ=
+  </data>
+ </layer>
+ <layer id="2" name="back" width="128" height="96">
+  <data encoding="base64" compression="zlib">
+   eJztmElu20AQRdtBTAIZtvEmCx3BsFfKSkfRUWQ5oRcBkgs4gI6io+goqZa6yBLNmbJEke8BDQ5Nka36NZFPDgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA83+bZgOmB/tMG/QEApoPN+WUDxgv6AwAAAAAAAIwf3v+nDfpPG/QHGA/niGXyxXBpo82p5tB/OKD/6fj96NyfB+f+Plx6Jc1B/9Ph9f/6eOlVtAP9+yPxvpK4X4n+q0uvpS3oP23Q/3SMuf5XzXf97Zj0l7o/6vyP/tOmj/5j5ovE/GcZn640/puC/vVc4/tfU9B/2oxZ/5t7t3qWsZYRy5DjTvj4lzrgpB74ugAD5yZo/iTjRcYHGdHh2K1b+MG5vv+s79PR2Uctl4zXIeWKJOgfh5GErfcDa2fvL+dcU3LwR7/v4sMa/daVrU1zWFPfGLv+wVZ7+wV77o+jYMuguwv7+20Urgv76TVxiU279P/h+ftcE4XnxOE4yfzPr2F/nT2XX5utW/qf8r5RRhMNunwPaHLvM+m/t2mwTaq1OZ/GWWKui0q0ONW6RJuZ3HOmfhCbZ5XFvP6P0J8s/D2q/CTUMPdc4Qtj17/uu1PT0SW31rE+6O9U/yjT0SWZ/2mc63X7OVnD7qbGTz7K/m02V7juset/N3dbufciP+T84t/crewI1xb+p6a5tWn/L79fyj2XP+U+v4LGUVZ7CmvDS3a+kZ+85HygaN0T0n/VR3/NrWLHbVFubdv/e/3lfjOrZ2Q01Ppja0OczTX1E+13NL90erd9L/3PQZ/4//7DzV7nbhb0115yI/u7Jrm1zs6qjeqmPeqL8QdbG/SZTf3E1gPNM9oftPGBkejfKv5F94XeQ/wgrbO53LoQPRay3SSHeuxtvdHfJTX9YtW7nT+vmmmvZ99NGvpJ2i9a31E/eS+bD4mu8f9q/FX03xbl1lATdreHnOA0t8p2p/W5ior67ay22uuZPr/QTzQvqJ+YHiF9v7Xnp0DP/L8UP1hq/+djuyC3eu034gNbibFtksVnbfyX4f3Hj5yGtX6iW/UT825ov4H0Wtu10af/u8vVLlun48zOae42OqXfZ/pg8n3Vt6I3PcQ51nYtlPUobYfHxpbGV5LZU/uvo/jsg+pd1ufpKOohus6NDe1/TE5M7RplMXJUT00vlfZY+ThS+9meW+PN1IhV3/VX9Xk1taHT3NiIjrXUuFV7pr4RG231WGtlfH/8/pyvo9Fb26bXnmD9pX1eg9rQeq6/xeGUmB7vTZ9XVRu6zl36/16C3LtxGiOXXpcnyuK11beirnNTxHwbS+NsKLFQF/8VtaHTHAyLqviv8o2uczAsiP9pQ/xDGVW+0XUOrgfif9oQ/wAAAAAAAAAAAAAAAAAAAAAAMGb+A9f5Z2s=
+  </data>
+ </layer>
+ <layer id="3" name="back" width="128" height="96">
+  <data encoding="base64" compression="zlib">
+   eJztnMtum0AUhidNumn3URy5UZbp0m7UJrbT8Ch+FJzLJn0AGKmRvGzfwo/Co3QG5gzHmBhScxng/6QjE4xhop9zYebYKwEAAAAAAAAAAAAAAAAAAAAAAAAAAADIY3y387ffykAAAI0D/wdguMD/AQAAgO6j83lTObzJa4FqydZ9Oe/7jQwEVAr8H4DhUuST4Uwstcnk1Q9mIuLvB8l+od6PQmP/ey3gHjLR3OovM/pKpr++N9Qr6BlFtR87zq91IACAxoH/AzBc4P8AAJCP/N72CMpxPhfrtsfQR0Y/2h5BOVzWX88zmflF38wj0nyTnYPS+14XQijz2x4vESrtZUf0d5kg0XoZJBaZVz3vGM85mvtAuKa/ZnSjfOum7VF0G1pbUCZovSFINI9fAxMDXNM/VLpLaH8wgVk7ongfzrbWluI84KL+ml/TtkfQfUz8p/xv15TkzK5BxvdBU/pf/Sx/jU/Q/2BCFuvDdM1RGLNrz03o/1dp/+cd+r9UpP/Ffb3/l67/XX0GCNKcb3U3+cDG/qbi/1elwxXToigWVKj/ppoz5eOq9hrSm3oITO73WSxYNhX/5V1s8TXKxILPiP8HYzSn5/2I6j/m+3FNWKf+FH+/zISnbKO3s7EgD53/P0yEOFZ2Msk/Znxf6VB7B9Occj7Fft/Egdqf/yn+Ku21xdfgseAtdP3/oHR/VPak7DnnHlD6e1WPt0+Eu31mdE8szbOh39T8H/m/uh/s9nhPDKgq/w+ZgM3zmfkfn+o/Fv8bff6/YD47zqnNjqfC/6Ds5VsTo+k3v+fCK2uvczdi6aPS/kHZaurWfBRoltUbNR8YBkeTOA/ofAAGyErX/9M4H4ABcoT4PzhOVMw/1nFf2VHG70eL2PxWBgYq4/RWPZfc7j5rPCvNn5Q9KnuY7Nb/chGbn/0c6BZaf2XeeLb/eTMb/0d3sfl6+2yR7LvA/G/nMPrrGLAX/vyn1xD4nHGY6u/VM0pQF6T/uOA7zTz/172GewhyLi5lZj7dzLcvQ1p7V8eo18uzufDO52KjTW1vqCdLbS/VPu8s2W+3zbytv/O5uVgH7LcB2O8E0PpeJB1dly7j+5qu1P9aW6N1ZPopac49ou/2m2PoPqH+W2H6cmgtlr7vb+8ldq6tz2lt2W8E2L5O6vMMHdc/z/f1Wm4X87nxbfL5KNNzl/ReJDHi0vRhLDO+atdiaL2e9WvwmBKZ49fG/ym+CHYv0XFO6J/VU6/3veX7ei23i/mcYjvFYaaL1ZNyhEx92Po30z5i+gnWt00+Tuv3kdGfvsPBe3zo2mtH9Pf433q9ryjvdw2K7byfhvt+MNvJEaQvrccL9hn7nR2ZxhHbp89jO9/H+jspZjihfx6nJXJ/l6DYzvpprY8HqV6UI+h7WOSrwvhttHVOk+9DFhfCtG8r1p96OCTbz/q7K9ef6vYqrE+Urf+pFytkMZ9iuD5+65xp/uc+Lcz9sOxy/d833pH/99Z//Jwl6z/n8/8QeLoWXpn8X1T/8XOWrP86mf/7xsfrWM/C/F9U/3HK1H9N53+Qzzvm/yqt/5D/3aDs/F/V9V9X5/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1Ms/FFt3Gg==
+  </data>
+ </layer>
+ <layer id="4" name="front" width="128" height="96">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <layer id="5" name="front" width="128" height="96">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <layer id="6" name="front" width="128" height="96">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <objectgroup id="7" name="meta" visible="0">
+  <object id="1" name="config" type="id=0;zoom_allowance=2" x="192" y="496" width="480" height="576"/>
+  <object id="2" name="GIS_PACK" x="64" y="400" width="112" height="64">
+   <properties>
+    <property name="1-mouth entrance opening" value="music_adjust,all,vol$0|uncommon_sfx,p1_anuri_gate_opening|DELAY,2|common_sfx,9,pitch$0.8|FILE_MARK_SI,ANURI_ENTRANCE_OPENED,true|AT_move,anuri_jaw_graphic,tmx(68/46)|AT_move,anuri_jaw_collider,tmx(68/46)|AT_move,anuri_head_graphic,tmx(67.5/39.5)|AT_move,anuri_head_collider,vec3(-0.5/129.5/0)|AT_move,anuri_eye,tmx(68/38.125)|action_shake,duration$1|cutscene,line$ALEX_SHOCKED|DELAY,1|puzzle,id$2,msg$FLIP_ON|DELAY,1.5|common_sfx,150|put,sling_lock,tmx(1/23)"/>
+    <property name="3-Alex shoots slingshot" value="put,alex2,name(alex)|put,alex,tmx(2/23)|put,sling_lock,tmx(12/62.5)|override_npc_anim,alex2,alex_slingshot"/>
+    <property name="4-Alex gives slingshot" value="ITEM_add,30,1"/>
+    <property name="5-Seth gives lizard" value="FILE_MARK_POC,seth_liz|ITEM_add,112,1"/>
+   </properties>
+  </object>
+  <object id="4" name="config" type="id=1;zoom_allowance=1;follow=horizontal" x="208" y="496" width="1104" height="336"/>
+  <object id="5" name="trigger" type="GIS=cam_config_change,id$0,transition$smooth" x="528" y="640" width="32" height="176"/>
+  <object id="7" name="config" type="id=2;zoom_allowance=1" x="192" y="160" width="1840" height="560"/>
+  <object id="8" name="trigger" type="GIS=cam_config_change,id$2,transition$smooth" x="272" y="480" width="944" height="48"/>
+  <object id="9" name="trigger" type="GIS=cam_config_change,id$1,transition$smooth" x="208" y="592" width="928" height="32"/>
+  <object id="10" name="memory_add" x="64" y="480" width="112" height="64">
+   <properties>
+    <property name="_snd_packs" value="p_hitswitch,p_liftdoor,p_weightswitch"/>
+    <property name="_snd_solos" value="p1_slotting_gem,p1_anuri_gate_opening,atmos1,cutscene_ship_warp_in,cutscene_ship_abduct,cutscene_ship_grunt,whoosh_air,cartoon_run"/>
+    <property name="prefabs" value="p_hitswitch,p_liftdoor,p_weightswitch"/>
+   </properties>
+  </object>
+  <object id="11" name="music" x="64" y="224" width="112" height="64">
+   <properties>
+    <property name="0" value="ql=ITEM_HAVE,int_list(21)&amp;SI_FALSE,ABDUCTION_HAPPENED;spring_horror,vol=0;fellowship_upbeat,vol=0;mood_water_flow1,vol=0"/>
+    <property name="1" value="mood_water_flow1,vol=0;fellowship_upbeat,vol=0"/>
+   </properties>
+  </object>
+  <object id="12" name="config" type="id=3;zoom_allowance=2" x="192" y="496" width="1040" height="640"/>
+  <object id="13" name="trigger" type="GIS=cam_config_change,id$3,transition$smooth|music_adjust,mood_water_flow1,vol$0,rate$0.5" x="832" y="800" width="576" height="32"/>
+  <object id="14" name="trigger" type="GIS=cam_config_change,id$1,transition$smooth" x="944" y="736" width="432" height="16"/>
+  <object id="15" name="trigger" type="GIS=cam_config_change,id$3,transition$smooth|music_adjust,mood_water_flow1,vol$0,rate$0.5" x="688" y="880" width="32" height="224"/>
+  <object id="16" name="trigger" type="GIS=cam_config_change,id$0,transition$smooth" x="608" y="880" width="32" height="224"/>
+  <object id="17" name="trigger" type="GIS=cam_config_change,id$1,transition$smooth" x="592" y="640" width="32" height="176"/>
+  <object id="18" name="particle_emitter" type="type=FOREST_POLLEN;name=pollen;ppts=0.035;starts_with=2" x="736" y="944" width="496" height="96"/>
+  <object id="19" name="lighting" type="ql=SI_FALSE,NIGHT;shader=diffuse;intensity=1.2;gales_light_power=4;no_add_lights" x="64" y="576" width="112" height="80"/>
+  <object id="20" name="particle_emitter" type="type=FOREST_POLLEN;name=pollen;ppts=0.035;starts_with=2" x="544" y="656" width="416" height="96"/>
+  <object id="167" name="config" type="id=4;no_zoom=1;follow=point" x="640" y="496" width="464" height="256"/>
+  <object id="173" name="level_art" type="ql=SI_FALSE,NIGHT" x="32" y="304" width="112" height="64">
+   <properties>
+    <property name="bg_v" value="graphic=distant_panselo_02;add_x=0.922;scroll_x=.004;add_y=0.365;scroll_y=0.03"/>
+    <property name="bg_x" value="graphic=p1_panselo_bg_clouds;add_x=0.5;add_y=0.55;scroll_x=.008;auto_scroll_x=0.008;scroll_y=0.03"/>
+    <property name="bg_y" value="graphic=p1_panselo_bg_clouds;add_x=0;add_y=0.58;scroll_x=.008;auto_scroll_x=0.012;scroll_y=0.0325"/>
+    <property name="bg_z" value="graphic=distant_panselo_01;add_x=0;scroll_x=0.012;add_y=0.92;scroll_y=0.04"/>
+   </properties>
+  </object>
+  <object id="174" name="level_art" type="ql=SI_TRUE,NIGHT" x="48" y="320" width="112" height="64">
+   <properties>
+    <property name="bg_v" value="graphic=distant_panselo_02_night;add_x=0.922;scroll_x=.004;add_y=0.365;scroll_y=0.03"/>
+    <property name="bg_x" value="graphic=distant_panselo_clouds_night;add_x=0;add_y=0.58;scroll_x=.008;auto_scroll_x=0.012;scroll_y=0.0325"/>
+    <property name="bg_z" value="graphic=distant_panselo_01_night;add_x=0;scroll_x=0.012;add_y=0.92;scroll_y=0.04"/>
+   </properties>
+  </object>
+  <object id="190" name="trigger" type="GIS=cam_config_change,id$3,transition$smooth|music_adjust,mood_water_flow1,vol$0.5,rate$0.5" x="784" y="928" width="368" height="128"/>
+  <object id="242" name="lighting" type="ql=SI_TRUE,NIGHT;shader=diffuse;intensity=1;gales_light_power=4;color=ffdddd" x="48" y="560" width="112" height="80"/>
+  <object id="253" name="trigger" type="GIS=cam_config_change,id$0,transition$smooth" x="96" y="784" width="464" height="44"/>
+ </objectgroup>
+ <objectgroup id="8" name="solid_collisions" visible="0">
+  <object id="44" x="1120" y="576" width="192" height="96"/>
+  <object id="45" type="name=anuri_head_collider;ql=SI_FALSE,ANURI_ENTRANCE_OPENED" x="1072" y="704">
+   <polygon points="0,0 0,-16 16,-48 48,-64 64,0"/>
+  </object>
+  <object id="46" type="name=anuri_jaw_collider;ql=SI_FALSE,ANURI_ENTRANCE_OPENED" x="1072" y="704" width="48" height="16"/>
+  <object id="47" type="ql=SI_TRUE,ANURI_ENTRANCE_OPENED" x="1072" y="672">
+   <polygon points="0,0 0,-16 16,-48 48,-64 64,0"/>
+  </object>
+  <object id="48" type="ql=SI_TRUE,ANURI_ENTRANCE_OPENED" x="1072" y="736" width="48" height="16"/>
+  <object id="49" x="464" y="784">
+   <polyline points="0,0 48,0"/>
+  </object>
+  <object id="50" x="416" y="832">
+   <polyline points="0,0 32,0"/>
+  </object>
+  <object id="51" x="464" y="880">
+   <polyline points="0,0 32,0"/>
+  </object>
+  <object id="52" x="400" y="928">
+   <polyline points="0,0 48,0"/>
+  </object>
+  <object id="53" x="1152" y="576">
+   <polygon points="0,0 0,-112 16,-112 16,-144 32,-144 32,-176 48,-176 48,-208 80,-208 80,-176 96,-176 96,-144 112,-144 112,-112 128,-112 128,0"/>
+  </object>
+  <object id="54" x="1344" y="448">
+   <polygon points="0,0 0,-112 16,-112 16,-144 32,-144 32,-176 48,-176 48,-208 128,-208 128,-176 144,-176 144,-144 160,-144 160,-112 176,-112 176,0"/>
+  </object>
+  <object id="55" x="1584" y="576">
+   <polygon points="0,0 0,-112 16,-112 16,-144 32,-144 32,-176 48,-176 48,-208 80,-208 80,-176 96,-176 96,-144 112,-144 112,-112 128,-112 128,0"/>
+  </object>
+  <object id="56" x="1312" y="400" width="240" height="768"/>
+  <object id="57" x="1552" y="576" width="192" height="592"/>
+  <object id="58" x="1296" y="560" width="272" height="16"/>
+  <object id="59" x="1120" y="720" width="192" height="448"/>
+  <object id="60" type="profile=GRASS" x="752" y="736">
+   <polygon points="0,0 -144,32 -144,128 0,128"/>
+  </object>
+  <object id="61" type="profile=GRASS" x="608" y="784">
+   <polygon points="0,0 -48,0 -48,32 -32,48 -32,80 -16,96 0,96"/>
+  </object>
+  <object id="62" type="profile=DIRT" x="416" y="1104" width="704" height="64"/>
+  <object id="63" type="profile=GRASS" x="416" y="1008" width="64" height="96"/>
+  <object id="64" type="profile=DIRT" x="416" y="1024">
+   <polygon points="0,0 -96,0 -112,16 -112,112 0,112"/>
+  </object>
+  <object id="65" x="0" y="1040" width="304" height="96"/>
+  <object id="66" type="profile=DIRT" x="304" y="944">
+   <polygon points="0,0 -16,16 -32,16 -48,32 -304,32 -304,0"/>
+  </object>
+  <object id="67" type="profile=DIRT" x="256" y="560">
+   <polygon points="0,0 0,80 -16,96 -16,128 -32,144 -256,144 -256,0"/>
+  </object>
+  <object id="68" type="profile=DIRT" x="64" y="704" width="160" height="160"/>
+  <object id="69" type="profile=GRASS" x="304" y="400">
+   <polygon points="0,0 0,128 -32,160 -288,160 -288,0"/>
+  </object>
+  <object id="70" type="profile=GRASS" x="352" y="816">
+   <polygon points="0,0 -48,0 -112,-16 -112,128 -48,128 0,80"/>
+  </object>
+  <object id="71" type="profile=DIRT" x="224" y="768">
+   <polygon points="0,0 16,16 16,128 0,128"/>
+  </object>
+  <object id="72" x="752" y="720">
+   <polygon points="0,0 208,0 208,32 112,128 0,128"/>
+  </object>
+  <object id="73" type="profile=DIRT" x="864" y="848">
+   <polygon points="0,0 0,64 -32,96 -80,96 -96,80 -96,0"/>
+  </object>
+  <object id="74" x="768" y="928">
+   <polygon points="0,0 -80,0 -96,-16 -160,-16 -176,-32 -176,-64 0,-64"/>
+  </object>
+  <object id="75" type="profile=GRASS" x="480" y="976">
+   <polygon points="0,0 144,0 176,32 176,128 0,128"/>
+  </object>
+  <object id="76" type="profile=GRASS" x="544" y="976">
+   <polygon points="0,0 64,-16 80,-16 80,0"/>
+  </object>
+  <object id="77" type="profile=DIRT" x="656" y="1008">
+   <polygon points="0,0 32,0 64,16 64,96 0,96"/>
+  </object>
+  <object id="78" type="profile=DIRT" x="720" y="1024">
+   <polygon points="0,0 64,0 144,80 0,80"/>
+  </object>
+  <object id="79" x="1744" y="592" width="192" height="320"/>
+  <object id="246" type="ql=SI_TRUE,ABDUCTION_HAPPENED;profile=WOOD" x="928" y="720">
+   <polygon points="0,0 16,-16 128,-16 144,0"/>
+  </object>
+  <object id="247" type="ql=ITEM_HAVE,int_list(21);profile=WOOD" x="928" y="720">
+   <polygon points="0,0 16,-16 128,-16 144,0"/>
+  </object>
+  <object id="249" type="profile=DIRT" x="208" y="-48" width="48" height="448"/>
+  <object id="250" type="profile=DIRT" x="256" y="304">
+   <polygon points="0,0 16,-16 16,-352 0,-352"/>
+  </object>
+  <object id="251" type="profile=DIRT" x="272" y="256">
+   <polygon points="0,0 16,-16 16,-304 0,-304"/>
+  </object>
+  <object id="252" type="profile=DIRT" x="288" y="176">
+   <polygon points="0,0 224,-224 0,-224"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="9" name="objects_all">
+  <object id="21" name="door" type="profile=TOUCH_TRIGGER;open=p1_duri_forest_05;id=6" x="128" y="816" width="48" height="288"/>
+  <object id="22" name="end_door" type="id=6;facing=right;start_zoom_lvl=1" x="208" y="1008" width="32" height="32"/>
+  <object id="26" name="puzzle" type="exist_ql=SI_FALSE,ANURI_ENTRANCE_OPENED;type=p_hitswitch;profile=-1;name=anuri_eye;angle=90;trigger_once;GIS=ACTIVATE:GIS_PACK,1;instruction=defended" x="1088" y="642" width="16" height="16"/>
+  <object id="27" name="trigger" type="GIS=FILE_ERASE_OC,jump_started_music" x="640" y="256" width="384" height="176"/>
+  <object id="28" name="puzzle" type="exist_ql=SI_TRUE,ANURI_ENTRANCE_OPENED;type=p_hitswitch;profile=-1;angle=90;trigger_once;initial_state=1;puzzle_id=0" x="1088" y="610" width="16" height="16"/>
+  <object id="30" name="puzzle" type="type=p_liftdoor;profile=-3;puzzle_id=2;instruction=72,45,67,45;spd=4;ql=SI_TRUE,ANURI_ENTRANCE_OPENED" x="1124" y="720" width="80" height="16"/>
+  <object id="32" name="end_door" type="id=1;facing=left;config=1" x="1072" y="688" width="32" height="32"/>
+  <object id="34" name="water" type="sort_fg=fg_tiles,6;sort_bg=bg_tiles,7;use_flat_corners;surface_color=31a4d4;splash_color=57cbff" x="784" y="1040" width="352" height="80"/>
+  <object id="35" name="trigger" type="GIS=record_checkpoint,tmx(58/43),facing$right" x="928" y="464" width="32" height="288"/>
+  <object id="36" name="trigger" type="GIS=record_checkpoint,tmx(48/62),facing$right" x="768" y="912" width="32" height="160"/>
+  <object id="42" name="door" type="profile=TOUCH_TRIGGER;open=p1_anuri_temple_boss2;id=12" x="1904" y="768" width="336" height="112"/>
+  <object id="43" name="door" type="profile=TOUCH_TRIGGER;open=p1_anuri_temple_boss2;id=12" x="2240" y="128" width="80" height="640"/>
+  <object id="114" name="enemy" type="type=fish;instruction=FISH_S" x="912" y="1040" width="48" height="32"/>
+  <object id="115" name="enemy" type="type=fish;instruction=FISH_M" x="1008" y="1056" width="48" height="32"/>
+  <object id="117" name="enemy" type="type=fish;instruction=FISH_S" x="848" y="1040" width="48" height="32"/>
+  <object id="118" name="enemy" type="type=fish;instruction=FISH_S" x="960" y="1040" width="48" height="32"/>
+  <object id="119" name="enemy" type="type=fish;instruction=FISH_S" x="1040" y="1040" width="48" height="32"/>
+  <object id="121" name="door" type="profile=TOUCH_TRIGGER;open=P1_anuri_temple_01;id=0" x="1136" y="640" width="48" height="112"/>
+  <object id="125" name="end_door" type="id=0;facing=right;config=1" x="944" y="688" width="32" height="32"/>
+  <object id="152" name="L" type="type=P1_ANURI_CERAMIC_POT_S;ql=SI_FALSE,MOON_ANURI_4;destroyed_GIS=SPAWN_loot,5,loot_GIS_MARK_SI$MOON_ANURI_4;name=moon1" x="1424" y="224" width="16" height="16"/>
+  <object id="255" name="L" type="type=P1_ANURI_CERAMIC_POT_S" x="1208" y="352" width="16" height="16"/>
+  <object id="256" name="L" type="type=P1_ANURI_CERAMIC_POT_S" x="1640" y="352" width="16" height="16"/>
+  <object id="261" name="enemy" type="type=fish;instruction=FISH_M" x="912" y="1072" width="48" height="32"/>
+  <object id="273" name="L" type="type=P1_ANURI_CERAMIC_POT_S;destroyed_GIS=SPAWN_pickup,P1_RAI,50|FILE_MARK_SI,REGEN_LAST,true;ql=SI_FALSE,REGEN_LAST" x="256" y="384" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="10" name="objects_fish_with_scale" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,D_FOREST_MONEY_3"/>
+  </properties>
+  <object id="257" name="enemy" type="name=scale_fish;instruction=FISH_M;type=fish;defeated_GIS=common_sfx,150|SPAWN_loot,185,loot_GIS_MARK_SI$D_FOREST_MONEY_3|particle_emitter,highlighter2,stop;ql=ALWAYS_TRUE" x="960" y="1072" width="48" height="32"/>
+  <object id="258" name="particle_emitter" type="name=highlighter2;target=scale_fish;type=ITEM_CARRIER;ppts=1;starts_with=2" x="952" y="1088" width="64" height="16"/>
+  <object id="259" name="bulb" type="range=2;z=-1.5;intensity=2.5;color=ffffff;behavior=pulsate_intensity,2,3,0.025;follow_target=scale_fish" x="960" y="1088" width="48" height="48">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="11" name="objects_b4_slingshot_get_scene" visible="0">
+  <properties>
+   <property name="ql" value="ITEM_DONT_HAVE,int_list(30)"/>
+  </properties>
+  <object id="120" name="npc" type="name=alex;voice=man,1.1;profile=alex;behavior=stand;speech=ALEX_FOREST;spacing=auto,0.25" x="864" y="688" width="32" height="32"/>
+  <object id="122" name="npc" type="name=amanda;face_right;voice=woman,1.15;profile=amanda;behavior=stand;speech=AMANDA_FOREST,AMANDA_FOREST+2" x="832" y="688" width="32" height="32"/>
+  <object id="123" name="npc" type="name=seth;face_right;voice=man,1.15;profile=seth;behavior=stand;speech=SETH_FOREST+3,SETH_FOREST" x="800" y="688" width="32" height="32"/>
+  <object id="130" name="npc" type="name=alex2;face_right;spacing=left,0.5;voice=man,1.1;profile=alex;behavior=action_only;speech=ALEX_GIVES_SLINGSHOT" x="16" y="368" width="48" height="32"/>
+  <object id="180" name="puzzle" type="type=p_bird" x="672" y="736" width="16" height="16"/>
+  <object id="181" name="puzzle" type="type=p_bird" x="640" y="744" width="16" height="16"/>
+  <object id="182" name="puzzle" type="type=p_bird" x="704" y="728" width="16" height="16"/>
+  <object id="254" name="trigger" type="remove;GIS=cutscene,line$ALEX_GEAR_RING;ql=SI_FALSE,ALEX_RING_GEAR" x="1122" y="640" width="16" height="112"/>
+ </objectgroup>
+ <objectgroup id="12" name="objects_after_slingshot_b4_temple_entrance" visible="0">
+  <properties>
+   <property name="ql" value="ITEM_HAVE,int_list(30)"/>
+  </properties>
+  <object id="262" name="npc" type="name=alex;voice=man,1.1;profile=alex;behavior=stand;speech=ALEX_FOREST;spacing=auto,0.25" x="864" y="688" width="32" height="32"/>
+  <object id="263" name="npc" type="name=amanda;face_right;voice=woman,1.15;profile=amanda;behavior=stand;speech=AMANDA_FOREST,AMANDA_FOREST+2" x="832" y="688" width="32" height="32"/>
+  <object id="264" name="npc" type="name=seth;face_right;voice=man,1.15;profile=seth;behavior=stand;speech=SETH_FOREST+3,SETH_FOREST" x="800" y="688" width="32" height="32"/>
+  <object id="268" name="puzzle" type="type=p_bird" x="672" y="736" width="16" height="16"/>
+  <object id="269" name="puzzle" type="type=p_bird" x="640" y="744" width="16" height="16"/>
+  <object id="270" name="puzzle" type="type=p_bird" x="704" y="728" width="16" height="16"/>
+  <object id="271" name="trigger" type="remove;GIS=cutscene,line$ALEX_GEAR_RING;ql=SI_FALSE,ALEX_RING_GEAR" x="1122" y="640" width="16" height="112"/>
+ </objectgroup>
+ <objectgroup id="16" name="animated_abduction" visible="0">
+  <object id="164" name="AT" type="anim=48;sort=fg_tiles,100;scale=vec3(0/0/1);name=spaceship" x="992" y="416" width="64" height="48"/>
+  <object id="168" name="AT" type="sprite=1;angle=270;scale=vec3(.01/.1/1);sort=bg_tiles,100;color=A7FFD3;use_all_bright;effect=rotate_sine,260,280,2,1;alpha=1;name=ab_light2" x="849" y="64" width="32" height="32"/>
+  <object id="169" name="AT" type="sprite=1;angle=270;scale=vec3(.01/.1/1);sort=bg_tiles,100;color=A7FFD3;use_all_bright;effect=rotate_sine,260,280,2;alpha=1;name=ab_light1" x="800" y="64" width="32" height="32"/>
+  <object id="175" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(0/0/1);name=village_light;alpha=0;effect=color_sine,Hffffff-0.25,Hffffff-0.5,0.4" x="803" y="626" width="64" height="48">
+   <properties>
+    <property name="ql" value="ITEM_HAVE,int_list(21)&amp;SI_FALSE,ABDUCTION_HAPPENED"/>
+   </properties>
+  </object>
+  <object id="176" name="AT" type="sprite=38;sort=fg_tiles,99;scale=vec3(0.1/0.1/1);color=FFE4A3;alpha=1;use_all_bright;name=ship_thruster" x="912" y="48" width="80" height="64">
+   <ellipse/>
+  </object>
+  <object id="177" name="AT" type="sprite=1;angle=270;scale=vec3(.01/.1/1);sort=bg_tiles,100;color=ffffff;use_all_bright;effect=color_sine,H00ffff-0.25,Hffffff-0.5,0.4;name=ab_light3" x="752" y="64" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup id="17" name="animated" visible="0">
+  <object id="83" name="AT" type="sprite=6;name=anuri_head_graphic;ql=SI_FALSE,ANURI_ENTRANCE_OPENED;sort=fg_tiles,-1" x="1056" y="640" width="64" height="64"/>
+  <object id="84" name="AT" type="sprite=7;name=anuri_jaw_graphic;ql=SI_FALSE,ANURI_ENTRANCE_OPENED;sort=fg_tiles,-1" x="1072" y="704" width="48" height="16"/>
+  <object id="85" name="AT" type="sprite=7;ql=SI_TRUE,ANURI_ENTRANCE_OPENED;sort=fg_tiles,-1" x="1072" y="736" width="48" height="16"/>
+  <object id="86" name="AT" type="sprite=6;ql=SI_TRUE,ANURI_ENTRANCE_OPENED;sort=fg_tiles,-1" x="1056" y="608" width="64" height="64"/>
+  <object id="141" name="AT" type="sprite=41;ql=ITEM_HAVE,int_list(21)" x="944" y="704" width="112" height="16"/>
+  <object id="187" name="AT" type="sprite=41;ql=SI_TRUE,ABDUCTION_HAPPENED" x="944" y="704" width="112" height="16"/>
+  <object id="188" name="AT" type="sort=fg_tiles,30;anim=23;use_all_bright;color=31a4d4;scale=vec3(1/1/1)" x="1168" y="914" width="32" height="65"/>
+  <object id="189" name="AT" type="sort=fg_tiles,8;anim=23;use_all_bright;color=31a4d4;scale=vec3(1/1/1)" x="1168" y="979" width="32" height="65"/>
+ </objectgroup>
+ <objectgroup id="18" name="animated_day" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,NIGHT"/>
+  </properties>
+  <object id="197" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(2/1/1);color=1C1F2B;alpha=0.6" x="32" y="896" width="240" height="208">
+   <ellipse/>
+  </object>
+  <object id="198" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(2/2/1);color=ffa359;alpha=0.1" x="720" y="928" width="144" height="144">
+   <ellipse/>
+  </object>
+  <object id="200" name="AT" type="angle=270;sprite=10;scale=vec3(10/1.35/1);sort=fg_tiles,-5;color=1C1F2B;alpha=0.3" x="112" y="912" width="240" height="176"/>
+  <object id="201" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(2/3/1);color=1C1F2B;alpha=0.3" x="528" y="832" width="240" height="240">
+   <ellipse/>
+  </object>
+  <object id="202" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1/1/1);color=ffedc1;alpha=0.1" x="224" y="688" width="144" height="144">
+   <ellipse/>
+  </object>
+  <object id="207" name="AT" type="sprite=10;sort=fg_tiles,100;scale=vec3(120/5/1);color=fff4db;alpha=0.6;angle=180;use_all_bright" x="144" y="160" width="1888" height="640"/>
+  <object id="213" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1/1/1);color=ffedc1;alpha=0.1" x="480" y="848" width="144" height="144">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="19" name="animated_night" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,NIGHT"/>
+  </properties>
+  <object id="221" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(2/1/1);color=1C1F2B;alpha=0.6" x="32" y="896" width="240" height="208">
+   <ellipse/>
+  </object>
+  <object id="222" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(2/2/1);color=ffa359;alpha=0.1" x="720" y="928" width="144" height="144">
+   <ellipse/>
+  </object>
+  <object id="223" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(2/2/1);color=ffa359;alpha=0.1" x="288" y="880" width="144" height="144">
+   <ellipse/>
+  </object>
+  <object id="224" name="AT" type="angle=270;sprite=10;scale=vec3(10/1.35/1);sort=fg_tiles,-5;color=1C1F2B;alpha=0.3" x="112" y="912" width="240" height="176"/>
+  <object id="225" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(2/3/1);color=1C1F2B;alpha=0.3" x="528" y="832" width="240" height="240">
+   <ellipse/>
+  </object>
+  <object id="226" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1/1/1);color=ffedc1;alpha=0.1" x="224" y="688" width="144" height="144">
+   <ellipse/>
+  </object>
+  <object id="227" name="AT" type="sprite=10;sort=fg_tiles,100;scale=vec3(120/5/1);color=ffca59;alpha=0.6;angle=180;use_all_bright" x="144" y="160" width="1888" height="640"/>
+  <object id="228" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1/1/1);color=ffedc1;alpha=0.1" x="480" y="848" width="144" height="144">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="20" name="objects_day" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,NIGHT"/>
+  </properties>
+  <object id="196" name="bulb2" type="intensity=6;z=-8;range=10;color=ffa359;diameter=80" x="336" y="928" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="204" name="bulb2" type="intensity=4;z=-8;range=10;color=ffedc1;diameter=70" x="416" y="864" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="205" name="bulb2" type="intensity=4;z=-8;range=10;color=ffedc1;diameter=70" x="416" y="768" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="206" name="bulb2" type="intensity=2;z=-8;range=10;color=ffedc1;diameter=80" x="416" y="656" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="210" name="bulb2" type="intensity=4;z=-8;range=10;color=ffedc1;diameter=80" x="256" y="752" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="212" name="bulb" type="intensity=4;color=ffedc1;range=4;z=-2" x="496" y="928" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="214" name="bulb2" type="intensity=6;z=-12;range=13;color=ffedc1;diameter=80" x="1168" y="384" width="96" height="96">
+   <ellipse/>
+  </object>
+  <object id="215" name="bulb2" type="intensity=6;z=-13;range=15;color=ffedc1;diameter=80" x="1376" y="272" width="112" height="112">
+   <ellipse/>
+  </object>
+  <object id="216" name="bulb2" type="intensity=6;z=-12;range=13;color=ffedc1;diameter=80" x="1600" y="384" width="96" height="96">
+   <ellipse/>
+  </object>
+  <object id="217" name="bulb2" type="intensity=4;z=-8;range=10;color=ffedc1;diameter=70" x="576" y="736" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="218" name="bulb2" type="intensity=5;z=-8;range=10;color=ffa359;diameter=80" x="816" y="672" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="219" name="bulb2" type="intensity=8;z=-8;range=10;color=ffedc1;diameter=80" x="1040" y="624" width="96" height="96">
+   <ellipse/>
+  </object>
+  <object id="220" name="bulb2" type="intensity=8;z=-11;range=13;color=ffedc1;diameter=80" x="912" y="992" width="96" height="96">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="objects_night" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,NIGHT"/>
+  </properties>
+  <object id="229" name="bulb2" type="intensity=6;z=-8;range=10;color=ffa359;diameter=80" x="336" y="928" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="230" name="bulb2" type="intensity=4;z=-8;range=10;color=ffedc1;diameter=70" x="416" y="864" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="231" name="bulb2" type="intensity=4;z=-8;range=10;color=ffedc1;diameter=70" x="416" y="768" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="232" name="bulb2" type="intensity=2;z=-8;range=10;color=ffedc1;diameter=80" x="416" y="656" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="233" name="bulb2" type="intensity=4;z=-8;range=10;color=ffedc1;diameter=80" x="256" y="752" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="234" name="bulb" type="intensity=4;color=ffedc1;range=4;z=-2" x="496" y="928" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="235" name="bulb2" type="intensity=6;z=-12;range=13;color=ffedc1;diameter=80" x="1168" y="384" width="96" height="96">
+   <ellipse/>
+  </object>
+  <object id="236" name="bulb2" type="intensity=6;z=-13;range=15;color=ffedc1;diameter=80" x="1376" y="272" width="112" height="112">
+   <ellipse/>
+  </object>
+  <object id="237" name="bulb2" type="intensity=6;z=-12;range=13;color=ffedc1;diameter=80" x="1600" y="384" width="96" height="96">
+   <ellipse/>
+  </object>
+  <object id="238" name="bulb2" type="intensity=4;z=-8;range=10;color=ffedc1;diameter=70" x="576" y="736" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="239" name="bulb2" type="intensity=5;z=-8;range=10;color=ffa359;diameter=80" x="816" y="672" width="80" height="80">
+   <ellipse/>
+  </object>
+  <object id="240" name="bulb2" type="intensity=8;z=-8;range=10;color=ffedc1;diameter=80" x="1040" y="624" width="96" height="96">
+   <ellipse/>
+  </object>
+  <object id="241" name="bulb2" type="intensity=8;z=-11;range=13;color=ffedc1;diameter=80" x="912" y="992" width="96" height="96">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="_notes" visible="0">
+  <object id="148" name="See &quot;p1_duri_forest_06 cutscene breakdown notes&quot; in Tech Doc 5 for organization notes on how this level is broken down" x="144" y="128" width="1824" height="128"/>
+ </objectgroup>
+</map>

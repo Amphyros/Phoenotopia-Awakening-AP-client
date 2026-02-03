@@ -1,9 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Xml;
 using HarmonyLib;
-using PhoA_AP_client.AP;
 using PhoA_AP_client.util;
 using UnityEngine;
 
@@ -12,37 +7,7 @@ namespace PhoA_AP_client.patches;
 [HarmonyPatch]
 public class CutsceneAdjustmentPatches
 {
-    [HarmonyPatch(typeof(LevelBuildLogic), "_HandleTrigger")]
-    [HarmonyPrefix]
-    private static bool HandleTriggerPrefix(XmlReader reader)
-    {
-        return RemoveLevelObjects(reader);
-    }
-
-    [HarmonyPatch(typeof(LevelBuildLogic), "_HandlePuzzleObject")]
-    [HarmonyPrefix] // This is a temporary addition to remove the twigs above century toad
-    private static bool HandlePuzzleObjectPrefix(XmlReader reader)
-    {
-        return RemoveLevelObjects(reader);
-    }
-
-    private static bool RemoveLevelObjects(XmlReader reader)
-    {
-        string activeLevelName = LevelBuildLogic.level_name;
-
-        if (!TriggerMapping.TriggerMap.TryGetValue(activeLevelName, out List<int> triggers)) return true;
-
-        string objectId = reader.GetAttribute("id");
-
-        foreach (int trigger in triggers)
-        {
-            if (trigger.ToString() == objectId) return false;
-        }
-
-        return true;
-    }
-
-    // TODO: Need to find a solution that can handle all cutscenes that need to be manipulated. For now this if fine
+    // TODO: Edit level files in a way to handle the cutscene without interference of patches
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
     [HarmonyPostfix] // Patch to manipulate the slingshot cutscene
     private static void LoadLevelPostfix(string new_level_name)

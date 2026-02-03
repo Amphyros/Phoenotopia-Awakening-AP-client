@@ -12,6 +12,7 @@ namespace PhoA_AP_client.patches;
 internal sealed class StoryManagementPatches
 {
     private static readonly HashSet<string> LevelsWithManagementNpcs = ["p1_panselo_village_01"];
+    private static readonly HashSet<string> StoryFlags = ["BOSS_SLIME_DEFEATED"];
 
     private static readonly FieldInfo LevelPathPrefixField =
         AccessTools.Field(typeof(LevelBuildLogic), "_level_path_prefix");
@@ -123,14 +124,20 @@ internal sealed class StoryManagementPatches
     private static void LoadLevelPrefix(LevelBuildLogic __instance, string new_level_name)
     {
         string modRoot = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        if (modRoot == null) return;
+        string customLevelsDirectory = Path.Combine(modRoot, "PhoA_AP_client/");
+        if (!Directory.Exists(customLevelsDirectory)) return;
 
-        if (modRoot == null)
-            return;
+        foreach (string filePath in Directory.GetFiles(customLevelsDirectory))
+        {
+            string fileName = Path.GetFileNameWithoutExtension(filePath).ToLower();
 
-        if (!LevelsWithManagementNpcs.Contains(new_level_name.ToLower()))
-            return;
-
-        LevelPathPrefixField.SetValue(__instance, Path.Combine(modRoot, "PhoA_AP_client/"));
+            if (fileName == new_level_name.ToLower())
+            {
+                LevelPathPrefixField.SetValue(__instance, Path.Combine(modRoot, "PhoA_AP_client/"));
+                break;
+            }
+        }
     }
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
@@ -150,8 +157,50 @@ internal sealed class StoryManagementPatches
         if (!LevelsWithManagementNpcs.Contains(new_level_name.ToLower()))
             return;
 
-        PhoaAPClient.Logger.LogWarning($"Level loaded with timewarp NPC: {new_level_name}");
         ConstructAndReplaceTimewarpLines();
+    }
+
+    [HarmonyPatch(typeof(PT2), "_GIS_HandleFileMarkSI")]
+    [HarmonyPostfix] // Patch to handle storyflags
+    private static void _GIS_HandleFileMarkSIPostfix(string[] args)
+    {
+        if (!StoryFlags.Contains(args[1]))
+            return;
+
+        string[] storyFlags = [];
+
+        switch (args[1])
+        {
+            case "BOSS_SLIME_DEFEATED":
+                storyFlags = storyFlags
+                    .Concat(ChapterOneEventList)
+                    .ToArray();
+                break;
+
+            case "BOSS_BIRDY_DEFEATED": // Placeholder value
+                storyFlags = storyFlags
+                    .Concat(ChapterOneEventList)
+                    .Concat(ChapterTwoEventList)
+                    .ToArray();
+                break;
+
+            case "BOSS_KATASH_DEFEATED": // Placeholder value
+                storyFlags = storyFlags
+                    .Concat(ChapterOneEventList)
+                    .Concat(ChapterTwoEventList)
+                    .Concat(ChapterThreeEventList)
+                    .ToArray();
+                break;
+        }
+
+        if (storyFlags.Length == 0)
+            return;
+
+        foreach (string storyFlag in storyFlags)
+            PT2.GIS_ProcessInstructions("FILE_MARK_SI," + storyFlag + ",true", Vector3.zero);
+        PT2.sound_g.PlayGlobalCommonSfx(188, 1f, 1f, 2);
+        PT2.display_messages.DisplayMessage("Chapter completed and Timewarp unlocked",
+            DisplayMessagesLogic.MSG_TYPE.GALE_PLUS_STATUS);
     }
 
     private static void ConstructAndReplaceTimewarpLines()
@@ -159,7 +208,6 @@ internal sealed class StoryManagementPatches
         bool defeatedSlargummy = PT2.save_file.QL_EvaluateExpression("SI_TRUE,BOSS_SLIME_DEFEATED");
         // bool defeatedBirdy = false;
         // bool defeatedKatash = false;
-        PhoaAPClient.Logger.LogDebug($"Defeated Slargummy: {defeatedSlargummy}");
 
         DB.lines[DB.line_id_map["TIMEWARP_PANSELO"] + 1] = GetPanseloTimeWarpString(defeatedSlargummy);
     }
