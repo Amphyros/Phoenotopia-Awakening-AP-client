@@ -125,7 +125,7 @@ internal sealed class APReplaceLootPatches
 
         foreach (Check check in checks)
         {
-            if (check.ObjectId != objectId) continue;
+            if (!check.ObjectIds.Contains(objectId)) continue;
 
             if (!PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(check.ArchipelagoId)) return true;
 
@@ -157,10 +157,13 @@ internal sealed class APReplaceLootPatches
 
         foreach (Check check in checks)
         {
-            if (int.TryParse(check.ObjectId, out _)) continue;
+            foreach (string objectId in check.ObjectIds)
+            {
+                if (int.TryParse(objectId, out _)) continue;
 
-            string[] identifierArray = check.ObjectId.Split('-');
-            PT2.level_builder._GIS_PAK_instruction_map[int.Parse(identifierArray[0])] = check.OverrideType;
+                string[] identifierArray = objectId.Split('-');
+                PT2.level_builder._GIS_PAK_instruction_map[int.Parse(identifierArray[0])] = check.OverrideType;
+            }
         }
     }
 

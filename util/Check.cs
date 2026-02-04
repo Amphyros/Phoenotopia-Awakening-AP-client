@@ -5,7 +5,7 @@ namespace PhoA_AP_client.util;
 public class Check
 {
     public long ArchipelagoId { get; set; }
-    public string ObjectId { get; set; }
+    public string[] ObjectIds { get; set; }
     public bool IsKeyItem { get; set; }
     public bool IsNpc { get; set; }
     public string GISIdentifier { get; set; }
