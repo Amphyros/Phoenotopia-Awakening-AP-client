@@ -352,6 +352,14 @@ public class LocationMapping
             },
             new Check
             {
+                ArchipelagoId = 7676009,
+                ObjectIds = ["152"],
+                IsKeyItem = true,
+                GISIdentifier = "MOON_ANURI_4",
+                OverrideType = "type=P1_ANURI_CERAMIC_POT_S;ql=SI_FALSE,MOON_ANURI_4;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_ANURI_4;name=moon1",
+            },
+            new Check
+            {
                 ArchipelagoId = 7676071,
                 ObjectIds = ["123", "264"],
                 IsKeyItem = false,
