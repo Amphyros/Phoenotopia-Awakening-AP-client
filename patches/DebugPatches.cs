@@ -13,11 +13,12 @@ internal sealed class DebugPatches
     }
 
     [HarmonyPatch(typeof(LootLogic), "SetAttributes")]
-    [HarmonyPrefix]
-    private static bool SetAttributesPrefix(int set_item_tool_id)
+    [HarmonyPostfix]
+    private static void SetAttributesPrefix(int set_item_tool_id)
     {
+        if (set_item_tool_id >= DB.ITEM_DEFS.Length)
+            return;
         PhoaAPClient.Logger.LogDebug(DB.ITEM_DEFS[set_item_tool_id].item_name);
-        return true;
     }
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]

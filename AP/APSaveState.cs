@@ -10,7 +10,6 @@ public static class APSaveState
 
     public static void LoadFromSaveString([CanBeNull] string apitemsString)
     {
-        PhoaAPClient.Logger.LogDebug("LoadFromSaveString called.");
         if (string.IsNullOrEmpty(apitemsString))
         {
             CollectedItems.Clear();

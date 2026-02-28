@@ -19,6 +19,17 @@ public class ItemHandler
     public readonly HashSet<long> SuppressedItemMessages = [];
     public readonly HashSet<long> SuppressedItemAddition = [];
 
+    private static readonly Dictionary<long, int[]> UpgradeChains = new()
+    {
+        { 293, [6, 7, 8, 9] },
+        { 294, [30, 28] },
+        { 295, [31, 44] },
+        { 296, [32, 43] },
+        { 297, [33, 17] },
+        { 298, [37, 38] },
+        { 299, [40, 41] }
+    };
+
     public ItemHandler(APSessionContext sessionContext)
     {
         _sessionContext = sessionContext;
@@ -52,19 +63,39 @@ public class ItemHandler
             long id = apItem.ItemId;
             if (saveItems.Remove(id)) continue;
 
-            APSaveState.CollectedItems.Add(id);
-
             MainThreadDispatcher.RunPerFrameActionOnMainThread(() =>
             {
                 AddItemToGame(id, apItem);
                 ShowItemMessage(id, apItem);
+                APSaveState.CollectedItems.Add(id);
             });
         }
+    }
+
+    public long HandleUpgradableItems(long id)
+    {
+        int[] tools = PT2.save_file.FetchData(MenuLogic.MENU_TYPE.P1_TOOLS_ITEMS, false, "");
+        int[] status = PT2.save_file.FetchData(MenuLogic.MENU_TYPE.P1_STATUS, false, "");
+        int[] toolsAndStatus = tools.Concat(status).ToArray();
+
+        if (!UpgradeChains.TryGetValue(id, out var chain)) return id;
+
+        foreach (var upgradeId in chain)
+        {
+            if (!toolsAndStatus.Contains(upgradeId))
+                return upgradeId;
+            PhoaAPClient.Logger.LogDebug($"{upgradeId} not found in toolsOrStatus");
+        }
+
+        return chain.Last();
     }
 
     private void AddItemToGame(long id, ItemInfo apItem)
     {
         if (SuppressedItemAddition.Remove(id)) return;
+
+        if (id is >= 293 and <= 299)
+            id = HandleUpgradableItems(id);
 
         if (id > 300)
         {
@@ -111,6 +142,7 @@ public class ItemHandler
     private void ShowItemMessage(long id, ItemInfo apItem)
     {
         if (SuppressedItemMessages.Remove(id)) return;
+        if (apItem.Player.Name == "Server") return;
 
         string itemName = apItem.ItemDisplayName;
         if ((apItem.Flags & ItemFlags.Advancement) != 0) itemName = "<sprite=30>" + itemName;

@@ -168,18 +168,45 @@ internal sealed class APReplaceLootPatches
     }
 
     [HarmonyPatch(typeof(ItemGenerator), "SpawnLoot")]
+    [HarmonyPrefix] // Patch to spawn the appropriate version of an upgradable item
+    private static void SpawnLootUpgradableItemPrefix(ref int item_id)
+    {
+        if (item_id is >= 293 and <= 299)
+        {
+            item_id = (int)PhoaAPClient.APConnection.ItemHandler.HandleUpgradableItems(item_id);
+            PhoaAPClient.Logger.LogDebug($"New id: {item_id}");
+        }
+    }
+
+    [HarmonyPatch(typeof(NpcLogic), "InitializeNpc")]
+    [HarmonyPrefix] // Patch to render the appropriate sprite of an upgradable item in shops
+    private static void InitializeNpcUpgradableItemPrefix(ref string profile)
+    {
+        if (!profile.Contains("item,")) return;
+
+        string[] splittedProfile = profile.Split(',');
+        if (!profile.Contains("item,") && splittedProfile.Length == 2) return;
+
+        int item_id = int.Parse(splittedProfile[1]);
+        if (item_id is < 293 or > 299) return;
+
+        item_id = (int)PhoaAPClient.APConnection.ItemHandler.HandleUpgradableItems(item_id);
+        profile = $"item,{item_id}";
+    }
+
+    [HarmonyPatch(typeof(ItemGenerator), "SpawnLoot")]
     [HarmonyPrefix] // Patch to switch around some values in case moonstone physics apply to either the location or item
-    private static bool SpawnLootMoonSwitchPrefix(ref int item_id, string collected_GIS, ref int __state)
+    private static void SpawnLootMoonSwitchPrefix(ref int item_id, string collected_GIS, ref int __state)
     {
         __state = -1;
 
-        if (collected_GIS.IsNullOrEmpty()) return true;
+        if (collected_GIS.IsNullOrEmpty()) return;
 
         if (collected_GIS.Contains("MOON") && item_id != 5)
         {
             __state = item_id;
             item_id = 5;
-            return true;
+            return;
         }
 
         if (!collected_GIS.Contains("MOON") && item_id == 5)
@@ -187,8 +214,6 @@ internal sealed class APReplaceLootPatches
             __state = item_id;
             item_id = 3;
         }
-
-        return true;
     }
 
     [HarmonyPatch(typeof(ItemGenerator), "SpawnLoot")]
