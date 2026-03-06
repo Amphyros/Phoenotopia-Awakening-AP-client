@@ -25,10 +25,11 @@ public class DeathLinkHandler
     private void CreateDeathLinkService()
     {
         _deathLinkService = _sessionContext.Session.CreateDeathLinkService();
-        _deathLinkEnabled = _sessionContext.Login.SlotData.TryGetValue("DeathLink", out var deathLink) && (long)deathLink == 1;
-        
+        _deathLinkEnabled = _sessionContext.Login.SlotData.TryGetValue("death_link", out var deathLink) &&
+                            (long)deathLink == 1;
+
         if (!_deathLinkEnabled) return;
-        
+
         _deathLinkService.EnableDeathLink();
         _deathLinkService.OnDeathLinkReceived += ReceiveDeathLink;
     }
@@ -42,6 +43,7 @@ public class DeathLinkHandler
             _receivedDeathLink = false;
             return;
         }
+
         _deathLinkService.SendDeathLink(new DeathLink(_sessionContext.Session.Players.ActivePlayer.Name));
     }
 
@@ -49,14 +51,11 @@ public class DeathLinkHandler
     {
         PhoaAPClient.Logger.LogDebug("ReceiveDeathLink() called");
         if (!_deathLinkEnabled) return;
-        
+
         if (LevelBuildLogic.level_name.Equals("game_start")) return;
         if (LevelBuildLogic.level_name.StartsWith("cutscene")) return;
-        
+
         _receivedDeathLink = true;
-        MainThreadDispatcher.RunOnMainThread(() =>
-        {
-            PT2.save_file.GoToGameOverScreen();
-        });
+        MainThreadDispatcher.RunOnMainThread(() => { PT2.save_file.GoToGameOverScreen(); });
     }
 }
