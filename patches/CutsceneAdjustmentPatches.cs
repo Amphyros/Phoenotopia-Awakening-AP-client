@@ -46,12 +46,14 @@ public class CutsceneAdjustmentPatches
 
         const long targetId = 7676008;
 
-        if (!PhoaAPClient.APConnection.SessionContext.Session.Locations.AllLocations.Contains(targetId)) return;
-
+        bool checkExcluded =
+            !PhoaAPClient.APConnection.SessionContext.Session.Locations.AllLocations.Contains(targetId);
         bool alexChecked =
             PhoaAPClient.APConnection.SessionContext.Session.Locations.AllLocationsChecked.Contains(targetId);
 
-        expression = expression.Replace("ITEM_HAVE,int_list(30)", alexChecked ? "ALWAYS_TRUE" : "ALWAYS_FALSE");
-        expression = expression.Replace("ITEM_DONT_HAVE,int_list(30)", alexChecked ? "ALWAYS_FALSE" : "ALWAYS_TRUE");
+        expression = expression
+            .Replace("ITEM_HAVE,int_list(30)", alexChecked || checkExcluded ? "ALWAYS_TRUE" : "ALWAYS_FALSE");
+        expression = expression
+            .Replace("ITEM_DONT_HAVE,int_list(30)", alexChecked || checkExcluded ? "ALWAYS_FALSE" : "ALWAYS_TRUE");
     }
 }

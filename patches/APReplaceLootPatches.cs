@@ -139,7 +139,8 @@ internal sealed class APReplaceLootPatches
             {
                 case true when isNpcOrStateDependentCheck && check.IsKeyItem:
                     PT2.GIS_ProcessInstructions($"FILE_MARK_SI,{check.GISIdentifier},true", Vector3.zero);
-                    return true;
+                    continue; // Continues to check if the npc has more checks
+                // BUG: This breaks when an NPC holds another check that's not a key item.
                 case true:
                     return !check.IsKeyItem;
                 default:
