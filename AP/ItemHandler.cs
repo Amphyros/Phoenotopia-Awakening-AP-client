@@ -14,6 +14,7 @@ namespace PhoA_AP_client.AP;
 public class ItemHandler
 {
     private readonly APSessionContext _sessionContext;
+    public FillMode FillMode { get; private set; }
     public ReadOnlyCollection<long> LocalAllLocations { get; private set; }
     public ReadOnlyCollection<long> LocalAllLocationsChecked { get; private set; }
     public readonly HashSet<long> SuppressedItemMessages = [];
@@ -36,6 +37,9 @@ public class ItemHandler
         if (PhoaAPClient.APConnection.Seed.IsNullOrEmpty())
             ScoutItems();
         _sessionContext.Session.Items.ItemReceived += AddMissingItems;
+        FillMode = (long)_sessionContext.Login.SlotData["keep_excluded_status_upgrades_in_item_pool"] >= 1
+            ? FillMode.StatusUpgrade
+            : FillMode.Always;
         LocalAllLocations = _sessionContext.Session.Locations.AllLocations;
         LocalAllLocationsChecked = _sessionContext.Session.Locations.AllLocationsChecked;
     }
@@ -172,7 +176,11 @@ public class ItemHandler
 
                     for (int i = 0; i < checks.Count; i++)
                     {
-                        if (!result.TryGetValue(checks[i].ArchipelagoId, out ScoutedItemInfo itemInfo)) continue;
+                        if (!result.TryGetValue(checks[i].ArchipelagoId, out ScoutedItemInfo itemInfo))
+                        {
+                            checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", 215.ToString());
+                            continue;
+                        }
 
                         LocationMapping.LocationMap[levelName][i].ItemInfo = itemInfo;
 
@@ -185,8 +193,7 @@ public class ItemHandler
                             if ((itemInfo.Flags & ItemFlags.Advancement) != 0) replacementId = 213.ToString();
                         }
 
-                        if (checks[i].OverrideType.Contains("%ItemId%"))
-                            checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
+                        checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
 
                         bool isFromThisWorld =
                             itemInfo.Player.Name == _sessionContext.Session.Players.ActivePlayer.Name;
