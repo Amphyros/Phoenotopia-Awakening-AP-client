@@ -113,6 +113,13 @@ internal sealed class APReplaceLootPatches
         return HandlePossibleAPReplacementForObject(ref reader);
     }
 
+    [HarmonyPatch(typeof(LevelBuildLogic), "_CreateSongField")]
+    [HarmonyPrefix]
+    private static bool CreateSongFieldPrefix(ref XmlReader reader)
+    {
+        return HandlePossibleAPReplacementForObject(ref reader);
+    }
+
     private static bool HandlePossibleAPReplacementForObject(ref XmlReader reader)
     {
         if (PhoaAPClient.APConnection.ItemHandler?.LocalAllLocations == null) return true;

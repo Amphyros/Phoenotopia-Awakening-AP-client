@@ -188,6 +188,16 @@ public class LocationMapping
                 OverrideType =
                     "name=kiter;profile=kiter;speech=KITER_CUSTOM;behavior=action_talk;spacing=right,0.5;face_right",
             },
+            new Check
+            {
+                ArchipelagoId = 7676090,
+                ObjectIds = ["69"],
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "KID_LUNCH",
+                OverrideType =
+                    "name=amanda;voice=woman,1.1;profile=amanda;behavior=path,25,22;speech=AMANDA_2A_CUSTOM,AMANDA_2A+6;sort=fg_tiles,-1",
+            }
         },
         ["p1_panselo_shop"] = new List<Check>
         {
@@ -228,9 +238,89 @@ public class LocationMapping
                 OverrideType =
                     "profile=item,%ItemId%;name=shop_3;speech=MERCHANT_TAO_POTATO_CUSTOM",
             },
+            // TODO: GISIdentifiers of the following checks are not unique
+            new Check
+            {
+                ArchipelagoId = 7676084,
+                ObjectIds = ["64"],
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_SUPPLY_1",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_1;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676085,
+                ObjectIds = ["69"],
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_SUPPLY_2",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_2;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_2",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676086,
+                ObjectIds = ["70"],
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_SUPPLY_3",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_3;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_3",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676087,
+                ObjectIds = ["71"],
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_SUPPLY_4",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_4;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_4",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676088,
+                ObjectIds = ["72"],
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_SUPPLY_5",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_5;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_5",
+            },
+        },
+        ["p1_panselo_dojo"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676082,
+                ObjectIds = ["76"],
+                IsKeyItem = true,
+                GISIdentifier = "PANSELO_MONEY_4",
+                OverrideType =
+                    "type=p1_spider;instruction=1;initial_behavior=punching_bag;defeated_GIS=FILE_MARK_OC,pdojo_bag_down|CONTINUE_IF,SI_FALSE,PANSELO_MONEY_4|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$PANSELO_MONEY_4;ql=OC_ABSENT,pdojo_bag_down",
+            }
+        },
+        ["p1_panselo_dojo_a"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676089,
+                ObjectIds = ["47"],
+                IsKeyItem = true,
+                GISIdentifier = "AELLA_QUEST_4",
+                OverrideType =
+                    "remove;name=song_field;can_learn=3;desired_song=3;GIS=common_sfx,150|FILE_MARK_SI,AELLA_QUEST_4,true",
+            }
         },
         ["p1_panselo_warehouse"] = new List<Check>
         {
+            new Check
+            {
+                ArchipelagoId = 7676080,
+                ObjectIds = ["22"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.Always,
+                GISIdentifier = "WOODEN_BAT",
+                OverrideType =
+                    "name=bat_item;id=%ItemId%;collected_GIS=FILE_MARK_AP,WOODEN_BAT",
+            },
             new Check
             {
                 ArchipelagoId = 7676062,
@@ -265,6 +355,15 @@ public class LocationMapping
                 GISIdentifier = "MOON_FIELD_1",
                 OverrideType =
                     "type=P1_BANDIT_POT_S;ql=SI_FALSE,MOON_FIELD_1;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_FIELD_1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676081,
+                ObjectIds = ["75"],
+                IsKeyItem = true,
+                GISIdentifier = "PANSELO_MONEY_2",
+                OverrideType =
+                    "type=P1_BANDIT_POT_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$PANSELO_MONEY_2;ql=SI_FALSE,PANSELO_MONEY_2",
             },
         },
         ["p1_ex_fields_01"] = new List<Check>
@@ -794,6 +893,19 @@ public class LocationMapping
                 GISIdentifier = "geo_01_loot1",
                 OverrideType =
                     "id=%ItemId%;gravity=0;collected_GIS=FILE_MARK_POC,geo_01_loot1;ql=POC_ABSENT,geo_01_loot1",
+            },
+        },
+        ["p1_ex_geo_01b"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676083,
+                ObjectIds = ["287"],
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "GEO_TICKET_1",
+                OverrideType =
+                    "name=geo_bot;voice=robot,1;profile=green_robot;behavior=stand;speech=GEO_ROBOT_01_CUSTOM",
             },
         },
         ["p1_teleport_panselo_01"] = new List<Check>

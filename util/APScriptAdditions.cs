@@ -94,6 +94,18 @@ internal static class APScriptAdditions
             "OWNER,kiter;GO,%NextIndex%;GIS,ITEM_remove,67,1||||<i><size=-10><color=#898989><*name_op>- Kitt - <*name_ed></color></size></i><*stop=0.15>\nI'll take that!",
             "OWNER,kiter;GIS,FILE_MARK_SI,HELPED_KITER,true||||<i><size=-10><color=#898989><*name_op>- Kitt - <*name_ed></color></size></i><*stop=0.15>\nHere, this should about cover it right?",
         ],
+        ["GEO_ROBOT_01_CUSTOM"] =
+        [
+            "JUMP_TO,3848,IF_TRUE|SI_TRUE,GEO_TICKET_1;GO,%NextIndex%;GIS,override_npc_anim,geo_bot,green_robot_clap||||Hurray! <*_>Congratulations on completing the GEO challenge!",
+            "GO,%NextIndex%||||You're visitor #1 to this location! <*_>That's right, <*_>the very first!",
+            "GIS,erase_npc_overrides,geo_bot|FILE_MARK_SI,GEO_TICKET_1,true||||Here's your ticket! <*_>Visit the nearest GEO base to redeem it for prizes!",
+        ],
+        ["AMANDA_2A_CUSTOM"] =
+        [
+            "JUMP_TO,856,IF_TRUE|SI_TRUE,KID_LUNCH;GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Amanda - <*name_ed></color></size></i><*stop=0.15>\nI was assigned to cooking duty.<*_>.<*_>.<*_> I think I'm getting the hang of it.",
+            "GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Amanda - <*name_ed></color></size></i><*stop=0.15>\nHere, <*_>be my first victim... <*_>Uh, <*_>customer!",
+            "GIS,FILE_MARK_SI,KID_LUNCH,true||||<i><size=-10><color=#898989><*name_op>- Amanda - <*name_ed></color></size></i><*stop=0.15>\nWell? <*_>Isn't it just like what grandma Nana used to make?",
+        ],
     };
 
     public static void AddCustomScriptLines()
