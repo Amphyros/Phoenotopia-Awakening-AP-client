@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="40" height="32" tilewidth="16" tileheight="16" infinite="0" nextobjectid="92">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="16384" columns="128">
+  <image source="../../Textures/tiles.PNG" width="2048" height="2048"/>
+ </tileset>
+ <layer name="back" width="40" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztk0sKwzAMRHWYQmkXgX7ctY+mw8RJjuGjdfwLJgnpJjW0zOKhHwahGXdPkY4QQgghP8PlFtHrPcVlvjdrsd8IJtAbEWdSjqiodUozrWbqUl/xrsl+ZyP29BIJDI+IlrpmOcM73+h+FvfwuJHFbWyJ6IXoN2ofcrw7bL/ssZrirbmXfbXK92ZH7Zc9tfLPYGKs5x+913/Bf5U+s05BH+xX9N3SNepYax9yl/p+NG3+ByGEEEL+kzfbiS81
+  </data>
+ </layer>
+ <layer name="back" width="40" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztycEJACAMALGuJDhgB9IdBTewIPpI4F4XAQDAj2bf5enjrdHuBABQtQA0TxeD
+  </data>
+ </layer>
+ <layer name="back" width="40" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0jEKwCAMheF3HEdp7e5xPUB7PwWXDgmWIpn+b3rwhoQQCQAAYL922HnVRUmnasnSlWf+2kXud4/5j7Of12F638W6n9dFGX9frbzqAAAA/uhk6RQ5
+  </data>
+ </layer>
+ <layer name="back" width="40" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0sEKQEAUheHzPFIYM6EsPNp9HBtLOwuP5mArRLOYOl/drtLU3zSAiIiIpGJysLv/IWB4OC/yWZbA+/FsDJz+ZWtRA2UN47aoYTQ6rPue2bZc9LUN0J1j/D56Sg9UHsYdvS/nHfyZ2H0iIiLy3QYnhBzx
+  </data>
+ </layer>
+ <layer name="back" width="40" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0j0OgkAQBeB3GjURLNjA6m7D0eZCFGojHcfSzkFMjP+JO1uYvC+ZMCHM8MICEBER0T9YVkBRQa6FX0v3SK6MXeJunc9K9w+J861Nkrf7h8T51iKH9f9zjMAp5j/fhbvPtgpAGT7nXdeQ0ACxyX++o25z63cO2LvLVbZuujfzwNxPfV8/zBp9v0Lf96q+zR00V+8hWmP/9HzpbPIRERGRvTNfgy3Z
+  </data>
+ </layer>
+ <layer name="front" width="40" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzjEKACAMBEFfFBvz7XT+z9JAKkFihB24+rY1AACAHKo5PzL2TszifVl8n8nrmsj3SX9dE/3UZ8X7AADAHQvVPQvS
+  </data>
+ </layer>
+ <objectgroup name="meta" visible="0">
+  <object id="1" name="config" type="id=0;follow=point;zoom_allowance=1" x="179" y="144" width="342" height="192"/>
+  <object id="28" name="level_art" type="ql=SI_TRUE,NIGHT" x="336" y="64" width="48" height="48">
+   <properties>
+    <property name="bg_x" value="graphic=p1_panselo_bg_night_02;add_x=0.13;add_y=0.48;scroll_x=.008"/>
+    <property name="bg_z" value="graphic=p1_panselo_bg_night_01;add_x=0;add_y=0.5;scroll_x=0.012"/>
+   </properties>
+  </object>
+  <object id="29" name="level_art" type="ql=SI_FALSE,NIGHT" x="320" y="48" width="48" height="48">
+   <properties>
+    <property name="bg_x" value="graphic=p1_panselo_bg_02;add_x=0.13;add_y=0.48;scroll_x=.008"/>
+    <property name="bg_y" value="graphic=p1_panselo_bg_clouds;add_x=0;add_y=-0.03;scroll_x=.008;auto_scroll_x=0.012"/>
+    <property name="bg_z" value="graphic=p1_panselo_bg_01;add_x=0;add_y=0.5;scroll_x=0.012"/>
+   </properties>
+  </object>
+  <object id="34" name="memory_add" x="192" y="48" width="48" height="48">
+   <properties>
+    <property name="_snd_packs" value="p_hitswitch,p_bird"/>
+    <property name="_snd_solos" value="inn_sleep,p1_door_cloth_open,p1_puki_bounce,gale_yawn"/>
+    <property name="prefabs" value="p_hitswitch,p_bird"/>
+   </properties>
+  </object>
+  <object id="49" name="lighting" type="shader=diffuse;intensity=1.2;gales_light_power=5;ql=SI_FALSE,NIGHT" x="256" y="48" width="48" height="48"/>
+  <object id="50" name="lighting" type="shader=diffuse;intensity=1.2;gales_light_power=5;ql=SI_TRUE,NIGHT;color=a0a0ff" x="272" y="64" width="48" height="48"/>
+  <object id="69" name="GIS_PACK" x="400" y="48" width="80" height="48">
+   <properties>
+    <property name="0-fade out pic" value="ANY_alpha_tween,family_pic,0,time$0.3|ANY_alpha_tween,pic_black,0,time$0.3"/>
+    <property name="1-advance_story" value="GIS_PACK,2|GIS_PACK,3|GIS_PACK,4"/>
+    <property name="2-advance_to_ch2" value="CONTINUE_IF,SI_FALSE,CH_1_OVER&amp;SI_TRUE,CH_1_EVENT_B|FILE_MARK_SI,CH_1_OVER,true|FILE_MARK_SI,PLAY_FELLOWSHIP,false|FILE_MARK_SI,FELLOWSHIP_SILENT,false|FILE_MARK_SI,NIGHT,false|music_adjust,all,vol$0|ITEM_add,23,1|GIS_PACK,9"/>
+    <property name="3-advance_to_ch3" value="CONTINUE_IF,SI_FALSE,CH_2_OVER&amp;SI_TRUE,RETURN_W_LISA|FILE_MARK_SI,CH_2_OVER,true|FILE_MARK_SI,PLAY_FELLOWSHIP,false|FILE_MARK_SI,FELLOWSHIP_SILENT,false|FILE_MARK_SI,NIGHT,false|music_adjust,all,vol$0|ITEM_add,166,1|GIS_PACK,9"/>
+    <property name="4-advance_to_ch4" value="CONTINUE_IF,SI_FALSE,CH_3_OVER&amp;SI_TRUE,SAW_BART_STORY|FILE_MARK_SI,CH_3_OVER,true|FILE_MARK_SI,PLAY_FELLOWSHIP,false|FILE_MARK_SI,FELLOWSHIP_SILENT,false|FILE_MARK_SI,NIGHT,false|music_adjust,all,vol$0|GIS_PACK,9"/>
+    <property name="9-refresh supplies" value="FILE_MARK_SI,REGEN_SUPPLY_1,false|FILE_MARK_SI,REGEN_SUPPLY_2,false|FILE_MARK_SI,REGEN_SUPPLY_3,false|FILE_MARK_SI,REGEN_SUPPLY_4,false|FILE_MARK_SI,REGEN_SUPPLY_5,false|FILE_MARK_SI,KID_LUNCH,false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="solid_collisions" visible="0">
+  <object id="11" x="480" y="-208" width="160" height="512"/>
+  <object id="12" x="240" y="-176" width="240" height="384"/>
+  <object id="13" x="64" y="-208" width="176" height="480"/>
+  <object id="14" x="64" y="304" width="288" height="208"/>
+  <object id="15" type="profile=WOOD" x="290" y="288">
+   <polyline points="0,0 44,0"/>
+  </object>
+  <object id="18" type="profile=WOOD" x="434" y="272">
+   <polyline points="0,0 44,0"/>
+  </object>
+  <object id="40" x="416" y="304" width="224" height="208"/>
+  <object id="52" type="profile=RUG" x="352" y="304" width="64" height="208"/>
+  <object id="83" type="profile=WOOD" x="434" y="288">
+   <polyline points="0,0 44,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_day" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,NIGHT"/>
+  </properties>
+  <object id="62" name="puzzle" type="type=p_bird;ql=ALWAYS_TRUE" x="336" y="-192" width="16" height="16"/>
+  <object id="63" name="puzzle" type="type=p_bird;ql=ALWAYS_TRUE" x="368" y="-192" width="16" height="16"/>
+  <object id="64" name="puzzle" type="type=p_bird;ql=ALWAYS_TRUE" x="352" y="-192" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="objects_big" visible="0">
+  <object id="72" name="AT" type="name=family_pic;sprite=122;sort=fg_tiles,105;use_all_bright;alpha=0" x="320" y="240" width="80" height="48"/>
+  <object id="73" name="AT" type="name=pic_black;sprite=0;alpha=0;color=000000;scale=adapt;sort=fg_tiles,99" x="112" y="112" width="464" height="272"/>
+  <object id="75" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1/0.3/1);color=dcceff;alpha=0.1;use_all_bright" x="240" y="208" width="240" height="64">
+   <ellipse/>
+  </object>
+  <object id="76" name="AT" type="sort=bg_tiles,55;sprite=10;color=55332C;angle=270;scale=vec3(5/.2/1);alpha=1" x="160" y="192" width="64" height="176"/>
+ </objectgroup>
+ <objectgroup name="objects" visible="0">
+  <object id="3" name="door" type="profile=TOUCH_TRIGGER;open=p1_panselo_house_01_hall;id=3" x="65" y="144" width="107" height="256"/>
+  <object id="4" name="end_door" type="id=3;facing=right;start_zoom_lvl=0" x="192" y="272" width="32" height="32"/>
+  <object id="22" name="end_door" type="id=0;facing=right;start_zoom_lvl=0" x="368" y="272" width="32" height="32"/>
+  <object id="27" name="end_door" type="id=4500;facing=right;mode=SLEEPING;start_zoom_lvl=0" x="368" y="272" width="32" height="32"/>
+  <object id="35" name="npc" type="profile=!;spacing=stand;speech=GALE_ROOM+1" x="418" y="288" width="12" height="16"/>
+  <object id="36" name="npc" type="profile=!;spacing=stand;speech=GALE_ROOM;floating" x="310" y="286" width="11" height="16"/>
+  <object id="37" name="npc" type="profile=!;spacing=stand;speech=GALE_ROOM+2" x="256" y="272" width="16" height="32"/>
+  <object id="38" name="end_door" type="id=4499;facing=left;mode=SLEEPING_LIGHT;start_zoom_lvl=0" x="336" y="272" width="32" height="32"/>
+  <object id="53" name="bulb2" type="intensity=5;z=-8;range=10;color=dcceff;diameter=50" x="272" y="208" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="54" name="bulb2" type="intensity=5;z=-8;range=10;color=dcceff;diameter=50" x="384" y="208" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="56" name="bulb" type="intensity=1;color=ffbe4f;range=6;z=-1.5" x="336" y="208" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="57" name="bulb" type="intensity=4;color=ffffff;range=5;z=-3" x="352" y="256" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="59" name="bulb" type="intensity=1;color=ffbe4f;range=4;z=-1.5" x="288" y="256" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="67" name="save_point" type="intensity=1,2,.02" x="432" y="272" width="48" height="32"/> <!-- ;ql=SI_TRUE,CH_1_EVENT_B -->
+  <object id="68" name="end_door" type="id=9000;facing=left;start_zoom_lvl=0" x="352" y="272" width="16" height="32"/>
+  <object id="86" name="end_door" type="id=4501;facing=right;mode=SLEEPING;start_zoom_lvl=0" x="368" y="272" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects_bed_ch1" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,CH_1_OVER"/>
+  </properties>
+  <object id="79" name="npc" type="profile=!;spacing=stand;speech=GALE_BED_CH1" x="376" y="267" width="16" height="32"/>
+  <object id="89" name="trigger" type="remove;ql=END_DOOR_ID_EQS,4501;GIS=SAVE" x="336" y="256" width="96" height="64"/>
+ </objectgroup>
+ <objectgroup name="objects_bed_ch2" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,CH_1_OVER&amp;SI_FALSE,CH_2_OVER"/>
+  </properties>
+  <object id="81" name="npc" type="profile=!;spacing=stand;speech=GALE_BED_CH2" x="376" y="267" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects_bed_ch3" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,CH_2_OVER&amp;SI_FALSE,CH_3_OVER"/>
+  </properties>
+  <object id="84" name="npc" type="profile=!;spacing=stand;speech=GALE_BED_CH3" x="376" y="267" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects_bed_ch4" visible="0">
+  <properties>
+   <property name="ql" value="SI_TRUE,CH_3_OVER"/>
+  </properties>
+  <object id="85" name="npc" type="profile=!;spacing=stand;speech=GALE_BED_CH4" x="376" y="267" width="16" height="32"/>
+ </objectgroup>
+</map>
