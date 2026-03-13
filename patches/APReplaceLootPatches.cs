@@ -61,6 +61,8 @@ internal sealed class APReplaceLootPatches
 
         for (int i = 0; i < apItems.Length; i++) extendedItemOrToolDef[originalItemOrToolDef.Length + i] = apItems[i];
 
+        extendedItemOrToolDef = ConvertToKeyItems(extendedItemOrToolDef);
+
         DB.ITEM_DEFS = extendedItemOrToolDef;
     }
 
@@ -365,6 +367,19 @@ internal sealed class APReplaceLootPatches
         itemDef.hold_limit = 999;
         itemDef.price = 0;
         return itemDef;
+    }
+
+    private static ItemGridLogic.ItemOrToolDef[] ConvertToKeyItems(
+        ItemGridLogic.ItemOrToolDef[] extendedItemOrToolDef)
+    {
+        int[] lunarArtifactIds = [88, 92, 99, 100, 144, 145, 155, 156, 157, 158, 159, 160];
+
+        foreach (int lunarArtifactId in lunarArtifactIds)
+        {
+            extendedItemOrToolDef[lunarArtifactId].commands += ";FREE;NO_DISCARD";
+        }
+
+        return extendedItemOrToolDef;
     }
 
     private static XmlReader ReplaceReader(XmlReader originalXmlReader, string newType)
