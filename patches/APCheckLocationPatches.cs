@@ -88,8 +88,7 @@ internal sealed class APCheckLocationPatches
                 "FILE_MARK_AP",
             };
 
-            if (!validInstructionTypes.Contains(instructionType))
-                continue;
+            if (!validInstructionTypes.Contains(instructionType)) continue;
 
             if (!APHelpers.IsConnectedToAP()) continue;
 
@@ -129,7 +128,8 @@ internal sealed class APCheckLocationPatches
             }).Start();
         }
 
-        instructionsList.RemoveAll(instruction => instruction.Contains("FILE_MARK_AP"));
+        instructionsList.RemoveAll(instruction =>
+            instruction.Contains("FILE_MARK_AP") || instruction.Contains("miceBoxbreak"));
 
         instructions = string.Join("|", instructionsList.ToArray());
     }

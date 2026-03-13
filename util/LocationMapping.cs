@@ -758,6 +758,15 @@ public class LocationMapping
                 OverrideType =
                     "id=%ItemId%;ql=SI_FALSE,ANURI_KEY_2_COLLECTED;collected_GIS=FILE_MARK_SI,ANURI_KEY_2_COLLECTED,true;name=SHINY_LOOT",
             },
+            new Check
+            {
+                ArchipelagoId = 7676091,
+                ObjectIds = ["93"],
+                IsKeyItem = false,
+                GISIdentifier = "AP_ANURI_TEMPLE_MOUSE_1",
+                OverrideType =
+                    "name=mouse2;type=p_mouse;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ANURI_TEMPLE_MOUSE_1;instruction=tmx(57/20)",
+            },
         },
         ["p1_anuri_temple_05"] = new List<Check>
         {

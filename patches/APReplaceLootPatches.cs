@@ -269,13 +269,25 @@ internal sealed class APReplaceLootPatches
     [HarmonyPrefix]
     private static void LizardAttackResultPrefix(AnimalLifeSmallLogic __instance)
     {
-        var traverse = Traverse.Create(__instance);
-        string GisCmd = traverse.Field<string>("_GIS_cmd").Value;
+        ProcessAPItemAnimalLifeSmall(__instance);
+    }
 
-        if (GisCmd.IsNullOrEmpty() || (!GisCmd.Contains("loot_GIS_MARK_AP") && !GisCmd.Contains("FILE_MARK_AP")))
+    [HarmonyPatch(typeof(AnimalLifeSmallLogic), "_Mouse_AttackResult")]
+    [HarmonyPrefix]
+    private static void MouseAttackResultPrefix(AnimalLifeSmallLogic __instance)
+    {
+        ProcessAPItemAnimalLifeSmall(__instance);
+    }
+
+    private static void ProcessAPItemAnimalLifeSmall(AnimalLifeSmallLogic __instance)
+    {
+        var traverse = Traverse.Create(__instance);
+        string gisCmd = traverse.Field<string>("_GIS_cmd").Value;
+
+        if (gisCmd.IsNullOrEmpty() || (!gisCmd.Contains("loot_GIS_MARK_AP") && !gisCmd.Contains("FILE_MARK_AP")))
             return;
 
-        string[] instructionArray = GisCmd.Split('|');
+        string[] instructionArray = gisCmd.Split('|');
         StringBuilder strippedInstructions = new StringBuilder();
         List<string> extractedGisCmds = [];
         foreach (string instruction in instructionArray)
