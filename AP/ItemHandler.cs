@@ -135,6 +135,16 @@ public class ItemHandler
             3 => "apply_upgrade,HEALTH_UPGRADE|FILE_INTEGER_ADD,2,1",
             4 => "apply_upgrade,STAMINA_UPGRADE|FILE_INTEGER_ADD,3,1",
             14 => "enable_gale_abilities",
+            15 => "enable_gale_abilities",
+            16 => "enable_gale_abilities",
+            17 => "enable_gale_abilities",
+            18 => "enable_gale_abilities",
+            19 => "enable_gale_abilities",
+            20 => "enable_gale_abilities",
+            25 => "enable_gale_abilities",
+            26 => "enable_gale_abilities",
+            27 => "enable_gale_abilities",
+            34 => "enable_gale_abilities",
             _ => ""
         };
         MainThreadDispatcher.RunOnMainThread(() =>
