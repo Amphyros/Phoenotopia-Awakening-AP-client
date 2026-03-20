@@ -66,12 +66,13 @@ public class ItemHandler
         {
             long id = apItem.ItemId;
             if (saveItems.Remove(id)) continue;
+            
+            APSaveState.CollectedItems.Add(id);
 
             MainThreadDispatcher.RunPerFrameActionOnMainThread(() =>
             {
                 AddItemToGame(id, apItem);
                 ShowItemMessage(id, apItem);
-                APSaveState.CollectedItems.Add(id);
             });
         }
     }

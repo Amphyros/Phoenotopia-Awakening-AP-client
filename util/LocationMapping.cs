@@ -460,6 +460,15 @@ public class LocationMapping
             },
             new Check
             {
+                ArchipelagoId = 7676092,
+                ObjectIds = ["327"],
+                IsKeyItem = true,
+                GISIdentifier = "D_FOREST_MONEY_2",
+                OverrideType =
+                    "type=P1_ANURI_CERAMIC_POT_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$D_FOREST_MONEY_2;ql=SI_FALSE,D_FOREST_MONEY_2",
+            },
+            new Check
+            {
                 ArchipelagoId = 7676076,
                 ObjectIds = ["101"],
                 IsKeyItem = false,

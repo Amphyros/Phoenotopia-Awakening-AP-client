@@ -214,14 +214,21 @@ internal sealed class APReplaceLootPatches
 
         if (collected_GIS.IsNullOrEmpty()) return;
 
-        if (collected_GIS.Contains("MOON") && item_id != 5)
+        bool vanillaItemHasHurtbox = collected_GIS.Contains("MOON") || collected_GIS.Contains("ANURI_KEY") ||
+                                     collected_GIS.Contains("BANDIT_KEY") || collected_GIS.Contains("THOMAS_BLUE_KEY") ||
+                                     collected_GIS.Contains("THOMAS_RED_KEY") || collected_GIS.Contains("MONEY");
+        bool itemToSpawnHasHurtbox = item_id is 5 or 98 or 108 or 111 or 115 or 116;
+
+        // If vanilla item is moonstone, but item to be spawned is not a moonstone
+        if (vanillaItemHasHurtbox && !itemToSpawnHasHurtbox)
         {
             __state = item_id;
             item_id = 5;
             return;
         }
 
-        if (!collected_GIS.Contains("MOON") && item_id == 5)
+        // If vanilla items is NOT moonstone, but item to spawn IS a moonstone
+        if (!vanillaItemHasHurtbox && itemToSpawnHasHurtbox)
         {
             __state = item_id;
             item_id = 3;
