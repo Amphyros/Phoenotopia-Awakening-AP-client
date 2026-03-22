@@ -304,6 +304,7 @@ public class LocationMapping
                 ArchipelagoId = 7676089,
                 ObjectIds = ["47"],
                 IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
                 GISIdentifier = "AELLA_QUEST_4",
                 OverrideType =
                     "remove;name=song_field;can_learn=3;desired_song=3;GIS=common_sfx,150|FILE_MARK_SI,AELLA_QUEST_4,true",
@@ -488,6 +489,15 @@ public class LocationMapping
                 GISIdentifier = "D_FOREST_MONEY_3",
                 OverrideType =
                     "name=scale_fish;instruction=FISH_M;type=fish;defeated_GIS=common_sfx,150|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$D_FOREST_MONEY_3|particle_emitter,highlighter2,stop;ql=ALWAYS_TRUE",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676093,
+                ObjectIds = ["273"],
+                IsKeyItem = true,
+                GISIdentifier = "REGEN_LAST", // Unsure why this is a regen and not a money identifier
+                OverrideType =
+                    "type=P1_ANURI_CERAMIC_POT_S;destroyed_GIS=SPAWN_loot,,%ItemId%,loot_GIS_MARK_SI$REGEN_LAST,true;ql=SI_FALSE,REGEN_LAST",
             },
             new Check
             {
