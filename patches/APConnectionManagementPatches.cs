@@ -11,7 +11,7 @@ internal sealed class APConnectionManagementPatches
 
     [HarmonyPatch(typeof(OpeningMenuLogic), "Initialize")]
     [HarmonyPrefix]
-    private static void OpeningLevelLogicInitializePrefix()
+    private static void OpeningMenuLogicInitializePrefix()
     {
         SaveFile.file_0_string_data = null;
         SaveFile.file_1_string_data = null;
@@ -58,6 +58,6 @@ internal sealed class APConnectionManagementPatches
         if (filename == "file_2") SaveFile.file_2_string_data = dataToSave;
         if (filename == "file_3") SaveFile.file_3_string_data = dataToSave;
 
-        filename = _sessionId + filename;
+        filename = filename.Contains(_sessionId) ? filename : _sessionId + filename;
     }
 }
