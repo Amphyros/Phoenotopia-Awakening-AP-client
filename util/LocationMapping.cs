@@ -1038,5 +1038,398 @@ public class LocationMapping
                     "id=%ItemId%;ql=SI_FALSE,GOT_ANURI_POD;collected_GIS=FILE_MARK_SI,GOT_ANURI_POD,true|light_change,urn_light,intensity$0,t$2|common_sfx,186",
             },
         },
+        ["p1_sunflower_road_01"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676094,
+                ObjectIds = ["13"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_01",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_01;ql=POC_ABSENT,SFR_01",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676095,
+                ObjectIds = ["12"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                GISIdentifier = "MOON_FLOWER_1",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_SI,MOON_FLOWER_1,true;ql=SI_FALSE,MOON_FLOWER_1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676096,
+                ObjectIds = ["16"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_02",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_02;ql=POC_ABSENT,SFR_02",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676097,
+                ObjectIds = ["26"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_04",
+                OverrideType =
+                    "gravity=0;angle=270;id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_04;ql=POC_ABSENT,SFR_04",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676098,
+                ObjectIds = ["25"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_03",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_03;ql=POC_ABSENT,SFR_03",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676099,
+                ObjectIds = ["27"],
+                IsKeyItem = true,
+                GISIdentifier = "FLOWER_MONEY_1",
+                OverrideType =
+                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FLOWER_MONEY_1;ql=SI_FALSE,FLOWER_MONEY_1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676100,
+                ObjectIds = ["33"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_06",
+                OverrideType =
+                    "gravity=0;angle=270;id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_06;ql=POC_ABSENT,SFR_06",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676101,
+                ObjectIds = ["31"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_05",
+                OverrideType =
+                    "angle=90;gravity=0;id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_05;ql=POC_ABSENT,SFR_05",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676102,
+                ObjectIds = ["24"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                GISIdentifier = "HEART_FLOWER_1",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_SI,HEART_FLOWER_1,true;ql=SI_FALSE,HEART_FLOWER_1",
+            },
+        },
+        ["p1_sunflower_road_02"] = new List<Check>
+        {
+            
+            new Check
+            {
+                ArchipelagoId = 7676103,
+                ObjectIds = ["12"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_13",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_13;ql=POC_ABSENT,SFR_13",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676104,
+                ObjectIds = ["11"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_12",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_12;ql=POC_ABSENT,SFR_12",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676105,
+                ObjectIds = ["56"],
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "AP_PLANTO_2",
+                OverrideType =
+                    "name=planto;profile=planto;voice=man,0.85;speech=PLANTO_P2_CUSTOM;sort=bg_tiles,-1;behavior=action_only;ql=SI_FALSE,PLANTO_2",
+            },
+        },
+        ["p1_sunflower_road_02a"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676106,
+                ObjectIds = ["63"],
+                IsKeyItem = false,
+                IsNpc = true,
+                GISIdentifier = "HONEY_SHOP_BUN",
+                OverrideType =
+                    "profile=item,%ItemId%;name=shop_1;floating;use_all_bright;speech=HONEY_BUN_CUSTOM;spacing=right,0.1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676107,
+                ObjectIds = ["58"],
+                IsKeyItem = false,
+                IsNpc = true,
+                GISIdentifier = "HONEY_SHOP_BREW",
+                OverrideType =
+                    "profile=item,%ItemId%;name=shop_2;floating;use_all_bright;speech=HONEY_BREW_CUSTOM;spacing=right,0.1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676108,
+                ObjectIds = ["64"],
+                IsKeyItem = false,
+                IsNpc = true,
+                GISIdentifier = "HONEY_SHOP_DROP",
+                OverrideType =
+                    "profile=item,%ItemId%;name=shop_3;floating;use_all_bright;speech=HONEY_DROP_CUSTOM;spacing=right,0.1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676109,
+                ObjectIds = ["73"],
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_SUN_1",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUN_1;ql=SI_FALSE,REGEN_SUN_1",
+            },
+        },
+        ["p1_sunflower_road_03"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676110,
+                ObjectIds = ["9"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_07",
+                OverrideType =
+                    "angle=270;gravity=0;id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_07;ql=POC_ABSENT,SFR_07",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676111,
+                ObjectIds = ["22"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_09",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_09;ql=POC_ABSENT,SFR_09",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676112,
+                ObjectIds = ["8"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                GISIdentifier = "MOON_FLOWER_2",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_SI,MOON_FLOWER_2,true;ql=SI_FALSE,MOON_FLOWER_2",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676113,
+                ObjectIds = ["10"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_08",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_08;ql=POC_ABSENT,SFR_08",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676114,
+                ObjectIds = ["11"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                GISIdentifier = "OXY_FLOWER_1",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_SI,OXY_FLOWER_1,true;ql=SI_FALSE,OXY_FLOWER_1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676115,
+                ObjectIds = ["20"],
+                IsKeyItem = true,
+                GISIdentifier = "FLOWER_MONEY_2",
+                OverrideType =
+                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FLOWER_MONEY_2;ql=SI_FALSE,FLOWER_MONEY_2",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676116,
+                ObjectIds = ["41"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_11",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_11;ql=POC_ABSENT,SFR_11;angle=90;gravity=0",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676131,
+                ObjectIds = ["23"],
+                IsKeyItem = false,
+                GISIdentifier = "SFR_10",
+                OverrideType =
+                    "angle=270;gravity=0;id=%ItemId%;collected_GIS=FILE_MARK_POC,SFR_10;ql=POC_ABSENT,SFR_10",
+            },
+        },
+        ["p1_ex_cave_01"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676117,
+                ObjectIds = ["127"],
+                IsKeyItem = true,
+                GISIdentifier = "PANSELO_MONEY_3",
+                OverrideType =
+                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$PANSELO_MONEY_3;ql=SI_FALSE,PANSELO_MONEY_3",
+            },
+        },
+        ["p1_ex_cave_02"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676118,
+                ObjectIds = ["191"],
+                IsKeyItem = true,
+                GISIdentifier = "AP_TURTLE",
+                OverrideType =
+                    "type=fish;instruction=TURTLE;name=turtle;defeated_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_TURTLE,pos$name(gale)|particle_emitter,highlighter,stop",
+            },
+        },
+        ["p1_bridge_atelo_01a"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676119,
+                ObjectIds = ["66"],
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_BRIDGE_LOOT_1",
+                OverrideType =
+                    "type=P1_WOOD_S;ql=SI_FALSE,REGEN_BRIDGE_LOOT_1;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_BRIDGE_LOOT_1",
+            },
+        },
+        ["p1_bridge_atelo_01"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676120,
+                ObjectIds = ["19"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                GISIdentifier = "MOON_ATELO_1",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_SI,MOON_ATELO_1,true;ql=SI_FALSE,MOON_ATELO_1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676121,
+                ObjectIds = ["22"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                GISIdentifier = "HEART_ATELO_1",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_SI,HEART_ATELO_1,true;ql=SI_FALSE,HEART_ATELO_1",
+            },
+        },
+        ["p1_bridge_atelo_02"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676122,
+                ObjectIds = ["138"],
+                IsKeyItem = true,
+                GISIdentifier = "AP_ATELO_LIZARD_1",
+                OverrideType =
+                    "type=p_lizard;GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_ATELO_LIZARD_1;instruction=tmx(21/15.5),tmx(27/19),tmx(22.875/16)",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676123,
+                ObjectIds = ["137"],
+                IsKeyItem = false,
+                GISIdentifier = "REGEN_BRIDGE_LOOT_2",
+                OverrideType =
+                    "type=P1_WOOD_S;ql=SI_FALSE,REGEN_BRIDGE_LOOT_2;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_BRIDGE_LOOT_2",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676124,
+                ObjectIds = ["136"],
+                IsKeyItem = true,
+                GISIdentifier = "ATELO_MONEY_2",
+                OverrideType =
+                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$ATELO_MONEY_2;ql=SI_FALSE,ATELO_MONEY_2",
+            },
+        },
+        ["p1_ex_geo_02c"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676125,
+                ObjectIds = ["208"],
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "GEO_TICKET_2",
+                OverrideType =
+                    "name=geo_bot;voice=robot,1;profile=green_robot;behavior=stand;speech=GEO_ROBOT_02_CUSTOM;sort=fg_tiles,1",
+            },
+        },
+        ["p1_bridge_atelo_03"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676126,
+                ObjectIds = ["25"],
+                IsKeyItem = true,
+                GISIdentifier = "ATELO_MONEY_1",
+                OverrideType =
+                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FILE_MARK_SI,ATELO_MONEY_1;ql=SI_FALSE,ATELO_MONEY_1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676127,
+                ObjectIds = ["16"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                GISIdentifier = "MOON_ATELO_2",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_SI,MOON_ATELO_2,true;ql=SI_FALSE,MOON_ATELO_2",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676128,
+                ObjectIds = ["27"],
+                IsKeyItem = false,
+                GISIdentifier = "ATELO_TEMP_1",
+                OverrideType =
+                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FILE_MARK_OC,ATELO_TEMP_1;ql=OC_ABSENT,ATELO_TEMP_1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676129,
+                ObjectIds = ["28"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                GISIdentifier = "OXY_ATELO_1",
+                OverrideType =
+                    "name=SHINY_LOOT;id=%ItemId%;collected_GIS=FILE_MARK_SI,OXY_ATELO_1,true;ql=SI_FALSE,OXY_ATELO_1",
+            },
+        },
+        ["p1_bridge_atelo_03a"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676130,
+                ObjectIds = ["125"],
+                IsKeyItem = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                GISIdentifier = "MOON_ATELO_4",
+                OverrideType =
+                    "name=moon_pot;type=P1_BANDIT_POT_S;ql=SI_FALSE,MOON_ATELO_4;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_ATELO_4|particle_emitter,highlighter,stop",
+            }
+        }
     };
 }

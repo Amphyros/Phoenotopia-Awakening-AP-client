@@ -106,6 +106,48 @@ internal static class APScriptAdditions
             "GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Amanda - <*name_ed></color></size></i><*stop=0.15>\nHere, <*_>be my first victim... <*_>Uh, <*_>customer!",
             "GIS,FILE_MARK_SI,KID_LUNCH,true||||<i><size=-10><color=#898989><*name_op>- Amanda - <*name_ed></color></size></i><*stop=0.15>\nWell? <*_>Isn't it just like what grandma Nana used to make?",
         ],
+        ["PLANTO_P2_CUSTOM"] =
+        [
+            "JUMP_TO,PLANTO_DONE,IF_TRUE|SI_TRUE,PLANTO_2;JUMP_TO,PLANTO_P2_CUSTOM+3,IF_TRUE|OC_EXISTS,greet_planto;GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nHow nostalgic.<*_> These flowers have grown so big.<*_> And they provide shade for everything below.",
+            "GO,%NextIndex%;GIS,FILE_MARK_OC,greet_planto||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nAh. <*_>We meet again.<*_> Try as you might,<*_> you'd have a hard time destroying my shade here.",
+            "GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nHeh heh.<*_> I joke.<*_> I am over that.<*_> Promise.",
+            "GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nHmmm...<*_> the soil balance is off here...",
+            "GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nFetch me five ''<#00ffff>food</color>'' units please!",
+            "OWNER,gale;CHOICE,PLANTO_ON_FOOD,%NextIndex%,PLANTO_ON_FOOD+-1||||...||Ask about ''Food''||Give 5 ''Food'' units||Sorry!",
+            "JUMP_TO,PLANTO_REWARD+-2,IF_FALSE|ITEM_HAVE_COUNT,62,5;GO,%NextIndex%;OWNER,planto;GIS,FILE_MARK_SI,PLANTO_2,true|DELAY,0.1|ITEM_remove,62,1|common_sfx,227|DELAY,0.1|ITEM_remove,62,1|common_sfx,227|DELAY,0.1|ITEM_remove,62,1|common_sfx,227|DELAY,0.1|ITEM_remove,62,1|common_sfx,227|DELAY,0.1|ITEM_remove,62,1|common_sfx,227||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nObservation.<*_> Whoever produced these ''food'' units is a terrible cook.",
+            "GO,%NextIndex%;OWNER,gale||||...",
+            "GO,%NextIndex%;OWNER,planto||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nAgain,<*_> I joke.",
+            "GO,%NextIndex%;OWNER,planto;JUMP_TO,PLANTO_REWARD_CUSTOM,IF_TRUE|SI_ALL_TRUE,PLANTO_1,PLANTO_2,PLANTO_3,PLANTO_4,PLANTO_5,PLANTO_6||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nReceive this as payment.",
+            "GIS,FILE_MARK_AP,AP_PLANTO_2|HACK_ME_OUT;CLOSE_ALL_DIALOGUE,NULL;WAIT,0.25||||",
+        ],
+        ["PLANTO_REWARD_CUSTOM"] = 
+        [
+            "||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nStar Iliad will release on April 31st",
+        ],
+        ["HONEY_BUN_CUSTOM"] =
+        [
+            "OWNER,hachi;GO,%NextIndex%;FLIP_NPC,hachi,right||||A freshly baked <#00ffff>%APPlayer%%APItem%</color>!<*_> I eat one every day.<*_> The secret to good health, perhaps?",
+            "CHOICE,CLOSE_ALL,%NextIndex%;GIS,money_show,P1_RAI||||Buy %APPlayer%%APItem% for 14 R?||No||Yes",
+            "OWNER,hachi;JUMP_TO,HACHI_SAD+1,IF_FALSE|MONEY_HAVE,P1_RAI,14;GIS,money_adjust,P1_RAI,-14|FILE_MARK_AP,HONEY_SHOP_BUN|recycle,shop_1||||Wonderful! <*_>Enjoy the treat!",
+        ],
+        ["HONEY_BREW_CUSTOM"] =
+        [
+            "OWNER,hachi;GO,%NextIndex%;FLIP_NPC,hachi,right||||That's <#00ffff>%APPlayer%%APItem%</color>.<*_> It's an invigorating fizzy drink!",
+            "CHOICE,CLOSE_ALL,%NextIndex%;GIS,money_show,P1_RAI||||Buy %APPlayer%%APItem% for 20 R?||No||Yes",
+            "OWNER,hachi;JUMP_TO,HACHI_SAD+1,IF_FALSE|MONEY_HAVE,P1_RAI,20;GIS,money_adjust,P1_RAI,-20|FILE_MARK_AP,HONEY_SHOP_BREW|recycle,shop_2||||Wonderful! <*_>Enjoy the drink. <*_>It tastes best chilled!",
+        ],
+        ["HONEY_DROP_CUSTOM"] =
+        [
+            "OWNER,hachi;GO,%NextIndex%;FLIP_NPC,hachi,right||||Those are <#00ffff>%APPlayer%%APItem%</color>.<*_> They are sweet candy that make kids extra hyper,<*_> hah hah!",
+            "CHOICE,CLOSE_ALL,%NextIndex%;GIS,money_show,P1_RAI||||Buy %APPlayer%%APItem% for 24 R?||No||Yes",
+            "OWNER,hachi;JUMP_TO,HACHI_SAD+1,IF_FALSE|MONEY_HAVE,P1_RAI,24;GIS,money_adjust,P1_RAI,-24|FILE_MARK_AP,HONEY_SHOP_DROP|recycle,shop_3||||Wonderful! <*_>Enjoy the candy!",
+        ],
+        ["GEO_ROBOT_02_CUSTOM"] =
+        [
+            "JUMP_TO,3865,IF_TRUE|SI_TRUE,GEO_TICKET_2;GO,%NextIndex%;GIS,override_npc_anim,geo_bot,green_robot_clap||||Congratulations on completing the GEO challenge!",
+            "GO,%NextIndex%||||You're visitor #423 to this location!",
+            "GIS,erase_npc_overrides,geo_bot|FILE_MARK_SI,GEO_TICKET_2,true||||Here's your ticket! <*_>Visit the nearest GEO base to redeem it for prizes!",
+        ]
     };
 
     public static void AddCustomScriptLines()
