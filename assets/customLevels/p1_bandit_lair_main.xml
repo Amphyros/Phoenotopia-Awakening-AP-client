@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="16" tileheight="16" infinite="0" nextobjectid="179">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="16384" columns="128">
+  <image source="../../Textures/tiles.PNG" width="2048" height="2048"/>
+ </tileset>
+ <layer name="back" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <layer name="back" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztmFtyhCAQRf2JzG+WYZXuwaX5MzUhq2JpAR9jy0CDZhR07q3qqol0mj7yaKQooBR6NEXxM1tnTD/rUud1lL4bt32Krsz/qPWcHqzTvzunz4r5HxMvJ8XkW2rWe120H8yvNPMp+Uk+zpyEZroN1gnC9Nv01v/NzX/qx8WLyWUPkXzcOREuOqbm+SOC37SVTTheTC57yOQjmZx8+ZYWY4C/DcWz2446Q4T6ZPhVLL89b87Cr+dfe1ua0s/UGi7qx8UL5bKXyqGvaQ285B4zrpxf7DpJyK+4fOT4fjj+cvbZ/J5S8a+Y/8o3/8k7ZPm5eK73czB/3+eiVpkz3WzKmKjjxnWKs/BzxNPPsuA361+fYTtaq4Q73yA/jUPrvyueyIR/bf2nXDvUvyT80srVle9XNT+nYxzDX1Z583v2/2eb3LCvb9z/s+H35Wv2cloL/utntR9a/8Ya/9InW9f1Hjbt3ez4az9aM3LjH+8unH2auj62vcx/Ecmv/YoYv1T8XJ+hfN/tl5pffjj/mvFfs/43zP8z7P/G+t/cPkn9rsS/ONdEfv/kzD99/3vu6p75Or9rLnL+uVv3rXY+tP2K/OP4tr422k65xPA939/ZTiYc9wTcfMqFf8v6N3u8rOb/k9XyzBPgb0/Cv2gX9FzP8Av/+T/4vlPzj/P6eWdxo/dftK5z40/8uHip+DlZ91WtfV/17ni58UMQBEEQBEEQBEEQBEEQBEEQBEEQBKXSH67FMrg=
+  </data>
+ </layer>
+ <layer name="back" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztmc9u00AQxufU1imHpK3oASktF0SbVCAhUSwuPnAD3qHPAGekuYW0RUppRa+9I95hD5y49Q14BeAF+NYbkz/dtUy8W9vp/KRPmR2PxjPW7liRiYTbIDqgpGWkYCtXTJG4JjLsU3JspGArV0yRuKaxhn4iqGWkYF/Bp7R//hfXdqfitE9VXX9Z0AOhF2oZMWxeM6L5X1tc1fX7AHuZjo14mNNT0bimgVlGLSOGzdrX7hJtQJvd1GZX3LJw/SwVZ+sR+v4MnXdTm11xi/L4sHyOdzHR+7hsFjedfioOd4dy/Ebvf6APz4l+eX4OI/R+ZsSjGj+DULRxzjtG3G7QWR/sE32ciLHm7Nrlw5vxNl9RHjzK9+XVUhV6rnf0bN+ZzPWy+TaRa8tTvtDouX5mxCMP9ep85+j9Ymf2PVEVRfac77nuylfH/e97rjftPeF7rtfpPfHlCdH9p//EmQ3/rdc1roWnlK5D1rLSw5nrWc5hL9Qd3bjqWLH4Pd4zQX4VKn9ZUFsyCFif7r1OM9dWi34GVdXzDf8T3sThnsflfqjM5XmNvr+if4gz31v4frz0d4/tCubMPHXf/1XVIuTzKk7F2Trao6PMB/unK65uLLrnvsepZmJtvdrifNdSBasxJZCa9tl6tcUtA+hJi7P1vT3idSNtO+OWkU/o+xQ6MSLY2ndnmDu3tT+7wv+xeoAZlvP9evjC6uNF89UFvMd3oatBH//D9Dfc8Vpf0z1nPUaWbwnReObNxOXkaxq656jAXC8aJwiCIAiCIAiCIAiCIAiCIAiCIAiCIEz4C2v+3Ig=
+  </data>
+ </layer>
+ <layer name="back" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztl0tOAkEYhFuTITG6UCBoQhBjomaIgIkr9iZeg6P8G1CjG3nNwut4AW/AUaxumADz4D3QQ+pLKvaUP5X+59U9ShFCCCGE7JavRyPZ9zz2wWlVqbORBGPZ93x2zWd1Zix7m8gWeaso9T6RaMETW/KSxruJ9GTdvOJdpLd2XtJc3kZ6sm7ez/1yni144/6n3+veBv0XH8J5vmcr236vp22dWPa93rs2kvOyUhflzfNsZ1ALewXXSCJqQ55tvD6tVl+oh8/BwDWSGQ+9o1bUCqw6l6T5LinVKYX94DkoVIzEP47r/Qjr4HHEWmgrcfe1+R/OgVczkj7+9muT47jrPi/PRqLu62m8upHEHa+aZxvB+zpIsN+rBf0vyiPEBhw8px3sVbsjCcbijJ/bE1c1oaGuybij+g8ca+kxPFPr1y3Ks5EWntMs9mu5kQRjaQWe2xZ6arvh38KTVqC3ZfJspId5dmP2qg56ylTCPjxxYnpDls5MDXms5TkoO7WP/Xs20tdPtSP6h2eurV/n+8hQyNKZqaGHvrtQZwv7eGQoZOnM1JDHWp6DsnPWdHzPDvFNr9XEuBlXhwyFLJ2ZGnrouzun95eG+a4f+scYN+HF1iNLZx4Mv41IT3Y+kYTA+q0ltuYRQgghhBBCCCGEEEIIIYQQQgg5LP4B2iiThQ==
+  </data>
+ </layer>
+ <layer name="front" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztWG2OmzAQdVBSqe0JIuV/u9v9uAJHG5Im0rYnqNTDcLSOwWOGiQ3e4CSwnSc9GQbHmecZxjbGKBSKW2P73ZjPr8Z8aQl4Ddb2URHS+ob3v1rCm7PJfvf2Oxek1t238z5oA9mv9/ylIbB7MAvFn0Cuh2xzBOXo14E8PT4Yc3qIj7ENPAvZxsZL8SU3KEd/R/LUYvNozKfHfP8ZGy/Fl3vgiL6eMurPPR5h/2zggBxrkeb0nP//r4VT67uxflNLOnhbYE0t2rpaWtI1toBtzZ7DKmO9rQL+oC3b+KtOk9VQr9F3pNl2ehpt1o42CPQB6uf6wgbHy+VfhWP//YExeulYZZxfp7/RsnYsXHwlI33qoh//Mmf8r42V0+Vie6ZZsHSshd3nzjZz/l8bpJ/HmM2F1BnKjVL0XZz+XT/2kJgLPB+4bYn6aQ7A1XN/TTzivuH42jzzLf2OnrnWjNUnqul7tvZMqe2x8ez92HiV0xDRBc6Wmg9J65/9z31LoBZrvLm0tofG27t1Y2y8lVvb1t163ugvzmsi1b0yQK89Rb/di4f23zH7GKaMt3Gx57ojrAux1gXuk95/uxcP7b9j9jFMGc/F38fare+x+k96edz9Nf12SfVv0+7bGm1s7auF/prWRspxq5mvlbQ3yr3/vTb4+sffgx3TtuvqC9UWYHtSb7c2W8cS639vX8/PT/I8EjifDD1711mh6tdNr0/W04xTHq3XgTmW/sjfyGuq+/7MkPOscC981G+dqRj61nkriPfq7PuA3HMdnuYfJ/SxqUVD3z3k948Ie+cHW/9/Ps17Dqx29LGp/0wDiGvPNc4DMrk9zDgPKO6H1tckPe+I/6zzYCDuQ/FPnqc558ElcU+M/2BuzCEPEuI+yEvjP4c8mBJ3Fn/5jiwiD6bGXalUKpXK/5m3Wq8VCoVCoVAoFAqFQqFQKBQKhUJxW/wDtIj6dQ==
+  </data>
+ </layer>
+ <layer name="front" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztWM1S1EAQbmK8COJypGoPHrTYLZFnyKP4KA2WJWWViAfUgw+TR7N7kk6+7UxAdmGzaH9VX82mp2f6N5OB4oyoOKOqaEZuqc910c8xzKO+/80ZHXyuYX8CG3VmrnJ7e30cKyC7tQz7ex2GfSoYKaPn97F17HTJ2cHc4LrquJ2fr+YHc4ZxViP2fVz4TMWwNp51sZpfjNfXiZ0uEuXoR4qtFJmQ2ph571TkwmcNWX6rjCUXPB/WtrNn+9zSO7k+qIphr/g8YnyYG9StnD0uXO3mw5xXGJPV+lzivhAa5Defn/a9BHGy8w9r08V0vPo+og5nZFgz3zu5fsF5HMkR7aQYVIa1Lls+h9gNIuOyJfaE1alsiPVHf2qwj32jPWd9R24+6c/hPTQb1mu2zuyiDPati/59Tvuhr77WfwvoiWSrbHy0XqpcLkxuOgx9UaPMelLlFzIvZBiRlGFOfqv+3vv7x26QtZ1vv98l5uzl/PayrN/rexYIrI8vy6k9CAQCgUDg8fDxzWZ3rO8L4utF3NMMvyQXwkAgENhp6Nk9k79zrpszXJ/1e5D4rwLP5xsZfyySrIPKfi7SyJM4GAjcAX/n0jucvr9P6R6GZ88662/gHf1f3tmDt8TCrPyFcNOcbgPmo8YxFk/gbki9ab/JYYLlUsf9th8mddBBzyepu/Zo8j3q/rA4gJrjOTDl3+dj55Hv3YeG3vGO9D57IrELvwmvhF9P+nsu9qN+Py1P9i21u/B99cUGiS0SmyS21Yf0bdr2/wSuXosPwkvpCSEdiq8vha8a0qzJEbcjHbkR9MjPm2w2oie26HDZ2xZfPmw3+kEe2Pz5bPlY5nmZmcd1nxpybg7XqE3Nv9jnqWI3QA54LO5NqTU2O7sSt4f69xix72q8Hr4PzO82LzxCX+fufXoqcXtoDN5vOy+tf230udq2r1Mjl6tAIBAIBAKBQCAQCAQCgUAgEAgEApvhD/feoCA=
+  </data>
+ </layer>
+ <layer name="_doors" width="64" height="64" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1jkSgzAMBVB7xiwHD+Bjg3oKSMKwvVfbmi8XslICYE3NKQ357BT7Re7xBrkj5+cGOfcqS0/9A/sCYF09YO5HzdZfAgA8ROw25eK7TWSsX2aMe80f+4t63YZ6cW66+LsCwFuV/Nt+AQAAAAAAAAAwA+T8CUY=
+  </data>
+ </layer>
+ <objectgroup name="meta" visible="0">
+  <object id="1" name="config" type="id=0;zoom_allowance=1" x="128" y="16" width="784" height="576"/>
+  <object id="2" name="music" x="-112" y="144" width="112" height="32">
+   <properties>
+    <property name="1. default" value="bandits_lair"/>
+   </properties>
+  </object>
+  <object id="3" name="level_art" x="-112" y="192" width="112" height="32">
+   <properties>
+    <property name="bg_z" value="graphic=p1_bandit_den_bg_01;add_x=0;add_y=0.6;scroll_x=.016"/>
+   </properties>
+  </object>
+  <object id="4" name="lighting" type="shader=diffuse;intensity=0.7;gales_light_power=5" x="-112" y="240" width="112" height="32"/>
+  <object id="5" name="GIS_PACK" x="480" y="624" width="112" height="32">
+   <properties>
+    <property name="1-opened boss gate" value="ITEM_remove,111,3|FILE_MARK_SI,BANDIT_BOSS_GATE_OPENED,true|put,GATE_NPC,tmx(34/-4/0)|DELAY,0.3|AT_set,BOSS_GATE,15|uncommon_sfx,p1_anuri_gate_opening|DELAY,3|AT_move,BOSS_GATE,name(BOSS_GATE)+vec3(0/-3/0),duration$1.5|action_shake,duration$1.5,intensity$0.03125|common_sfx,9|DELAY,1.5|common_sfx,7|put,BOSS_FUNNEL,tmx(32.5/32.5/1)|DELAY,0.5|common_sfx,150"/>
+   </properties>
+  </object>
+  <object id="6" name="memory" x="-112" y="336" width="112" height="64">
+   <properties>
+    <property name="_snd_packs" value="p1_maneater,p1_tentacle,p_fruit,p1_drake,p_weightswitch,p_liftdoor,p_tripwire,p_trapshooter,p1_ninja,p1_viking,p_hitswitch"/>
+    <property name="_snd_solos" value="p1_door_unlock,p1_door_locked,p1_door_cloth_open,bell_alarm,construction,whistle,flag_touch,hint_bell,p1_anuri_gate_opening,p1_boss_drake_burrow"/>
+    <property name="prefabs" value="p1_maneater,p1_tentacle,p_fruit,p1_drake,p_weightswitch,p_liftdoor,p_tripwire,p_trapshooter,p1_ninja,p1_viking,p_hitswitch"/>
+   </properties>
+  </object>
+  <object id="107" name="config" type="id=1;no_zoom=0;follow=point" x="192" y="32" width="340" height="192"/>
+<!--  <object id="119" name="trigger" type="remove;ql=SI_FALSE,SAW_2ND_DUNGEON_CG;GIS=cutscene,line$BANDIT_LAIR_CAM2|FILE_MARK_SI,SAW_2ND_DUNGEON_CG,true" x="112" y="80" width="816" height="384"/>-->
+ </objectgroup>
+ <objectgroup name="solid_collisions" visible="0">
+  <object id="43" x="-48" y="160" width="240" height="224"/>
+  <object id="44" x="864" y="160" width="224" height="224"/>
+  <object id="45" x="-12" y="0" width="416" height="112"/>
+  <object id="46" x="652" y="0" width="432" height="112"/>
+  <object id="47" type="profile=SAND" x="-48" y="544" width="1120" height="80"/>
+  <object id="48" x="304" y="272" width="128" height="32"/>
+  <object id="52" x="208" y="368">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="53" x="208" y="320">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="55" x="208" y="224">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="56" x="208" y="176">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="57" x="768" y="176">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="58" x="768" y="320">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="59" x="768" y="224">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="60" x="768" y="368">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="62" x="400" y="96">
+   <polygon points="0,0 32,-32 32,-96 0,-96"/>
+  </object>
+  <object id="63" x="656" y="96">
+   <polygon points="0,0 -32,-32 -32,-96 0,-96"/>
+  </object>
+  <object id="64" x="432" y="0" width="48" height="64"/>
+  <object id="65" x="576" y="0" width="48" height="64"/>
+  <object id="66" x="480" y="64">
+   <polygon points="0,0 32,-32 32,-272 0,-272"/>
+  </object>
+  <object id="67" x="576" y="64">
+   <polygon points="0,0 -32,-32 -32,-272 0,-272"/>
+  </object>
+  <object id="68" x="512" y="0" width="32" height="32"/>
+  <object id="69" x="320" y="176">
+   <polyline points="0,0 96,0"/>
+  </object>
+  <object id="71" x="640" y="176">
+   <polyline points="0,0 96,0"/>
+  </object>
+  <object id="74" x="-48" y="432">
+   <polygon points="-256,0 240,0 352,112 -256,112"/>
+  </object>
+  <object id="75" x="1024" y="432">
+   <polygon points="272,0 -160,0 -272,112 272,112"/>
+  </object>
+  <object id="76" x="208" y="416">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="77" x="768" y="416">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="80" x="624" y="272" width="128" height="32"/>
+  <object id="81" x="480" y="176" width="96" height="32"/>
+  <object id="88" x="304" y="368" width="448" height="32"/>
+  <object id="92" x="480" y="480">
+   <polyline points="0,0 96,0"/>
+  </object>
+  <object id="126" type="profile=WOOD" x="624" y="272">
+   <polyline points="0,0 -48,48 -144,48 -192,0"/>
+  </object>
+  <object id="129" type="profile=SAND" x="768" y="528">
+   <polygon points="0,0 -64,16 0,16"/>
+  </object>
+  <object id="130" type="profile=HARD_WOOD" x="752" y="272" width="112" height="16"/>
+  <object id="131" type="profile=HARD_WOOD" x="192" y="272" width="112" height="16"/>
+ </objectgroup>
+ <objectgroup name="objects_door_guards" visible="0">
+  <object id="94" name="enemy" type="name=guardD;type=p1_viking;face_right;instruction=sentry;ql=ITEM_DONT_HAVE_COUNT,111,3&amp;SI_FALSE,BANDIT_BOSS_GATE_OPENED" x="560" y="512" width="32" height="32"/> <!-- ql=SI_OR_FALSE,RALA_KEY_GET,LIHU_KEY_GET,ATRI_KEY_GET  -->
+  <object id="95" name="enemy" type="name=guardC;type=p1_viking;instruction=sentry;ql=ITEM_DONT_HAVE_COUNT,111,3&amp;SI_FALSE,BANDIT_BOSS_GATE_OPENED" x="464" y="512" width="32" height="32"/> <!-- ql=SI_OR_FALSE,RALA_KEY_GET,LIHU_KEY_GET,ATRI_KEY_GET -->
+  <object id="96" name="npc" type="name=guardC;profile=bandit_man;behavior=stand;speech=DOOR_GUARD_1,DOOR_GUARD_1+2;ql=ITEM_HAVE_COUNT,111,3;floating" x="464" y="511" width="32" height="32"/> <!-- ql=SI_ALL_TRUE,RALA_KEY_GET,LIHU_KEY_GET,ATRI_KEY_GET -->
+  <object id="97" name="npc" type="name=guardD;profile=bandit_man;behavior=stand;speech=DOOR_GUARD_2,DOOR_GUARD_2+1;face_right;ql=ITEM_HAVE_COUNT,111,3;floating" x="560" y="511" width="32" height="32"/> <!-- ql=SI_ALL_TRUE,RALA_KEY_GET,LIHU_KEY_GET,ATRI_KEY_GET -->
+  <object id="98" name="npc" type="name=guardC;profile=bandit_man;behavior=stand;speech=DOOR_GUARD_1,DOOR_GUARD_1+2;ql=SI_TRUE,BANDIT_BOSS_GATE_OPENED;floating" x="464" y="511" width="32" height="32"/> <!-- Addition -->
+  <object id="99" name="npc" type="name=guardD;profile=bandit_man;behavior=stand;speech=DOOR_GUARD_2,DOOR_GUARD_2+1;face_right;ql=SI_TRUE,BANDIT_BOSS_GATE_OPENED;floating" x="560" y="511" width="32" height="32"/> <!-- Addition -->
+ </objectgroup>
+ <objectgroup name="objects" visible="0">
+  <object id="7" name="end_door" type="id=0;facing=right" x="144" y="400" width="32" height="32"/>
+  <object id="8" name="door" type="profile=TOUCH_TRIGGER;open=p1_bandit_lair_midpoint;id=0" x="32" y="368" width="80" height="80"/>
+  <object id="9" name="door" type="profile=TOUCH_TRIGGER;open=P1_bandit_lair_09;id=9" x="928" y="352" width="80" height="96"/>
+  <object id="10" name="end_door" type="id=9;facing=left" x="864" y="400" width="32" height="32"/>
+  <object id="11" name="end_door" type="id=8;facing=left" x="864" y="128" width="32" height="32"/>
+  <object id="12" name="door" type="profile=TOUCH_TRIGGER;open=p1_bandit_lair_watch_tower;id=8" x="928" y="96" width="80" height="80"/>
+  <object id="13" name="door" type="profile=TRIAL_BACK;open=p1_bandit_lair_antechamber;id=6;color=ad2bd8;always_starts_closed" x="520" y="144" width="16" height="32"/>
+  <object id="14" name="end_door" type="id=6;facing=left" x="512" y="144" width="32" height="32"/>
+  <object id="15" name="end_door" type="id=5;facing=keep" x="352" y="240" width="32" height="32"/>
+  <object id="16" name="door" type="profile=TRIAL_BACK;open=p1_bandit_lair_antechamber;id=5;color=ff8316;always_starts_closed" x="360" y="240" width="16" height="32"/>
+  <object id="18" name="door" type="profile=TRIAL_BACK;open=p1_bandit_lair_antechamber;id=3;color=ed5050;always_starts_closed" x="680" y="240" width="16" height="32"/>
+  <object id="19" name="end_door" type="id=3;facing=keep" x="672" y="240" width="32" height="32"/>
+  <object id="20" name="door" type="profile=TOUCH_TRIGGER;open=p1_bandit_lair_storeroom2;id=7" x="32" y="96" width="80" height="80"/>
+  <object id="21" name="end_door" type="id=7;facing=right" x="144" y="128" width="32" height="32"/>
+  <object id="23" name="enemy" type="name=guardA;type=p1_ninja;initial_behavior=shine;defeated_GIS=FILE_MARK_OC,beat_key_bandit1|SPAWN_loot,108,amt$1,loot_GIS_MARK_SI$BANDIT_KEY_1_COLLECTED;ql=SI_FALSE,BANDIT_KEY_1_COLLECTED;face_right" x="310" y="240" width="32" height="32"/>
+  <object id="24" name="enemy" type="name=guardA;type=p1_ninja;defeated_GIS=FILE_MARK_OC,beat_key_bandit1;ql=SI_TRUE,BANDIT_KEY_1_COLLECTED&amp;OC_ABSENT,beat_key_bandit1;face_right" x="310" y="240" width="32" height="32"/>
+  <object id="26" name="npc" type="profile=!;timeout=1;spacing=stand;speech=BANDIT_BOSS_GATE_CUSTOM;name=GATE_NPC;ql=SI_FALSE,BANDIT_BOSS_GATE_OPENED" x="512" y="512" width="32" height="32"/> <!-- speech=BANDIT_BOSS_GATE -->
+  <object id="27" name="door" type="profile=NONE_BACK;open=p1_bandit_lair_boss;id=100;name=BOSS_FUNNEL;override_center_pt=vec3(32.5/94.2188/1);exist_ql=SI_FALSE,BANDIT_BOSS_GATE_OPENED" x="512" y="656" width="32" height="32"/>
+  <object id="28" name="end_door" type="id=100;facing=left" x="512" y="512" width="32" height="32"/>
+  <object id="29" name="door" type="profile=NONE_BACK;open=P1_bandit_lair_boss;id=100;exist_ql=SI_TRUE,BANDIT_BOSS_GATE_OPENED" x="512" y="512" width="32" height="32"/>
+  <object id="100" name="end_door" type="id=1;facing=left" x="352" y="336" width="32" height="32"/>
+  <object id="101" name="door" type="profile=NONE_BACK;open=p1_bandit_lair_tavern;id=1" x="352" y="336" width="32" height="32"/>
+  <object id="102" name="end_door" type="id=2;facing=left" x="512" y="288" width="32" height="32"/>
+  <object id="103" name="door" type="profile=NONE_BACK;open=p1_bandit_lair_foyer;id=2" x="512" y="288" width="32" height="32"/>
+  <object id="104" name="end_door" type="id=4;facing=left" x="672" y="336" width="32" height="32"/>
+  <object id="105" name="door" type="profile=NONE_BACK;open=p1_bandit_lair_kitchen;id=4" x="672" y="336" width="32" height="32"/>
+  <object id="106" name="end_door" type="id=15;facing=keep;config=1" x="512" y="-192" width="32" height="32"/>
+  <object id="109" name="trigger" type="GIS=put,gale,tmx(22.5/7.5)|send_message,gale,SET_GALE_VY,0|uncommon_sfx,p1_boss_drake_burrow|cpart,P1_CLOUD,pos$name(gale),intensity$2,deviation$vec3(1/1/1),dir$UP,color$ffffff" x="464" y="-16" width="128" height="16"/>
+  <object id="111" name="trigger" type="remove;GIS=cam_config_change,id$0,transition$smooth;ql=END_DOOR_ID_EQS,15" x="336" y="160" width="64" height="16"/>
+  <object id="112" name="enemy" type="name=guardB;type=p1_ninja" x="816" y="240" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="animated" visible="0">
+  <object id="73" name="AT" type="sprite=14;sort=bg_tiles,3;name=BOSS_GATE;ql=SI_FALSE,BANDIT_BOSS_GATE_OPENED" x="496" y="496" width="64" height="48"/>
+  <object id="164" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(3/1/1);color=9f23ff;alpha=0.1;use_all_bright" x="368" y="0" width="320" height="160">
+   <ellipse/>
+  </object>
+  <object id="165" name="AT" type="sprite=38;sort=fg_tiles,-5;scale=vec3(3/2/1);color=9f23ff;alpha=0.1;use_all_bright" x="352" y="240" width="352" height="240">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_lights" visible="0">
+  <object id="120" name="bulb" type="intensity=1.7;color=ffffff;range=2.7;intensity=8;follow_target=guardA" x="400" y="704" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="121" name="bulb" type="intensity=1.7;color=ffffff;range=2.7;intensity=8;follow_target=guardB" x="464" y="704" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="122" name="bulb" type="intensity=1.7;color=ffffff;range=2.7;intensity=4;follow_target=guardC" x="528" y="704" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="123" name="bulb" type="intensity=1.7;color=ffffff;range=2.7;intensity=4;follow_target=guardD" x="592" y="704" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="133" name="bulb2" type="intensity=8;z=-11;range=14;color=ffa359;diameter=100" x="416" y="399.333" width="224" height="160">
+   <ellipse/>
+  </object>
+  <object id="134" name="bulb" type="intensity=3;color=ffedc1;range=6;z=-2" x="880" y="368" width="64" height="80">
+   <ellipse/>
+  </object>
+  <object id="135" name="bulb" type="intensity=3;color=ffedc1;range=6;z=-2" x="96" y="368" width="64" height="80">
+   <ellipse/>
+  </object>
+  <object id="136" name="bulb" type="intensity=3;color=ffedc1;range=6;z=-2" x="96" y="96" width="64" height="80">
+   <ellipse/>
+  </object>
+  <object id="137" name="bulb" type="intensity=3;color=ffedc1;range=6;z=-2" x="880" y="96" width="64" height="80">
+   <ellipse/>
+  </object>
+  <object id="138" name="bulb" type="intensity=3;color=ffedc1;range=4;z=-2" x="784" y="432" width="48" height="64">
+   <ellipse/>
+  </object>
+  <object id="139" name="bulb" type="intensity=3;color=ffb999;range=8;z=-2" x="784" y="272" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="140" name="bulb" type="intensity=3;color=ffb999;range=8;z=-2" x="224" y="272" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="141" name="bulb" type="intensity=3;color=ffb999;range=8;z=-2" x="416" y="96" width="64" height="48">
+   <ellipse/>
+  </object>
+  <object id="142" name="bulb" type="intensity=3;color=ffb999;range=8;z=-2" x="576" y="96" width="64" height="48">
+   <ellipse/>
+  </object>
+  <object id="143" name="bulb" type="intensity=3;color=ffedc1;range=4;z=-2" x="496" y="32" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="144" name="bulb" type="intensity=2;color=ffedc1;range=4;z=-2" x="336" y="112" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="145" name="bulb" type="intensity=2;color=ffedc1;range=4;z=-2" x="656" y="112" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="146" name="bulb" type="intensity=3;color=ffedc1;range=4;z=-2" x="208" y="96" width="80" height="64">
+   <ellipse/>
+  </object>
+  <object id="147" name="bulb" type="intensity=3;color=ffedc1;range=4;z=-2" x="768" y="96" width="80" height="64">
+   <ellipse/>
+  </object>
+  <object id="148" name="bulb" type="intensity=2;color=ffedc1;range=4;z=-2" x="304" y="304" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="149" name="bulb" type="intensity=2;color=ffedc1;range=4;z=-2" x="400" y="304" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="150" name="bulb" type="intensity=2;color=ffedc1;range=4;z=-2" x="624" y="304" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="151" name="bulb" type="intensity=2;color=ffedc1;range=4;z=-2" x="720" y="304" width="32" height="32">
+   <ellipse/>
+  </object>
+  <object id="154" name="bulb" type="intensity=3;color=ffcdff;range=5;z=-2" x="336" y="400" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="155" name="bulb" type="intensity=3;color=ffcdff;range=5;z=-2" x="656" y="400" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="156" name="bulb" type="intensity=3;color=ffedc1;range=4;z=-2" x="224" y="432" width="48" height="64">
+   <ellipse/>
+  </object>
+  <object id="157" name="bulb" type="intensity=3;color=ffcdff;range=5;z=-3" x="448" y="336" width="48" height="32">
+   <ellipse/>
+  </object>
+  <object id="158" name="bulb" type="intensity=3;color=ffcdff;range=5;z=-3" x="560" y="336" width="48" height="32">
+   <ellipse/>
+  </object>
+  <object id="166" name="bulb" type="intensity=3;color=ffb999;range=8;z=-2" x="416" y="432" width="64" height="48">
+   <ellipse/>
+  </object>
+  <object id="167" name="bulb" type="intensity=3;color=ffb999;range=8;z=-2" x="576" y="432" width="64" height="48">
+   <ellipse/>
+  </object>
+  <object id="168" name="bulb" type="intensity=3;color=ffb999;range=4;z=-2" x="496" y="448" width="64" height="48">
+   <ellipse/>
+  </object>
+  <object id="172" name="bulb" type="intensity=6;color=ffedc1;range=4;z=-2.5" x="496" y="240" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="173" name="bulb" type="intensity=4;color=ffcdff;range=4.5;z=-1.75" x="336" y="216" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="174" name="bulb" type="intensity=4;color=ffcdff;range=4.5;z=-1.75" x="496" y="120" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="175" name="bulb" type="intensity=4;color=ffcdff;range=4.5;z=-1.75" x="656" y="216" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="176" name="bulb" type="intensity=3;color=ffcdff;range=4;z=-1.5" x="480" y="480" width="96" height="80">
+   <ellipse/>
+  </object>
+  <object id="177" name="bulb" type="intensity=6;color=ffedc1;range=4;z=-2.5" x="336" y="288" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="178" name="bulb" type="intensity=6;color=ffedc1;range=4;z=-2.5" x="656" y="288" width="64" height="64">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

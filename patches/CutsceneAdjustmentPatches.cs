@@ -32,6 +32,19 @@ public class CutsceneAdjustmentPatches
                 "FILE_MARK_SI,PANSELO_GATE_W_OPENED,true|FILE_MARK_SI,PANSELO_GATE_E_OPENED,true", Vector3.zero);
     }
 
+    [HarmonyPatch(typeof(SaveFile), "_Evaluate_QL_BasicPhrase")]
+    [HarmonyPrefix] // Patch to add ITEM_DONT_HAVE_COUNT to _Evaluate_QL_BasicPhrase
+    private static bool EvaluateQLBasicPhrasePrefix(string ql_phrase, ref bool __result, SaveFile __instance)
+    {
+        if (!ql_phrase.Contains("ITEM_DONT_HAVE_COUNT")) return true;
+
+        string[] splitQLPhrase = ql_phrase.Split(',');
+        var method = AccessTools.Method(typeof(SaveFile), "_QL_HandleItemsHaveCount");
+        __result = !(bool)method.Invoke(__instance, [splitQLPhrase]);
+
+        return false;
+    }
+
     [HarmonyPatch(typeof(SaveFile), "QL_EvaluateExpression")]
     [HarmonyPrefix] // Patch to force level state for Anuri temple entrance
     private static void QLEvaluateExpressionPrefix(ref string expression)

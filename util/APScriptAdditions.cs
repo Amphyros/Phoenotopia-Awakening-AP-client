@@ -120,7 +120,7 @@ internal static class APScriptAdditions
             "GO,%NextIndex%;OWNER,planto;JUMP_TO,PLANTO_REWARD_CUSTOM,IF_TRUE|SI_ALL_TRUE,PLANTO_1,PLANTO_2,PLANTO_3,PLANTO_4,PLANTO_5,PLANTO_6||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nReceive this as payment.",
             "GIS,FILE_MARK_AP,AP_PLANTO_2|HACK_ME_OUT;CLOSE_ALL_DIALOGUE,NULL;WAIT,0.25||||",
         ],
-        ["PLANTO_REWARD_CUSTOM"] = 
+        ["PLANTO_REWARD_CUSTOM"] =
         [
             "||||<i><size=-10><color=#898989><*name_op>- Mr. Planto - <*name_ed></color></size></i><*stop=0.15>\nStar Iliad will release on April 31st",
         ],
@@ -147,6 +147,10 @@ internal static class APScriptAdditions
             "JUMP_TO,3865,IF_TRUE|SI_TRUE,GEO_TICKET_2;GO,%NextIndex%;GIS,override_npc_anim,geo_bot,green_robot_clap||||Congratulations on completing the GEO challenge!",
             "GO,%NextIndex%||||You're visitor #423 to this location!",
             "GIS,erase_npc_overrides,geo_bot|FILE_MARK_SI,GEO_TICKET_2,true||||Here's your ticket! <*_>Visit the nearest GEO base to redeem it for prizes!",
+        ],
+        ["BANDIT_BOSS_GATE_CUSTOM"] =
+        [
+            "PROFILE,static;VOICE,static;COLOR_BUBBLE,H7ab5c9;COLOR_TEXT,H364971;OWNER,none;GOIF_FAST,3224|ITEM_HAVE_COUNT,111,3||||The door bears three empty slots.",
         ]
     };
 
