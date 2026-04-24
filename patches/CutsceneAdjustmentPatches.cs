@@ -21,10 +21,17 @@ public class CutsceneAdjustmentPatches
     }
 
     [HarmonyPatch(typeof(DirectorLogic), "IntroSetDifficultyLevel")]
-    [HarmonyPrefix] // Patch to apply game state dependant options from AP
+    [HarmonyPrefix] // Patch to apply game state dependant options from AP at the start of the playthrough
     private static void IntroSetDifficultyLevelPrefix()
     {
         if (!APHelpers.IsConnectedToAP()) return;
+
+        PT2.GIS_ProcessInstructions("FILE_MARK_SI,CH2_D1_GOT_WINE_QUEST,true", Vector3.zero);
+        PT2.GIS_ProcessInstructions("FILE_MARK_SI,CH_2_A_MET_LISA,true", Vector3.zero);
+        PT2.GIS_ProcessInstructions("FILE_MARK_SI,CH_2_B_MET_MAYOR,true", Vector3.zero);
+        PT2.GIS_ProcessInstructions("FILE_MARK_SI,CH_2_C_LISA_ENLISTED,true", Vector3.zero);
+        PT2.GIS_ProcessInstructions("FILE_MARK_SI,CH2_D2_GOT_ID_QUEST,true", Vector3.zero);
+        PT2.GIS_ProcessInstructions("FILE_MARK_SI,CH2_E1_GOT_BOMB_QUEST,true", Vector3.zero);
 
         if (PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue("open_panselo_gates",
                 out var openPanseloGates) && (long)openPanseloGates == 1)

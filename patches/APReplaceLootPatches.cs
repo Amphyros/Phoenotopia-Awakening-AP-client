@@ -17,6 +17,7 @@ internal sealed class APReplaceLootPatches
 {
     private static string _spawnLootAPCollectedGis;
     private static List<string> _ExtractedPuzzleGisCmds = [];
+    private static readonly string[] _levelsWithItemDisplays = ["p1_atai_shooting_gallery"];
 
     [HarmonyPatch(typeof(PT2), "Initialize")]
     [HarmonyPostfix] // Patch to add AP item sprite
@@ -96,7 +97,7 @@ internal sealed class APReplaceLootPatches
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_CreateRectangleCollider")]
     [HarmonyPrefix]
-    private static bool Create2DPolygonColliderPrefix(ref XmlReader reader)
+    private static bool CreateRectangleColliderPrefix(ref XmlReader reader)
     {
         return HandlePossibleAPReplacementForObject(ref reader);
     }
@@ -111,6 +112,13 @@ internal sealed class APReplaceLootPatches
     [HarmonyPatch(typeof(LevelBuildLogic), "_HandleNPC")]
     [HarmonyPrefix]
     private static bool HandleNPCPrefix(ref XmlReader reader)
+    {
+        return HandlePossibleAPReplacementForObject(ref reader);
+    }
+
+    [HarmonyPatch(typeof(LevelBuildLogic), "_HandleTrigger")]
+    [HarmonyPrefix]
+    private static bool HandleTriggerPrefix(ref XmlReader reader)
     {
         return HandlePossibleAPReplacementForObject(ref reader);
     }
@@ -161,14 +169,35 @@ internal sealed class APReplaceLootPatches
         return true;
     }
 
+    [HarmonyPatch(typeof(LevelBuildLogic), "__CreateAnimatedTile")]
+    [HarmonyPrefix] // Patch to manually replace the sprite of item displays related to checks
+    private static void CreateAnimatedTilePrefix(ref XmlReader reader)
+    {
+        string activeLevelName = LevelBuildLogic.level_name;
+        if (!_levelsWithItemDisplays.Contains(activeLevelName)) return;
+
+        if (!LocationMapping.LocationMap.TryGetValue(activeLevelName.ToLower(), out List<Check> checks)) return;
+
+        foreach (Check check in checks)
+        {
+            if (!check.ObjectIds.Contains(reader.GetAttribute("id"))) continue;
+
+            reader = ReplaceLootIdInReader(reader, check.ItemInfo.ItemId);
+        }
+    }
+
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
     [HarmonyPostfix] // Patch to modify check values in level GIS PACK
     private static void LoadLevelGISPackReplacementPostfix(string new_level_name)
     {
+        if (PhoaAPClient.APConnection.ItemHandler?.LocalAllLocations == null) return;
         if (!LocationMapping.LocationMap.TryGetValue(new_level_name.ToLower(), out List<Check> checks)) return;
 
         foreach (Check check in checks)
         {
+            if (!PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(check.ArchipelagoId)) continue;
+            if (PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId)) continue;
+
             foreach (string objectId in check.ObjectIds)
             {
                 if (int.TryParse(objectId, out _)) continue;
@@ -215,7 +244,8 @@ internal sealed class APReplaceLootPatches
         if (collected_GIS.IsNullOrEmpty()) return;
 
         bool vanillaItemHasHurtbox = collected_GIS.Contains("MOON") || collected_GIS.Contains("ANURI_KEY") ||
-                                     collected_GIS.Contains("BANDIT_KEY") || collected_GIS.Contains("THOMAS_BLUE_KEY") ||
+                                     collected_GIS.Contains("BANDIT_KEY") ||
+                                     collected_GIS.Contains("THOMAS_BLUE_KEY") ||
                                      collected_GIS.Contains("THOMAS_RED_KEY") || collected_GIS.Contains("MONEY");
         bool itemToSpawnHasHurtbox = item_id is 5 or 98 or 108 or 111 or 115 or 116;
 
@@ -247,15 +277,19 @@ internal sealed class APReplaceLootPatches
     }
 
     [HarmonyPatch(typeof(PT2), "_GIS_HandleSpawnLoot")]
-    [HarmonyPrefix] // Patch to handle the FILE_MARK_AP instruction
+    [HarmonyPrefix] // Patch to handle different FILE_MARK_ instructions for spawned loot
     private static void GISHandleSpawnLootPrefix(ref string[] args, Vector3 spawn_position)
     {
         for (int i = 2; i < args.Length; i++)
         {
             string[] instructionArray = args[i].Split('$');
-            if (instructionArray[0] != "loot_GIS_MARK_AP") continue;
+            string type = instructionArray[0];
 
-            _spawnLootAPCollectedGis = "FILE_MARK_AP," + instructionArray[1] + ",true";
+            if (!type.StartsWith("loot_GIS_MARK_")) continue;
+
+            string suffix = type.Substring(type.LastIndexOf('_') + 1);
+
+            _spawnLootAPCollectedGis = $"FILE_MARK_{suffix},{instructionArray[1]},true";
 
             string nonRefArg = args[i];
             args = args.Where(item => item != nonRefArg).ToArray();
@@ -282,6 +316,13 @@ internal sealed class APReplaceLootPatches
     [HarmonyPatch(typeof(AnimalLifeSmallLogic), "_Mouse_AttackResult")]
     [HarmonyPrefix]
     private static void MouseAttackResultPrefix(AnimalLifeSmallLogic __instance)
+    {
+        ProcessAPItemAnimalLifeSmall(__instance);
+    }
+
+    [HarmonyPatch(typeof(AnimalLifeSmallLogic), "_Scorp_AttackResult")]
+    [HarmonyPrefix]
+    private static void ScorpAttackResultPrefix(AnimalLifeSmallLogic __instance)
     {
         ProcessAPItemAnimalLifeSmall(__instance);
     }
@@ -410,6 +451,25 @@ internal sealed class APReplaceLootPatches
         elem.SetAttribute("type", newType);
         XmlReader newReader = new XmlNodeReader(elem);
         newReader.Read();
+        return newReader;
+    }
+
+    private static XmlReader ReplaceLootIdInReader(XmlReader originalXmlReader, long lootId)
+    {
+        string outerXml = originalXmlReader.ReadOuterXml();
+        XmlDocument doc = new XmlDocument();
+        doc.LoadXml(outerXml);
+        XmlElement elem = doc.DocumentElement;
+        string type = elem.GetAttribute("type");
+
+#pragma warning disable Harmony003
+        string updatedType = System.Text.RegularExpressions.Regex.Replace(type, @"(?<=loot=)\d+", lootId.ToString());
+#pragma warning restore Harmony003
+        elem.SetAttribute("type", updatedType);
+
+        XmlReader newReader = new XmlNodeReader(elem);
+        newReader.Read();
+
         return newReader;
     }
 }

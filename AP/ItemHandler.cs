@@ -66,7 +66,7 @@ public class ItemHandler
         {
             long id = apItem.ItemId;
             if (saveItems.Remove(id)) continue;
-            
+
             APSaveState.CollectedItems.Add(id);
 
             MainThreadDispatcher.RunPerFrameActionOnMainThread(() =>
@@ -204,16 +204,19 @@ public class ItemHandler
                             if ((itemInfo.Flags & ItemFlags.Advancement) != 0) replacementId = 213.ToString();
                         }
 
+                        bool hasNothingToReplace = !checks[i].OverrideType.Contains("%ItemId%");
                         checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
 
                         bool isFromThisWorld =
                             itemInfo.Player.Name == _sessionContext.Session.Players.ActivePlayer.Name;
-                        bool isNpc = checks[i].OverrideType.Contains("speech=");
-                        bool isStandaloneItem = checks[i].OverrideType.StartsWith("id=22");
+                        bool isNpcType = checks[i].OverrideType.Contains("speech=");
+                        string[] overrideTypeAttributes = checks[i].OverrideType.Split(';');
+                        bool isStandaloneItem = overrideTypeAttributes.Contains("id=22");
 
                         APScriptAdditions.ReplacePossibleScriptLines(checks[i], isFromThisWorld);
 
-                        if (!isFromThisWorld || replacementId != "22" || isNpc || isStandaloneItem)
+                        if (!isFromThisWorld || replacementId != "22" || isNpcType || isStandaloneItem ||
+                            hasNothingToReplace)
                             continue;
 
                         var gisCmds = GetGisCmdsFromOverwriteType(checks[i]);
