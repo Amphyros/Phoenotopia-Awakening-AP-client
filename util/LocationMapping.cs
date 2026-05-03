@@ -61,9 +61,13 @@ public class LocationMapping
                 ObjectIds = ["73"],
                 IsKeyItem = false,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [356] = [["JUMP_TO,CLEM_1+-1,IF_TRUE|ITEM_CANNOT_ADD,102,1;", ""], ["ITEM_add,102,1|", ""]],
+                },
                 GISIdentifier = "clem_gave_potato",
                 OverrideType =
-                    "name=clem;profile=digger;voice=man,1;speech=CLEM_CUSTOM;behavior=action_only",
+                    "name=clem;profile=digger;voice=man,1;speech=CLEM_1;behavior=action_only",
             }
         },
         ["p1_panselo_perro_coop"] = new List<Check>
@@ -164,9 +168,13 @@ public class LocationMapping
                 ObjectIds = ["31"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [238] = [["ITEM_add,47,1|", ""]],
+                },
                 GISIdentifier = "NANA_MUFFIN",
                 OverrideType =
-                    "all_bright;name=nana;voice=woman,0.94;profile=nana;behavior=action_talk;spacing=left,0.5;sort=fg_tiles,4;speech=NANA_CUSTOM,NANA",
+                    "all_bright;name=nana;voice=woman,0.94;profile=nana;behavior=action_talk;spacing=left,0.5;sort=fg_tiles,4;speech=NANA+2,NANA",
             },
             new Check
             {
@@ -174,9 +182,14 @@ public class LocationMapping
                 ObjectIds = ["30"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [253] = [["GIS,FILE_MARK_SI,GOT_KITER_LEFTOVERS,true;", ""]],
+                    [254] = [["ITEM_add,49,1", "FILE_MARK_SI,GOT_KITER_LEFTOVERS,true"]],
+                },
                 GISIdentifier = "GOT_KITER_LEFTOVERS",
                 OverrideType =
-                    "name=kiter;profile=kiter;speech=KITER_CUSTOM;behavior=action_talk;spacing=right,0.5;face_right",
+                    "name=kiter;profile=kiter;speech=KITER_1;behavior=action_talk;spacing=right,0.5;face_right",
             },
             new Check
             {
@@ -184,9 +197,14 @@ public class LocationMapping
                 ObjectIds = ["30"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [257] = [[";GIS,FILE_MARK_SI,HELPED_KITER,true", ""]],
+                    [259] = [["money_adjust,P1_RAI,20", "FILE_MARK_SI,HELPED_KITER,true"]],
+                },
                 GISIdentifier = "HELPED_KITER",
                 OverrideType =
-                    "name=kiter;profile=kiter;speech=KITER_CUSTOM;behavior=action_talk;spacing=right,0.5;face_right",
+                    "name=kiter;profile=kiter;speech=KITER_1;behavior=action_talk;spacing=right,0.5;face_right",
             },
             new Check
             {
@@ -194,9 +212,13 @@ public class LocationMapping
                 ObjectIds = ["69"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [854] = [["JUMP_TO,855,IF_TRUE|ITEM_CANNOT_ADD,59,1;", ""], ["ITEM_add,59,1|", ""]],
+                },
                 GISIdentifier = "KID_LUNCH",
                 OverrideType =
-                    "name=amanda;voice=woman,1.1;profile=amanda;behavior=path,25,22;speech=AMANDA_2A_CUSTOM,AMANDA_2A+6;sort=fg_tiles,-1",
+                    "name=amanda;voice=woman,1.1;profile=amanda;behavior=path,25,22;speech=AMANDA_2A,AMANDA_2A+6;sort=fg_tiles,-1",
             }
         },
         ["p1_panselo_shop"] = new List<Check>
@@ -207,36 +229,71 @@ public class LocationMapping
                 ObjectIds = ["51"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [316] = [["GO,GP1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,TAO_PRESENT,true"]],
+                },
                 GISIdentifier = "TAO_PRESENT",
                 OverrideType =
-                    "profile=tao;name=merchant;voice=man,1.02;speech=TAO,TAO_CUSTOM;behavior=stand",
+                    "profile=tao;name=merchant;voice=man,1.02;speech=TAO,TAO+2;behavior=stand",
             },
             new Check
             {
                 ArchipelagoId = 7676072,
                 ObjectIds = ["50"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [309] = [["perro egg", "%APPlayer%%APItem%"]],
+                    [310] = [["a Perro egg", "%APPlayer%%APItem%"]],
+                    [311] =
+                    [
+                        ["JUMP_TO,MERCHANT_TAO_NOSPACE,IF_FALSE|ITEM_CAN_ADD,52,1;", ""],
+                        ["ITEM_add,52,1", "FILE_MARK_AP,PANSELO_SHOP_EGG|recycle,shop_1"]
+                    ],
+                },
                 GISIdentifier = "PANSELO_SHOP_EGG",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_1;speech=MERCHANT_TAO_EGG_CUSTOM",
+                    "profile=item,%ItemId%;name=shop_1;speech=MERCHANT_TAO_EGG",
             },
             new Check
             {
                 ArchipelagoId = 7676073,
                 ObjectIds = ["48"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [306] = [["milk", "%APPlayer%%APItem%"]],
+                    [307] = [["a Bottle of Milk", "%APPlayer%%APItem%"]],
+                    [308] =
+                    [
+                        ["JUMP_TO,MERCHANT_TAO_NOSPACE,IF_FALSE|ITEM_CAN_ADD,67,1;", ""],
+                        ["ITEM_add,67,1", "FILE_MARK_AP,PANSELO_SHOP_MILK|recycle,shop_2"]
+                    ],
+                },
                 GISIdentifier = "PANSELO_SHOP_MILK",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_2;speech=MERCHANT_TAO_MILK_CUSTOM",
+                    "profile=item,%ItemId%;name=shop_2;speech=MERCHANT_TAO_MILK",
             },
             new Check
             {
                 ArchipelagoId = 7676074,
                 ObjectIds = ["52"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [303] = [["potato", "%APPlayer%%APItem%"]],
+                    [304] = [["a Potato", "%APPlayer%%APItem%"]],
+                    [305] =
+                    [
+                        ["JUMP_TO,MERCHANT_TAO_NOSPACE,IF_FALSE|ITEM_CAN_ADD,102,1;", ""],
+                        ["ITEM_add,102,1", "FILE_MARK_AP,PANSELO_SHOP_POTATO|recycle,shop_3"]
+                    ],
+                },
                 GISIdentifier = "PANSELO_SHOP_POTATO",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_3;speech=MERCHANT_TAO_POTATO_CUSTOM",
+                    "profile=item,%ItemId%;name=shop_3;speech=MERCHANT_TAO_POTATO",
             },
             // TODO: GISIdentifiers of the following checks are not unique
             new Check
@@ -474,9 +531,14 @@ public class LocationMapping
                 ObjectIds = ["101"],
                 IsKeyItem = false,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [483] = [["GO,GP2", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_OC,shelby_gave_herb|FILE_ERASE_OC,cooked_in_p1_duri_forest_05"]],
+                },
                 GISIdentifier = "shelby_gave_herb",
                 OverrideType =
-                    "name=shelby;voice=WOMAN,1.15;profile=shelby;behavior=stand;spacing=auto,0.25;speech=SHELBY_FOREST_CUSTOM;all_bright",
+                    "name=shelby;voice=WOMAN,1.15;profile=shelby;behavior=stand;spacing=auto,0.25;speech=SHELBY_FOREST;all_bright",
             },
         },
         ["p1_duri_forest_06"] = new List<Check>
@@ -506,9 +568,14 @@ public class LocationMapping
                 IsKeyItem = true,
                 FillWhenExcluded = FillMode.Always,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [536] = [["GO,GP4", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_AP,AP_DOKI_ALEX_GIFT"]],
+                },
                 GISIdentifier = "AP_DOKI_ALEX_GIFT",
                 OverrideType =
-                    "name=alex2;face_right;spacing=left,0.5;voice=man,1.1;profile=alex;behavior=action_only;speech=ALEX_GIVES_SLINGSHOT_CUSTOM",
+                    "name=alex2;face_right;spacing=left,0.5;voice=man,1.1;profile=alex;behavior=action_only;speech=ALEX_GIVES_SLINGSHOT",
             },
             new Check
             {
@@ -526,9 +593,14 @@ public class LocationMapping
                 ObjectIds = ["123", "264"],
                 IsKeyItem = false,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [531] = [["GO,GP5", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_POC,seth_liz"]],
+                },
                 GISIdentifier = "seth_liz",
                 OverrideType =
-                    "name=seth;face_right;voice=man,1.15;profile=seth;behavior=stand;speech=SETH_FOREST_CUSTOM,SETH_FOREST",
+                    "name=seth;face_right;voice=man,1.15;profile=seth;behavior=stand;speech=SETH_FOREST+3,SETH_FOREST",
             },
         },
         ["p1_anuri_temple_01"] = new List<Check>
@@ -931,9 +1003,13 @@ public class LocationMapping
                 ObjectIds = ["287"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [3847] = [["|ITEM_add,140,1", ""]],
+                },
                 GISIdentifier = "GEO_TICKET_1",
                 OverrideType =
-                    "name=geo_bot;voice=robot,1;profile=green_robot;behavior=stand;speech=GEO_ROBOT_01_CUSTOM",
+                    "name=geo_bot;voice=robot,1;profile=green_robot;behavior=stand;speech=GEO_ROBOT_01",
             },
         },
         ["p1_teleport_panselo_01"] = new List<Check>
@@ -1150,9 +1226,15 @@ public class LocationMapping
                 ObjectIds = ["56"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [7381] = [["GO,PLANTO_REWARD+-1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_AP,AP_PLANTO_2"]],
+                },
                 GISIdentifier = "AP_PLANTO_2",
+                DifferingInGameIdentifier = "PLANTO_2",
                 OverrideType =
-                    "name=planto;profile=planto;voice=man,0.85;speech=PLANTO_P2_CUSTOM;sort=bg_tiles,-1;behavior=action_only;ql=SI_FALSE,PLANTO_2",
+                    "name=planto;profile=planto;voice=man,0.85;speech=PLANTO_P2;sort=bg_tiles,-1;behavior=action_only;ql=SI_FALSE,PLANTO_2",
             },
         },
         ["p1_sunflower_road_02a"] = new List<Check>
@@ -1162,30 +1244,58 @@ public class LocationMapping
                 ArchipelagoId = 7676106,
                 ObjectIds = ["63"],
                 IsKeyItem = false,
-                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1150] = [["honey bun", "%APPlayer%%APItem%"]],
+                    [1151] = [["a Honey Bun", "%APPlayer%%APItem%"]],
+                    [1152] =
+                    [
+                        ["JUMP_TO,HACHI_SAD,IF_FALSE|ITEM_CAN_ADD,205,1;", ""],
+                        ["ITEM_add,205,1", "FILE_MARK_AP,HONEY_SHOP_BUN|recycle,shop_1"]
+                    ],
+                },
                 GISIdentifier = "HONEY_SHOP_BUN",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_1;floating;use_all_bright;speech=HONEY_BUN_CUSTOM;spacing=right,0.1",
+                    "profile=item,%ItemId%;name=shop_1;floating;use_all_bright;speech=HONEY_BUN;spacing=right,0.1",
             },
             new Check
             {
                 ArchipelagoId = 7676107,
                 ObjectIds = ["58"],
                 IsKeyItem = false,
-                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1140] = [["Honey Brew", "%APPlayer%%APItem%"]],
+                    [1147] = [["Honey Brew", "%APPlayer%%APItem%"]],
+                    [1148] = [["a Honey Brew", "%APPlayer%%APItem%"]],
+                    [1149] =
+                    [
+                        ["JUMP_TO,HACHI_SAD,IF_FALSE|ITEM_CAN_ADD,54,1;", ""],
+                        ["ITEM_add,54,1", "FILE_MARK_AP,HONEY_SHOP_BREW|recycle,shop_2"]
+                    ],
+                },
                 GISIdentifier = "HONEY_SHOP_BREW",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_2;floating;use_all_bright;speech=HONEY_BREW_CUSTOM;spacing=right,0.1",
+                    "profile=item,%ItemId%;name=shop_2;floating;use_all_bright;speech=HONEY_BREW;spacing=right,0.1",
             },
             new Check
             {
                 ArchipelagoId = 7676108,
                 ObjectIds = ["64"],
                 IsKeyItem = false,
-                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1153] = [["honey drops", "%APPlayer%%APItem%"]],
+                    [1154] = [["a pack of 3 Honey Drops", "%APPlayer%%APItem%"]],
+                    [1155] =
+                    [
+                        ["JUMP_TO,HACHI_SAD,IF_FALSE|ITEM_CAN_ADD,89,3;", ""],
+                        ["ITEM_add,89,3", "FILE_MARK_AP,HONEY_SHOP_DROP|recycle,shop_3"]
+                    ],
+                },
                 GISIdentifier = "HONEY_SHOP_DROP",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_3;floating;use_all_bright;speech=HONEY_DROP_CUSTOM;spacing=right,0.1",
+                    "profile=item,%ItemId%;name=shop_3;floating;use_all_bright;speech=HONEY_DROP;spacing=right,0.1",
             },
             new Check
             {
@@ -1371,9 +1481,13 @@ public class LocationMapping
                 ObjectIds = ["208"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [3864] = [["|ITEM_add,140,1", ""]],
+                },
                 GISIdentifier = "GEO_TICKET_2",
                 OverrideType =
-                    "name=geo_bot;voice=robot,1;profile=green_robot;behavior=stand;speech=GEO_ROBOT_02_CUSTOM;sort=fg_tiles,1",
+                    "name=geo_bot;voice=robot,1;profile=green_robot;behavior=stand;speech=GEO_ROBOT_02;sort=fg_tiles,1",
             },
         },
         ["p1_bridge_atelo_03"] = new List<Check>
@@ -1480,9 +1594,13 @@ public class LocationMapping
                 IsKeyItem = true,
                 FillWhenExcluded = FillMode.Always,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1627] = [["GO,OCARINA_GET", "GO,1628"], ["ITEM_add,29,1", "FILE_MARK_SI,CH2_D4_GOT_OCARINA,true"]],
+                },
                 GISIdentifier = "CH2_D4_GOT_OCARINA",
                 OverrideType =
-                    "name=ouro_prince;voice=man,1;profile=bandit_prince;speech=OURO_PRINCE_CUSTOM;behavior=stand;face_right;sort=bg_tiles,12;spacing=right,0.2;long_talker;ql=SI_FALSE,BIRDY_CAUGHT",
+                    "name=ouro_prince;voice=man,1;profile=bandit_prince;speech=OURO_PRINCE;behavior=stand;face_right;sort=bg_tiles,12;spacing=right,0.2;long_talker;ql=SI_FALSE,BIRDY_CAUGHT",
             },
             new Check
             {
@@ -1515,72 +1633,152 @@ public class LocationMapping
                 ArchipelagoId = 7676205,
                 ObjectIds = ["291"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1494] = [["vala beans", "%APPlayer%%APItem%"]],
+                    [1495] = [["a handful of 3 Vala Beans", "%APPlayer%%APItem%"]],
+                    [1496] =
+                    [
+                        ["JUMP_TO,MERCHANT_ATAIVEG_NOSPACE,IF_FALSE|ITEM_CAN_ADD,178,3;", ""],
+                        ["ITEM_add,178,3", "FILE_MARK_AP,ATAI_MARKET_BEAN|recycle,shop_1"]
+                    ],
+                },
                 GISIdentifier = "ATAI_MARKET_BEAN",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_1;speech=MERCHANT_VALA_CUSTOM;face_right;floating;spacing=left,0.2",
+                    "profile=item,%ItemId%;name=shop_1;speech=MERCHANT_VALA;face_right;floating;spacing=left,0.2",
             },
             new Check
             {
                 ArchipelagoId = 7676206,
                 ObjectIds = ["342"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1497] = [["desert squash", "%APPlayer%%APItem%"]],
+                    [1498] = [["a desert squash", "%APPlayer%%APItem%"]],
+                    [1499] =
+                    [
+                        ["JUMP_TO,MERCHANT_ATAIVEG_NOSPACE,IF_FALSE|ITEM_CAN_ADD,180,1;", ""],
+                        ["ITEM_add,180,1", "FILE_MARK_AP,ATAI_MARKET_SQUASH|recycle,shop_2"]
+                    ],
+                },
                 GISIdentifier = "ATAI_MARKET_SQUASH",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_2;speech=MERCHANT_SQUASH_CUSTOM;floating;spacing=left,0.2",
+                    "profile=item,%ItemId%;name=shop_2;speech=MERCHANT_SQUASH;floating;spacing=left,0.2",
             },
             new Check
             {
                 ArchipelagoId = 7676207,
                 ObjectIds = ["290"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1500] = [["moon kelp", "%APPlayer%%APItem%"]],
+                    [1501] = [["a bushel of 3 Moon Kelp", "%APPlayer%%APItem%"]],
+                    [1502] =
+                    [
+                        ["JUMP_TO,MERCHANT_ATAIVEG_NOSPACE,IF_FALSE|ITEM_CAN_ADD,104,3;", ""],
+                        ["ITEM_add,104,3", "FILE_MARK_AP,ATAI_MARKET_KELP|recycle,shop_3"]
+                    ],
+                },
                 GISIdentifier = "ATAI_MARKET_KELP",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_3;speech=MERCHANT_KELP_CUSTOM;floating;spacing=left,0.2",
+                    "profile=item,%ItemId%;name=shop_3;speech=MERCHANT_KELP;floating;spacing=left,0.2",
             },
             new Check
             {
                 ArchipelagoId = 7676208,
                 ObjectIds = ["288"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1479] = [["Big raw meat", "%APPlayer%%APItem%"]],
+                    [1480] = [["Big Raw Meat", "%APPlayer%%APItem%"]],
+                    [1481] =
+                    [
+                        ["JUMP_TO,MERC_MEAT_NOSPACE,IF_FALSE|ITEM_CAN_ADD,74,1;", ""],
+                        ["ITEM_add,74,1", "FILE_MARK_AP,ATAI_MARKET_BOAR_MEAT|recycle,shop_4"]
+                    ],
+                },
                 GISIdentifier = "ATAI_MARKET_BOAR_MEAT",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_4;speech=MERC_MEAT_BOAR_CUSTOM;voice=man,0.95;floating;spacing=right,0.2",
+                    "profile=item,%ItemId%;name=shop_4;speech=MERC_MEAT_BOAR;voice=man,0.95;floating;spacing=right,0.2",
             },
             new Check
             {
                 ArchipelagoId = 7676209,
                 ObjectIds = ["124"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1476] = [["drake tail", "%APPlayer%%APItem%"]],
+                    [1477] = [["a Drake Tail", "%APPlayer%%APItem%"]],
+                    [1478] =
+                    [
+                        ["JUMP_TO,MERC_MEAT_NOSPACE,IF_FALSE|ITEM_CAN_ADD,66,1;", ""],
+                        ["ITEM_add,66,1", "FILE_MARK_AP,ATAI_MARKET_DRAKE_MEAT|recycle,shop_5"]
+                    ],
+                },
                 GISIdentifier = "ATAI_MARKET_DRAKE_MEAT",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_5;speech=MERC_MEAT_DRAKE_CUSTOM;voice=man,0.95;floating;spacing=right,0.2",
+                    "profile=item,%ItemId%;name=shop_5;speech=MERC_MEAT_DRAKE;voice=man,0.95;floating;spacing=right,0.2",
             },
             new Check
             {
                 ArchipelagoId = 7676210,
                 ObjectIds = ["289"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1482] = [["Prime fish fillet", "%APPlayer%%APItem%"]],
+                    [1483] = [["Prime Fish Fillet", "%APPlayer%%APItem%"]],
+                    [1484] =
+                    [
+                        ["JUMP_TO,MERC_MEAT_NOSPACE,IF_FALSE|ITEM_CAN_ADD,81,1;", ""],
+                        ["ITEM_add,81,1", "FILE_MARK_AP,ATAI_MARKET_FISH_MEAT|recycle,shop_6"]
+                    ],
+                },
                 GISIdentifier = "ATAI_MARKET_FISH_MEAT",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_6;speech=MERC_MEAT_FISH_CUSTOM;voice=man,0.95;floating;spacing=right,0.2",
+                    "profile=item,%ItemId%;name=shop_6;speech=MERC_MEAT_FISH;voice=man,0.95;floating;spacing=right,0.2",
             },
             new Check
             {
                 ArchipelagoId = 7676222,
                 ObjectIds = ["300"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1438] = [["prickle fruit", "%APPlayer%%APItem%"]],
+                    [1439] = [["Prickle Fruit", "%APPlayer%%APItem%"]],
+                    [1440] =
+                    [
+                        ["JUMP_TO,FRUIT_LADY_FAIL+2,IF_FALSE|ITEM_CAN_ADD,106,1;", ""],
+                        ["ITEM_add,106,1", "FILE_MARK_AP,ATAI_MARKET_PRICKLE|recycle,shop_7"]
+                    ],
+                },
                 GISIdentifier = "ATAI_MARKET_PRICKLE",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_7;speech=BUY_PRICKLE_CUSTOM;spacing=left,0.2",
+                    "profile=item,%ItemId%;name=shop_7;speech=BUY_PRICKLE;spacing=left,0.2",
             },
             new Check
             {
                 ArchipelagoId = 7676223,
                 ObjectIds = ["301"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1442] = [["berry fruit", "%APPlayer%%APItem%"]],
+                    [1445] = [["Berry Fruit", "%APPlayer%%APItem%"]],
+                    [1446] =
+                    [
+                        ["JUMP_TO,FRUIT_LADY_FAIL+2,IF_FALSE|ITEM_CAN_ADD,50,1;", ""],
+                        ["ITEM_add,50,1", "FILE_MARK_AP,ATAI_MARKET_BERRY|recycle,shop_8"]
+                    ],
+                },
                 GISIdentifier = "ATAI_MARKET_BERRY",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_8;speech=BUY_BERRY_CUSTOM;sort=game_objects,41;spacing=right,0.2",
+                    "profile=item,%ItemId%;name=shop_8;speech=BUY_BERRY;sort=game_objects,41;spacing=right,0.2",
             },
             new Check
             {
@@ -1588,9 +1786,15 @@ public class LocationMapping
                 ObjectIds = ["38"],
                 IsKeyItem = false,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1430] =
+                        [[",1432,1433", ""], ["||Sell 8 Berry Fruits for 50 R||Sell 12 Berry Fruits for 75 R", ""]],
+                    [1431] = [["money_adjust,P1_RAI,25", "FILE_MARK_AP,ATAI_MARKET_BERRY_SELL"]],
+                },
                 GISIdentifier = "ATAI_MARKET_BERRY_SELL",
                 OverrideType =
-                    "name=atai_doki;voice=woman,1;profile=atai_doki;speech=ATAI_DOKI_CUSTOM;behavior=stand;long_talker;face_right",
+                    "name=atai_doki;voice=woman,1;profile=atai_doki;speech=ATAI_DOKI;behavior=stand;long_talker;face_right",
             },
             new Check
             {
@@ -1618,45 +1822,99 @@ public class LocationMapping
                 ArchipelagoId = 7676211,
                 ObjectIds = ["18"],
                 IsKeyItem = true,
+                FillWhenExcluded = FillMode.Always,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1510] =
+                    [
+                        ["JUMP_TO,ARMOR2_GET+-1,IF_TRUE|ITEM_HAVE,int_list(11);", ""],
+                        ["sky vest", "%APPlayer%%APItem%"]
+                    ],
+                    [1511] = [["a Sky Vest", "%APPlayer%%APItem%"]],
+                    [1512] = [["ITEM_add,11,1;GO,ARMOR2_GET", "FILE_MARK_AP,ATAI_SHOP_ARMOR|recycle,shop_1"]],
+                },
                 GISIdentifier = "ATAI_SHOP_ARMOR",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_1;speech=GEN_MERCHANT_ARMOR_CUSTOM;voice=man,0.95;spacing=stand;shiny",
+                    "profile=item,%ItemId%;name=shop_1;speech=GEN_MERCHANT_ARMOR;voice=man,0.95;spacing=stand;shiny",
             },
             new Check
             {
                 ArchipelagoId = 7676212,
                 ObjectIds = ["15"],
                 IsKeyItem = true,
+                FillWhenExcluded = FillMode.Always,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1513] =
+                    [
+                        ["JUMP_TO,CROSSBOW_GET+-1,IF_TRUE|ITEM_HAVE_COUNT,37,1;", ""],
+                        ["civilian crossbow", "%APPlayer%%APItem%"]
+                    ],
+                    [1514] = [["a Civilian Crossbow", "%APPlayer%%APItem%"]],
+                    [1515] = [["ITEM_add,37,1;GO,CROSSBOW_GET", "FILE_MARK_AP,ATAI_SHOP_CROSSBOW|recycle,shop_2"]],
+                },
                 GISIdentifier = "ATAI_SHOP_CROSSBOW",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_2;speech=GEN_MERCHANT_CROSSBOW_CUSTOM;voice=man,0.95;spacing=stand;shiny",
+                    "profile=item,%ItemId%;name=shop_2;speech=GEN_MERCHANT_CROSSBOW;voice=man,0.95;spacing=stand;shiny",
             },
             new Check
             {
                 ArchipelagoId = 7676213,
                 ObjectIds = ["58"],
                 IsKeyItem = true,
+                FillWhenExcluded = FillMode.Always,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1519] =
+                    [
+                        ["JUMP_TO,BAT2_GET+-1,IF_TRUE|ITEM_HAVE,int_list(7);", ""],
+                        ["composite bat", "%APPlayer%%APItem%"]
+                    ],
+                    [1520] = [["a Composite Bat", "%APPlayer%%APItem%"]],
+                    [1521] = [["ITEM_add,7,1;GO,BAT2_GET", "FILE_MARK_AP,ATAI_SHOP_BAT2|recycle,shop_3"]],
+                },
                 GISIdentifier = "ATAI_SHOP_BAT2",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_3;speech=GEN_MERCHANT_BAT2_CUSTOM;voice=man,0.95;spacing=stand;shiny",
+                    "profile=item,%ItemId%;name=shop_3;speech=GEN_MERCHANT_BAT2;voice=man,0.95;spacing=stand;shiny",
             },
             new Check
             {
                 ArchipelagoId = 7676214,
                 ObjectIds = ["60"],
                 IsKeyItem = true,
+                FillWhenExcluded = FillMode.Always,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1516] =
+                    [
+                        ["JUMP_TO,LAMP_GET+-1,IF_TRUE|ITEM_HAVE_COUNT,32,1;", ""], ["crank lamp", "%APPlayer%%APItem%"]
+                    ],
+                    [1517] = [["a Crank Lamp", "%APPlayer%%APItem%"]],
+                    [1518] = [["ITEM_add,32,1;GO,LAMP_GET", "FILE_MARK_AP,ATAI_SHOP_LAMP|recycle,shop_4"]],
+                },
                 GISIdentifier = "ATAI_SHOP_LAMP",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_4;speech=GEN_MERCHANT_LAMP_CUSTOM;voice=man,0.95;spacing=stand;shiny",
+                    "profile=item,%ItemId%;name=shop_4;speech=GEN_MERCHANT_LAMP;voice=man,0.95;spacing=stand;shiny",
             },
             new Check
             {
                 ArchipelagoId = 7676215,
                 ObjectIds = ["61"],
                 IsKeyItem = true,
+                FillWhenExcluded = FillMode.Always,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1522] =
+                    [
+                        ["JUMP_TO,FISHPOLE_GET+-1,IF_TRUE|ITEM_HAVE_COUNT,40,1;", ""],
+                        ["fishing rod", "%APPlayer%%APItem%"]
+                    ],
+                    [1523] = [["a fishing rod", "%APPlayer%%APItem%"]],
+                    [1524] = [["ITEM_add,40,1;GO,FISHPOLE_GET", "FILE_MARK_AP,ATAI_SHOP_POLE|recycle,shop_5"]],
+                },
                 GISIdentifier = "ATAI_SHOP_POLE",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_5;speech=GEN_MERCHANT_POLE_CUSTOM;voice=man,0.95;spacing=stand;shiny",
+                    "profile=item,%ItemId%;name=shop_5;speech=GEN_MERCHANT_POLE;voice=man,0.95;spacing=stand;shiny",
             },
             new Check
             {
@@ -1715,7 +1973,7 @@ public class LocationMapping
             },
         },
         ["p1_atai_inn_01"] =
-            new List<Check> // BUG: Handling of these two checks causes a bug in HandlePossibleAPReplacementForObject()
+            new List<Check>
             {
                 new Check
                 {
@@ -1723,7 +1981,16 @@ public class LocationMapping
                     ObjectIds = ["22"],
                     IsKeyItem = false,
                     IsNpc = true,
-                    GISIdentifier = "",
+                    DialogReplacements = new Dictionary<int, List<string[]>>
+                    {
+                        [1586] = [["A Milk", "%APPlayer%%APItem%"]],
+                        [1587] =
+                        [
+                            ["JUMP_TO,ATAI_BARTENDER+-2,IF_FALSE|ITEM_CAN_ADD,67,1;", ""],
+                            ["ITEM_add,67,1", "FILE_MARK_AP,ATAI_BARTENDER_MILK"]
+                        ],
+                    },
+                    GISIdentifier = "ATAI_BARTENDER_MILK",
                     OverrideType =
                         "name=bartender;voice=man,.95;profile=atai_barkeep;speech=ATAI_BARTENDER;behavior=stand;floating;sort=bg_tiles,7;spacing=left,0.5",
                 },
@@ -1733,7 +2000,12 @@ public class LocationMapping
                     ObjectIds = ["22"],
                     IsKeyItem = false,
                     IsNpc = true,
-                    GISIdentifier = "",
+                    DialogReplacements = new Dictionary<int, List<string[]>>
+                    {
+                        [1586] = [["A Bottle Of Wine", "%APPlayer%%APItem%"]],
+                        [1597] = [["|ITEM_add,123,1", ""]],
+                    },
+                    GISIdentifier = "CH2_D3_GOT_WINE",
                     OverrideType =
                         "name=bartender;voice=man,.95;profile=atai_barkeep;speech=ATAI_BARTENDER;behavior=stand;floating;sort=bg_tiles,7;spacing=left,0.5",
                 },
@@ -1789,28 +2061,41 @@ public class LocationMapping
         },
         ["p1_atai_city_02"] = new List<Check>
         {
-            new Check // TODO: This check crashes the game if checked and returned to the level.
+            new Check
             {
                 ArchipelagoId = 7676231,
                 ObjectIds = ["106"],
                 IsKeyItem = true,
                 IsNpc = true,
+                CompletionDialogId = 1918,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1912] = [["JUMP_TO,LISA_ID_DONE,IF_TRUE|SI_TRUE,CH2_D3_GOT_WINE;JUMP_TO,LISA_ID_REMINDER,IF_TRUE|ITEM_HAVE,int_list(122);", ""]],
+                    [1915] = [["ITEM_add,122,1", "FILE_MARK_AP,LISA_ID"]],
+                    [1917] = [["ITEM_add,122,1", "FILE_MARK_AP,LISA_ID"]],
+                },
                 GISIdentifier = "LISA_ID",
                 OverrideType =
-                    "name=lisa;profile=lisa;voice=woman,1.1;speech=MEETING_LISA_CUSTOM;behavior=stand;sort=fg_tiles,-1;ql=SI_TRUE,CH_2_A_MET_LISA&SI_FALSE,BIRDY_CAUGHT",
+                    "name=lisa;profile=lisa;voice=woman,1.1;speech=MEETING_LISA;behavior=stand;sort=fg_tiles,-1;ql=SI_TRUE,CH_2_A_MET_LISA&SI_FALSE,BIRDY_CAUGHT",
             },
         },
         ["p1_atai_mansion_kitchen"] = new List<Check>
         {
-            new Check // TODO: The dialog currently gets a bit weird
+            new Check
             {
                 ArchipelagoId = 7676232,
                 ObjectIds = ["38"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2664] = [["&ITEM_CAN_ADD,84,1", ""]],
+                    [2665] = [["GO,GP1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,ATAI_LOOT_1,true"]],
+                },
                 GISIdentifier = "ATAI_LOOT_1",
                 OverrideType =
-                    "name=cooker;profile=atai_cook;face_right;voice=woman,1;speech=ATAI_NPC_23_CUSTOM;behavior=action_only;spacing=auto,0.1;override_action=atai_cook_idle",
+                    "name=cooker;profile=atai_cook;face_right;voice=woman,1;speech=ATAI_NPC_23;behavior=action_only;spacing=auto,0.1;override_action=atai_cook_idle",
             },
         },
         ["p1_atai_mansion_storage"] = new List<Check>
@@ -1886,32 +2171,50 @@ public class LocationMapping
         },
         ["p1_atai_shooting_gallery"] = new List<Check>
         {
-            new Check // TODO: Item doesn't disappear
+            new Check
             {
                 ArchipelagoId = 7676239,
-                ObjectIds = ["08-course A prize", "140"],
+                ObjectIds = ["140"],
                 IsKeyItem = false,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2171] = [["GO,GP8", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_AP,ATAI_ARCHERY_1|AT_scale,duck,vec3(0/0/0),duration$0.25"]],
+                },
                 GISIdentifier = "ATAI_ARCHERY_1",
                 OverrideType =
-                    "FILE_MARK_AP,ATAI_ARCHERY_1",
+                    "name=duck;loot=%ItemId%;sort=game_objects,14;color=ffffff",
             },
             new Check
             {
                 ArchipelagoId = 7676240,
-                ObjectIds = ["07-minigame over", "142"],
+                ObjectIds = ["142"],
                 IsKeyItem = true,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2173] = [["GO,GP9", "GO,2174"]],
+                    [2174] = [["ITEM_add,3,1|", ""]],
+                },
                 GISIdentifier = "HEART_ATAI_3",
                 OverrideType =
-                    "uncommon_sfx,whistle|music_adjust,mini_game,vol$0|cutscene,line$AT_GALLERY_OVER_CUSTOM",
+                    "name=heart;loot=%ItemId%;sort=game_objects,14;color=ffffff;ql=SI_FALSE,HEART_ATAI_3",
             },
             new Check
             {
                 ArchipelagoId = 7676241,
-                ObjectIds = ["07-minigame over", "143"],
+                ObjectIds = ["143"],
                 IsKeyItem = true,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2176] = [["GO,GP10", "GO,2177"]],
+                    [2177] = [["ITEM_add,5,1|", ""]],
+                },
                 GISIdentifier = "MOON_ATAI_8",
                 OverrideType =
-                    "uncommon_sfx,whistle|music_adjust,mini_game,vol$0|cutscene,line$AT_GALLERY_OVER_CUSTOM",
+                    "name=moon;loot=%ItemId%;sort=game_objects,14;color=ffffff;ql=SI_FALSE,MOON_ATAI_8",
             },
         },
         ["p1_atai_house_02"] = new List<Check>
@@ -1935,63 +2238,138 @@ public class LocationMapping
                 IsKeyItem = true,
                 FillWhenExcluded = FillMode.StatusUpgrade,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2690] = [["GO,GP1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,MOON_RHODUS_1,true"]],
+                },
                 GISIdentifier = "MOON_RHODUS_1",
                 OverrideType =
-                    "profile=soldierf;voice=woman,0.95;speech=loop,BORDER_GUARD_MOON,BORDER_GUARD_MOON+1,BORDER_GUARD_MOON+2,BORDER_GUARD_MOON_CUSTOM;behavior=stand;floating;spacing=stand;talk_range=0.3",
+                    "profile=soldierf;voice=woman,0.95;speech=loop,BORDER_GUARD_MOON,BORDER_GUARD_MOON+1,BORDER_GUARD_MOON+2,BORDER_GUARD_MOON;behavior=stand;floating;spacing=stand;talk_range=0.3",
             },
             new Check
             {
                 ArchipelagoId = 7676246,
                 ObjectIds = ["453"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2807] = [["Honey Brew", "%APPlayer%%APItem%"]],
+                    [2808] = [["Honey Brew", "%APPlayer%%APItem%"]],
+                    [2809] =
+                    [
+                        ["JUMP_TO,ATAI_TRADER,IF_FALSE|ITEM_CAN_ADD,54,1;", ""],
+                        ["ITEM_add,54,1", "FILE_MARK_AP,ATAI_BORDER_BREW|recycle,shop_1"]
+                    ],
+                },
                 GISIdentifier = "ATAI_BORDER_BREW",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_1;speech=ATAI_BREW_CUSTOM;voice=man,1;sort=game_objects,41;spacing=left,0.1",
+                    "profile=item,%ItemId%;name=shop_1;speech=ATAI_BREW;voice=man,1;sort=game_objects,41;spacing=left,0.1",
             },
             new Check
             {
                 ArchipelagoId = 7676247,
                 ObjectIds = ["449"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2804] = [["chocolate", "%APPlayer%%APItem%"]],
+                    [2805] = [["a box of 3 Chocolates", "%APPlayer%%APItem%"]],
+                    [2806] =
+                    [
+                        ["JUMP_TO,ATAI_TRADER,IF_FALSE|ITEM_CAN_ADD,68,3;", ""],
+                        ["ITEM_add,68,3", "FILE_MARK_AP,ATAI_BORDER_CHOCOLATE|recycle,shop_2"]
+                    ],
+                },
                 GISIdentifier = "ATAI_BORDER_CHOCOLATE",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_2;speech=ATAI_CHOCOLATE_CUSTOM;voice=man,1;sort=game_objects,41;spacing=left,0.1",
+                    "profile=item,%ItemId%;name=shop_2;speech=ATAI_CHOCOLATE;voice=man,1;sort=game_objects,41;spacing=left,0.1",
             },
             new Check
             {
                 ArchipelagoId = 7676248,
                 ObjectIds = ["439"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2775] = [["rubber ducky", "%APPlayer%%APItem%"]],
+                    [2776] = [["a Rubber Ducky", "%APPlayer%%APItem%"]],
+                    [2777] =
+                    [
+                        ["JUMP_TO,SHADE_MERCH+-2,IF_FALSE|ITEM_CAN_ADD,109,1;", ""],
+                        ["ITEM_add,109,1", "FILE_MARK_AP,ATAI_BORDER_DUCK|recycle,shop_3"]
+                    ],
+                },
                 GISIdentifier = "ATAI_BORDER_DUCK",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_3;speech=SHADE_DUCK_CUSTOM;spacing=left,0.1;face_right",
+                    "profile=item,%ItemId%;name=shop_3;speech=SHADE_DUCK;spacing=left,0.1;face_right",
             },
             new Check
             {
                 ArchipelagoId = 7676249,
                 ObjectIds = ["440"],
                 IsKeyItem = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2778] =
+                    [
+                        ["JUMP_TO,LAMP_GET+-1,IF_TRUE|ITEM_HAVE,int_list(39);", ""],
+                        ["refurbished crank lamp", "%APPlayer%%APItem%"]
+                    ],
+                    [2779] = [["a Refurbished Crank Lamp", "%APPlayer%%APItem%"]],
+                    [2781] = [["a Refurbished Crank Lamp", "%APPlayer%%APItem%"]],
+                    [2784] = [["a Refurbished Crank Lamp", "%APPlayer%%APItem%"]],
+                    [2786] = [["refurbished crank lamp", "%APPlayer%%APItem%"]],
+                    [2788] = [["a Refurbished Crank Lamp", "%APPlayer%%APItem%"]],
+                    [2790] = [["refurbished crank lamp", "%APPlayer%%APItem%"]],
+                    [2791] = [["a Refurbished Crank Lamp", "%APPlayer%%APItem%"]],
+                    [2793] = [["ITEM_add,39,1;GO,LAMP2_GET", "FILE_MARK_AP,ATAI_BORDER_LAMP|recycle,shop_4"]],
+                    [2794] = [["ITEM_add,39,1;GO,LAMP2_GET", "FILE_MARK_AP,ATAI_BORDER_LAMP|recycle,shop_4"]],
+                    [2795] = [["ITEM_add,39,1;GO,LAMP2_GET", "FILE_MARK_AP,ATAI_BORDER_LAMP|recycle,shop_4"]],
+                    [2796] = [["ITEM_add,39,1", "FILE_MARK_AP,ATAI_BORDER_LAMP|recycle,shop_4"]],
+                    [2797] = [["GO,LAMP2_GET", ""]],
+                },
                 GISIdentifier = "ATAI_BORDER_LAMP",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_4;speech=SHADE_LAMP_CUSTOM;spacing=left,0.1;face_right",
+                    "profile=item,%ItemId%;name=shop_4;speech=SHADE_LAMP;spacing=left,0.1;face_right",
             },
             new Check
             {
                 ArchipelagoId = 7676250,
                 ObjectIds = ["432"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2767] = [["saffron milk", "%APPlayer%%APItem%"]],
+                    [2768] = [["Saffron Milk", "%APPlayer%%APItem%"]],
+                    [2769] =
+                    [
+                        ["JUMP_TO,RHO_MERCH+-2,IF_FALSE|ITEM_CAN_ADD,177,1;", ""],
+                        ["ITEM_add,177,1", "FILE_MARK_AP,ATAI_BORDER_MILK|recycle,shop_5"]
+                    ],
+                },
                 GISIdentifier = "ATAI_BORDER_MILK",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_5;speech=RHO_MILK_CUSTOM;sort=game_objects,41;spacing=left,0.2",
+                    "profile=item,%ItemId%;name=shop_5;speech=RHO_MILK;sort=game_objects,41;spacing=left,0.2",
             },
             new Check
             {
                 ArchipelagoId = 7676251,
                 ObjectIds = ["430"],
                 IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2764] = [["curry bento", "%APPlayer%%APItem%"]],
+                    [2765] = [["Curry Bento", "%APPlayer%%APItem%"]],
+                    [2766] =
+                    [
+                        ["JUMP_TO,RHO_MERCH+-2,IF_FALSE|ITEM_CAN_ADD,61,1;", ""],
+                        ["ITEM_add,61,1", "FILE_MARK_AP,ATAI_BORDER_CURRY|recycle,shop_6"]
+                    ],
+                },
                 GISIdentifier = "ATAI_BORDER_CURRY",
                 OverrideType =
-                    "profile=item,%ItemId%;name=shop_6;speech=RHO_CURRY_CUSTOM;sort=game_objects,41;spacing=left,0.2",
+                    "profile=item,%ItemId%;name=shop_6;speech=RHO_CURRY;sort=game_objects,41;spacing=left,0.2",
             },
             new Check
             {
@@ -1999,9 +2377,14 @@ public class LocationMapping
                 ObjectIds = ["388"],
                 IsKeyItem = false,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2820] = [["GO,GP3", "GO,%BonusLine%"], ["JUMP_TO,2821,IF_FALSE|ITEM_CAN_ADD,101,1;", ""]],
+                    [-1] = [["GIS,FILE_MARK_OC,bbot_gift"]],
+                },
                 GISIdentifier = "bbot_gift",
                 OverrideType =
-                    "profile=robot;voice=robot,1;speech=B_BOT_1,B_BOT_1_CUSTOM;behavior=path,52,45;spacing=auto,0.1",
+                    "profile=robot;voice=robot,1;speech=B_BOT_1,B_BOT_1+2;behavior=path,52,45;spacing=auto,0.1",
             },
             new Check
             {
@@ -2010,9 +2393,14 @@ public class LocationMapping
                 IsKeyItem = true,
                 IsNpc = true,
                 FillWhenExcluded = FillMode.StatusUpgrade,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2696] = [["GO,GP2", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,MOON_RHODUS_2,true"]],
+                },
                 GISIdentifier = "MOON_RHODUS_2",
                 OverrideType =
-                    "name=rhodus_guard;voice=man,0.95;profile=rhodosm;speech=RHODUS_GUARD_2_CUSTOM;behavior=stand;face_right;spacing=right,1",
+                    "name=rhodus_guard;voice=man,0.95;profile=rhodosm;speech=RHODUS_GUARD_2;behavior=stand;face_right;spacing=right,1",
             },
         },
         ["p1_atai_border_01a"] = new List<Check>
@@ -2151,38 +2539,57 @@ public class LocationMapping
         },
         ["p1_boar_boy"] = new List<Check>
         {
-            new Check // BUG: game crash when visiting this level after the check has been checked
+            new Check
             {
                 ArchipelagoId = 7676261,
                 ObjectIds = ["64"],
                 IsKeyItem = true,
                 IsNpc = true,
+                CompletionDialogId = 1770,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1745] = [["JUMP_TO,BOAR_BOY_3,IF_TRUE|ITEM_HAVE,int_list(15);", ""]],
+                    [1759] = [["Angry Boar Charging Tusk Strike", "%APPlayer%%APItem%"], ["Tusk Strike", "%APItem%"]],
+                    [1766] = [["GO,1767;GROUND_NPC,gale;ANIMATE,gale,fall=presenting;GIS,ITEM_add,15,1|haze_screen,color$00ffff,alpha$0.5,transition$1,hold_time$4", "GIS,FILE_MARK_AP,BOAR_BOY"]],
+                },
                 GISIdentifier = "BOAR_BOY",
                 OverrideType =
-                    "name=boar_boy;profile=boar_boy;voice=man,1.1;speech=BOAR_BOY_CUSTOM;behavior=stand",
+                    "name=boar_boy;profile=boar_boy;voice=man,1.1;speech=BOAR_BOY;behavior=stand",
             },
         },
         ["p1_oasis_01"] = new List<Check>
         {
-            new Check // TODO: Never tested. To be done after NPC rework
+            new Check
             {
                 ArchipelagoId = 7676262,
-                ObjectIds = ["0-get milk"],
+                ObjectIds = ["288"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2306] = [["GP0,IF_TRUE|ITEM_CAN_ADD,177,1", "%BonusLine%"]],
+                    [2312] = [["GP0,IF_TRUE|ITEM_CAN_ADD,177,1", "%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,ATAI_LOOT_2,true"]],
+                },
                 GISIdentifier = "ATAI_LOOT_2",
                 OverrideType =
-                    "FILE_MARK_SI,ATAI_LOOT_2,true",
+                    "profile=soldierf;voice=woman,1;speech=FIRST_LINE_A,FIRST_LINE_A+4;floating",
             },
-            new Check // BUG: Will reset vanilla reward when save is reloaded because it's a custom GISIdentifier
+            new Check
             {
                 ArchipelagoId = 7676263,
                 ObjectIds = ["300"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [7362] = [["GO,PLANTO_REWARD+-1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_AP,AP_PLANTO_1"]],
+                },
                 GISIdentifier = "AP_PLANTO_1",
+                DifferingInGameIdentifier = "PLANTO_1",
                 OverrideType =
-                    "name=planto;profile=planto;voice=man,0.85;speech=PLANTO_P1_CUSTOM;behavior=action_only;ql=SI_FALSE,PLANTO_1;floating;sort=bg_tiles,-1",
+                    "name=planto;profile=planto;voice=man,0.85;speech=PLANTO_P1;behavior=action_only;ql=SI_FALSE,PLANTO_1;floating;sort=bg_tiles,-1",
             },
         },
         ["p1_ex_ouroboros_03d"] = new List<Check>
@@ -2288,9 +2695,14 @@ public class LocationMapping
                 ObjectIds = ["108"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2835] = [["GO,GP8", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,ANCIENT_PIN_1,true"]],
+                },
                 GISIdentifier = "ANCIENT_PIN_1",
                 OverrideType =
-                    "name=rust_torso;face_right;voice=robot,0.75;profile=rust_torso;spacing=right,0.2;behavior=stand;speech=GEO_ILLUZ_2_CUSTOM",
+                    "name=rust_torso;face_right;voice=robot,0.75;profile=rust_torso;spacing=right,0.2;behavior=stand;speech=GEO_ILLUZ_2",
             },
         },
         ["p1_ex_illusory_maze_04"] = new List<Check>
@@ -2500,7 +2912,7 @@ public class LocationMapping
         },
         ["p1_bandit_lair_01"] = new List<Check>
         {
-            new Check // TODO: Probably spawns both scorpion locations
+            new Check // TODO: Spawns both scorpion locations
             {
                 ArchipelagoId = 7676290,
                 ObjectIds = ["194", "195"],
@@ -2694,22 +3106,31 @@ public class LocationMapping
                 ObjectIds = ["21"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2940] = [["ITEM_add,3,1|", ""]],
+                },
                 GISIdentifier = "HEART_BANDIT_3",
                 OverrideType =
-                    "name=ruby;voice=woman,1.15;profile=ruby;speech=line,RUBY_BANDIT_2_CUSTOM,RUBY_BANDIT_3;behavior=stand;ql=SI_FALSE,HEART_BANDIT_3;use_all_bright",
+                    "name=ruby;voice=woman,1.15;profile=ruby;speech=line,RUBY_BANDIT_2,RUBY_BANDIT_3;behavior=stand;ql=SI_FALSE,HEART_BANDIT_3;use_all_bright",
             },
         },
         ["p1_bandit_lair_shrine"] = new List<Check>
         {
-            new Check // TODO: Doesn't work. Will fix it with the NPC rework
+            new Check
             {
                 ArchipelagoId = 7676308,
                 ObjectIds = ["133"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1181] = [["GO,GP1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,BANDIT_KEY_5_COLLECTED,true"]],
+                },
                 GISIdentifier = "BANDIT_KEY_5_COLLECTED",
                 OverrideType =
-                    "name=selene;voice=woman,1.05;profile=dancer;speech=SELENE_1_CUSTOM;behavior=stand;face_right;ql=SI_FALSE,BANDIT_KEY_5_COLLECTED",
+                    "name=selene;voice=woman,1.05;profile=dancer;speech=SELENE_1;behavior=stand;face_right;ql=SI_FALSE,BANDIT_KEY_5_COLLECTED",
             },
             new Check
             {
@@ -2858,43 +3279,54 @@ public class LocationMapping
         },
         ["p1_bandit_lair_lihu"] = new List<Check>
         {
-            new Check // TODO: Technically this is a trigger being handled instead of an NPC. Unknown behaviour
+            new Check
             {
                 ArchipelagoId = 7676324,
-                ObjectIds = ["50"],
+                ObjectIds = ["49"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [3116] = [["ITEM_add,111,1|", ""]],
+                },
                 GISIdentifier = "LIHU_KEY_GET",
                 OverrideType =
-                    "remove;GIS=cutscene,line$WIN_VS_LIHU_CUSTOM;ql=SI_FALSE,LIHU_KEY_GET",
+                    "name=lihu;voice=man,1.05;profile=lihu;speech=LIHU,LIHU+1;behavior=stand;ql=SI_TRUE,LIHU_KEY_GET&POC_ABSENT,lihu_vanish",
             },
         },
         ["p1_bandit_lair_atri"] = new List<Check>
         {
-            new Check // TODO: Handling is impossible without manual intervention in AddCustomScriptLines()
+            new Check
             {
                 ArchipelagoId = 7676325,
                 ObjectIds = ["16"],
                 IsKeyItem = true,
                 IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [3088] = [["ITEM_add,111,1|", ""]],
+                },
                 GISIdentifier = "ATRI_KEY_GET",
                 OverrideType =
-                    "voice=woman;name=matri2;profile=matri;speech=line,ATRI_POST_BATTLE,ATRI_POST_BATTLE2,ATRI_POST_BATTLE3;behavior=stand;face_right;ql=SI_FALSE,BIRDY_CAUGHT&SI_FALSE,ATRI_KEY_GET;use_all_bright",
+                    "voice=woman;name=matri2;profile=matri;speech=line,ATRI_POST_BATTLE,ATRI_POST_BATTLE2,ATRI_POST_BATTLE3;behavior=stand;face_right;ql=SI_FALSE,BIRDY_CAUGHT&amp;SI_FALSE,ATRI_KEY_GET;use_all_bright",
             },
         },
         ["p1_bandit_lair_rala"] = new List<Check>
         {
-            new
-                Check // TODO: Technically this is a GIS_PACK instruction being handled instead of an NPC. Unknown behaviour
+            new Check
+            {
+                ArchipelagoId = 7676326,
+                ObjectIds = ["9"],
+                IsKeyItem = true,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
                 {
-                    ArchipelagoId = 7676326,
-                    ObjectIds = ["4-game over!"],
-                    IsKeyItem = true,
-                    IsNpc = true,
-                    GISIdentifier = "",
-                    OverrideType =
-                        "ABORT_IF,OC_PRESENT,mini_game_over|FILE_MARK_OC,mini_game_over|GIS_PAK,6|puzzle,id$9,msg$FLIP_OFF|cutscene,line$RALA_RACE_OVER_CUSTOM",
+                    [3206] = [["ITEM_add,111,1|", ""]],
                 },
+                GISIdentifier = "RALA_KEY_GET",
+                OverrideType =
+                    "profile=rala;speech=RALA_THE_BANDIT;name=gamer;voice=woman,0.95;behavior=stand;spacing=left,1.5;use_all_bright",
+            },
         },
     };
 }

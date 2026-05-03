@@ -13,6 +13,7 @@ namespace PhoA_AP_client.AP;
 
 public class ItemHandler
 {
+    public DialogHandler DialogHandler { get; private set; }
     private readonly APSessionContext _sessionContext;
     public FillMode FillMode { get; private set; }
     public ReadOnlyCollection<long> LocalAllLocations { get; private set; }
@@ -34,6 +35,7 @@ public class ItemHandler
     public ItemHandler(APSessionContext sessionContext)
     {
         _sessionContext = sessionContext;
+        DialogHandler = new DialogHandler();
         if (PhoaAPClient.APConnection.Seed.IsNullOrEmpty())
             ScoutItems();
         _sessionContext.Session.Items.ItemReceived += AddMissingItems;
@@ -213,7 +215,12 @@ public class ItemHandler
                         string[] overrideTypeAttributes = checks[i].OverrideType.Split(';');
                         bool isStandaloneItem = overrideTypeAttributes.Contains("id=22");
 
-                        APScriptAdditions.ReplacePossibleScriptLines(checks[i], isFromThisWorld);
+                        if (checks[i].DialogReplacements != null)
+                            DialogHandler.AddDialogPatch(
+                                checks[i].DialogReplacements,
+                                checks[i].ArchipelagoId,
+                                itemInfo, isFromThisWorld,
+                                checks[i].CompletionDialogId);
 
                         if (!isFromThisWorld || replacementId != "22" || isNpcType || isStandaloneItem ||
                             hasNothingToReplace)
@@ -239,7 +246,7 @@ public class ItemHandler
                     }
                 }
 
-                APScriptAdditions.AddCustomScriptLines();
+                DialogHandler.ApplyDialogPatchesToGame();
             },
             false,
             _sessionContext.Session.Locations.AllLocations.ToArray()

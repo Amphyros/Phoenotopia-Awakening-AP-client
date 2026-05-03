@@ -152,18 +152,13 @@ internal sealed class APReplaceLootPatches
                 PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId);
             bool isNpcOrStateDependentCheck = check.IsNpc || check.OverrideType.Contains("profile=WEAK_ROCK");
 
-            switch (isChecked)
+            if (!isChecked || isNpcOrStateDependentCheck)
             {
-                case true when isNpcOrStateDependentCheck && check.IsKeyItem:
-                    PT2.GIS_ProcessInstructions($"FILE_MARK_SI,{check.GISIdentifier},true", Vector3.zero);
-                    continue; // Continues to check if the npc has more checks
-                // BUG: This breaks when an NPC holds another check that's not a key item.
-                case true:
-                    return !check.IsKeyItem;
-                default:
-                    reader = ReplaceReader(reader, check.OverrideType);
-                    return true;
+                reader = ReplaceReader(reader, check.OverrideType);
+                return true;
             }
+
+            return !check.IsKeyItem;
         }
 
         return true;
@@ -195,8 +190,10 @@ internal sealed class APReplaceLootPatches
 
         foreach (Check check in checks)
         {
+            // TODO: Should account for FillMode
             if (!PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(check.ArchipelagoId)) continue;
-            if (PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId)) continue;
+            if (PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId) &&
+                !check.IsKeyItem) continue;
 
             foreach (string objectId in check.ObjectIds)
             {

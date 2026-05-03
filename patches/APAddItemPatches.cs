@@ -3,6 +3,7 @@ using System.Text;
 using HarmonyLib;
 using PhoA_AP_client.AP;
 using PhoA_AP_client.util;
+using UnityEngine;
 using WebSocketSharp;
 
 namespace PhoA_AP_client.patches;
@@ -41,6 +42,30 @@ internal sealed class APAddItemPatches
 
         if (!APHelpers.IsConnectedToAP()) return;
         PhoaAPClient.APConnection.ItemHandler.AddMissingItems();
+    }
+
+    [HarmonyPatch(typeof(SaveFile), "_NS_ProcessSaveDataString")]
+    [HarmonyPostfix] // Patch to assure all completed NPC locations with an SI value are checked within the game
+    private static void NSProcessSaveDataStringNpcCompletionPostfix()
+    {
+        if (!APHelpers.IsConnectedToAP())
+        {
+            PhoaAPClient.Logger.LogWarning(
+                "Save loaded while disconnected from AP. Please reconnect and reload the save");
+            return;
+        }
+
+        var matches = LocationMapping.LocationMap.Values
+            .SelectMany(checks => checks)
+            .Where(check => check.IsNpc && check.IsKeyItem && check.CompletionDialogId == null &&
+                            PhoaAPClient.APConnection.SessionContext.Session.Locations.AllLocationsChecked
+                                .Contains(check.ArchipelagoId));
+
+        foreach (Check check in matches)
+        {
+            string identifier = check.DifferingInGameIdentifier ?? check.GISIdentifier;
+            PT2.GIS_ProcessInstructions($"FILE_MARK_SI,{identifier},true", Vector3.zero);
+        }
     }
 
     [HarmonyPatch(typeof(LevelBuildLogic), "_LoadLevel")]
