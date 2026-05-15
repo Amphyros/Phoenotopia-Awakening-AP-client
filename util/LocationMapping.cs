@@ -21,11 +21,11 @@ public class LocationMapping
             new Check
             {
                 ArchipelagoId = 7676187,
-                ObjectIds = ["96, 97"],
+                ObjectIds = ["96", "97"],
                 IsKeyItem = false,
                 GISIdentifier = "PANSELO_TRAP_CHEST",
                 OverrideType =
-                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP,PANSELO_TRAP_CHEST",
+                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$PANSELO_TRAP_CHEST",
             },
         },
         ["p1_panselo_house_ruth"] = new List<Check>
@@ -568,7 +568,7 @@ public class LocationMapping
                 IsKeyItem = true,
                 GISIdentifier = "REGEN_LAST", // Unsure why this is a regen and not a money identifier
                 OverrideType =
-                    "type=P1_ANURI_CERAMIC_POT_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_LAST,true;ql=SI_FALSE,REGEN_LAST",
+                    "type=P1_ANURI_CERAMIC_POT_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_LAST;ql=SI_FALSE,REGEN_LAST",
             },
             new Check
             {
@@ -1811,8 +1811,8 @@ public class LocationMapping
                 IsNpc = true,
                 DialogReplacements = new Dictionary<int, List<string[]>>
                 {
-                    [1419] = [["25 RIN", "%APPlayer%%APItem%"]],
-                    [1429] = [["How many are you looking to sell?", "For the first 4 I'll give you %APPlayer%%APItem%"]],
+                    [1419] = [["25 RIN", "<#00ffff>%APPlayer%%APItem%</color>"]],
+                    [1429] = [["How many are you looking to sell?", "For the first 4 I'll give you <#00ffff>%APPlayer%%APItem%</color>"]],
                     [1430] = [[",1432,1433", ""], ["||Sell 8 Berry Fruits for 50 R||Sell 12 Berry Fruits for 75 R", ""]],
                     [1431] = [["money_adjust,P1_RAI,25", "FILE_MARK_AP,ATAI_MARKET_BERRY_SELL"]],
                 },
