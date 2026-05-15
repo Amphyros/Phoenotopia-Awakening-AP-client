@@ -31,7 +31,7 @@ public class DialogHandler
         List<string> lines = DB.lines.ToList();
         foreach (var dialogPatch in _dialogPatches)
         {
-            string playerName = dialogPatch.IsFromThisWorld ? "" : dialogPatch.ScoutedItem.Player.Name;
+            string playerName = dialogPatch.IsFromThisWorld ? "" : $"{dialogPatch.ScoutedItem.Player.Name}'s ";
             int bonusLineId = -1;
 
             if (dialogPatch.DialogReplacements.TryGetValue(-1, out var bonusDialog))

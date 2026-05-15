@@ -177,7 +177,7 @@ internal sealed class APReplaceLootPatches
         {
             if (!check.ObjectIds.Contains(reader.GetAttribute("id"))) continue;
 
-            reader = ReplaceLootIdInReader(reader, check.ItemInfo.ItemId);
+            reader = ReplaceReader(reader, check.OverrideType);
         }
     }
 

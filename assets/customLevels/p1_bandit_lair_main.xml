@@ -170,7 +170,7 @@
   <object id="21" name="end_door" type="id=7;facing=right" x="144" y="128" width="32" height="32"/>
   <object id="23" name="enemy" type="name=guardA;type=p1_ninja;initial_behavior=shine;defeated_GIS=FILE_MARK_OC,beat_key_bandit1|SPAWN_loot,108,amt$1,loot_GIS_MARK_SI$BANDIT_KEY_1_COLLECTED;ql=SI_FALSE,BANDIT_KEY_1_COLLECTED;face_right" x="310" y="240" width="32" height="32"/>
   <object id="24" name="enemy" type="name=guardA;type=p1_ninja;defeated_GIS=FILE_MARK_OC,beat_key_bandit1;ql=SI_TRUE,BANDIT_KEY_1_COLLECTED&amp;OC_ABSENT,beat_key_bandit1;face_right" x="310" y="240" width="32" height="32"/>
-  <object id="26" name="npc" type="profile=!;timeout=1;spacing=stand;speech=BANDIT_BOSS_GATE_CUSTOM;name=GATE_NPC;ql=SI_FALSE,BANDIT_BOSS_GATE_OPENED" x="512" y="512" width="32" height="32"/> <!-- speech=BANDIT_BOSS_GATE -->
+  <object id="26" name="npc" type="profile=!;timeout=1;spacing=stand;speech=BANDIT_BOSS_GATE;name=GATE_NPC;ql=SI_FALSE,BANDIT_BOSS_GATE_OPENED" x="512" y="512" width="32" height="32"/> <!-- speech=BANDIT_BOSS_GATE -->
   <object id="27" name="door" type="profile=NONE_BACK;open=p1_bandit_lair_boss;id=100;name=BOSS_FUNNEL;override_center_pt=vec3(32.5/94.2188/1);exist_ql=SI_FALSE,BANDIT_BOSS_GATE_OPENED" x="512" y="656" width="32" height="32"/>
   <object id="28" name="end_door" type="id=100;facing=left" x="512" y="512" width="32" height="32"/>
   <object id="29" name="door" type="profile=NONE_BACK;open=P1_bandit_lair_boss;id=100;exist_ql=SI_TRUE,BANDIT_BOSS_GATE_OPENED" x="512" y="512" width="32" height="32"/>

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,6 +29,10 @@ internal static class APScriptAdditions
             "OWNER,zophiel;GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nThough<*_>, time has yet to pass.",
             "OWNER,zophiel||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nPlease come back once time has passed and the world has changed."
         ],
+        ["3223"] =
+        [
+            "PROFILE,static;VOICE,static;COLOR_BUBBLE,H7ab5c9;COLOR_TEXT,H364971;OWNER,none;GOIF_FAST,3224|ITEM_HAVE_COUNT,111,3;GOIF_FAST,3225|ITEM_HAVE_COUNT,111,1",
+        ],
     };
 
     public static void AddCustomScriptLines()
@@ -37,6 +42,13 @@ internal static class APScriptAdditions
         {
             string lineLabel = customLine.Key;
             int lineIndex = lines.Count;
+
+            if (int.TryParse(lineLabel, out int lineToReplace))
+            {
+                string originalLineText = DB.lines[lineToReplace].Split(["||||"], StringSplitOptions.None)[1];
+                lines[lineToReplace] = $"{customLine.Value[0]}||||{originalLineText}";
+                continue;
+            }
 
             DB.line_id_map.Add(lineLabel, lineIndex);
 

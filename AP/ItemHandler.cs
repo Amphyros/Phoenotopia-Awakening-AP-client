@@ -206,6 +206,12 @@ public class ItemHandler
                             if ((itemInfo.Flags & ItemFlags.Advancement) != 0) replacementId = 213.ToString();
                         }
 
+                        if (checks[i].OverrideType.Contains("CustomAnimatedSprite;"))
+                        {
+                            checks[i].OverrideType = checks[i].OverrideType.Replace("CustomAnimatedSprite;", "");
+                            replacementId = (int.Parse(replacementId) + 32).ToString();
+                        }
+
                         bool hasNothingToReplace = !checks[i].OverrideType.Contains("%ItemId%");
                         checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
 

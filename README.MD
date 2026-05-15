@@ -2,7 +2,7 @@
 This is a mod for [Phoenotopia: Awakening](https://store.steampowered.com/app/1436590/Phoenotopia_Awakening/) that integrates it into the [Archipelago Multiworld Randomizer framework](https://archipelago.gg/)
 
 ## What it does
-Archipelago is a Multiworld Randomizer framework that enables different games to be randomized among alone or among each other. For example, this game's bombs can be hidden behind the first star of Jolly Roger's Bay in Super Mario 64, whereas you might be able to buy someone's Hookshot from Ocarina of Time in the Panselo Shop for just 5 rin!
+Archipelago is a Multiworld Randomizer framework that enables different games to be randomized alone or among each other. For example, this game's bombs can be hidden behind the first star of Jolly Roger's Bay in Super Mario 64, whereas you might be able to buy someone's Hookshot from Ocarina of Time in the Panselo Shop for just 5 rin!
 
 Note: currently, only the first few checks of the game are randomized. Sunflower Road and anything beyond that is considered out of bounds. As this project expands, more checks will be added.
 
