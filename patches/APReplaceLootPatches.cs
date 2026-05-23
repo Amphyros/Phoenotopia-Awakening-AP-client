@@ -190,8 +190,8 @@ internal sealed class APReplaceLootPatches
 
         foreach (Check check in checks)
         {
-            // TODO: Should account for FillMode
-            if (!PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(check.ArchipelagoId)) continue;
+            if (!PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(check.ArchipelagoId) &&
+                check.FillWhenExcluded < PhoaAPClient.APConnection.ItemHandler.FillMode) continue;
             if (PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(check.ArchipelagoId) &&
                 !check.IsKeyItem) continue;
 

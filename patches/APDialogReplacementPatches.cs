@@ -61,6 +61,14 @@ internal sealed class APDialogReplacementPatches
 
         bool isChecked =
             PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(relatedCheck.ArchipelagoId);
+        bool isNotIncluded =
+            !PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(relatedCheck.ArchipelagoId);
+
+        if (isNotIncluded)
+        {
+            ApplyLine(DB.GetLine(completionDialogId ?? alteredDialogId), ref text, ref all_code_string);
+            return;
+        }
 
         if (!isChecked)
         {
@@ -74,12 +82,6 @@ internal sealed class APDialogReplacementPatches
             return;
         }
 
-        if (completionDialogId == null)
-        {
-            ApplyLine(DB.GetLine(alteredDialogId), ref text, ref all_code_string);
-            return;
-        }
-
-        ApplyLine(DB.GetLine(completionDialogId), ref text, ref all_code_string);
+        ApplyLine(DB.GetLine(completionDialogId ?? alteredDialogId), ref text, ref all_code_string);
     }
 }

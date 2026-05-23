@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Archipelago.MultiClient.Net.Models;
+using JetBrains.Annotations;
 using PhoA_AP_client.util;
 
 namespace PhoA_AP_client.AP;
@@ -12,7 +13,7 @@ public class DialogHandler
     public void AddDialogPatch(
         Dictionary<int, List<string[]>> dialogPatches,
         long archipelagoId,
-        ScoutedItemInfo scoutedItemInfo,
+        [CanBeNull] ScoutedItemInfo scoutedItemInfo,
         bool isFromThisWorld = false,
         int? postCompletionDialogId = null)
     {
@@ -31,7 +32,10 @@ public class DialogHandler
         List<string> lines = DB.lines.ToList();
         foreach (var dialogPatch in _dialogPatches)
         {
-            string playerName = dialogPatch.IsFromThisWorld ? "" : $"{dialogPatch.ScoutedItem.Player.Name}'s ";
+            string playerName = dialogPatch.ScoutedItem == null || dialogPatch.IsFromThisWorld
+                ? ""
+                : $"{dialogPatch.ScoutedItem.Player.Name}'s ";
+            string itemName = dialogPatch.ScoutedItem == null ? "Nothing" : dialogPatch.ScoutedItem.ItemName;
             int bonusLineId = -1;
 
             if (dialogPatch.DialogReplacements.TryGetValue(-1, out var bonusDialog))
@@ -50,7 +54,7 @@ public class DialogHandler
                 {
                     int lineToAlter = int.Parse(lines[targetLineId].Split(',')[2]);
                     lines[lineToAlter] = ApplyReplacements(lines[lineToAlter], dialogReplacements.Value, playerName,
-                        dialogPatch.ScoutedItem.ItemName, bonusLineId);
+                        itemName, bonusLineId);
                     continue;
                 }
 
@@ -58,8 +62,8 @@ public class DialogHandler
                 lines.Add(originalDialog);
                 int originalDialogId = lines.Count - 1;
 
-                lines.Add(ApplyReplacements(originalDialog, dialogReplacements.Value, playerName,
-                    dialogPatch.ScoutedItem.ItemName, bonusLineId));
+                lines.Add(
+                    ApplyReplacements(originalDialog, dialogReplacements.Value, playerName, itemName, bonusLineId));
                 int alteredDialogId = lines.Count - 1;
 
                 string newLine = $"GO_AP,{originalDialogId},{alteredDialogId},{dialogPatch.ArchipelagoId}";

@@ -1864,6 +1864,7 @@ public class LocationMapping
                 ObjectIds = ["15"],
                 IsKeyItem = true,
                 FillWhenExcluded = FillMode.Always,
+                CompletionDialogId = 127,
                 DialogReplacements = new Dictionary<int, List<string[]>>
                 {
                     [1513] = [["JUMP_TO,CROSSBOW_GET+-1,IF_TRUE|ITEM_HAVE_COUNT,37,1;", ""], ["civilian crossbow", "%APPlayer%%APItem%"]],
@@ -1880,6 +1881,7 @@ public class LocationMapping
                 ObjectIds = ["58"],
                 IsKeyItem = true,
                 FillWhenExcluded = FillMode.Always,
+                CompletionDialogId = 50,
                 DialogReplacements = new Dictionary<int, List<string[]>>
                 {
                     [1519] = [["JUMP_TO,BAT2_GET+-1,IF_TRUE|ITEM_HAVE,int_list(7);", ""], ["composite bat", "%APPlayer%%APItem%"]],
@@ -1896,6 +1898,7 @@ public class LocationMapping
                 ObjectIds = ["60"],
                 IsKeyItem = true,
                 FillWhenExcluded = FillMode.Always,
+                CompletionDialogId = 97,
                 DialogReplacements = new Dictionary<int, List<string[]>>
                 {
                     [1516] = [["JUMP_TO,LAMP_GET+-1,IF_TRUE|ITEM_HAVE_COUNT,32,1;", ""], ["crank lamp", "%APPlayer%%APItem%"]],
@@ -1912,6 +1915,7 @@ public class LocationMapping
                 ObjectIds = ["61"],
                 IsKeyItem = true,
                 FillWhenExcluded = FillMode.Always,
+                CompletionDialogId = 113,
                 DialogReplacements = new Dictionary<int, List<string[]>>
                 {
                     [1522] = [["JUMP_TO,FISHPOLE_GET+-1,IF_TRUE|ITEM_HAVE_COUNT,40,1;", ""], ["fishing rod", "%APPlayer%%APItem%"]],

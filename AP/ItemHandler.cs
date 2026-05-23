@@ -188,68 +188,7 @@ public class ItemHandler
                     List<Check> checks = level.Value;
 
                     for (int i = 0; i < checks.Count; i++)
-                    {
-                        if (!result.TryGetValue(checks[i].ArchipelagoId, out ScoutedItemInfo itemInfo))
-                        {
-                            checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", 215.ToString());
-                            continue;
-                        }
-
-                        LocationMapping.LocationMap[levelName][i].ItemInfo = itemInfo;
-
-                        string replacementId = itemInfo.ItemId > 300 ? "22" : itemInfo.ItemId.ToString();
-
-                        if (!string.Equals(itemInfo.ItemGame, "Phoenotopia: Awakening"))
-                        {
-                            replacementId = 215.ToString();
-                            if ((itemInfo.Flags & ItemFlags.NeverExclude) != 0) replacementId = 214.ToString();
-                            if ((itemInfo.Flags & ItemFlags.Advancement) != 0) replacementId = 213.ToString();
-                        }
-
-                        if (checks[i].OverrideType.Contains("CustomAnimatedSprite;"))
-                        {
-                            checks[i].OverrideType = checks[i].OverrideType.Replace("CustomAnimatedSprite;", "");
-                            replacementId = (int.Parse(replacementId) + 32).ToString();
-                        }
-
-                        bool hasNothingToReplace = !checks[i].OverrideType.Contains("%ItemId%");
-                        checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
-
-                        bool isFromThisWorld =
-                            itemInfo.Player.Name == _sessionContext.Session.Players.ActivePlayer.Name;
-                        bool isNpcType = checks[i].OverrideType.Contains("speech=");
-                        string[] overrideTypeAttributes = checks[i].OverrideType.Split(';');
-                        bool isStandaloneItem = overrideTypeAttributes.Contains("id=22");
-
-                        if (checks[i].DialogReplacements != null)
-                            DialogHandler.AddDialogPatch(
-                                checks[i].DialogReplacements,
-                                checks[i].ArchipelagoId,
-                                itemInfo, isFromThisWorld,
-                                checks[i].CompletionDialogId);
-
-                        if (!isFromThisWorld || replacementId != "22" || isNpcType || isStandaloneItem ||
-                            hasNothingToReplace)
-                            continue;
-
-                        var gisCmds = GetGisCmdsFromOverwriteType(checks[i]);
-
-                        if (gisCmds.IsNullOrEmpty())
-                        {
-                            GiveRinReplacementInstructionFailureWarning(checks[i].ArchipelagoId);
-                            continue;
-                        }
-
-                        string newGisCmd = GetRinPickupReplacementString(gisCmds, checks[i]);
-
-                        if (newGisCmd.IsNullOrEmpty())
-                        {
-                            GiveRinReplacementInstructionFailureWarning(checks[i].ArchipelagoId);
-                            continue;
-                        }
-
-                        checks[i].OverrideType = newGisCmd;
-                    }
+                        ProcessCheck(result, checks, i, levelName);
                 }
 
                 DialogHandler.ApplyDialogPatchesToGame();
@@ -257,6 +196,86 @@ public class ItemHandler
             false,
             _sessionContext.Session.Locations.AllLocations.ToArray()
         );
+    }
+
+    private void ProcessCheck(Dictionary<long, ScoutedItemInfo> result, List<Check> checks, int i, string levelName)
+    {
+        bool isExcluded = !result.TryGetValue(checks[i].ArchipelagoId, out ScoutedItemInfo itemInfo);
+
+        if (isExcluded)
+            checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", 215.ToString());
+
+        bool shouldPatchDialog = checks[i].DialogReplacements != null &&
+                                 (!isExcluded || FillMode <= checks[i].FillWhenExcluded);
+
+        if (shouldPatchDialog)
+            DialogHandler.AddDialogPatch(
+                checks[i].DialogReplacements,
+                checks[i].ArchipelagoId,
+                isExcluded ? null : itemInfo,
+                isExcluded || itemInfo.Player.Name == _sessionContext.Session.Players.ActivePlayer.Name,
+                checks[i].CompletionDialogId);
+
+        if (isExcluded) return;
+
+        LocationMapping.LocationMap[levelName][i].ItemInfo = itemInfo;
+
+        bool isAnitmatedSprite = checks[i].OverrideType.Contains("CustomAnimatedSprite");
+        var replacementId = DetermineReplacementId(checks[i], itemInfo);
+
+        bool hasNothingToReplace = !checks[i].OverrideType.Contains("%ItemId%");
+        checks[i].OverrideType = checks[i].OverrideType.Replace("%ItemId%", replacementId);
+
+        bool isFromThisWorld = itemInfo.Player.Name == _sessionContext.Session.Players.ActivePlayer.Name;
+        bool isNpcType = checks[i].OverrideType.Contains("speech=");
+        string[] overrideTypeAttributes = checks[i].OverrideType.Split(';');
+        bool isStandaloneItem = overrideTypeAttributes.Contains("id=22");
+
+        if (!isFromThisWorld || replacementId != "22" || isNpcType || isStandaloneItem || hasNothingToReplace ||
+            isAnitmatedSprite)
+            return;
+
+        ProcessRinReplacement(checks, i);
+    }
+
+    private static string DetermineReplacementId(Check check, ScoutedItemInfo itemInfo)
+    {
+        string replacementId = itemInfo.ItemId > 300 ? "22" : itemInfo.ItemId.ToString();
+
+        if (!string.Equals(itemInfo.ItemGame, "Phoenotopia: Awakening"))
+        {
+            replacementId = 215.ToString();
+            if ((itemInfo.Flags & ItemFlags.NeverExclude) != 0) replacementId = 214.ToString();
+            if ((itemInfo.Flags & ItemFlags.Advancement) != 0) replacementId = 213.ToString();
+        }
+
+        int[] animatedFillerIds = [213, 214, 215];
+        if (!check.OverrideType.Contains("CustomAnimatedSprite")) return replacementId;
+
+        check.OverrideType = check.OverrideType.Replace("CustomAnimatedSprite;", "");
+        int id = int.Parse(replacementId);
+        return animatedFillerIds.Contains(id) ? (id + 32).ToString() : replacementId;
+    }
+
+    private static void ProcessRinReplacement(List<Check> checks, int i)
+    {
+        var gisCmds = GetGisCmdsFromOverwriteType(checks[i]);
+
+        if (gisCmds.IsNullOrEmpty())
+        {
+            GiveRinReplacementInstructionFailureWarning(checks[i].ArchipelagoId);
+            return;
+        }
+
+        string newGisCmd = GetRinPickupReplacementString(gisCmds, checks[i]);
+
+        if (newGisCmd.IsNullOrEmpty())
+        {
+            GiveRinReplacementInstructionFailureWarning(checks[i].ArchipelagoId);
+            return;
+        }
+
+        checks[i].OverrideType = newGisCmd;
     }
 
     private static string GetGisCmdsFromOverwriteType(Check check)
