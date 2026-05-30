@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="32" height="64" tilewidth="16" tileheight="16" infinite="0" nextobjectid="117">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="16384" columns="128">
+  <image source="../../Textures/tiles.PNG" width="2048" height="2048"/>
+ </tileset>
+ <layer name="back" width="32" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztkuGNwjAMhd38oluwAm0HyCiM0lZCCltklIzSUbDrGNyChMQdOun0PslyE7t+zxQiAAAAAAAAfsbl9NcOAAAAAAAAAACA36fpidoTjfv70H9Pk/XoqjFOrJM4ew9SF32pSx97zO/mvdrhlZ7kJNHxueNztz6PSWubuvWwx2y1vc97/24H3+PmRZ5XRO/A59ZptHo3Jo2NPuec9L3odfwetsPen9O0vJjGdevjqe491D71WHXmQWMaKHNeJIL7VvJtay1Ojz5q+BzkrqfSaJwnCa5zHKVHsp05Ss0023O/at/nWk94818RTdEKg37XRsO82vxSZ+bqWfwtHLFqrl4+wfadVSuLh6p95N+Fgt6f3e6yp7yzcMTqocwf6gPwX7gBWiacPg==
+  </data>
+ </layer>
+ <layer name="back_branches" width="32" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt1jEOgDAMQ9FQOBBwwqjAvXE2VpYE1P+kqKOnxjEDAADAH7XNbNYs8e7mTZOZ35V7aM54ld2T8wEAY1DPufrO1XuenX0pUz3n6jvvBfkAau7cJ+5cVKH/8JZ2ZezMMtqVsTOHNK38EwDfcgN4OBq8
+  </data>
+ </layer>
+ <layer name="back" width="32" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztVktOwzAUfBESSC0coKw4QqASdMlRehSHAguQ6LbZcZQepUfhOSSSMUk8YzmCSB7JykeTGb+PHYtkZGRkZGTEob7/W//VQ3pNNKaDetcT+DMxrTYi15t03kxMB/WtAW+2R5iYFneAHpFPNKYObwH/mB5BYuqwROIneyQUk4v3Aa6+N/bK5tMCialDAXCZfFoMxdSHSrkfOvYj3zD5bDRvcW4BcJl8NppM/IA/mk/NodFcmqrtHQRjc43RazVH+ZdrMUsdizWmHdLzwdQf4TJ6FqnrX/H9b1AuMldGr+EnXv8T179Xm+1Rxj+i/4OInS/Y/7CeBVMvZK4R/c9ww/4Trn8kVwW7/gh+H/fK66Ep6w/Fz/9/knIZvYbP9N/A/mffax1oPf/bEBBtZI/+ocnt/yaVXurzT4fU/c/s1f5aRDCr8880/3+Y78+1r4fsHLVWojWztQv7E/x/cP4NarP1T3H+Yc8zczn/FKVsdbjcsH/k+cd67UoxTzqsp30+03t9d3K4v+bafVe0vJj/r9W4KOXmuZTHFx3qK3o96vOx0vvd93xOvrb7nV4/W464OQPiN+qxPVed14HhcJNjyNP1zcjImDe+AB8FqhA=
+  </data>
+ </layer>
+ <layer name="back" width="32" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztllEKgkAQhscCgzqBPdkNVpHyeJuBQV1A3zpqUxYaPmXKJzEfDOw8yLf/LqOKGIZhGP9GvWf90YFzV+quQf+DKBfZ5oy7Um8Nud+sU9Z/gf0bwJ9l7foK5z8mrD+w/CiWH/an4lE/n5/1J+z5B/T9w/4ZzL9H/XD+gJ5/+/6gWH7WT+en3/8zyM/67f8D9c9g/j3qHyl/PHCOf53/WPe/07olz7X/9nn6/ofOX+FETk35oqmPftxd9inVddYKtVau30/NouNdun4/NeEra+nadbc3jLG4A8hPMq4=
+  </data>
+ </layer>
+ <layer name="front" width="32" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztUoFthDAMdBWIyhbd4fl9GCV68S91C0ZhFEZp4tjhiJigupNOdmzj+BxECIIgCIIgCIIgCIIgCIIgCIIgCOL/IDxEfh+Siv161rPZlK3GjeXcagqnZ615QW3Jfz81p/6rxtJU/QQx5SfHplnSO9s1x9+Vev5UitNqSk6/s1rB79ZrTOutT/K+K/jDrFzi3HxlOQdgny8cZ5EcF7ddzU+OL1a3jNVqH7Q5L4XBrPcL5gcj3FH8Y4Bc9rebHm1m1OGzwXnLtXux0Hvz+613qdFcHx9sNtOBPVR/hF2M597aHKZxxz10Og5j64+78Xw8Z/AeqDf5W8TzPRarwR02TabZ7z56fXb34hqt/wb7OmBvbWafFXWFc2ftjgh78F0MQNuH6gFNB84OtZd4hH42w97fE+frDvoZrE/brem/vBvq6nXf1XXxi967ucr/A/9Rupl1g5mbdnzjP7WUu7E=
+  </data>
+ </layer>
+ <objectgroup name="meta" visible="0">
+  <object id="1" name="config" type="id=0;no_zoom=1;follow=vertical" x="28" y="184" width="455" height="744"/>
+  <object id="56" name="level_art" x="-128" y="960" width="112" height="64">
+   <properties>
+    <property name="bg_y" value="graphic=p1_bridge_02;add_x=0;add_y=0.75;scroll_x=.010;scroll_y=0.035;anim=4,0.125"/>
+    <property name="bg_z" value="graphic=p1_bridge_01;add_x=0;add_y=0.18;scroll_x=.014;scroll_y=0.0375;anim=4,0.125"/>
+   </properties>
+  </object>
+  <object id="58" name="music" x="0" y="960" width="128" height="64">
+   <properties>
+    <property name="1" value="mood_waterfall_low,vol=0.6"/>
+   </properties>
+  </object>
+  <object id="110" name="GIS_PACK" x="160" y="960" width="96" height="64">
+   <properties>
+    <property name="1-get_perro" value="FILE_MARK_SI,PERRO_1,true|recycle,perro_real|AT_scale,perro_at,vec3(0.1/0.1/1),duration$0.25|DELAY,0.26|recycle,perro_at|recycle,perro_aonc"/>
+   </properties>
+  </object>
+  <object id="111" name="memory" x="272" y="960" width="96" height="64">
+   <properties>
+    <property name="_snd_packs" value="p_fallingplatform,p_perro"/>
+    <property name="prefabs" value="p_fallingplatform,p_perro"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="solid_collisions" visible="0">
+  <object id="46" type="profile=GRASS" x="-416" y="880" width="1024" height="144"/>
+  <object id="67" x="464" y="832">
+   <polyline points="0,0 -32,0"/>
+  </object>
+  <object id="71" x="272" y="672">
+   <polyline points="0,0 -32,0"/>
+  </object>
+  <object id="76" x="224" y="544">
+   <polyline points="0,0 48,0"/>
+  </object>
+  <object id="84" x="288" y="320">
+   <polyline points="0,0 80,0"/>
+  </object>
+  <object id="85" x="224" y="768">
+   <polyline points="0,0 48,0"/>
+  </object>
+  <object id="106" x="240" y="0" width="176" height="32"/>
+  <object id="107" x="240" y="-80" width="32" height="80"/>
+  <object id="108" x="272" y="-80" width="144" height="32"/>
+  <object id="109" x="384" y="-48" width="32" height="48"/>
+ </objectgroup>
+ <objectgroup name="objects" visible="0">
+  <object id="7" name="door" type="profile=TOUCH_TRIGGER;open=p1_world_map_se;id=8" x="-83" y="-32" width="96" height="960"/>
+  <object id="8" name="end_door" type="id=8;facing=right;start_zoom_lvl=1" x="45" y="848" width="32" height="32"/>
+  <object id="12" name="end_door" type="id=0;facing=right" x="45" y="848" width="32" height="32"/>
+  <object id="55" name="door" type="profile=TOUCH_TRIGGER;open=p1_world_map_se;id=8" x="499" y="-32" width="96" height="960"/>
+  <object id="86" name="puzzle" type="type=p_fallingplatform;profile=0;dir=LEFT" x="330" y="688" width="40" height="16"/>
+  <object id="87" name="puzzle" type="type=p_fallingplatform;profile=1;dir=RIGHT" x="383" y="784" width="32" height="16"/>
+  <object id="88" name="puzzle" type="type=p_fallingplatform;profile=1;dir=LEFT" x="385" y="736" width="32" height="16"/>
+  <object id="89" name="puzzle" type="type=p_fallingplatform;profile=1;dir=LEFT" x="66" y="624" width="32" height="16"/>
+  <object id="90" name="puzzle" type="type=p_fallingplatform;profile=1;dir=RIGHT" x="110" y="576" width="32" height="16"/>
+  <object id="91" name="puzzle" type="type=p_fallingplatform;profile=1;dir=LEFT" x="336" y="512" width="32" height="16"/>
+  <object id="92" name="puzzle" type="type=p_fallingplatform;profile=1;dir=LEFT" x="241" y="480" width="32" height="16"/>
+  <object id="93" name="puzzle" type="type=p_fallingplatform;profile=1;dir=RIGHT" x="111" y="464" width="32" height="16"/>
+  <object id="94" name="puzzle" type="type=p_fallingplatform;profile=1;dir=RIGHT" x="110" y="416" width="32" height="16"/>
+  <object id="95" name="puzzle" type="type=p_fallingplatform;profile=1;dir=LEFT" x="242" y="400" width="32" height="16"/>
+  <object id="96" name="puzzle" type="type=p_fallingplatform;profile=1;dir=LEFT" x="241" y="368" width="32" height="16"/>
+  <object id="97" name="puzzle" type="type=p_fallingplatform;profile=0;dir=RIGHT" x="111" y="672" width="40" height="16"/>
+  <object id="301" name="loot" type="id=139;collected_GIS=FILE_MARK_SI,PERRO_1,true;ql=AP_SETTING_TRUE,PERRO&amp;SI_FALSE,PERRO_1" x="312" y="292" width="32" height="32"/> <!-- Added line -->
+ </objectgroup>
+ <objectgroup name="objects_perro" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,PERRO_1&amp;SI_TRUE,ABDUCTION_HAPPENED&amp;AP_SETTING_FALSE,PERRO"/> <!-- &amp;AP_SETTING_FALSE,PERRO -->
+  </properties>
+  <object id="103" name="AT" type="name=perro_at;anim=52" x="320" y="304" width="16" height="16"/>
+  <object id="104" name="trigger" type="name=perro_trigger;remove;GIS=cutscene,line$PERRO_GET" x="320" y="292" width="16" height="16"/>
+  <object id="105" name="puzzle" type="name=perro_real;type=p_perro;instruction=tmx(28/22),tmx(38/22)" x="320" y="-16" width="16" height="16"/>
+  <object id="112" name="AONC" type="name=perro_aonc;type=INVISIBLE;face_right;GIS=AT_play,perro_at,42|AT_move,perro_at,name(perro_at)+vec3(20/20/0),duration$3|uncommon_sfx,p1_perro_hurt|recycle,perro_trigger|recycle,perro_real|common_sfx,21|cpart,POW_BURST,intensity$1,pos$name(perro_aonc)" x="320" y="304" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="animated" visible="0">
+  <object id="57" name="AT" type="sprite=0;scale=adapt;sort=bg_tiles,-5;color=AFFDF2;alpha=1" x="0" y="160" width="512" height="512"/>
+  <object id="59" name="AT" type="sprite=10;scale=vec3(60/0.8/1);sort=fg_tiles,15;color=faffc9;alpha=0.8" x="-256" y="832" width="1056" height="144"/>
+  <object id="60" name="AT" type="sprite=10;scale=vec3(60/1/1);sort=bg_tiles,-5;color=faffc9;alpha=0.8" x="-256" y="720" width="1056" height="144"/>
+  <object id="98" name="AT" type="sprite=10;scale=vec3(50/3/1);sort=bg_tiles,-4;color=2D5DFF;alpha=0.8;angle=180" x="-112" y="160" width="720" height="480"/>
+  <object id="114" name="AT" type="sprite=10;scale=vec3(50/5/1);sort=fg_tiles,100;color=FFDA9A;alpha=0.5;angle=180" x="-160" y="160" width="816" height="768"/>
+ </objectgroup>
+</map>

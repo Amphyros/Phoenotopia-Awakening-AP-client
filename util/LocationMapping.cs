@@ -1418,6 +1418,18 @@ public class LocationMapping
                     "type=fish;instruction=TURTLE;name=turtle;defeated_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_TURTLE,pos$name(gale)|particle_emitter,highlighter,stop",
             },
         },
+        ["p1_ex_coast_01"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676132,
+                ObjectIds = ["301"],
+                IsKeyItem = true,
+                GISIdentifier = "PERRO_1",
+                OverrideType =
+                    "id=%ItemId%;collected_GIS=FILE_MARK_SI,PERRO_1,true;ql=AP_SETTING_TRUE,PERRO&SI_FALSE,PERRO_1",
+            },
+        },
         ["p1_bridge_atelo_01a"] = new List<Check>
         {
             new Check
@@ -2702,14 +2714,14 @@ public class LocationMapping
                 OverrideType =
                     "name=FOCUS_PT;id=%ItemId%;collected_GIS=FILE_MARK_SI,OXY_BANDIT_1,true;ql=SI_FALSE,OXY_BANDIT_1",
             },
-            new Check // TODO: Unique type of check needs to be handled
+            new Check
             {
                 ArchipelagoId = 7676269,
-                ObjectIds = ["137"],
+                ObjectIds = ["301"],
                 IsKeyItem = true,
-                GISIdentifier = "",
+                GISIdentifier = "PERRO_2",
                 OverrideType =
-                    "name=perro_real;type=p_perro;instruction=tmx(28/22),tmx(38/22)",
+                    "id=%ItemId%;collected_GIS=FILE_MARK_SI,PERRO_2,true;ql=AP_SETTING_TRUE,PERRO&SI_FALSE,PERRO_2",
             },
             new Check
             {

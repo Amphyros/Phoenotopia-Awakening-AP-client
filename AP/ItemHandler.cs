@@ -101,6 +101,9 @@ public class ItemHandler
     {
         if (SuppressedItemAddition.Remove(id)) return;
 
+        if (id is 139)
+            return;
+        
         if (id is >= 293 and <= 299)
             id = HandleUpgradableItems(id);
 

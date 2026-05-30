@@ -16,8 +16,12 @@ namespace PhoA_AP_client.patches;
 internal sealed class APReplaceLootPatches
 {
     private static string _spawnLootAPCollectedGis;
-    private static List<string> _ExtractedPuzzleGisCmds = [];
-    private static readonly string[] _levelsWithItemDisplays = ["p1_atai_shooting_gallery"];
+    private static readonly List<string> ExtractedPuzzleGisCmds = [];
+    private static readonly string[] LevelsWithItemDisplays = ["p1_atai_shooting_gallery"];
+    private static readonly Dictionary<string, string> SettingNameMap = new()
+    {
+        { "PERRO", "enable_perros" }
+    };
 
     [HarmonyPatch(typeof(PT2), "Initialize")]
     [HarmonyPostfix] // Patch to add AP item sprite
@@ -169,7 +173,7 @@ internal sealed class APReplaceLootPatches
     private static void CreateAnimatedTilePrefix(ref XmlReader reader)
     {
         string activeLevelName = LevelBuildLogic.level_name;
-        if (!_levelsWithItemDisplays.Contains(activeLevelName)) return;
+        if (!LevelsWithItemDisplays.Contains(activeLevelName)) return;
 
         if (!LocationMapping.LocationMap.TryGetValue(activeLevelName.ToLower(), out List<Check> checks)) return;
 
@@ -324,6 +328,32 @@ internal sealed class APReplaceLootPatches
         ProcessAPItemAnimalLifeSmall(__instance);
     }
 
+    [HarmonyPatch(typeof(SaveFile), "_Evaluate_QL_BasicPhrase")]
+    [HarmonyPrefix] // Patch to add AP_SETTING_TRUE/FALSE to _Evaluate_QL_BasicPhrase
+    private static bool EvaluateQLBasicPhrasePrefix(string ql_phrase, ref bool __result, SaveFile __instance)
+    {
+        if (!ql_phrase.Contains("AP_SETTING_")) return true;
+
+        string[] splitQLPhrase = ql_phrase.Split(',');
+
+        bool checkValue = splitQLPhrase[0].EndsWith("TRUE");
+        
+        if (!SettingNameMap.TryGetValue(splitQLPhrase[1], out string checkSetting))
+        {
+            __result = true;
+            PhoaAPClient.Logger.LogWarning("AP settings not found for " + splitQLPhrase[1]);
+            return false;
+        }
+        
+        bool perrosEnabled =
+            PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue(checkSetting,
+                out var enablePerros) && (long)enablePerros == 1;
+
+        __result = checkValue == perrosEnabled;
+
+        return false;
+    }
+
     private static void ProcessAPItemAnimalLifeSmall(AnimalLifeSmallLogic __instance)
     {
         var traverse = Traverse.Create(__instance);
@@ -352,7 +382,7 @@ internal sealed class APReplaceLootPatches
             strippedInstructions.Append(instruction);
         }
 
-        _ExtractedPuzzleGisCmds.Add(string.Join("|", extractedGisCmds.ToArray()));
+        ExtractedPuzzleGisCmds.Add(string.Join("|", extractedGisCmds.ToArray()));
 
         traverse.Field<string>("_GIS_cmd").Value = strippedInstructions.ToString();
     }
@@ -361,13 +391,13 @@ internal sealed class APReplaceLootPatches
     [HarmonyPrefix]
     private static void CarcassLogicExitPrefix(CarcassLogic __instance)
     {
-        if (_ExtractedPuzzleGisCmds.Count <= 0) return;
+        if (ExtractedPuzzleGisCmds.Count <= 0) return;
 
         var traverse = Traverse.Create(__instance);
         var transform = traverse.Field<Transform>("_transform").Value;
         traverse.Field<string>("_loot_drop_string").Value = null;
-        PT2.GIS_ProcessInstructions(_ExtractedPuzzleGisCmds[0], transform.position);
-        _ExtractedPuzzleGisCmds.RemoveAt(0);
+        PT2.GIS_ProcessInstructions(ExtractedPuzzleGisCmds[0], transform.position);
+        ExtractedPuzzleGisCmds.RemoveAt(0);
     }
 
     private static Sprite LoadSpriteFromResource(string resourceName, float pixelsPerUnit = 16f)

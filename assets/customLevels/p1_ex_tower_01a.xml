@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="128" height="64" tilewidth="16" tileheight="16" infinite="0" nextobjectid="145">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="16384" columns="128">
+  <image source="../../Textures/tiles.PNG" width="2048" height="2048"/>
+ </tileset>
+ <layer name="back" width="128" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt3NFtwjAQgOGT2sJTQgUMwJMTyhIZJaP4jTeEoANkFEZhFM4U1IBaCpWxo/j/pAiUoPjE2RcHkogAAAAAAAAAAAAAAADgHisjs6wQq69N7FgQ3qiQ5rzEjgVhvZjLBWkh/2jLdS7APCBdOgeoc50H0AeAftLxXes4/5XbpscBGywgBJXdkX+t/7tgASEozW11K/8AAABIh84LqxXnfsly+c859wMAAAAAAOitvJD9ysg+dhyIIyvIfcq47gfov9M1gFXsOBCH1nl3nX8dOw7Ek5F/ALiw5T74ZG30mLhhXpwkl/vP09g/vi+7UwfWi/72Sa23sw7EUE3nIuNSZKLLtAzbvnsGT26kyb7uvWuut68//Lfnd4//o2PMjbXdpkO/O2/LsNc/H3OvY2DU+g7c85jaz2J4X/hr69yer/3d6rd/fe6Ue9G6O4vZB9rxTeZix/PH+sDSSD18YvxrT/n36ad++yits1brrdW6a7X+Wq3DO38RPt/AyP7ViLxpvxnoMiy+1+lrHTu+rlhe/afsxotbtw18nEV3aI11tRYAAAAAkLgD1b1ZRw==
+  </data>
+ </layer>
+ <layer name="back" width="128" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztm11um0AUhUc1YCl2pdbJAvISjKt2DyyFpYxqO31o+pJkASzFS2EpPXd+EkISlVB+rOF80miGOB4NvnO5515AKUIIIYQQQgghhBBCCCGEEEIIIYS05e67aXrqdZDxWf1Qam2bxlhPvR5CyHjcbk3Tvp96PWRcksw07fup10PGYwl//4m+3kj4eL1/TFXetD/2BPOBGfApVWqBdrhRGr3e35ixilLzmZ56fWRYYsT7Q6quE/j7PjVNy3GMmHCkDgieA+y8d22BPbCwYyUNn5HAacZ96sB5QfvPG+q/eQONp6KtuhbNJz1yQTkuRQ/G1H/B4+yvYe8Cmr/CPijkGPugWqYqn3p9ZFjE/rC72QNoFcang9h+S9vPgbrWW2SqFP/HtSCH/cX/q2lXR4ZG9F/0Wv9p0YDUf+Hj9V9ir//UfzMDNs4jq/tKp/8kDyikZ/03fLz+S6wGfNJ/rP/PA4n/9ZqPqwVJrxn/w6dZ//H3/tBy+n/41OJ/Jb3EAYxtPShTp6nXR4blrfgv+k/G9P/wcfm/5PuS+2sf/5N06pWRMXDP/0jun/vrAPqS9b95IPE/tvl+7vaAfrofxPgfPE7/F838H2PF+B8+S3n208V/Pv8xT5bumV/J/10MyFn/mwewfQGtV9ymRvdJ/l9iLM9/aMb/8Hmv/o/jE/0/fCT/S6z/G5+PrP+ro9SBaf+z4gHxue85ff23pvuf7wHy+n9WXO1Ued/zOzni//B1E/N93d9dC+j/H+R+N8y8j5kqvN0ft8/jPqjHf9F/3v9j5v8fZvOt+3eRg5/iWr1VavJxrQa/gZ0u0a4yEweq1zN0w/u/5H1Dv//5GXOv0VYD1BWGnLstX2H/Lx32gNg9svdhSr8HDlaDmffwPQ/Zy+/1cc5DvP/5Czll82/4XfQfrPMO7XdjvX2cR33uFda9/s9rZNs5xtp3G8SWy93LdfVxzv96/w+2rFYt503cPpbYsXTXqLa/zzn4bxe62OACPnYx4rvVffhDV97z+a7/FwJj25+cF7Q/IYQQQgghhLzNX8gpCrw=
+  </data>
+ </layer>
+ <layer name="back" width="128" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt3FtugkAUxvHzaMW23hbQpAkIvvpelzYPPvTudQFdikvpUnqG1AQNjcYCp3X+v2QCMWAOfswIIogAAAAAAAAAAIDfWidyZ10DmrcZifPTVSJbbZ+21aBpw1Sc5p7b6BjAPhCe/khkoOOATp3fH/S7YGtdE5q1HllXgKZ1EnGRtn6q/T+1rgbWdOyfWtcAO3ouMLWuAc3Qvr7100iP9yLG/qDo8b0/3/+wrgN/z+6Y0LoOANXrj8v79nUsrqMtiun7l2z1nX+U7L/+prm/anshfwC4WHru56/5Ta3rgI0113iBoPE7DxCmRSayzKyrgJXuWKQ3tq4CVhaa/bIk/y5jAhCcPt8FQVuRPwAAQDAmE3HaAATs/oHnPwAAADStFYtcxdZVwMqjZv9UY/7tWFz7hPc/dTmcb+Ofs5Tu//+yleTNla9xnmKWzzr/fEKuxeXq2Bd0u/32B22YiRtk+1nPNPtZ8sMKZ9rLUt9f29F7PXfLHa5fFd1uv/3B62V5Dj6PnGa/nVV8X04xy938sXs9y9apUu+Cs5/rmP5+MK7fas43Wf76dF54xpJ+/qI5+Dxqc06WdecP4H+g/wMAAAAA6vQFZxJaJg==
+  </data>
+ </layer>
+ <layer name="front" width="128" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztnNtu4jAQhs2ytyH0HVYqeUtLvQbKG6+dZNyJc3RJQ8HfJ41ysse/Z5zEWBHGAAAAAAAAAAAAAAAAAAAAAEAKH/8erQC2ZlcZs3f2t6r37aP1AMB23E7Gfp6473Olff5b9/y3PP/zQeZ6u+bdb/e8/7NhN5PruesA8Py4eZ85VvUcMBwzF8yD9r1f//b/o+aAzAPyQM37w/qPjAXyDwAA8JrI+g9z/jzR83/mewAAeROvB0I+7NQ6IPMBAIDXh9//ecJ3vwAAedP+5ucb8EyR73/57gMAAAAAAAAAAHJGfxvlv52W/82Q895S11C9D1l7FX/et/jU/lO/ydL/66HXeLXu+NiX0eXiOmkKhvuo15p17G6NnnqrNEmd0bjHvlJ1xvHVbZzfjbk4uzr7dHZz9ubOOwtbd84em2Nfxrqy1tXxdQd1jPgM/sSXPz6qNu7wbUvno2y3cR/K7r6J+3Z7H25/aHxMxa1U/hM0BB1Kj2gykca746Tjpds9uH46k21t59PXfnyuzZ2RuOv+Sn6v7vhyCnW8b3Nuzhs5Vhb8y7jQfludYRyelQ/dzpDvtk3b7lt9rXBtllVdL/RftW/G8iY64vrS/qWrRccw6G2ve92+fCcusU5dRurLuIp16u2h0ab91zqKqp/bAevpL6u+rol6PSvHr3XqzeU0rlt8aev5manbs2szvrzPReWL4T5PxrboxtTMtRWVqWMi53QO1D0b+nKI6ibY4PhV/e5cUzlIindqTjewtdpMifFWfVor/4v6tODeXWyJvkZjPHK/9vr0nWfHmK+iCs+iRfmf0Lhm7pfmcUrvXL3V8r+BzcVhDV9r+P5JPXflf837fWtbWfuz5N+ovN2d/4379JvtWfI/pWeJxt+a/xQta2leGuNXzv+j8/5U9h8Qm2jT
+  </data>
+ </layer>
+ <layer name="front" width="128" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt10EKgzAUBNDsa/UeNod03zZe2ZEuCl7AxX8PBrIM/JBkWgMAAAAAAAAAAAAA4Gp/tW0kd++Deyy9bXM3/8qG+QOUsq//e/+T9Xv1DlSy5N8/J89kSh56QClTz9/v1//OHkhB35yB9L+zB1LUMHsAAAAAAAAAAAAAAAAAAADg4gAPwhEr
+  </data>
+ </layer>
+ <objectgroup name="meta" visible="0">
+  <object id="1" name="config" type="id=0;zoom_allowance=1" x="16" y="192" width="2016" height="736"/>
+  <object id="35" name="level_art" x="16" y="944" width="128" height="64">
+   <properties>
+    <property name="bg_x" value="graphic=p1_lost_city2;add_x=0;add_y=0.74;scroll_x=.008;scroll_y=0.0505"/>
+    <property name="bg_x2" value="graphic=biome_sand_cliffs;add_x=0;add_y=0.1;scroll_x=.012;scroll_y=0.0475"/>
+    <property name="bg_z" value="graphic=p1_lost_city_fg;add_x=0;add_y=0;scroll_x=.012;auto_scroll_x=-0.7;auto_scroll_y=0.4"/>
+    <property name="fg_a" value="graphic=p1_lost_city_fg;add_x=0.5;add_y=0.2;scroll_x=.012;auto_scroll_x=-0.81;auto_scroll_y=0.31"/>
+    <property name="fg_b" value="graphic=p1_lost_city_fg;add_x=0.23;add_y=0.47;scroll_x=.012;auto_scroll_x=-0.61;auto_scroll_y=0.51"/>
+   </properties>
+  </object>
+  <object id="71" name="music" x="176" y="944" width="128" height="64">
+   <properties>
+    <property name="1 default" value="mood_wind_desert,vol=1"/>
+   </properties>
+  </object>
+  <object id="119" name="memory" x="336" y="944" width="128" height="64">
+   <properties>
+    <property name="_snd_packs" value="p_hitswitch,p_fallingplatform,p_perro"/>
+    <property name="_snd_solos" value="bone_break,bone_crack"/>
+    <property name="prefabs" value="p_hitswitch,p_fallingplatform,p_perro"/>
+   </properties>
+  </object>
+  <object id="129" name="lighting" type="shader=diffuse;intensity=1.4;gales_light_power=3;no_add_lights" x="496" y="944" width="128" height="64"/>
+  <object id="143" name="GIS_PACK" x="656" y="944" width="96" height="64">
+   <properties>
+    <property name="1-get_perro" value="FILE_MARK_SI,PERRO_2,true|recycle,perro_real|AT_scale,perro_at,vec3(0.1/0.1/1),duration$0.25|DELAY,0.26|recycle,perro_at|recycle,perro_aonc"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="solid_collisions" visible="0">
+  <object id="36" type="profile=SAND" x="112" y="880">
+   <polygon points="-160,0 96,0 128,16 128,160 -160,160"/>
+  </object>
+  <object id="47" type="profile=SAND" x="272" y="918" width="80" height="144"/>
+  <object id="73" type="profile=SAND" x="240" y="886">
+   <polygon points="0,10 32,32 32,144 0,144"/>
+  </object>
+  <object id="74" type="profile=SAND" x="384" y="886">
+   <polygon points="0,10 -32,32 -32,176 0,176"/>
+  </object>
+  <object id="75" type="profile=SAND" x="384" y="896">
+   <polygon points="0,0 32,-16 128,-16 128,176 0,176"/>
+  </object>
+  <object id="76" type="profile=SAND" x="544" y="880">
+   <polygon points="-32,0 32,-16 160,-16 192,0 192,176 -32,176"/>
+  </object>
+  <object id="77" type="profile=SAND" x="736" y="880">
+   <polygon points="0,0 32,32 32,176 0,176"/>
+  </object>
+  <object id="78" type="profile=SAND" x="880" y="880">
+   <polygon points="0,0 -32,32 -32,176 0,176"/>
+  </object>
+  <object id="79" type="profile=SAND" x="768" y="912" width="80" height="144"/>
+  <object id="81" type="profile=SAND" x="880" y="880">
+   <polygon points="0,0 32,-16 192,-16 224,0 224,176 0,176"/>
+  </object>
+  <object id="82" type="profile=SAND" x="1104" y="880">
+   <polygon points="0,0 32,32 32,176 0,176"/>
+  </object>
+  <object id="83" type="profile=SAND" x="1136" y="912" width="80" height="144"/>
+  <object id="84" type="profile=SAND" x="1248" y="880">
+   <polygon points="0,0 -32,32 -32,176 0,176"/>
+  </object>
+  <object id="85" type="profile=SAND" x="1248" y="880">
+   <polygon points="0,0 32,-16 336,-16 400,0 400,176 0,176"/>
+  </object>
+  <object id="86" type="profile=SAND" x="1648" y="880" width="112" height="176"/>
+  <object id="87" type="profile=SAND" x="1760" y="880">
+   <polygon points="0,0 64,-16 336,-16 336,192 0,192"/>
+  </object>
+  <object id="94" x="1424" y="272" width="64" height="16"/>
+  <object id="95" x="1424" y="320" width="64" height="32"/>
+  <object id="96" x="1376" y="352" width="32" height="16"/>
+  <object id="97" x="1504" y="352" width="32" height="16"/>
+  <object id="98" x="1392" y="400" width="128" height="32"/>
+  <object id="99" x="1392" y="496" width="64" height="16"/>
+  <object id="100" x="1456" y="560" width="64" height="16"/>
+  <object id="101" x="1392" y="624" width="64" height="16"/>
+  <object id="102" x="1424" y="688" width="64" height="16"/>
+  <object id="139" x="1376" y="0" width="160" height="32"/>
+  <object id="140" x="1376" y="-64" width="32" height="64"/>
+  <object id="141" x="1376" y="-96" width="160" height="32"/>
+  <object id="142" x="1504" y="-64" width="32" height="64"/>
+ </objectgroup>
+ <objectgroup name="objects" visible="0">
+  <object id="4" name="door" type="profile=TOUCH_TRIGGER;open=p1_world_map_sw2;id=2" x="-96" y="0" width="96" height="912"/>
+  <object id="6" name="end_door" type="id=2;facing=right;start_zoom_lvl=1" x="32" y="848" width="32" height="32"/>
+  <object id="7" name="end_door" type="id=0;facing=right" x="32" y="848" width="32" height="32"/>
+  <object id="70" name="door" type="profile=TOUCH_TRIGGER;open=p1_world_map_sw2;id=2" x="2048" y="0" width="96" height="896"/>
+  <object id="88" name="water" type="type=P1_WAVY_WATER;sort_bg=bg_tiles,12;sort_fg=fg_tiles,100;use_rounded_corners;surface_color=f8cf6a;splash_color=f8cf6a;scale_x=0.875;spd=0.25" x="240" y="896" width="144" height="48"/>
+  <object id="91" name="water" type="type=P1_WAVY_WATER;sort_bg=bg_tiles,12;sort_fg=fg_tiles,100;use_rounded_corners;surface_color=f8cf6a;splash_color=f8cf6a;scale_x=0.875;spd=0.25" x="1104" y="880" width="144" height="48"/>
+  <object id="92" name="water" type="type=P1_WAVY_WATER;sort_bg=bg_tiles,12;sort_fg=fg_tiles,100;use_rounded_corners;surface_color=f8cf6a;splash_color=f8cf6a;scale_x=0.875;spd=0.25" x="736" y="880" width="144" height="48"/>
+  <object id="93" name="L" type="type=P1_WOOD_L" x="296" y="887" width="32" height="32"/>
+  <object id="103" name="end_door" type="id=3;facing=keep" x="1440" y="832" width="32" height="32"/>
+  <object id="104" name="door" type="profile=NONE_BACK;open=p1_ex_tower_01b;id=3" x="1448" y="832" width="16" height="32"/>
+  <object id="105" name="end_door" type="id=4;facing=keep" x="1440" y="368" width="32" height="32"/>
+  <object id="106" name="door" type="profile=NONE_BACK;open=p1_ex_tower_01b;id=4" x="1448" y="368" width="16" height="32"/>
+  <object id="109" name="trigger" type="GIS=FILE_MARK_OC,cam_zoomed_et01a|cutscene,line$FOCUS_SCRIPT_ZM1;ql=SI_FALSE,OXY_BANDIT_1&amp;OC_ABSENT,cam_zoomed_et01a;remove" x="1408" y="816" width="96" height="64"/>
+  <object id="110" name="loot" type="name=FOCUS_PT;id=4;collected_GIS=FILE_MARK_SI,OXY_BANDIT_1,true;ql=SI_FALSE,OXY_BANDIT_1" x="1440" y="304" width="32" height="16"/>
+  <object id="112" name="AONC" type="type=CACTI_S" x="1328" y="848" width="16" height="16"/>
+  <object id="113" name="AONC" type="type=CACTI_L" x="1296" y="832" width="16" height="32"/>
+  <object id="114" name="AONC" type="type=CACTI_L" x="1024" y="832" width="16" height="32"/>
+  <object id="115" name="AONC" type="type=CACTI_S" x="624" y="848" width="16" height="16"/>
+  <object id="116" name="AONC" type="type=CACTI_L" x="448" y="848" width="16" height="32"/>
+  <object id="117" name="AONC" type="type=CACTI_S" x="496" y="864" width="16" height="16"/>
+  <object id="118" name="AONC" type="type=CACTI_L" x="2000" y="832" width="16" height="32"/>
+  <object id="133" name="loot" type="id=106;gravity=0;angle=-45;collected_GIS=FILE_MARK_POC,fruit_pet_01a;ql=POC_ABSENT,fruit_pet_01a" x="1923" y="815" width="16" height="16"/>
+  <object id="134" name="loot" type="id=106;gravity=0;angle=0;collected_GIS=FILE_MARK_POC,fruit_pet_01a;ql=POC_ABSENT,fruit_pet_01a" x="1904" y="805" width="16" height="16"/>
+  <object id="144" name="puzzle" type="type=p_lizard;instruction=tmx(89/44),tmx(93/48),tmx(91.875/44)" x="1456" y="752" width="16" height="16"/>
+  <object id="301" name="loot" type="id=139;collected_GIS=FILE_MARK_SI,PERRO_2,true;ql=AP_SETTING_TRUE,PERRO&amp;SI_FALSE,PERRO_2" x="1440" y="672" width="32" height="32"/> <!-- Added line -->
+ </objectgroup>
+ <objectgroup name="objects_perro" visible="0">
+  <properties>
+   <property name="ql" value="SI_FALSE,PERRO_2&amp;AP_SETTING_FALSE,PERRO"/> <!-- &amp;AP_SETTING_FALSE,PERRO -->
+  </properties>
+  <object id="135" name="AT" type="name=perro_at;anim=52" x="1448" y="672" width="16" height="16"/>
+  <object id="136" name="trigger" type="name=perro_trigger;remove;GIS=cutscene,line$PERRO_GET" x="1448" y="672" width="16" height="16"/>
+  <object id="137" name="puzzle" type="name=perro_real;type=p_perro;instruction=tmx(28/22),tmx(38/22)" x="1448" y="-16" width="16" height="16"/>
+  <object id="138" name="AONC" type="name=perro_aonc;type=INVISIBLE;face_right;GIS=AT_play,perro_at,42|AT_move,perro_at,name(perro_at)+vec3(20/20/0),duration$3|uncommon_sfx,p1_perro_hurt|recycle,perro_trigger|recycle,perro_real|common_sfx,21|cpart,POW_BURST,intensity$1,pos$name(perro_aonc)" x="1448" y="672" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="objects_lights" visible="0">
+  <object id="121" name="bulb2" type="intensity=8;z=-13;range=14;color=ffedc1;diameter=60" x="928" y="752" width="128" height="128">
+   <ellipse/>
+  </object>
+  <object id="122" name="bulb" type="intensity=1.5;color=ffedc1;range=3;z=-2" x="1568" y="800" width="32" height="64">
+   <ellipse/>
+  </object>
+  <object id="123" name="bulb" type="intensity=1.5;color=ffedc1;range=3;z=-2" x="1520" y="784" width="32" height="64">
+   <ellipse/>
+  </object>
+  <object id="124" name="bulb" type="intensity=1.5;color=ffedc1;range=3;z=-2" x="1360" y="784" width="32" height="64">
+   <ellipse/>
+  </object>
+  <object id="125" name="bulb" type="intensity=1.5;color=ffedc1;range=3;z=-2" x="1312" y="800" width="32" height="64">
+   <ellipse/>
+  </object>
+  <object id="126" name="bulb" type="intensity=2;color=ffedc1;range=3;z=-2" x="1424" y="816" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="127" name="bulb" type="intensity=3;color=ffedc1;range=3;z=-2" x="1424" y="352" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="128" name="bulb2" type="intensity=6;z=-13;range=14;color=ffedc1;diameter=90" x="1392" y="224" width="128" height="128">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="animated" visible="0">
+  <object id="107" name="AT" type="sprite=0;color=CFCC5B;scale=adapt;sort=bg_tiles,-3;use_all_bright" x="0" y="0" width="2048" height="448"/>
+  <object id="108" name="AT" type="sprite=10;scale=vec3(128/2/1);angle=180;sort=bg_tiles,-2;color=EAE8B6;alpha=0.57254;use_all_bright" x="0" y="-32" width="2048" height="512"/>
+  <object id="130" name="AT" type="sprite=0;scale=adapt;sort=bg_tiles,-1;color=ffff5e;alpha=0.2;use_all_bright" x="-32" y="32" width="2112" height="960"/>
+  <object id="132" name="AT" type="sprite=0;scale=adapt;sort=fg_tiles,30;color=ffff5e;alpha=0.1;use_all_bright" x="-32" y="32" width="2112" height="960"/>
+ </objectgroup>
+</map>
