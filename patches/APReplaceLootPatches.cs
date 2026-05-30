@@ -18,6 +18,7 @@ internal sealed class APReplaceLootPatches
     private static string _spawnLootAPCollectedGis;
     private static readonly List<string> ExtractedPuzzleGisCmds = [];
     private static readonly string[] LevelsWithItemDisplays = ["p1_atai_shooting_gallery"];
+
     private static readonly Dictionary<string, string> SettingNameMap = new()
     {
         { "PERRO", "enable_perros" }
@@ -32,6 +33,7 @@ internal sealed class APReplaceLootPatches
             LoadSpriteFromResource("apSprite.png"),
             LoadSpriteFromResource("apSpriteUseful.png"),
             LoadSpriteFromResource("apSpriteFiller.png"),
+            LoadSpriteFromResource("preludeOfPanseloUpgrade.png"),
         ];
 
         Sprite[] originalSpriteLib = PT2.sprite_lib.all_item_sprites;
@@ -50,12 +52,30 @@ internal sealed class APReplaceLootPatches
     {
         ItemGridLogic.ItemOrToolDef[] apItems =
         [
-            CreateItemDef("Progressive Archipelago Item", FindSpriteIdByName("apSprite"), "An item from another world",
-                "FREE"),
-            CreateItemDef("Useful Archipelago Item", FindSpriteIdByName("apSpriteUseful"), "An item from another world",
-                "FREE"),
-            CreateItemDef("Filler Archipelago Item", FindSpriteIdByName("apSpriteFiller"), "An item from another world",
-                "FREE"),
+            CreateItemDef(
+                "Progressive Archipelago Item",
+                FindSpriteIdByName("apSprite"),
+                "An item from another world",
+                "FREE"
+            ),
+            CreateItemDef(
+                "Useful Archipelago Item",
+                FindSpriteIdByName("apSpriteUseful"),
+                "An item from another world",
+                "FREE"
+            ),
+            CreateItemDef(
+                "Filler Archipelago Item",
+                FindSpriteIdByName("apSpriteFiller"),
+                "An item from another world",
+                "FREE"
+            ),
+            CreateItemDef(
+                "Spell of Rejuvenation",
+                FindSpriteIdByName("preludeOfPanseloUpgrade"),
+                "Healing linked to a nostalgic song",
+                "FREE"
+            ),
         ];
 
         ItemGridLogic.ItemOrToolDef[] originalItemOrToolDef = DB.ITEM_DEFS;
@@ -213,11 +233,10 @@ internal sealed class APReplaceLootPatches
     [HarmonyPrefix] // Patch to spawn the appropriate version of an upgradable item
     private static void SpawnLootUpgradableItemPrefix(ref int item_id)
     {
-        if (item_id is >= 293 and <= 299)
-        {
-            item_id = (int)PhoaAPClient.APConnection.ItemHandler.HandleUpgradableItems(item_id);
-            PhoaAPClient.Logger.LogDebug($"New id: {item_id}");
-        }
+        if (item_id is < 292 or > 299) return;
+
+        item_id = (int)PhoaAPClient.APConnection.ItemHandler.HandleUpgradableItems(item_id);
+        PhoaAPClient.Logger.LogDebug($"New id: {item_id}");
     }
 
     [HarmonyPatch(typeof(NpcLogic), "InitializeNpc")]
@@ -337,14 +356,14 @@ internal sealed class APReplaceLootPatches
         string[] splitQLPhrase = ql_phrase.Split(',');
 
         bool checkValue = splitQLPhrase[0].EndsWith("TRUE");
-        
+
         if (!SettingNameMap.TryGetValue(splitQLPhrase[1], out string checkSetting))
         {
             __result = true;
             PhoaAPClient.Logger.LogWarning("AP settings not found for " + splitQLPhrase[1]);
             return false;
         }
-        
+
         bool perrosEnabled =
             PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue(checkSetting,
                 out var enablePerros) && (long)enablePerros == 1;

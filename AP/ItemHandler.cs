@@ -23,6 +23,7 @@ public class ItemHandler
 
     private static readonly Dictionary<long, int[]> UpgradeChains = new()
     {
+        { 292, [127, 216] },
         { 293, [6, 7, 8, 9] },
         { 294, [30, 28] },
         { 295, [31, 44] },
@@ -103,9 +104,15 @@ public class ItemHandler
 
         if (id is 139)
             return;
-        
-        if (id is >= 293 and <= 299)
+
+        if (id is >= 292 and <= 299)
             id = HandleUpgradableItems(id);
+
+        if (id is 216)
+        {
+            HandleSpellOfRejuvenation();
+            return;
+        }
 
         if (id > 300)
         {
@@ -279,6 +286,11 @@ public class ItemHandler
         }
 
         checks[i].OverrideType = newGisCmd;
+    }
+
+    private void HandleSpellOfRejuvenation()
+    {
+        PT2.GIS_ProcessInstructions("FILE_MARK_SI,PANSELO_SONG_HEALS,true", PT2.gale_script.GetTransform().position);
     }
 
     private static string GetGisCmdsFromOverwriteType(Check check)

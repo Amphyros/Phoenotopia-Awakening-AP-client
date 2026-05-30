@@ -40,6 +40,7 @@
     <EmbeddedResource Include="assets/apSprite.png"/>
     <EmbeddedResource Include="assets/apSpriteUseful.png"/>
     <EmbeddedResource Include="assets/apSpriteFiller.png"/>
+    <EmbeddedResource Include="assets/preludeOfPanseloUpgrade.png" />
   </ItemGroup>
 
   <ItemGroup>
