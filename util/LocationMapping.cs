@@ -3106,23 +3106,23 @@ public class LocationMapping
         },
         ["p1_bandit_lair_storeroom2"] = new List<Check>
         {
-            // new Check // TODO: These two checks breaks stuff because they share an object but differ in KeyItem status. Plus it interferes with the handling
-            // {
-            //     ArchipelagoId = 7676302,
-            //     ObjectIds = ["98"],
-            //     IsKeyItem = false,
-            //     GISIdentifier = "BANDIT_KEY_1_COLLECTED",
-            //     OverrideType =
-            //         "ql=ALWAYS_TRUE;name=mousey;type=p_mouse;instruction=tmx(50/22);GIS=particle_emitter,mouse_lights,stop|SPAWN_loot,%ItemId%,amt$1,loot_GIS_MARK_SI$BANDIT_KEY_2_COLLECTED|SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_BANDIT_MOUSE_2;binding=CONTINUE_IF,NAME_EXISTS,mousey|particle_emitter,mouse_lights,stop",
-            // },
             new Check
             {
-                ArchipelagoId = 7676304,
+                ArchipelagoId = 7676302,
+                ObjectIds = ["98"],
+                IsKeyItem = false,
+                GISIdentifier = "AP_BANDIT_MOUSE_2",
+                OverrideType =
+                    "ql=ALWAYS_TRUE;name=mousey;type=p_mouse;instruction=tmx(50/22);GIS=particle_emitter,mouse_lights,stop|SPAWN_loot,%ItemLink$7676303%,loot_GIS_MARK_SI$BANDIT_KEY_2_COLLECTED|SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_BANDIT_MOUSE_2;binding=CONTINUE_IF,NAME_EXISTS,mousey|particle_emitter,mouse_lights,stop",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676303,
                 ObjectIds = ["98"],
                 IsKeyItem = true,
                 GISIdentifier = "BANDIT_KEY_2_COLLECTED",
                 OverrideType =
-                    "ql=ALWAYS_TRUE;name=mousey;type=p_mouse;instruction=tmx(50/22);GIS=particle_emitter,mouse_lights,stop|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$BANDIT_KEY_2_COLLECTED;binding=CONTINUE_IF,NAME_EXISTS,mousey|particle_emitter,mouse_lights,stop",
+                    "ql=ALWAYS_TRUE;name=mousey;type=p_mouse;instruction=tmx(50/22);GIS=particle_emitter,mouse_lights,stop|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$BANDIT_KEY_2_COLLECTED|SPAWN_loot,%ItemLink$7676302%,loot_GIS_MARK_AP$AP_BANDIT_MOUSE_2;binding=CONTINUE_IF,NAME_EXISTS,mousey|particle_emitter,mouse_lights,stop",
             },
             new Check
             {
@@ -3342,7 +3342,7 @@ public class LocationMapping
                 IsKeyItem = true,
                 GISIdentifier = "BANDIT_MONEY_3",
                 OverrideType =
-                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,FILE_MARK_SI$BANDIT_MONEY_3,true;ql=SI_FALSE,BANDIT_MONEY_3",
+                    "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$BANDIT_MONEY_3;ql=SI_FALSE,BANDIT_MONEY_3",
             },
         },
         ["p1_bandit_lair_stealth_03"] = new List<Check>

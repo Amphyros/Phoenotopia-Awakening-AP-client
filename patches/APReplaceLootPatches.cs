@@ -313,10 +313,12 @@ internal sealed class APReplaceLootPatches
 
             string nonRefArg = args[i];
             args = args.Where(item => item != nonRefArg).ToArray();
+            return;
         }
     }
 
     [HarmonyPatch(typeof(ItemGenerator), "SpawnLoot")]
+    [HarmonyPriority(Priority.First)]
     [HarmonyPrefix] // Follow-up patch of GISHandleSpawnLootPrefix() to handle FILE_MARK_AP instruction
     private static void SpawnLootAPGISPrefix(ref string collected_GIS)
     {
@@ -386,18 +388,14 @@ internal sealed class APReplaceLootPatches
         List<string> extractedGisCmds = [];
         foreach (string instruction in instructionArray)
         {
-            if (instruction.Contains("loot_GIS_MARK_AP"))
+            if (instruction.Contains("loot_GIS_MARK_AP") || 
+                (instruction.Contains("SPAWN_pickup") && instruction.Contains("FILE_MARK_AP")))
             {
                 extractedGisCmds.Add(instruction);
                 continue;
             }
 
-            if (instruction.Contains("SPAWN_pickup") || instruction.Contains("FILE_MARK_AP"))
-            {
-                extractedGisCmds.Add(instruction);
-                continue;
-            }
-
+            if (strippedInstructions.Length > 0) strippedInstructions.Append("|");
             strippedInstructions.Append(instruction);
         }
 

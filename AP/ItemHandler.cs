@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Helpers;
 using Archipelago.MultiClient.Net.Models;
@@ -20,6 +21,8 @@ public class ItemHandler
     public ReadOnlyCollection<long> LocalAllLocationsChecked { get; private set; }
     public readonly HashSet<long> SuppressedItemMessages = [];
     public readonly HashSet<long> SuppressedItemAddition = [];
+
+    private static readonly Regex ItemLinkRegex = new(@"%ItemLink\$\d+%");
 
     private static readonly Dictionary<long, int[]> UpgradeChains = new()
     {
@@ -226,6 +229,8 @@ public class ItemHandler
                 isExcluded || itemInfo.Player.Name == _sessionContext.Session.Players.ActivePlayer.Name,
                 checks[i].CompletionDialogId);
 
+        bool foundLinkedMoneyCheck = FillLinkedItemValues(result, checks, i);
+
         if (isExcluded) return;
 
         LocationMapping.LocationMap[levelName][i].ItemInfo = itemInfo;
@@ -241,7 +246,7 @@ public class ItemHandler
         string[] overrideTypeAttributes = checks[i].OverrideType.Split(';');
         bool isStandaloneItem = overrideTypeAttributes.Contains("id=22");
 
-        if (!isFromThisWorld || replacementId != "22" || isNpcType || isStandaloneItem || hasNothingToReplace ||
+        if (!isFromThisWorld || foundLinkedMoneyCheck || isNpcType || isStandaloneItem || hasNothingToReplace ||
             isAnitmatedSprite)
             return;
 
@@ -277,15 +282,15 @@ public class ItemHandler
             return;
         }
 
-        string newGisCmd = GetRinPickupReplacementString(gisCmds, checks[i]);
+        string newOverwriteType = GetRinPickupReplacementString(gisCmds, checks[i]);
 
-        if (newGisCmd.IsNullOrEmpty())
+        if (newOverwriteType.IsNullOrEmpty())
         {
             GiveRinReplacementInstructionFailureWarning(checks[i].ArchipelagoId);
             return;
         }
 
-        checks[i].OverrideType = newGisCmd;
+        checks[i].OverrideType = newOverwriteType;
     }
 
     private void HandleSpellOfRejuvenation()
@@ -310,37 +315,59 @@ public class ItemHandler
 
     private static string GetRinPickupReplacementString(string gisCmds, Check check)
     {
+        string result = check.OverrideType;
         string[] instructions = gisCmds.Split('|');
-        string targetInstruction = "";
-        string identifier = "";
 
         foreach (string instruction in instructions)
         {
-            if (!instruction.Contains("SPAWN_loot")) continue;
+            if (!instruction.Contains("SPAWN_loot,22,")) continue;
 
-            targetInstruction = instruction;
             List<string> splitInstruction = instruction.Split(',').ToList();
 
-            // Edge case handler for destructable rigid objects
-            if (splitInstruction.Count < 3) return "";
+            if (splitInstruction.Count < 3) GiveRinReplacementInstructionFailureWarning(check.ArchipelagoId);
             if (splitInstruction[2].Contains("pos")) splitInstruction.RemoveAt(2);
 
-            identifier = splitInstruction.Count >= 3 ? splitInstruction[2] : "";
+            string identifier = splitInstruction.Count >= 3 ? splitInstruction[2] : "";
+            if (identifier.IsNullOrEmpty()) GiveRinReplacementInstructionFailureWarning(check.ArchipelagoId);
+
+            identifier = identifier.Replace("loot_GIS_", "FILE_").Replace("$", ",");
+
+            result = result.Replace(instruction,
+                $"SPAWN_pickup,P1_RAI,{check.ItemInfo.ItemId - 300}|{identifier},true");
             break;
         }
 
-        if (targetInstruction.IsNullOrEmpty() || identifier.IsNullOrEmpty()) return "";
-
-        identifier = identifier.Replace("loot_GIS_", "FILE_");
-        identifier = identifier.Replace("$", ",");
-
-        return check.OverrideType.Replace(targetInstruction,
-            $"SPAWN_pickup,P1_RAI,{check.ItemInfo.ItemId - 300}|{identifier},true");
+        return result;
     }
 
     private static void GiveRinReplacementInstructionFailureWarning(long apId)
     {
         PhoaAPClient.Logger.LogWarning(
             $"An instruction replacement for rin was improperly handled at check {apId}. Please contact the developer");
+    }
+
+    private static bool FillLinkedItemValues(Dictionary<long, ScoutedItemInfo> result, List<Check> checks, int i)
+    {
+        bool foundMoneyCheck = false;
+
+        foreach (Match match in ItemLinkRegex.Matches(checks[i].OverrideType))
+        {
+            string valueToFill = match.Value;
+            if (!int.TryParse(valueToFill.Trim('%').Split('$')[1], out int apId))
+            {
+                PhoaAPClient.Logger.LogError("Invalid link value: " + valueToFill);
+                continue;
+            }
+
+            string replacement = result.TryGetValue(apId, out ScoutedItemInfo linkItemInfo)
+                ? DetermineReplacementId(checks[i], linkItemInfo)
+                : "215";
+
+            if (replacement == "22") foundMoneyCheck = true;
+
+            checks[i].OverrideType = checks[i].OverrideType.Replace(valueToFill, replacement);
+        }
+
+        return foundMoneyCheck;
     }
 }
