@@ -2085,7 +2085,7 @@ public class LocationMapping
         {
             new Check
             {
-                ArchipelagoId = 7676231,
+                ArchipelagoId = 7676298,
                 ObjectIds = ["106"],
                 IsKeyItem = true,
                 IsNpc = true,
