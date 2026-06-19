@@ -2967,7 +2967,7 @@ public class LocationMapping
                 OverrideType =
                     "type=P1_BANDIT_POT_L;ql=SI_FALSE,MOON_BANDIT_4;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$MOON_BANDIT_4",
             },
-            new Check // TODO: Only spawns once unlike the other mouses popping out of objects
+            new Check
             {
                 ArchipelagoId = 7676288,
                 ObjectIds = ["169"],
