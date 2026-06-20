@@ -262,6 +262,7 @@ public class ItemHandler
             replacementId = 215.ToString();
             if ((itemInfo.Flags & ItemFlags.NeverExclude) != 0) replacementId = 214.ToString();
             if ((itemInfo.Flags & ItemFlags.Advancement) != 0) replacementId = 213.ToString();
+            if ((itemInfo.Flags & ItemFlags.Trap) != 0) replacementId = 213.ToString();
         }
 
         int[] animatedFillerIds = [213, 214, 215];
