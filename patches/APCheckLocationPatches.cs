@@ -135,6 +135,26 @@ internal sealed class APCheckLocationPatches
         instructions = string.Join("|", instructionsList.ToArray());
     }
 
+    [HarmonyPatch(typeof(SaveFile), "SaveGame")]
+    [HarmonyPrefix] // Patch that stalls saving the game until the entire PerFrameActions queue is resolved
+    private static bool SaveGamePrefix()
+    {
+        if (MainThreadDispatcher.ActionsLeftInPerFrameQueue() <= 0) return true;
+
+        PhoaAPClient.Logger.LogDebug(
+            $"{MainThreadDispatcher.ActionsLeftInPerFrameQueue()} per frame actions left in queue. " +
+            $"Stalling save until queue is resolved...");
+        MainThreadDispatcher.SetStalledSaveAction(() => PT2.save_file.SaveGame());
+        return false;
+    }
+
+    [HarmonyPatch(typeof(SaveFile), "SaveGame")]
+    [HarmonyPostfix]
+    private static void SaveGamePostfix()
+    {
+        PhoaAPClient.Logger.LogDebug("Save Completed");
+    }
+
     private static void OnLocationGet(ScoutedItemInfo itemInfo)
     {
         PhoaAPClient.APConnection.ItemHandler.SuppressedItemMessages.Add(itemInfo.ItemId);
