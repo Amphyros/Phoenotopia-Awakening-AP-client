@@ -12,10 +12,10 @@ internal static class APScriptAdditions
         [
             "GO,%NextIndex%||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nIf you wish to go to a certain point in time, you need only ask.",
             "CHOICE,TIMEWARP_PANSELO+2,TIMEWARP_PANSELO+3,TIMEWARP_PANSELO+4,TIMEWARP_PANSELO+5,CLOSE_ALL;OWNER,gale||||...||Before the abduction||After the abduction||After returning home with Lisa||After hearing Leo's story||Never mind",
-            "OWNER,zophiel;GO,RELOAD_GAME||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 1 was chosen. <*_>Your wish shall be granted.",
-            "OWNER,zophiel;GO,RELOAD_GAME+1||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 2 was chosen. <*_>Your wish shall be granted.",
-            "OWNER,zophiel;GO,RELOAD_GAME+2||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 3 was chosen. <*_>Your wish shall be granted.",
-            "OWNER,zophiel;GO,RELOAD_GAME+3||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nOption 4 was chosen. <*_>Your wish shall be granted.",
+            "OWNER,zophiel;GO,RELOAD_GAME||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nYour wish shall be granted.",
+            "OWNER,zophiel;GO,RELOAD_GAME+1||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nYour wish shall be granted.",
+            "OWNER,zophiel;GO,RELOAD_GAME+2||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nYour wish shall be granted.",
+            "OWNER,zophiel;GO,RELOAD_GAME+3||||<i><size=-10><color=#898989><*name_op>- Zophiel statue - <*name_ed></color></size></i><*stop=0.15>\nYour wish shall be granted.",
         ],
         ["RELOAD_GAME"] =
         [

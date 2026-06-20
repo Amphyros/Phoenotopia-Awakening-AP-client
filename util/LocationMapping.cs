@@ -1825,7 +1825,7 @@ public class LocationMapping
                 {
                     [1419] = [["25 RIN", "<#00ffff>%APPlayer%%APItem%</color>"]],
                     [1429] = [["How many are you looking to sell?", "For the first 4 I'll give you <#00ffff>%APPlayer%%APItem%</color>"]],
-                    [1430] = [[",1432,1433", ""], ["||Sell 8 Berry Fruits for 50 R||Sell 12 Berry Fruits for 75 R", ""]],
+                    [1430] = [[",1432,1433", ""], ["25 R||Sell 8 Berry Fruits for 50 R||Sell 12 Berry Fruits for 75 R", "%APPlayer%%APItem%"]],
                     [1431] = [["money_adjust,P1_RAI,25", "FILE_MARK_AP,ATAI_MARKET_BERRY_SELL"]],
                 },
                 GISIdentifier = "ATAI_MARKET_BERRY_SELL",
