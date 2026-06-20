@@ -148,13 +148,6 @@ internal sealed class APCheckLocationPatches
         return false;
     }
 
-    [HarmonyPatch(typeof(SaveFile), "SaveGame")]
-    [HarmonyPostfix]
-    private static void SaveGamePostfix()
-    {
-        PhoaAPClient.Logger.LogDebug("Save Completed");
-    }
-
     private static void OnLocationGet(ScoutedItemInfo itemInfo)
     {
         PhoaAPClient.APConnection.ItemHandler.SuppressedItemMessages.Add(itemInfo.ItemId);

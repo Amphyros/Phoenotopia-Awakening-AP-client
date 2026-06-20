@@ -76,4 +76,20 @@ public class CutsceneAdjustmentPatches
         expression = expression
             .Replace("ITEM_DONT_HAVE,int_list(30)", alexChecked || checkExcluded ? "ALWAYS_FALSE" : "ALWAYS_TRUE");
     }
+
+    [HarmonyPatch(typeof(DirectorLogic), "StartCommand")]
+    [HarmonyPrefix] // Patch to remove save message canceling movement
+    private static bool StartCommandCancelSaveTextPrefix(int speech_id)
+    {
+        if (speech_id == 155) return false;
+        return true;
+    }
+
+    [HarmonyPatch(typeof(SaveCircleLogic), "InformStringEvent")]
+    [HarmonyPostfix] // Patch to add replacement message when saving
+    private static void InformStringEventPostfix(string message)
+    {
+        if (message == "fx2")
+            PT2.display_messages.DisplayMessage("Game saved!", DisplayMessagesLogic.MSG_TYPE.GALE_PLUS_STATUS);
+    }
 }
