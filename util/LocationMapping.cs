@@ -2900,7 +2900,7 @@ public class LocationMapping
                 FillWhenExcluded = FillMode.StatusUpgrade,
                 GISIdentifier = "MOON_BANDIT_1",
                 OverrideType =
-                    "ql=SI_FALSE,MOON_BANDIT_1;profile=WOOD;layers_to_erase=5;shave_extra=1;destroyed_by_bombs;particle_color=da8746;destroyed_GIS=common_sfx,150|SPAWN_loot,%ItemId%,pos$tmx(77/56),loot_GIS_PACK$3",
+                    "ql=SI_FALSE,MOON_BANDIT_1;profile=WOOD;layers_to_erase=5;shave_extra=1;destroyed_by_bombs;particle_color=da8746;destroyed_GIS=common_sfx,150|SPAWN_loot,%ItemId%,pos$tmx(77/56),loot_GIS_MARK_SI$MOON_BANDIT_1",
             },
         },
         ["p1_ex_ouroboros_04e"] = new List<Check>
