@@ -196,6 +196,9 @@ internal sealed class APReplaceLootPatches
         if (!LevelsWithItemDisplays.Contains(activeLevelName)) return;
 
         if (!LocationMapping.LocationMap.TryGetValue(activeLevelName.ToLower(), out List<Check> checks)) return;
+        checks = checks
+            .Where(check => PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(check.ArchipelagoId))
+            .ToList();
 
         foreach (Check check in checks)
         {
