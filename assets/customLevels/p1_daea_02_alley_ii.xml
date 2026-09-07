@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="16" tileheight="16" infinite="0" nextobjectid="116">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="16384" columns="128">
+  <image source="../../Textures/tiles.PNG" width="2048" height="2048"/>
+ </tileset>
+ <layer name="back" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztk0EKwjAQRedYGpsrKFqouPAuc8JCLbS4cOVFnElIGUtCqqYLYR78RX7+TJImBVAURVGYdreOlrKv1tG/rN9W6+hgAS8GgIQNKba2nO+oprZOeCafhDV7FeDRugzM+52s05QLY56L5efcjRMOxq0BvReO5JOwp74k7KzLvOW5/madplwY81wsP2fcOiX3J+HzlM6H+dT+JIMpnxf3k4XPUDov7icLn+GXfBPZB3+fp/HKEXLf5mN1vP5j4yUJnvSll8qneqTq+H6uWy9J8KQvvVQ+1SNVl/s/JZwR7zlLI+5/yXstzaf7VRRlfV4NpfG2
+  </data>
+ </layer>
+ <layer name="back" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztkEuOwjAQRH0thoQNv23MSLBF4iJ9FO7CZ7YOs2CJNCehnMaSCWC70RAh4ZKeErfL1epWKisrK+t9Ne830Kv8IWlk1QzphEypPyXru2igWKbUn9JbI+uXIR3IlPpDMl6W5pyrr800XqbUH1NVJnnI+1c68AZ35PtjMsg6fYUxXp7114E3uCMj6F9d8g4MHZEBqMY+He35/btjr+GhP6W/3eeMoQX6A3Ln9j7b/Z3/2f7mwfzu3N7nzfyRfb1ifon/P+a3eX+FWq9KtZbuKzr/APOAGX+pYlyNXA39lxL/vV7b4haDdzU48JcM42rkalL/Dt4907y15yF2NAJjMAHTstvaBmzBDuzBT8e1IXY0AmMwAdNBt7WsrE/WGenfPOI=
+  </data>
+ </layer>
+ <layer name="back" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlEsKwjAQhmfrLbyCixaEpvQoRReKRxCFOUqP0q1W7yC68Qyi4Ezb1BjTkKoVhHwwi8zrn0loATwej+d/KWLAX/fcxGWOXvMxu6ov7i29WHurxL+ha6OIaK7o1c+zmuY05Z8FJL0M58g87qa/HHePmfyqbybc9S8W/baYyc++iYChu7I7xwgyMuyjtw25z1RA/iO9TD1PReM/2PL1unehO2bL28611lCPm/Jc2SnfNe2bneit1X34vBgBkCH5sdZ6mkGvc72PawCwDst82YN3SeV705ktJe2ErNmP4gn/j2Rcr9NnbNO+BYBksAoBycpduRcbzZTT/w25/yB41BWVZnnfta6sS+vaZkbWoFp0uQuPx+PpizuKqoJP
+  </data>
+ </layer>
+ <layer name="back" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztkT0KwkAQhV/nYbTwLwExeI9oIzb+XECrsEdLrwcwSWMhqCfQSny7CRhDQlYQ08wHQybLyzfDBhAEQRCE5gl6CBud329yOvBseH4w+C6/8DD/9Q7TIZTPqsvd28CjXe+jSzutSDg3ZiUW+W0H2HXqcxFddMLG6Tvc1YGaOe8z3vHHPev+7CG8dQGWKjp0vsSJvLNyV2Zizk8K2bPFf+bcML+jftd7Zk4UnWXMXKjINU/Dcgys0lLsVbZLSPep7PuyvE/XNOesI+YOe94hS13ouqale3OuWY+ATVbszZyq/MEzThwnQMviDgRBEP7BCzl7VL0=
+  </data>
+ </layer>
+ <layer name="front" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztj0EOwiAQRf+VbJc10Ys0rlBPYbiqSvEWxt8UIiVDNFGpi5nkhWEGeINfw/rAZQN7JqgYXv3qV7/61a/+H/lPK2yX9N+bcq/K/1vSyHOU/H0Hu+sACfbECHdmxLOje5zjXf+3Q3LX9JdC/f/n30/gQAyJuRRGmNcUzr7yH/nWjfgJMMdAYn5l3ZF0HZKcwIU7ec0989ma+km+z3tS/5OaoigL8gBEtKDW
+  </data>
+ </layer>
+ <layer name="front" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztkjEOwjAMRX0UrkCZoKBcpWKgew9Q5ahJhrL3AAjTylJlkuCiUBZ/6UtRavvZqQF+L28AAno4v3sLKV/5yle+8pX/L74z0ISIUzldjT6BjboGK85hsW5+ix05xR+x1oj5USf40RwWy/9DSo8KoK/A9nuweI7yuPrDlJeNlfKXtfAs4ksk5Zfmkvge8u/X4+TiXIk8ssNs6wv0sGYWYrcXcOgm14Ok7ppZlmzai1QPsbo33KnWfDfLSxTH+XT/qe6A7LuRzYJ9Wuw3+x4qlWobPQFygRUh
+  </data>
+ </layer>
+ <objectgroup name="meta" visible="0">
+  <object id="1" name="config" type="id=0;no_zoom=0;follow=horizontal" x="32" y="176" width="464" height="224"/>
+  <object id="2" name="lighting" type="shader=diffuse;intensity=0.6;gales_light_power=6" x="56" y="64" width="112" height="48"/>
+  <object id="3" name="music" x="184" y="64" width="112" height="48">
+   <properties>
+    <property name="1" value="daea,vol=0.5;mood_water_flow2"/>
+   </properties>
+  </object>
+  <object id="99" name="GIS_PACK" x="312" y="64" width="112" height="48">
+   <properties>
+    <property name="0-fountain money" value="GIS_PACK,2|DELAY,2.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,1|DELAY,0.5|GIS_PACK,3|GIS_PACK,4"/>
+    <property name="1-spawn coins" value="SPAWN_pickup,P1_RAI,2,pos$name(shooter)|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5"/>
+    <property name="2-open fount mouth" value="common_sfx,140,pitch$1.2|DELAY,0.5|common_sfx,9,pitch$1.5|AT_move,water_spout,name(water_pos),duration$1,tween$easeInOutQuad|DELAY,0.5|AT_effect_enable,shooter,on"/>
+    <property name="3-close fount mouth" value="AT_effect_enable,shooter,off|AT_rotate,shooter,360|DELAY,0.5|AT_move,water_spout,name(water_pos)+vec3(0/1/0),duration$1,tween$easeInOutQuad|common_sfx,140,pitch$1.2|DELAY,0.5|common_sfx,7"/>
+    <property name="4-final money" value="CONTINUE_IF,SI_ALL_TRUE,FAUN_FOUNT_OU,FAUN_FOUNT_GE,FAUN_FOUNT_RO,FAUN_FOUNT_PA,FAUN_FOUNT_BA,FAUN_FOUNT_PH|SPAWN_pickup,P1_RAI,50,pos$name(shooter)|cpart,P1_CLOUD,pos$name(shooter),intensity$2,deviation$vec3(1/1/1),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|common_sfx,5,pitch$0.7|DELAY,1.5|particle_emitter,highlighter,stop|light_change,faun_light,intensity$0|common_sfx,150"/>
+    <!-- Separate GIS_PACK cmd to trigger the final reward at a later point -->
+    <property name="5-final money plus" value="CONTINUE_IF,SI_ALL_TRUE,FAUN_FOUNT_OU,FAUN_FOUNT_GE,FAUN_FOUNT_RO,FAUN_FOUNT_PA,FAUN_FOUNT_BA,FAUN_FOUNT_PH|ABORT_IF,AP_LOCATION_CHECKED,AP_DAEA_FOUNTAIN_ALL_SONGS|recycle,final_reward_trigger|GIS_PACK,2|DELAY,2.5|GIS_PACK,4|GIS_PACK,3"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="solid_collisions" visible="0">
+  <object id="4" x="-32" y="368" width="608" height="128"/>
+  <object id="11" type="profile=METAL" x="-32" y="0" width="96" height="368"/>
+  <object id="14" type="profile=METAL" x="416" y="0" width="160" height="240"/>
+  <object id="15" type="profile=METAL" x="448" y="240" width="128" height="80"/>
+  <object id="17" type="profile=WOOD" x="96" y="208">
+   <polyline points="-10,10 56,-56 72,-56 138,10"/>
+  </object>
+  <object id="18" type="profile=WOOD" x="416" y="208">
+   <polyline points="0,0 -56,-56 -72,-56 -138,10"/>
+  </object>
+  <object id="19" type="profile=WOOD" x="96" y="256" width="128" height="16"/>
+  <object id="20" type="profile=WOOD" x="304" y="256" width="96" height="16"/>
+  <object id="21" type="profile=WOOD" x="218" y="248" width="6" height="16"/>
+  <object id="22" type="profile=WOOD" x="394" y="248" width="6" height="16"/>
+  <object id="23" type="profile=WOOD" x="304" y="248" width="6" height="16"/>
+  <object id="24" type="profile=WOOD" x="96" y="248" width="6" height="16"/>
+  <object id="98" type="profile=WET_ROCK" x="224" y="352">
+   <polyline points="0,0 64,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects" visible="0">
+  <object id="9" name="end_door" type="id=1;facing=left" x="432" y="336" width="32" height="32"/>
+  <object id="10" name="door" type="profile=TOUCH_TRIGGER;open=P1_daea_02_alley_i;id=1" x="512" y="48" width="48" height="400"/>
+  <object id="12" name="end_door" type="id=0;facing=left" x="432" y="336" width="32" height="32"/>
+  <object id="27" name="L" type="type=P1_WOOD_L" x="80" y="336" width="32" height="32"/>
+  <object id="28" name="L" type="type=P1_WOOD_L" x="128" y="336" width="32" height="32"/>
+  <object id="31" name="end_door" type="id=7;facing=right" x="112" y="224" width="32" height="32"/>
+  <object id="82" name="loot" type="name=FOCUS_PT;id=3;collected_GIS=FILE_MARK_SI,HEART_DAEA_2,true;ql=SI_FALSE,HEART_DAEA_2" x="344" y="240" width="16" height="16"/>
+  <object id="83" name="AT" type="sprite=0;scale=adapt;color=ddb883;sort=bg_tiles,1" x="370" y="248" width="28" height="6"/>
+  <object id="84" name="AT" type="sprite=0;scale=adapt;color=ddb883;sort=bg_tiles,1" x="306" y="248" width="28" height="6"/>
+  <object id="87" name="door" type="profile=NONE_BACK;open=p1_daea_inn_rooms;id=7;sort=bg_tiles,9;exist_ql=SI_TRUE,DAEA_LUX_RM_2" x="120" y="224" width="16" height="32"/>
+  <object id="88" name="door" type="profile=NEW_DAEA_BACK;open=p1_daea_inn_rooms;id=7;sort=bg_tiles,9;exist_ql=SI_FALSE,DAEA_LUX_RM_2;ql_to_open_lock=ALWAYS_FALSE" x="120" y="224" width="16" height="32"/>
+  <object id="96" name="AT_water_spout" type="name=water_spout;anim=32;sort=bg_tiles,14" x="240" y="336" width="32" height="32"/>
+  <object id="101" name="AT_bg" type="sprite=0;color=111111;scale=adapt;sort=bg_tiles,12" x="252" y="330" width="8" height="12"/>
+  <object id="102" name="AT_water_pos" type="name=water_pos;sprite=0;use_all_bright;sort=bg_tiles,-1" x="240" y="352" width="32" height="32"/>
+  <object id="104" name="AT_shooter" type="name=shooter;sprite=151;sort=bg_tiles,13;effect=rotate,-5;effect_starts_off" x="251" y="329" width="10" height="14"/>
+  <object id="112" name="particle_emitter" type="name=highlighter;type=ITEM_CARRIER;ppts=1;starts_with=2;ql=SI_OR_FALSE,FAUN_FOUNT_OU,FAUN_FOUNT_GE,FAUN_FOUNT_RO,FAUN_FOUNT_PA,FAUN_FOUNT_BA,FAUN_FOUNT_PH" x="248" y="275" width="16" height="32"/>
+  <object id="114" name="npc" type="name=fount_npc;profile=!;floating;spacing=stand;speech=FOUNT_WISH;shiny;floating;ql=SI_TRUE,KINGS_MOUTH_0&amp;SI_FALSE,OXY_DAEA_3" x="272" y="336" width="17" height="16"/>
+ </objectgroup>
+ <objectgroup name="objects_lighting" visible="0">
+  <object id="68" name="AT" type="sprite=10;sort=fg_tiles,100;scale=vec3(35/0.8/1);color=ffa359;alpha=0.3;use_all_bright;angle=180" x="64" y="176" width="384" height="70">
+   <ellipse/>
+  </object>
+  <object id="69" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1.5/1.5/1);color=ff56ad;alpha=0.2;use_all_bright" x="160" y="256" width="192" height="176">
+   <ellipse/>
+  </object>
+  <object id="75" name="bulb" type="intensity=3;color=ffedc1;range=6;z=-2" x="464" y="320" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="76" name="bulb2" type="intensity=8;z=-8;range=10;color=dcceff;diameter=90" x="208" y="288" width="96" height="96">
+   <ellipse/>
+  </object>
+  <object id="77" name="bulb" type="intensity=3;color=ffa359;range=4;z=-2" x="96" y="208" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="78" name="bulb2" type="intensity=5;z=-7;range=10;color=ffd5ad;diameter=70" x="112" y="128" width="96" height="80">
+   <ellipse/>
+  </object>
+  <object id="79" name="bulb2" type="intensity=5;z=-7;range=10;color=ffd5ad;diameter=70" x="304" y="128" width="96" height="80">
+   <ellipse/>
+  </object>
+  <object id="80" name="bulb2" type="intensity=5;z=-8;range=10;color=ffd5ad;diameter=80" x="208" y="128" width="96" height="80">
+   <ellipse/>
+  </object>
+  <object id="95" name="bulb" type="intensity=3;color=ffedc1;range=4;z=-2" x="224" y="256" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="113" name="bulb" type="name=faun_light;intensity=3;color=ffffff;range=1;z=-0.5;ql=SI_OR_FALSE,FAUN_FOUNT_OU,FAUN_FOUNT_GE,FAUN_FOUNT_RO,FAUN_FOUNT_PA,FAUN_FOUNT_BA,FAUN_FOUNT_PH" x="246" y="271" width="16" height="32">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_song_fields" visible="0">
+  <object id="106" name="song_field" type="ql=SI_FALSE,FAUN_FOUNT_OU;remove;name=song_field;desired_song=0;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_OU,true|DELAY,2.5|GIS_PACK,0" x="48" y="224" width="416" height="176"/>
+  <object id="107" name="song_field" type="ql=SI_FALSE,FAUN_FOUNT_GE;remove;name=song_field;desired_song=1;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_GE,true|DELAY,2.5|GIS_PACK,0" x="48" y="226" width="416" height="176"/>
+  <object id="108" name="song_field" type="ql=SI_FALSE,FAUN_FOUNT_RO;remove;name=song_field;desired_song=2;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_RO,true|DELAY,2.5|GIS_PACK,0" x="48" y="228" width="416" height="176"/>
+  <object id="109" name="song_field" type="ql=SI_FALSE,FAUN_FOUNT_PA;remove;name=song_field;desired_song=3;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_PA,true|DELAY,2.5|GIS_PACK,0" x="48" y="230" width="416" height="176"/>
+  <object id="110" name="song_field" type="ql=SI_FALSE,FAUN_FOUNT_BA;remove;name=song_field;desired_song=4;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_BA,true|DELAY,2.5|GIS_PACK,0" x="48" y="232" width="416" height="176"/>
+  <object id="111" name="song_field" type="ql=SI_FALSE,FAUN_FOUNT_PH;remove;name=song_field;desired_song=5;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_PH,true|DELAY,2.5|GIS_PACK,0" x="48" y="234" width="416" height="176"/>
+  <!-- Duplicates song fields and extra trigger to allow playing songs again for final gift -->
+  <object id="156" name="song_field" type="ql=AP_LOCATION_NOT_CHECKED,AP_DAEA_FOUNTAIN_ALL_SONGS;name=final_reward_trigger;desired_song=0;GIS=GIS_PACK,5" x="48" y="224" width="416" height="176"/>
+  <object id="157" name="song_field" type="ql=AP_LOCATION_NOT_CHECKED,AP_DAEA_FOUNTAIN_ALL_SONGS;name=final_reward_trigger;desired_song=1;GIS=GIS_PACK,5" x="48" y="226" width="416" height="176"/>
+  <object id="158" name="song_field" type="ql=AP_LOCATION_NOT_CHECKED,AP_DAEA_FOUNTAIN_ALL_SONGS;name=final_reward_trigger;desired_song=2;GIS=GIS_PACK,5" x="48" y="228" width="416" height="176"/>
+  <object id="159" name="song_field" type="ql=AP_LOCATION_NOT_CHECKED,AP_DAEA_FOUNTAIN_ALL_SONGS;name=final_reward_trigger;desired_song=3;GIS=GIS_PACK,5" x="48" y="230" width="416" height="176"/>
+  <object id="160" name="song_field" type="ql=AP_LOCATION_NOT_CHECKED,AP_DAEA_FOUNTAIN_ALL_SONGS;name=final_reward_trigger;desired_song=4;GIS=GIS_PACK,5" x="48" y="232" width="416" height="176"/>
+  <object id="161" name="song_field" type="ql=AP_LOCATION_NOT_CHECKED,AP_DAEA_FOUNTAIN_ALL_SONGS;name=final_reward_trigger;desired_song=5;GIS=GIS_PACK,5" x="48" y="234" width="416" height="176"/>
+  <object id="162" name="trigger" type="name=final_reward_trigger;GIS=GIS_PACK,5" x="48" y="234" width="416" height="176"/>
+ </objectgroup>
+</map>

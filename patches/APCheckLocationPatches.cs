@@ -134,6 +134,13 @@ internal sealed class APCheckLocationPatches
             string[] instructionParts = instruction.Split(',');
             string instructionType = instructionParts[0];
 
+            if (instructionType is "CONTINUE_IF" &&
+                !PT2.save_file.QL_EvaluateExpression(instruction.Substring(12)))
+                break;
+            if (instructionType is "ABORT_IF" &&
+                PT2.save_file.QL_EvaluateExpression(instruction.Substring(9)))
+                break;
+
             if (!ValidInstructionTypes.Contains(instructionType)) continue;
 
             if (!APHelpers.IsConnectedToAP()) continue;

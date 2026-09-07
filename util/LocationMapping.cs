@@ -5465,55 +5465,61 @@ public class LocationMapping
             {
                 ArchipelagoId = 7676397,
                 ObjectIds = ["106"],
-                IsKeyItem = false,
-                GISIdentifier = "AP_FAUN_FOUNT_OU",
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "FAUN_FOUNT_OU",
                 OverrideType =
-                    "ql=SI_FALSE,FAUN_FOUNT_OU;remove;name=song_field;desired_song=0;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_OU,true|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_FAUN_FOUNT_OU,pos$name(shooter)|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
+                    "ql=SI_FALSE,FAUN_FOUNT_OU;remove;name=song_field;desired_song=0;GIS=common_sfx,150|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FAUN_FOUNT_OU,pos$name(shooter),loot_GIS_PACK$5|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
             },
             new Check
             {
                 ArchipelagoId = 7676398,
                 ObjectIds = ["107"],
-                IsKeyItem = false,
-                GISIdentifier = "AP_FAUN_FOUNT_GE",
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "FAUN_FOUNT_GE",
                 OverrideType =
-                    "ql=SI_FALSE,FAUN_FOUNT_GE;remove;name=song_field;desired_song=1;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_GE,true|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_FAUN_FOUNT_GE,pos$name(shooter)|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
+                    "ql=SI_FALSE,FAUN_FOUNT_GE;remove;name=song_field;desired_song=1;GIS=common_sfx,150|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FAUN_FOUNT_GE,pos$name(shooter),loot_GIS_PACK$5|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
             },
             new Check
             {
                 ArchipelagoId = 7676399,
                 ObjectIds = ["108"],
-                IsKeyItem = false,
-                GISIdentifier = "AP_FAUN_FOUNT_RO",
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "FAUN_FOUNT_RO",
                 OverrideType =
-                    "ql=SI_FALSE,FAUN_FOUNT_RO;remove;name=song_field;desired_song=2;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_RO,true|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_FAUN_FOUNT_RO,pos$name(shooter)|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
+                    "ql=SI_FALSE,FAUN_FOUNT_RO;remove;name=song_field;desired_song=2;GIS=common_sfx,150|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FAUN_FOUNT_RO,pos$name(shooter),loot_GIS_PACK$5|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
             },
             new Check
             {
                 ArchipelagoId = 7676400,
                 ObjectIds = ["109"],
-                IsKeyItem = false,
-                GISIdentifier = "AP_FAUN_FOUNT_PA",
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "FAUN_FOUNT_PA",
                 OverrideType =
-                    "ql=SI_FALSE,FAUN_FOUNT_PA;remove;name=song_field;desired_song=3;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_PA,true|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_FAUN_FOUNT_PA,pos$name(shooter)|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
+                    "ql=SI_FALSE,FAUN_FOUNT_PA;remove;name=song_field;desired_song=3;GIS=common_sfx,150|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FAUN_FOUNT_PA,pos$name(shooter),loot_GIS_PACK$5|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
             },
             new Check
             {
                 ArchipelagoId = 7676401,
                 ObjectIds = ["110"],
-                IsKeyItem = false,
-                GISIdentifier = "AP_FAUN_FOUNT_BA",
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "FAUN_FOUNT_BA",
                 OverrideType =
-                    "ql=SI_FALSE,FAUN_FOUNT_BA;remove;name=song_field;desired_song=4;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_BA,true|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_FAUN_FOUNT_BA,pos$name(shooter)|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
+                    "ql=SI_FALSE,FAUN_FOUNT_BA;remove;name=song_field;desired_song=4;GIS=common_sfx,150|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FAUN_FOUNT_BA,pos$name(shooter),loot_GIS_PACK$5|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
             },
             new Check
             {
                 ArchipelagoId = 7676402,
                 ObjectIds = ["111"],
-                IsKeyItem = false,
-                GISIdentifier = "AP_FAUN_FOUNT_PH",
+                IsKeyItem = true,
+                IsNpc = true,
+                GISIdentifier = "FAUN_FOUNT_PH",
                 OverrideType =
-                    "ql=SI_FALSE,FAUN_FOUNT_PH;remove;name=song_field;desired_song=5;GIS=common_sfx,150|FILE_MARK_SI,FAUN_FOUNT_PH,true|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_FAUN_FOUNT_PH,pos$name(shooter)|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
+                    "ql=SI_FALSE,FAUN_FOUNT_PH;remove;name=song_field;desired_song=5;GIS=common_sfx,150|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FAUN_FOUNT_PH,pos$name(shooter),loot_GIS_PACK$5|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
             },
             new Check // TODO: theoretically missable if you leave the room before picking up the item
             {

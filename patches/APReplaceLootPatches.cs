@@ -50,6 +50,7 @@ internal sealed class APReplaceLootPatches
             LoadSpriteFromResource("preludeOfPanseloUpgrade.png"),
             LoadSpriteFromResource("anuriPearlstoneNecklace.png"),
             LoadSpriteFromResource("ouroGuardKeyring.png"),
+            LoadSpriteFromResource("moonstoneBundle.png"),
             LoadSpriteFromResource("panseloTeleporterUnlock.png"),
             LoadSpriteFromResource("ataiTeleporterUnlock.png"),
             LoadSpriteFromResource("cosetteTeleporterUnlock.png"),
@@ -124,7 +125,7 @@ internal sealed class APReplaceLootPatches
             ),
             CreateItemDef( // 221
                 "Moonstone Bundle",
-                FindSpriteIdByName("apSpriteFiller"),
+                FindSpriteIdByName("moonstoneBundle"),
                 "a bundle of semi-transparent blue runestones, said to have been a core component in ancient technology. they are valued amongst enthusiasts for their faint luminescence and beauty.",
                 "FREE;NO_DISCARD"
             ),
@@ -431,7 +432,9 @@ internal sealed class APReplaceLootPatches
     {
         if (_spawnLootAPCollectedGis.IsNullOrEmpty()) return;
 
-        collected_GIS = _spawnLootAPCollectedGis;
+        collected_GIS = collected_GIS.IsNullOrEmpty()
+            ? _spawnLootAPCollectedGis
+            : $"{_spawnLootAPCollectedGis}|{collected_GIS}";
         _spawnLootAPCollectedGis = null;
     }
 

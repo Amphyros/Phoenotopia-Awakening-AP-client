@@ -385,17 +385,18 @@ public class ItemHandler
 
             if (splitInstruction.Count < 3) GiveRinReplacementInstructionFailureWarning(check.ArchipelagoId);
 
+            // BUG: Might break when loot_GIS_PACK is used to spawn loot
             string identifier = "";
             string pos = "";
             foreach (string split in splitInstruction)
             {
-                if (split.Contains("loot_GIS_")) identifier = split;
+                if (split.Contains("loot_GIS_MARK_")) identifier = split;
                 if (split.Contains("pos")) pos = $",{split}";
             }
 
             if (identifier.IsNullOrEmpty()) GiveRinReplacementInstructionFailureWarning(check.ArchipelagoId);
 
-            identifier = identifier.Replace("loot_GIS_", "FILE_").Replace("$", ",");
+            identifier = identifier.Replace("loot_GIS_MARK_", "FILE_MARK_").Replace("$", ",");
 
             result = result.Replace(instruction,
                 $"SPAWN_pickup,P1_RAI,{check.ItemInfo.ItemId - 300}{pos}|{identifier},true");
