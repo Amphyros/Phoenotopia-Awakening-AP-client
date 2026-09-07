@@ -61,8 +61,6 @@ public class GameplayAdjustmentPatches
             .Select(check => check.ArchipelagoId)
             .FirstOrDefault();
 
-        if (archipelagoId == 0) PhoaAPClient.Logger.LogDebug("Couldn't find check");
-
         __result = archipelagoId != 0 &&
                    PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(archipelagoId);
         if (ql_phrase.Contains("AP_LOCATION_NOT_CHECKED")) __result = !__result;
