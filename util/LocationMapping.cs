@@ -3533,6 +3533,26 @@ public class LocationMapping
                     "type=P1_CHEST_S;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$BANDIT_MONEY_3;ql=SI_FALSE,BANDIT_MONEY_3",
             },
         },
+        ["p1_bandit_lair_09"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676561,
+                ObjectIds = ["9-pay up"],
+                IsKeyItem = false,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [2965] = [["CHOICE,SNAKE_HOW_MUCH,SNAKE_NOT_TOUGH,SNAKE_CANCEL", "CHOICE,SNAKE_NOT_TOUGH,SNAKE_CANCEL"],
+                              ["How much?||", ""]],
+                    [2978] = [["CHOICE,2979,SNAKE_START_FIGHT", "CHOICE,SNAKE_START_FIGHT"], ["How much was it again?||", ""]],
+                    [2992] = [["CHOICE,2993,2994", "CHOICE,2994"], ["Don't do it again...||", ""]],
+                    [2994] = [["my money", "%APPlayer/my %%APItem%"]],
+                },
+                GISIdentifier = "AP_BANDIT_SNAKE",
+                OverrideType =
+                    "FILE_MARK_AP,AP_BANDIT_SNAKE",
+            },
+        },
         ["p1_bandit_lair_stealth_03"] = new List<Check>
         {
             new Check
