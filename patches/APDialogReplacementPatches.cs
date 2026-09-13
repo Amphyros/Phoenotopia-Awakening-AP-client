@@ -27,7 +27,15 @@ internal sealed class APDialogReplacementPatches
         string[] instructionArray = all_code_string.Split(',');
         string originalDialogId = instructionArray[1];
         string alteredDialogId = instructionArray[2];
-        string archipelagoId = instructionArray[3];
+        long[] archipelagoIds = instructionArray[3]
+            .Split('&')
+            .Select(s =>
+            {
+                if (!long.TryParse(s, out var result))
+                    throw new FormatException($"Invalid long value when parsing ApId: '{s}'");
+                return result;
+            })
+            .ToArray();
         string completionDialogId = instructionArray.Length > 4 ? instructionArray[4] : null;
 
         void ApplyLine(int lineId, ref string text, ref string all_code_string)
@@ -51,19 +59,19 @@ internal sealed class APDialogReplacementPatches
             return;
         }
 
-        Check relatedCheck = checks.FirstOrDefault(c => c.ArchipelagoId == long.Parse(archipelagoId));
-        if (relatedCheck == null)
+        Check[] relatedChecks = checks.Where(c => archipelagoIds.Contains(c.ArchipelagoId)).ToArray();
+        if (!relatedChecks.Any())
         {
             PhoaAPClient.Logger.LogError(
-                $"Level {activeLevelName} does not contain a check with Archipelago ID: {archipelagoId}. " +
+                $"Level {activeLevelName} does not contain a check with Archipelago ID: {archipelagoIds}. " +
                 $"Please report this error to the developer");
             return;
         }
 
-        bool isChecked =
-            PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(relatedCheck.ArchipelagoId);
-        bool isNotIncluded =
-            !PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(relatedCheck.ArchipelagoId);
+        bool allChecked = relatedChecks.All(c =>
+            PhoaAPClient.APConnection.ItemHandler.LocalAllLocationsChecked.Contains(c.ArchipelagoId));
+        bool isNotIncluded = relatedChecks.All(c =>
+            !PhoaAPClient.APConnection.ItemHandler.LocalAllLocations.Contains(c.ArchipelagoId));
 
         if (isNotIncluded)
         {
@@ -71,13 +79,13 @@ internal sealed class APDialogReplacementPatches
             return;
         }
 
-        if (!isChecked)
+        if (!allChecked)
         {
             ApplyLine(DB.GetLine(alteredDialogId), ref text, ref all_code_string);
             return;
         }
 
-        if (!relatedCheck.IsKeyItem)
+        if (relatedChecks.Any(c => !c.IsKeyItem))
         {
             ApplyLine(DB.GetLine(originalDialogId), ref text, ref all_code_string);
             return;

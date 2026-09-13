@@ -22,22 +22,6 @@ internal sealed class APReplaceLootPatches
     private static readonly List<string> ExtractedPuzzleGisCmds = [];
     private static readonly string[] LevelsWithItemDisplays = ["p1_atai_shooting_gallery"];
 
-    private static readonly Dictionary<string, string> SettingNameMap = new()
-    {
-        { "PERRO", "enable_perros" }
-    };
-
-    private static readonly Dictionary<int, int> DungeonItemBundleReference = new()
-    {
-        { 98, 217 },
-        { 108, 218 },
-        { 115, 219 },
-        { 116, 220 },
-        { 119, 225 },
-        { 120, 226 },
-        { 121, 227 },
-    };
-
     [HarmonyPatch(typeof(PT2), "Initialize")]
     [HarmonyPostfix] // Patch to add AP item sprite
     private static void InitializePostfix()
@@ -50,6 +34,8 @@ internal sealed class APReplaceLootPatches
             LoadSpriteFromResource("preludeOfPanseloUpgrade.png"),
             LoadSpriteFromResource("anuriPearlstoneNecklace.png"),
             LoadSpriteFromResource("ouroGuardKeyring.png"),
+            LoadSpriteFromResource("bigBlueGolemMedallion.png"),
+            LoadSpriteFromResource("bigRedGolemMedallion.png"),
             LoadSpriteFromResource("moonstoneBundle.png"),
             LoadSpriteFromResource("panseloTeleporterUnlock.png"),
             LoadSpriteFromResource("ataiTeleporterUnlock.png"),
@@ -113,14 +99,14 @@ internal sealed class APReplaceLootPatches
             ),
             CreateItemDef( // 219
                 "Big Blue Golem Medallion",
-                FindSpriteIdByName("apSpriteFiller"),
-                "A medallion proving that you've passed a test in Thomas's Lab. The medallion is made from a section of circuit board and bears skillfully carved patterns. Perhaps a piece of art made by a golem? This one is colored blue",
+                FindSpriteIdByName("bigBlueGolemMedallion"),
+                "A medallion proving that you've passed a test in Thomas's Lab. It resembles a circuit board and bears skillfully carved patterns. Perhaps a piece of art made by a golem? This one is colored blue",
                 "FREE;NO_DISCARD"
             ),
             CreateItemDef( // 220
                 "Big Red Golem Medallion",
-                FindSpriteIdByName("apSpriteFiller"),
-                "A medallion proving that you've passed a test in Thomas's Lab. The medallion is made from a section of circuit board and bears skillfully carved patterns. Perhaps a piece of art made by a golem? This one is colored red",
+                FindSpriteIdByName("bigRedGolemMedallion"),
+                "A medallion proving that you've passed a test in Thomas's Lab. It resembles a circuit board and bears skillfully carved patterns. Perhaps a piece of art made by a golem? This one is colored red",
                 "FREE;NO_DISCARD"
             ),
             CreateItemDef( // 221
@@ -457,67 +443,6 @@ internal sealed class APReplaceLootPatches
     private static void ScorpAttackResultPrefix(AnimalLifeSmallLogic __instance)
     {
         ProcessAPItemAnimalLifeSmall(__instance);
-    }
-
-    [HarmonyPatch(typeof(SaveFile), "_Evaluate_QL_BasicPhrase")]
-    [HarmonyPrefix] // Patch to add AP_SETTING_TRUE/FALSE to _Evaluate_QL_BasicPhrase
-    private static bool EvaluateQLBasicPhrasePrefix(string ql_phrase, ref bool __result, SaveFile __instance)
-    {
-        if (!ql_phrase.Contains("AP_SETTING_")) return true;
-
-        string[] splitQLPhrase = ql_phrase.Split(',');
-
-        bool checkValue = splitQLPhrase[0].EndsWith("TRUE");
-
-        if (!SettingNameMap.TryGetValue(splitQLPhrase[1], out string checkSetting))
-        {
-            __result = true;
-            PhoaAPClient.Logger.LogWarning("AP settings not found for " + splitQLPhrase[1]);
-            return false;
-        }
-
-        bool perrosEnabled =
-            PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue(checkSetting,
-                out var enablePerros) && (long)enablePerros == 1;
-
-        __result = checkValue == perrosEnabled;
-
-        return false;
-    }
-
-    [HarmonyPatch(typeof(SaveFile), "_QL_HandleItemsHaveCount")]
-    [HarmonyPostfix] // Patch to handle functionality of dungeon item bundles
-    private static void QLHandleItemsHaveCountPostfix(string[] args, ref bool __result)
-    {
-        if (__result) return;
-
-        int itemId = int.Parse(args[1]);
-        if (!DungeonItemBundleReference.Keys.Contains(itemId)) return;
-
-        __result = PT2.save_file.QL_EvaluateExpression($"ITEM_HAVE_COUNT,{DungeonItemBundleReference[itemId]},1");
-    }
-
-    [HarmonyPatch(typeof(SaveFile), "_QL_HandleItemsDontHave")]
-    [HarmonyPostfix] // Patch to handle functionality of dungeon item bundles
-    private static void QLHandleItemsDontHavePostfix(string[] args, ref bool __result)
-    {
-        if (!__result) return;
-
-        int[] itemIds = PT2.GIS_ParseIntList(args[1]);
-        bool foundReplacement = false;
-
-        for (int i = 0; i < itemIds.Length; i++)
-        {
-            if (!DungeonItemBundleReference.TryGetValue(itemIds[i], out int replacement)) continue;
-            itemIds[i] = replacement;
-            foundReplacement = true;
-        }
-
-        if (!foundReplacement) return;
-
-        string ids = string.Join("/", Array.ConvertAll(itemIds, n => n.ToString()));
-
-        __result = PT2.save_file.QL_EvaluateExpression($"ITEM_DONT_HAVE,int_list({ids})");
     }
 
     private static void ProcessAPItemAnimalLifeSmall(AnimalLifeSmallLogic __instance)

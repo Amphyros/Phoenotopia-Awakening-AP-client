@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -55,9 +56,12 @@ public class DialogHandler
 
                 if (lines[targetLineId].Contains("GO_AP"))
                 {
-                    int lineToAlter = int.Parse(lines[targetLineId].Split(',')[2]);
+                    string[] lineValues = lines[targetLineId].Split(["||||"], StringSplitOptions.None)[0].Split(',');
+                    int lineToAlter = int.Parse(lineValues[2]);
                     lines[lineToAlter] = ApplyReplacements(lines[lineToAlter], dialogReplacements.Value, playerName,
                         itemName, bonusLineId, dialogPatch.ArchipelagoId);
+                    lines[targetLineId] = lines[targetLineId]
+                        .Replace(lineValues[3], $"{lineValues[3]}&{dialogPatch.ArchipelagoId}");
                     continue;
                 }
 
@@ -66,7 +70,8 @@ public class DialogHandler
                 int originalDialogId = lines.Count - 1;
 
                 lines.Add(
-                    ApplyReplacements(originalDialog, dialogReplacements.Value, playerName, itemName, bonusLineId, dialogPatch.ArchipelagoId));
+                    ApplyReplacements(originalDialog, dialogReplacements.Value, playerName, itemName, bonusLineId,
+                        dialogPatch.ArchipelagoId));
                 int alteredDialogId = lines.Count - 1;
 
                 string newLine = $"GO_AP,{originalDialogId},{alteredDialogId},{dialogPatch.ArchipelagoId}";

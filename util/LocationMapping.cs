@@ -4425,38 +4425,38 @@ public class LocationMapping
                 OverrideType =
                     "name=robot;voice=robot,1;profile=arch;speech=ARCH_0;floating;sort=bg_tiles,14;spacing=left,0.25;ql=SI_FALSE,THOMAS_NAPPED",
             },
-            // new Check
-            // {
-            //     ArchipelagoId = 7676466,
-            //     ObjectIds = ["7"],
-            //     IsNpc = true,
-            //     FillWhenExcluded = FillMode.StatusUpgrade,
-            //     DialogReplacements = new Dictionary<int, List<string[]>>
-            //     {
-            //         [5610] = [["shiny blue rock", "mystery item"]],
-            //         [5612] = [["GO,GP0", "GO,%BonusLine%"]], // TODO: GP0 calls both GP1 & GP2 which each have a CONTINUE_IF. How to model in dialogue?
-            //         [-1] = [["GIS,CONTINUE_IF,OC_EXISTS,exchange_blue|FILE_MARK_SI,MOON_THOMAS_2,true|ITEM_remove,115,1"]],
-            //     },
-            //     GISIdentifier = "MOON_THOMAS_2",
-            //     OverrideType =
-            //         "name=robot;voice=robot,1;profile=arch;speech=ARCH_0;floating;sort=bg_tiles,14;spacing=left,0.25;ql=SI_FALSE,THOMAS_NAPPED",
-            // },
-            // new Check
-            // {
-            //     ArchipelagoId = 7676467,
-            //     ObjectIds = ["7"],
-            //     IsNpc = true,
-            //     FillWhenExcluded = FillMode.StatusUpgrade,
-            //     DialogReplacements = new Dictionary<int, List<string[]>>
-            //     {
-            //         [5610] = [["shiny blue rock", "mystery item"]],
-            //         [5612] = [["GO,GP0", "GO,%BonusLine%"]], // TODO: GP0 calls both GP1 & GP2 which each have a CONTINUE_IF. How to model in dialogue?
-            //         [-1] = [["GIS,CONTINUE_IF,OC_EXISTS,exchange_red|FILE_MARK_SI,MOON_THOMAS_1,true|ITEM_remove,116,1"]],
-            //     },
-            //     GISIdentifier = "MOON_THOMAS_1",
-            //     OverrideType =
-            //         "name=robot;voice=robot,1;profile=arch;speech=ARCH_0;floating;sort=bg_tiles,14;spacing=left,0.25;ql=SI_FALSE,THOMAS_NAPPED",
-            // },
+            new Check
+            {
+                ArchipelagoId = 7676466,
+                ObjectIds = ["7"],
+                IsNpc = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [5610] = [["shiny blue rock", "mystery item"]],
+                    [5612] = [["GO,GP0", ""], [";OWNER,robot", "JUMP_AT_END,%BonusLine%,IF_TRUE|OC_EXISTS,exchange_blue;OWNER,robot"], ["exchange_red", "exchange_red;"]],
+                    [-1] = [["GIS,FILE_MARK_SI,MOON_THOMAS_2,true|ITEM_remove,115,1"]],
+                },
+                GISIdentifier = "MOON_THOMAS_2",
+                OverrideType =
+                    "name=robot;voice=robot,1;profile=arch;speech=ARCH_0;floating;sort=bg_tiles,14;spacing=left,0.25;ql=SI_FALSE,THOMAS_NAPPED",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676467,
+                ObjectIds = ["7"],
+                IsNpc = true,
+                FillWhenExcluded = FillMode.StatusUpgrade,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [5610] = [["shiny blue rock", "mystery item"]],
+                    [5612] = [["GO,GP0", ""], [";OWNER,robot", "JUMP_AT_END,%BonusLine%,IF_TRUE|OC_EXISTS,exchange_red;OWNER,robot"], ["exchange_blue", "exchange_blue;"]],
+                    [-1] = [["GIS,FILE_MARK_SI,MOON_THOMAS_1,true|ITEM_remove,116,1"]],
+                },
+                GISIdentifier = "MOON_THOMAS_1",
+                OverrideType =
+                    "name=robot;voice=robot,1;profile=arch;speech=ARCH_0;floating;sort=bg_tiles,14;spacing=left,0.25;ql=SI_FALSE,THOMAS_NAPPED",
+            },
         },
         ["p1_thomas_02x"] = new List<Check>
         {
