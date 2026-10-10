@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
+using PhoA_AP_client.AP;
 using PhoA_AP_client.util;
 using UnityEngine;
+using WebSocketSharp;
 
 namespace PhoA_AP_client.patches;
 
@@ -50,6 +52,65 @@ public class GameplayAdjustmentPatches
         PT2.gale_script.SetGaleModeOnLevelLoad(GALE_MODE.SWIMMING);
         PT2.gale_script.SendGaleCommand(GALE_CMD.SET_GALE_MODE);
         _justRespawnedInWater = false;
+    }
+
+    // [HarmonyPatch(typeof(PT2), "GIS_ProcessInstructions")]
+    // [HarmonyPrefix] // Patch to permanently disable Franways when apworld demands it
+    // private static void GISProcessInstructionsFranwayDisabledPrefix(ref string instructions)
+    // {
+    //     if (PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue("franway_unlock_mode",
+    //             out var franwayUnlockMode) && (long)franwayUnlockMode != 0)
+    //         return;
+    //
+    //     List<string> instructionsList = instructions.Split('|').ToList();
+    //
+    //     instructionsList.RemoveAll(instruction =>
+    //         instruction.Contains("WARP_OPEN_PANSELO") || 
+    //         instruction.Contains("WARP_OPEN_ATAI") ||
+    //         instruction.Contains("WARP_OPEN_CROP"));
+    //
+    //     instructions = string.Join("|", instructionsList.ToArray());
+    // }
+
+    [HarmonyPatch(typeof(SaveFile), "AddItemToolOrStatusIdToInventory")]
+    [HarmonyPostfix] // Patch to unlock Franways once enough moonstones are acquired
+    private static void AddItemToolOrStatusIdToInventoryPostfix(int item_tool_id)
+    {
+        if (item_tool_id != 5) return;
+        if (PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue("franway_unlock_mode",
+                out var franwayUnlockMode) && (long)franwayUnlockMode != 2)
+            return;
+
+        int moonstoneTotalGame = PT2.save_file.GetInt(8);
+        int moonstoneTotalAP = APSaveState.CollectedItems.Count(itemId => itemId == 5);
+        if (moonstoneTotalGame != moonstoneTotalAP)
+            PhoaAPClient.Logger.LogWarning("Moonstone total in game is not in sync with AP");
+
+        string teleporter = moonstoneTotalGame switch
+        {
+            10 => "WARP_OPEN_PANSELO",
+            20 => "WARP_OPEN_ATAI",
+            30 => "WARP_OPEN_CROP",
+            _ => ""
+        };
+
+        if (teleporter.IsNullOrEmpty()) return;
+
+        PT2.GIS_ProcessInstructions($"FILE_MARK_SI,{teleporter},true", PT2.gale_script.GetTransform().position);
+
+        string region = teleporter switch
+        {
+            "WARP_OPEN_PANSELO" => "Panselo",
+            "WARP_OPEN_ATAI" => "Atai",
+            "WARP_OPEN_CROP" => "Cosette",
+            _ => ""
+        };
+
+        PT2.display_messages.DisplayMessage($"{region} teleporter unlocked!",
+            DisplayMessagesLogic.MSG_TYPE.GALE_PLUS_STATUS);
+        PT2.sound_g.PlayGlobalUncommonSfx("computer_access", 1f);
+        LeanTween.delayedCall(PT2.gale_script.GetGaleObject(GALE_OBJ_REQ.GAME_OBJ), .5f,
+            () => { PT2.sound_g.PlayGlobalUncommonSfx("battery_powered_up", 1f); });
     }
 
     [HarmonyPatch(typeof(SaveFile), "_Evaluate_QL_BasicPhrase")]

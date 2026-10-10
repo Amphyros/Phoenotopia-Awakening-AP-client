@@ -35,6 +35,12 @@ public class CutsceneAdjustmentPatches
         PT2.GIS_ProcessInstructions("FILE_MARK_SI,SAW_TOWER_ILLUSION,true", Vector3.zero);
         PT2.GIS_ProcessInstructions("FILE_MARK_SI,CH_3_LC_BART_DEBRIEF,true", Vector3.zero);
 
+        if (PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue("franway_unlock_mode",
+                out var franwayUnlockMode) && (long)franwayUnlockMode == 4)
+            PT2.GIS_ProcessInstructions(
+                "FILE_MARK_SI,WARP_OPEN_PANSELO,true|FILE_MARK_SI,WARP_OPEN_ATAI,true|FILE_MARK_SI,WARP_OPEN_CROP,true",
+                Vector3.zero);
+
         if (PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue("open_panselo_gates",
                 out var openPanseloGates) && (long)openPanseloGates == 1)
             PT2.GIS_ProcessInstructions(

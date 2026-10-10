@@ -53,6 +53,8 @@ internal sealed class APCheckLocationPatches
             "Progression Archipelago Item",
             "Useful Archipelago Item",
             "Filler Archipelago Item",
+            "Spell of Rejuvenation",
+            "Moonstone Bundle",
             "Panselo Franway Teleporter",
             "Atai Franway Teleporter",
             "Cosette Franway Teleporter",

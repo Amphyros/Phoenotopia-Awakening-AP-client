@@ -128,24 +128,21 @@ public class ItemHandler
     {
         if (SuppressedItemAddition.Remove(id)) return;
 
-        if (id is 139)
-            return;
-
-        if (id is >= 292 and <= 299)
-            id = HandleUpgradableItems(id);
-
-        if (id is 216)
+        switch (id)
         {
-            HandleSpellOfRejuvenation();
-            return;
-        }
-
-        if (id > 300)
-        {
-            PickupLogic.PICKUP_CLASS pickupClass =
-                (PickupLogic.PICKUP_CLASS)Enum.Parse(typeof(PickupLogic.PICKUP_CLASS), "P1_RAI");
-            PT2.save_file.ApplyPickupEffect(pickupClass, (int)id - 300);
-            return;
+            case 139:
+                return;
+            case >= 292 and <= 299:
+                id = HandleUpgradableItems(id);
+                break;
+            case 216 or 222 or 223 or 224:
+                ExecuteGisCmdLinkedToId(id);
+                return;
+            case > 300:
+                PickupLogic.PICKUP_CLASS pickupClass =
+                    (PickupLogic.PICKUP_CLASS)Enum.Parse(typeof(PickupLogic.PICKUP_CLASS), "P1_RAI");
+                PT2.save_file.ApplyPickupEffect(pickupClass, (int)id - 300);
+                return;
         }
 
         // TODO: Implement functionality to handle quantity. For now, only one item (fruit jam) adds more than 1
@@ -348,9 +345,23 @@ public class ItemHandler
         checks[i].OverrideType = newOverwriteType;
     }
 
-    private void HandleSpellOfRejuvenation()
+    private void ExecuteGisCmdLinkedToId(long id)
     {
-        PT2.GIS_ProcessInstructions("FILE_MARK_SI,PANSELO_SONG_HEALS,true", PT2.gale_script.GetTransform().position);
+        string gisCmd = id switch
+        {
+            216 => "FILE_MARK_SI,PANSELO_SONG_HEALS,true",
+            222 => "FILE_MARK_SI,WARP_OPEN_PANSELO,true",
+            223 => "FILE_MARK_SI,WARP_OPEN_ATAI,true",
+            224 => "FILE_MARK_SI,WARP_OPEN_CROP,true",
+            _ => ""
+        };
+        PT2.GIS_ProcessInstructions(gisCmd, PT2.gale_script.GetTransform().position);
+
+        if (!gisCmd.Contains("WARP_OPEN")) return;
+
+        PT2.sound_g.PlayGlobalUncommonSfx("computer_access", 1f);
+        LeanTween.delayedCall(PT2.gale_script.GetGaleObject(GALE_OBJ_REQ.GAME_OBJ), .5f,
+            () => { PT2.sound_g.PlayGlobalUncommonSfx("battery_powered_up", 1f); });
     }
 
     private static string GetGisCmdsFromOverwriteType(Check check)
