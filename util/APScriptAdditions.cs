@@ -70,6 +70,18 @@ internal static class APScriptAdditions
         [
             "GO,9016;GROUND_NPC,gale;ANIMATE,gale,fall=presenting;GIS,haze_screen,color$00ffff,alpha$0.5,transition$1,hold_time$4"
         ],
+        ["9435"] =
+        [
+            "GO,9488;WAIT,1;GIS,screen_fade_black,0.9|FRAN_QUEST_WARP_OPEN,WARP_OPEN_PANSELO|FILE_MARK_SI,FRAN_QUEST_10,true|moonstones_expend,10"
+        ],
+        ["9514"] =
+        [
+            "GO,9515;WAIT,4;GIS,FRAN_QUEST_WARP_OPEN,WARP_OPEN_ATAI|FILE_MARK_SI,FRAN_QUEST_20,true|moonstones_expend,10|FILE_MARK_SI,FRAN_FOOD,false|screen_fade_black,0.75|DELAY,1|uncommon_sfx,frontloader_printer_spawn,pitch$1.2|DELAY,2.5|uncommon_sfx,hint_bell|change_scene,p1_frans_base,99"
+        ],
+        ["9540"] =
+        [
+            "GO,9541;WAIT,4;GIS,FRAN_QUEST_WARP_OPEN,WARP_OPEN_CROP|FILE_MARK_SI,FRAN_QUEST_30,true|moonstones_expend,10|FILE_MARK_SI,FRAN_FOOD,false|screen_fade_black,0.75|DELAY,1|uncommon_sfx,frontloader_printer_spawn,pitch$1.2|DELAY,2.5|uncommon_sfx,hint_bell|change_scene,p1_fran_geo_outside,98"
+        ],
         ["10222"] = ["PROFILE,static;TXT_BOX_WIDTH,1000;VOICE,static;POS,0.5,0.5;CHOICE,10227,10226,10225,10224,10223"],
     };
 

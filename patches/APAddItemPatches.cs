@@ -58,7 +58,10 @@ internal sealed class APAddItemPatches
 
         var matches = LocationMapping.LocationMap.Values
             .SelectMany(checks => checks)
-            .Where(check => check.IsNpc && check.IsKeyItem && check.CompletionDialogId == null &&
+            .Where(check => check.IsNpc && 
+                            check.IsKeyItem && 
+                            check.CompletionDialogId == null && 
+                            !check.GISIdentifier.StartsWith("AP_") &&
                             PhoaAPClient.APConnection.SessionContext.Session.Locations.AllLocationsChecked
                                 .Contains(check.ArchipelagoId));
 

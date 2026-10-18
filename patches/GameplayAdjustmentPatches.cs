@@ -30,6 +30,8 @@ public class GameplayAdjustmentPatches
         { "PERRO", "enable_perros" }
     };
 
+    private static readonly HashSet<long> DisableDefaultTeleporterUnlockValues = [0, 2, 3];
+
     [HarmonyPatch(typeof(GaleInteracter), "ReturnToCheckpoint")]
     [HarmonyPrefix] // Patch to detect whether the player respawns in water
     private static void ReturnToCheckpointPrefix(GaleInteracter __instance)
@@ -54,23 +56,29 @@ public class GameplayAdjustmentPatches
         _justRespawnedInWater = false;
     }
 
-    // [HarmonyPatch(typeof(PT2), "GIS_ProcessInstructions")]
-    // [HarmonyPrefix] // Patch to permanently disable Franways when apworld demands it
-    // private static void GISProcessInstructionsFranwayDisabledPrefix(ref string instructions)
-    // {
-    //     if (PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue("franway_unlock_mode",
-    //             out var franwayUnlockMode) && (long)franwayUnlockMode != 0)
-    //         return;
-    //
-    //     List<string> instructionsList = instructions.Split('|').ToList();
-    //
-    //     instructionsList.RemoveAll(instruction =>
-    //         instruction.Contains("WARP_OPEN_PANSELO") || 
-    //         instruction.Contains("WARP_OPEN_ATAI") ||
-    //         instruction.Contains("WARP_OPEN_CROP"));
-    //
-    //     instructions = string.Join("|", instructionsList.ToArray());
-    // }
+    [HarmonyPatch(typeof(PT2), "GIS_ProcessInstructions")]
+    [HarmonyPrefix] // Patch to conditionally remove vanilla way to activate teleporter
+    private static void GISProcessInstructionsFranwayDisabledPrefix(ref string instructions)
+    {
+        List<string> instructionsList = instructions.Split('|').ToList();
+
+        if (PhoaAPClient.APConnection.SessionContext.Login.SlotData.TryGetValue("franway_unlock_mode",
+                out var franwayUnlockMode) && 
+            !DisableDefaultTeleporterUnlockValues.Contains((long)franwayUnlockMode))
+        {
+            foreach (string instruction in instructionsList)
+            {
+                if (!instruction.Contains("FRAN_QUEST_WARP_OPEN")) continue;
+                PhoaAPClient.Logger.LogDebug($"Instruction found: {instruction}");
+                string targetBoolean = instruction.Split(',')[1];
+                PT2.GIS_ProcessInstructions($"FILE_MARK_SI,{targetBoolean},true", Vector3.zero);
+            }
+        }
+
+        instructionsList.RemoveAll(instruction => instruction.Contains("FRAN_QUEST_WARP_OPEN"));
+    
+        instructions = string.Join("|", instructionsList.ToArray());
+    }
 
     [HarmonyPatch(typeof(SaveFile), "AddItemToolOrStatusIdToInventory")]
     [HarmonyPostfix] // Patch to unlock Franways once enough moonstones are acquired
