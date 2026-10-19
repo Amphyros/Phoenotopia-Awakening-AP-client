@@ -4143,7 +4143,7 @@ public class LocationMapping
                     "name=planto;profile=planto;voice=man,0.85;speech=PLANTO_P3;behavior=action_only;ql=SI_FALSE,PLANTO_3;floating;sort=bg_tiles,-1;talk_range=4;spacing=stand",
             },
         },
-        ["p1_frans_base"] = new List<Check> // TODO: implement gift checks 7676438 to 7676441 + make non-missable
+        ["p1_frans_base"] = new List<Check>
         {
             new Check
             {
@@ -4211,6 +4211,84 @@ public class LocationMapping
                 GISIdentifier = "HEART_FRAN_2",
                 OverrideType =
                     "name=fran;profile=fran;voice=woman,1;speech=FRAN_40_50;face_right;ql=OC_EXISTS,turned_50",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676438,
+                ObjectIds = ["408"],
+                IsKeyItem = true,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [9499] = [["GO,GP1;JUMP_AT_END,9500,IF_FALSE|ITEM_CAN_ADD,177,1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,FRAN_FOOD,true|FILE_MARK_AP,AP_FRAN_FOOD_1"]],
+                },
+                GISIdentifier = "AP_FRAN_FOOD_1",
+                OverrideType =
+                    "name=lan;profile=lan;voice=woman,1.02;speech=LAN_10_20,LAN_10_20+2;behavior=path,43,46,36;use_all_bright;sort=fg_tiles,1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676439,
+                ObjectIds = ["414"],
+                IsKeyItem = true,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [9521] = [["GO,GP2;JUMP_AT_END,9522,IF_FALSE|ITEM_CAN_ADD,65,1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,FRAN_FOOD,true|FILE_MARK_AP,AP_FRAN_FOOD_1|FILE_MARK_AP,AP_FRAN_FOOD_2"]],
+                },
+                GISIdentifier = "AP_FRAN_FOOD_2",
+                OverrideType =
+                    "name=van;profile=van;voice=man,1.02;speech=VAN_20_30,VAN_20_30+3;behavior=path,30,36,30,26;use_all_bright;sort=fg_tiles,-1;spacing=auto,0.1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676440,
+                ObjectIds = ["417"],
+                IsKeyItem = true,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [9554] = [["GO,GP3;JUMP_AT_END,9555,IF_FALSE|ITEM_CAN_ADD,72,1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,FRAN_FOOD,true|FILE_MARK_AP,AP_FRAN_FOOD_1|FILE_MARK_AP,AP_FRAN_FOOD_2|FILE_MARK_AP,AP_FRAN_FOOD_3"]],
+                },
+                GISIdentifier = "AP_FRAN_FOOD_3",
+                OverrideType =
+                    "name=van;profile=van;voice=man,1.02;speech=VAN_30_40,VAN_30_40+2;face_right;behavior=path,28,32,30,26;use_all_bright",
+            },
+        },
+        ["p1_frans_teleporters"] = new List<Check>
+        {
+            new Check
+            {
+                ArchipelagoId = 7676441,
+                ObjectIds = ["492"],
+                IsKeyItem = true,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [9591] = [["GO,GP2;JUMP_AT_END,9592,IF_FALSE|ITEM_CAN_ADD,152,1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,FRAN_FOOD,true|FILE_MARK_AP,AP_FRAN_FOOD_1|FILE_MARK_AP,AP_FRAN_FOOD_2|FILE_MARK_AP,AP_FRAN_FOOD_3|FILE_MARK_AP,AP_FRAN_FOOD_4|CONTINUE_IF,SI_TRUE,FRAN_QUEST_50|FILE_MARK_AP,AP_FRAN_FOOD_5"]],
+                },
+                GISIdentifier = "AP_FRAN_FOOD_4",
+                OverrideType =
+                    "name=lan;profile=lan;voice=woman,1.02;speech=LAN_40_50,LAN_40_50+3;behavior=path,19,13.5;use_all_bright;sort=fg_tiles,-1",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676562,
+                ObjectIds = ["496"],
+                IsKeyItem = true,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [9591] = [["GO,GP2;JUMP_AT_END,9592,IF_FALSE|ITEM_CAN_ADD,152,1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_SI,FRAN_FOOD,true|FILE_MARK_AP,AP_FRAN_FOOD_1|FILE_MARK_AP,AP_FRAN_FOOD_2|FILE_MARK_AP,AP_FRAN_FOOD_3|FILE_MARK_AP,AP_FRAN_FOOD_4|CONTINUE_IF,SI_TRUE,FRAN_QUEST_50|FILE_MARK_AP,AP_FRAN_FOOD_5"]],
+                },
+                GISIdentifier = "AP_FRAN_FOOD_5",
+                OverrideType =
+                    "name=lan;profile=lan;voice=woman,1.02;speech=LAN_40_50,LAN_40_50+3;behavior=path,19,13.5;use_all_bright;sort=fg_tiles,-1",
             },
         },
         ["p1_fran_geo_outside"] = new List<Check>
