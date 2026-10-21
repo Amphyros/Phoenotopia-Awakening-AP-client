@@ -3221,10 +3221,10 @@ public class LocationMapping
         },
         ["p1_bandit_lair_01"] = new List<Check>
         {
-            new Check // TODO: Spawns both scorpion locations
+            new Check
             {
                 ArchipelagoId = 7676290,
-                ObjectIds = ["194", "195"],
+                ObjectIds = ["195"],
                 IsKeyItem = false,
                 GISIdentifier = "AP_BANDIT_SCORPION_1",
                 OverrideType =
