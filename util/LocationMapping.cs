@@ -233,23 +233,37 @@ public class LocationMapping
             },
             new Check
             {
-                /* TODO:
-                1. GISIdentifier is not unique
-                2. Non-missable post-birdy via time travel?
-                3. Implement new post-birdy check 7676550 (id="80")
-                */
                 ArchipelagoId = 7676090,
                 ObjectIds = ["69"],
                 IsKeyItem = true,
                 IsNpc = true,
+                CompletionDialogId = 856,
                 DialogReplacements = new Dictionary<int, List<string[]>>
                 {
-                    [854] = [["JUMP_TO,855,IF_TRUE|ITEM_CANNOT_ADD,59,1;", ""], ["ITEM_add,59,1|", ""]],
+                    [852] = [["||||","||||"]], // Starting line to apply CompletionDialog jump
+                    [854] = [["JUMP_TO,855,IF_TRUE|ITEM_CANNOT_ADD,59,1;", ""], ["ITEM_add,59,1|FILE_MARK_SI,KID_LUNCH,true", "FILE_MARK_AP,AP_KID_LUNCH_CH_2"]],
                 },
-                GISIdentifier = "KID_LUNCH",
+                GISIdentifier = "AP_KID_LUNCH_CH_2",
                 OverrideType =
                     "name=amanda;voice=woman,1.1;profile=amanda;behavior=path,25,22;speech=AMANDA_2A,AMANDA_2A+6;sort=fg_tiles,-1",
-            }
+            },
+            new Check
+            {
+                ArchipelagoId = 7676550,
+                ObjectIds = ["80"],
+                IsKeyItem = true,
+                IsNpc = true,
+                CompletionDialogId = 1066,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [1063] = [["||||","||||"]], // Starting line to apply CompletionDialog jump
+                    [1064] = [["GO,GP1;JUMP_AT_END,1065,IF_FALSE|ITEM_CAN_ADD,59,1", "GO,%BonusLine%"]],
+                    [-1] = [["GIS,FILE_MARK_AP,AP_KID_LUNCH_CH_3"]],
+                },
+                GISIdentifier = "AP_KID_LUNCH_CH_3",
+                OverrideType =
+                    "name=seth;voice=man,1.1;profile=seth;behavior=path,25,22;speech=SETH_3_START,SETH_3_START+4;sort=fg_tiles,-1",
+            },
         },
         ["p1_panselo_shop"] = new List<Check>
         {
