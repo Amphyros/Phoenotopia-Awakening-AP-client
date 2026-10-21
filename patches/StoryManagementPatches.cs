@@ -24,7 +24,7 @@ internal sealed class StoryManagementPatches
         "p1_panselo_house_02", "p1_panselo_house_02a", "p1_panselo_house_ruth", "p1_panselo_tower_right",
     ];
 
-    private static readonly HashSet<string> StoryFlags = ["BOSS_SLIME_DEFEATED"];
+    private static readonly HashSet<string> StoryFlags = ["BOSS_SLIME_DEFEATED", "BOSS_DRAKE_DEFEATED"];
 
     private static readonly FieldInfo LevelPathPrefixField =
         AccessTools.Field(typeof(LevelBuildLogic), "_level_path_prefix");
@@ -226,7 +226,7 @@ internal sealed class StoryManagementPatches
                     .ToArray();
                 break;
 
-            case "BOSS_BIRDY_DEFEATED": // Placeholder value
+            case "BOSS_DRAKE_DEFEATED":
                 storyFlags = storyFlags
                     .Concat(ChapterOneEventList)
                     .Concat(ChapterTwoEventList)
@@ -255,16 +255,16 @@ internal sealed class StoryManagementPatches
     private static void ConstructAndReplaceTimewarpLines()
     {
         bool defeatedSlargummy = PT2.save_file.QL_EvaluateExpression("SI_TRUE,BOSS_SLIME_DEFEATED");
-        // bool defeatedBirdy = false;
+        bool defeatedSandDragon = PT2.save_file.QL_EvaluateExpression("SI_TRUE,BOSS_DRAKE_DEFEATED");
         // bool defeatedKatash = false;
 
-        DB.lines[DB.line_id_map["TIMEWARP_PANSELO"] + 1] = GetPanseloTimeWarpString(defeatedSlargummy);
+        DB.lines[DB.line_id_map["TIMEWARP_PANSELO"] + 1] = GetPanseloTimeWarpString(defeatedSlargummy, defeatedSandDragon);
     }
 
     // TODO: Expand with all relevant story flags
-    private static string GetPanseloTimeWarpString(bool defeatedSlargummy)
+    private static string GetPanseloTimeWarpString(bool defeatedSlargummy, bool defeatedSandDragon)
     {
-        if (!defeatedSlargummy)
+        if (!defeatedSlargummy && !defeatedSandDragon)
             return "GO,TIMEWARP_NOT_AVAILABLE||||";
 
         StringBuilder backend = new StringBuilder("CHOICE,TIMEWARP_PANSELO+2");
@@ -274,6 +274,12 @@ internal sealed class StoryManagementPatches
         {
             backend.Append(",TIMEWARP_PANSELO+3");
             frontend.Append("||After the abduction");
+        }
+
+        if (defeatedSandDragon)
+        {
+            backend.Append(",TIMEWARP_PANSELO+4");
+            frontend.Append("||After returning home with Lisa");
         }
 
         return backend + ",CLOSE_ALL;OWNER,gale||||..." + frontend + "||Never mind";
