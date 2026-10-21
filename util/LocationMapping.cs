@@ -342,55 +342,95 @@ public class LocationMapping
                 OverrideType =
                     "profile=item,%ItemId%;name=shop_3;speech=MERCHANT_TAO_POTATO",
             },
-            /* TODO:
-            1. GISIdentifiers of the following checks are not unique 
-            2. Non-missable post-birdy via time travel?
-            3. Implement new post-birdy checks 7676551-7676555
-            */
             new Check
             {
                 ArchipelagoId = 7676084,
                 ObjectIds = ["64"],
-                IsKeyItem = false,
-                GISIdentifier = "REGEN_SUPPLY_1",
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_1_CH_2",
                 OverrideType =
-                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_1;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_1",
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_1_CH_2",
             },
             new Check
             {
                 ArchipelagoId = 7676085,
                 ObjectIds = ["69"],
-                IsKeyItem = false,
-                GISIdentifier = "REGEN_SUPPLY_2",
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_2_CH_2",
                 OverrideType =
-                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_2;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_2",
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_2_CH_2",
             },
             new Check
             {
                 ArchipelagoId = 7676086,
                 ObjectIds = ["70"],
-                IsKeyItem = false,
-                GISIdentifier = "REGEN_SUPPLY_3",
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_3_CH_2",
                 OverrideType =
-                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_3;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_3",
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_3_CH_2",
             },
             new Check
             {
                 ArchipelagoId = 7676087,
                 ObjectIds = ["71"],
-                IsKeyItem = false,
-                GISIdentifier = "REGEN_SUPPLY_4",
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_4_CH_2",
                 OverrideType =
-                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_4;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_4",
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_4_CH_2",
             },
             new Check
             {
                 ArchipelagoId = 7676088,
                 ObjectIds = ["72"],
-                IsKeyItem = false,
-                GISIdentifier = "REGEN_SUPPLY_5",
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_5_CH_2",
                 OverrideType =
-                    "type=P1_CRATE_FOOD;ql=SI_FALSE,REGEN_SUPPLY_5;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$REGEN_SUPPLY_5",
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_5_CH_2",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676551,
+                ObjectIds = ["87"],
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_1_CH_3",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_1_CH_3",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676552,
+                ObjectIds = ["88"],
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_2_CH_3",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_2_CH_3",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676553,
+                ObjectIds = ["89"],
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_3_CH_3",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_3_CH_3",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676554,
+                ObjectIds = ["90"],
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_4_CH_3",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_4_CH_3",
+            },
+            new Check
+            {
+                ArchipelagoId = 7676555,
+                ObjectIds = ["91"],
+                IsKeyItem = true,
+                GISIdentifier = "AP_PANSELO_SHOP_SUPPLY_5_CH_3",
+                OverrideType =
+                    "type=P1_CRATE_FOOD;destroyed_GIS=SPAWN_loot,%ItemId%,loot_GIS_MARK_AP$AP_PANSELO_SHOP_SUPPLY_5_CH_3",
             },
         },
         ["p1_panselo_dojo"] = new List<Check>
@@ -2073,7 +2113,7 @@ public class LocationMapping
         },
         ["p1_atai_inn_01"] = new List<Check>
         {
-            new Check // TODO: dialogue resets for other item after buying one
+            new Check
             {
                 ArchipelagoId = 7676225,
                 ObjectIds = ["22"],
@@ -2092,7 +2132,7 @@ public class LocationMapping
                 OverrideType =
                     "name=bartender;voice=man,.95;profile=atai_barkeep;speech=ATAI_BARTENDER;behavior=stand;floating;sort=bg_tiles,7;spacing=left,0.5",
             },
-            new Check // TODO: dialogue resets for other item after buying one
+            new Check
             {
                 ArchipelagoId = 7676226,
                 ObjectIds = ["22"],
