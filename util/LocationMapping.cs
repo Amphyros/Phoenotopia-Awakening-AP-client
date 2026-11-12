@@ -3670,9 +3670,23 @@ public class LocationMapping
                     "profile=rala;speech=RALA_THE_BANDIT;name=gamer;voice=woman,0.95;behavior=stand;spacing=left,1.5;use_all_bright",
             },
         },
-        // ["p1_bandit_lair_shrine2"] = new List<Check> // TODO: Atri checks 7676327-7676329
-        // {
-        // },
+        ["p1_bandit_lair_shrine2"] = new List<Check> // TODO: Atri checks 7676327-7676329
+        {
+            new Check
+            {
+                ArchipelagoId = 7676327,
+                ObjectIds = ["193"],
+                IsKeyItem = true,
+                IsNpc = true,
+                DialogReplacements = new Dictionary<int, List<string[]>>
+                {
+                    [3206] = [["ITEM_add,111,1|", ""]],
+                },
+                GISIdentifier = "RALA_KEY_GET",
+                OverrideType =
+                    "voice=woman,0.95;name=atri;profile=matri;speech=ATRI_3;use_all_bright",
+            },
+        },
         ["p1_atai_mansion_bedroom"] = new List<Check>
         {
             new Check
@@ -3733,7 +3747,7 @@ public class LocationMapping
                 OverrideType =
                     "profile=item,%ItemId%;speech=MERCHANT_MOON_POLE;voice=woman,0.95;spacing=stand;shiny;name=shop_1",
             },
-            new Check // TODO: item consists of multiple sprites, remove others
+            new Check
             {
                 ArchipelagoId = 7676333,
                 HintWhenLoaded = true,
@@ -3743,7 +3757,8 @@ public class LocationMapping
                 {
                     [3466] = [["<#00ffff>Cooked knife krill</color>", "%APPlayer%<#00ffff>%APItem%</color>"]],
                     [3467] = [["a bundle of 3 Cooked Knife Krills", "%APPlayer%%APItem%"]],
-                    [3468] = [
+                    [3468] = 
+                    [
                         ["JUMP_TO,MERCHANT_MOON_REJECTED+1,IF_FALSE|ITEM_CAN_ADD,87,3;", ""],
                         ["ITEM_add,87,3", "FILE_MARK_AP,AP_RAVINE_SHOP_KRILL|recycle,shop_2"],
                     ],
@@ -3752,7 +3767,7 @@ public class LocationMapping
                 OverrideType =
                     "profile=item,%ItemId%;speech=MERCHANT_MOON_KRILL;spacing=left,0.1;name=shop_2",
             },
-            new Check // TODO: item consists of multiple sprites, remove others
+            new Check
             {
                 ArchipelagoId = 7676334,
                 HintWhenLoaded = true,
@@ -5673,7 +5688,7 @@ public class LocationMapping
                 OverrideType =
                     "ql=SI_FALSE,FAUN_FOUNT_PH;remove;name=song_field;desired_song=5;GIS=common_sfx,150|DELAY,2.5|GIS_PACK,2|DELAY,2.5|SPAWN_loot,%ItemId%,loot_GIS_MARK_SI$FAUN_FOUNT_PH,pos$name(shooter),loot_GIS_PACK$5|cpart,P1_CLOUD,pos$name(shooter),intensity$-1,deviation$vec3(0.7/0.7/0.7),dir$UP,color$ffffff|common_sfx,5,pitch$1.5|DELAY,0.5|GIS_PACK,3|GIS_PACK,4",
             },
-            new Check // TODO: theoretically missable if you leave the room before picking up the item
+            new Check
             {
                 ArchipelagoId = 7676403,
                 ObjectIds = ["4-final money"],
@@ -5702,7 +5717,7 @@ public class LocationMapping
                 OverrideType =
                     "profile=item,%ItemId%;speech=PUFF_PASTRY;spacing=left,0.2;name=shop_pastry",
             },
-            new Check // TODO: item consists of multiple sprites, remove others
+            new Check
             {
                 ArchipelagoId = 7676405,
                 HintWhenLoaded = true,
@@ -5736,7 +5751,7 @@ public class LocationMapping
                 OverrideType =
                     "profile=item,%ItemId%;speech=GRAPE_CAKE;spacing=left,0.2;name=shop_cake",
             },
-            new Check // TODO: item consists of multiple sprites, remove others
+            new Check
             {
                 ArchipelagoId = 7676407,
                 HintWhenLoaded = true,

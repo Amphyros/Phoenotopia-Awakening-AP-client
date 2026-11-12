@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="16" tileheight="16" infinite="0" nextobjectid="62">
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16" tilecount="16384" columns="128">
+  <image source="../../Textures/tiles.PNG" width="2048" height="2048"/>
+ </tileset>
+ <layer name="back" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztk9FtgzAQhm+UdAeSkJfCKGwQoi5wozCKR+kAVWxAfepL/7NNcZCjYJr2yUifzjbH/2EjrgXRNZPJZP4G9qzq18A8F9YJ/vOeqN1KFQeZUb9cMb/xjIWF187b1zj3/Pf2L1mfL0RvewvL+NE89F8qC//G/1XM54AxP5ov/DVQW/3tYRumipPkP9LPZQ7PAZnr/7/Qf6QGdIOrzYixKan+QE9b0m6quCe9qgfoaXrXb+fynE7wn8vZj+dpyjQ+F7764tjJWPzDfF/6O+9V9n1RkbnVL7k0OCSrm/yo76iMyr1zi4+Akt4pT9Z1gl/f+m2W7Gl0+QrnTz3yjHh99fuU79P4s1KBv0va/wnf1MFBDVmu0WKNFjAyV/szmUwm8z98A6G6fBA=
+  </data>
+ </layer>
+ <layer name="back" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztkksKwjAQhmftGXTnERRSn9cQ76ALqV0UF1naEyqiR6gLFy5EwX+Stj4olcaACPPBRzJpZv4sSiQIgiDkxD2icEi0hJFVY69Da+k59/ji4jDLpadqVtJ81Lz/VPvOn3fraXpGpGeQZ2Dl2liXuO/Wc0R2muVj5dpYl0NAGv6MsvykTXTulN/HuV7je6PlJ3+PfEg7ZevV2Kir8vM7PvIngXX69IYspyAdvOa/z1goo9N7Nuhjt8q+4dq15xHWGP8XNPm8co1zfbMWnJTxq3yXXkEQBOE/uAMKdV6A
+  </data>
+ </layer>
+ <layer name="back" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlE0KgkAYht+deQdDl20LskjRq9S6nxMUzM7oJB2jY0SrWlfSEfpGGxxFiSkoiu+Bj/ebcZxnwB+AYRiGUVhOfa+Pqym59evLlMQt+k3Fb7vlTLTry1F9mWJ5wEI7t+ybxvJ8qp/HEFTFOhqb28u0nHI2zUlS8qWa//qG/xRBHKnWD4fMMe09ifNezal1r3p+nWmI3Te85wAeuT3Kj/ntNtD1gUtA71YAQSmePf/twNyzj4CeD7Hy830PQ/qPkDMNshSzkL61MEuh3kkddZ+kMzT3MwzDMP/PHRTKQZo=
+  </data>
+ </layer>
+ <layer name="back" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztk0sOgjAQhsfHRu4A3MEoYjRh6XFwZ6Kb+tjQq3giF3oEu3flICSWUkinCbKwf/KnaZmZb9oMAE5OTv+q56zuDhhMx9FZdMAXBH46t+fc1npjTTJ/EhRr5gNrY2Lc5/s9aY6x4WfBN5/71Xp5T7zsC+MY7uHRwN8ldP4gBBiGbbeua78E8DQ5mwgYlX/EOici/4X8w0pvEn9B45oIa5r/fxI/jSx5Sp4g8NPY/p6N/cTd8L2guh/hzIw1cyMIfGHAn5bvyyX+Fd/4jOyLhk+6P87xtjCTVtnqGShnoJhhTWO+82+dqw+mk5NT/3oDcIlszQ==
+  </data>
+ </layer>
+ <layer name="front" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0zEOgCAMheEeSkBPhTMTJ7Y7k1gWggw2ATrYl/wxYeCLAwA6ne6vu7Z3E4zYc3rhBB8Zvjfj/Xyn+ov9ZKgo5QdL8X03xk+WKr5jvL9BfnAU+cjw/T7Gr5fvFPWR4aP0/x8AZylW37r2DJozaIr5zs++trZnEqZOp5PfDVyuV0Q=
+  </data>
+ </layer>
+ <objectgroup name="meta" visible="0">
+  <object id="1" name="config" type="id=0;zoom_allowance=1;follow=point" x="72" y="144" width="336" height="192"/>
+  <object id="28" name="lighting" type="shader=diffuse;intensity=1.2;gales_light_power=5" x="176" y="80" width="48" height="48"/>
+  <object id="29" name="level_art" x="112" y="80" width="48" height="48">
+   <properties>
+    <property name="bg_x" value="graphic=p1_daea_bg_02;add_x=0;add_y=0.4;scroll_x=.018"/>
+    <property name="bg_y" value="graphic=p1_panselo_bg_clouds;add_x=0;add_y=0.26;scroll_x=.008;auto_scroll_x=0.012"/>
+    <property name="bg_z" value="graphic=p1_daea_bg_01;add_x=0.75;add_y=0.77;scroll_x=0.018"/>
+   </properties>
+  </object>
+  <object id="31" name="music" x="240" y="80" width="47.6667" height="46.3333">
+   <properties>
+    <property name="1" value="daea,vol=0.75;crowd_chatter,vol=0.2;mood_water_flow1,vol=0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="solid_collisions" visible="0">
+  <object id="8" x="0" y="320" width="512" height="112"/>
+  <object id="9" x="0" y="160" width="80" height="160"/>
+  <object id="10" x="0" y="96" width="512" height="64"/>
+  <object id="11" x="400" y="160" width="112" height="160"/>
+  <object id="12" x="112" y="240" width="288" height="16"/>
+  <object id="13" type="profile=WOOD" x="80" y="240">
+   <polyline points="0,0 32,0"/>
+  </object>
+  <object id="14" type="profile=WOOD" x="80" y="288">
+   <polyline points="0,0 32,0 64,32"/>
+  </object>
+  <object id="57" type="profile=WOOD" x="144" y="272">
+   <polyline points="0,0 32,0"/>
+  </object>
+  <object id="58" type="profile=WOOD" x="288" y="272">
+   <polyline points="0,0 32,0"/>
+  </object>
+  <object id="59" type="profile=WOOD" x="160" y="304">
+   <polyline points="0,0 48,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects" visible="0">
+  <object id="3" name="door" type="profile=NONE_FRONT;open=P1_daea_02;id=14" x="360" y="208" width="16" height="32"/>
+  <object id="4" name="end_door" type="id=14;facing=left" x="352" y="208" width="32" height="32"/>
+  <object id="6" name="door" type="profile=NONE_BACK;open=P1_daea_tunnel_04;id=12;half_pan=vec3(0/-5/0)" x="360" y="288" width="16" height="32"/>
+  <object id="7" name="end_door" type="id=12;facing=left" x="352" y="288" width="32" height="32"/>
+  <object id="18" name="bulb2" type="intensity=6;z=-8;range=10;color=dcceff;diameter=90" x="144" y="160" width="96" height="80">
+   <ellipse/>
+  </object>
+  <object id="19" name="bulb" type="intensity=4;color=dcceff;range=4;z=-1.5" x="336" y="272" width="64" height="64">
+   <ellipse/>
+  </object>
+  <object id="20" name="bulb" type="intensity=2;color=ff9311;range=4;z=-1" x="96" y="240" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="22" name="bulb" type="intensity=3;color=ff9311;range=4;z=-1" x="320" y="240" width="48" height="48">
+   <ellipse/>
+  </object>
+  <object id="23" name="bulb2" type="intensity=6;z=-7;range=10;color=dcceff;diameter=70" x="304" y="160" width="96" height="80">
+   <ellipse/>
+  </object>
+  <object id="46" name="end_door" type="id=0;facing=left" x="272" y="208" width="32" height="32"/>
+  <object id="50" name="bulb2" type="intensity=7;z=-7;range=10;color=dcceff;diameter=70" x="103.333" y="454" width="112" height="80">
+   <ellipse/>
+  </object>
+  <object id="56" name="bulb" type="intensity=4;color=dcceff;range=4;z=-3" x="208" y="272" width="48" height="48">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_npcs" visible="0">
+  <object id="30" name="npc" type="name=baker;profile=daea_grocer;voice=woman,1.05;speech=DAEA_BAKER+3,DAEA_BAKER+6;behavior=stand;use_all_bright;sort=bg_tiles,14;floating" x="321" y="202" width="16" height="32"/>
+  <object id="34" name="npc" type="profile=panselo_man;voice=man,1;speech=BAKER_FAM+2,BAKER_FAM+4" x="232" y="288" width="16" height="32"/>
+  <object id="35" name="npc" type="profile=panselo_girl;voice=woman,1.12;speech=BAKER_FAM,BAKER_FAM+1;behavior=path,10,12" x="192" y="272" width="16" height="32"/>
+  <object id="60" name="npc" type="profile=atai_grandma;voice=woman,0.95;use_all_bright;speech=D_FOOD_STAN+4,D_FOOD_STAN+6" x="266" y="208" width="16" height="32"/>
+  <object id="61" name="AT" type="sprite=38;sort=bg_tiles,25;scale=vec3(0.3/0.3/1);color=4C1121;alpha=0.175;use_all_bright" x="258" y="192" width="32" height="64">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects_shop" visible="0">
+  <object id="37" name="npc" type="profile=item,68;speech=DAEA_CHOCOLATE;sort=game_objects,41;spacing=left,0.2" x="239.667" y="207" width="16" height="16"/>
+  <object id="38" name="npc" type="profile=item,171;speech=SB_MACARON;face_right;spacing=left,0.2" x="160.667" y="210" width="16" height="16"/>
+  <object id="39" name="npc" type="profile=item,65;speech=GRAPE_CAKE;spacing=left,0.2" x="207.667" y="209" width="16" height="16"/>
+  <object id="40" name="AT" type="sprite=38;scale=vec3(0.1/0.1/1);sort=bg_tiles,13;color=ffffff;alpha=.3;use_all_bright" x="239.667" y="201" width="16" height="32">
+   <ellipse/>
+  </object>
+  <object id="41" name="AT" type="sprite=38;scale=vec3(0.1/0.1/1);sort=bg_tiles,13;color=ffffff;alpha=.3;use_all_bright" x="159.667" y="201" width="16" height="32">
+   <ellipse/>
+  </object>
+  <object id="42" name="AT" type="sprite=38;scale=vec3(0.1/0.1/1);sort=bg_tiles,13;color=ffffff;alpha=.3;use_all_bright" x="207.667" y="201" width="16" height="32">
+   <ellipse/>
+  </object>
+<!--  <object id="43" name="AT" type="loot=68;sort=game_objects,40;alpha=1" x="239.667" y="216" width="6" height="6"/>-->
+<!--  <object id="44" name="AT" type="loot=68;sort=game_objects,39;alpha=1" x="249.667" y="216" width="6" height="6"/>-->
+<!--  <object id="45" name="AT" type="loot=171;sort=game_objects,30;alpha=1" x="160.667" y="211" width="6" height="6"/>-->
+  <object id="47" name="npc" type="profile=item,169;speech=PUFF_PASTRY;spacing=left,0.2" x="128" y="210" width="16" height="16"/>
+  <object id="48" name="AT" type="sprite=38;scale=vec3(0.1/0.1/1);sort=bg_tiles,13;color=ffffff;alpha=.3;use_all_bright" x="128" y="202" width="16" height="32">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="animated" visible="0">
+  <object id="24" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1.3/0.5/1);color=ffa359;alpha=0.2;use_all_bright" x="80" y="144" width="208" height="112">
+   <ellipse/>
+  </object>
+  <object id="25" name="AT" type="sprite=38;sort=bg_tiles,21;scale=vec3(1/0.5/1);color=44212b;alpha=0.4;use_all_bright" x="256" y="240" width="224" height="128">
+   <ellipse/>
+  </object>
+  <object id="26" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(1/0.5/1);color=ffedc1;alpha=0.25;use_all_bright" x="272" y="144" width="160" height="112">
+   <ellipse/>
+  </object>
+  <object id="27" name="AT" type="sprite=0;sort=bg_tiles,-5;scale=adapt;color=fce6b0;alpha=0.25" x="112" y="176" width="160" height="32"/>
+  <object id="54" name="AT" type="sprite=0;sort=bg_tiles,-5;scale=adapt;color=fce6b0;alpha=0.25" x="192" y="256" width="80" height="32"/>
+  <object id="55" name="AT" type="sprite=38;sort=fg_tiles,100;scale=vec3(0.6/0.4/1);color=ffedc1;alpha=0.25;use_all_bright" x="160" y="240" width="144" height="96">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>
